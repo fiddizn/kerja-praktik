@@ -58,6 +58,9 @@ return new class extends Migration
             $table->string('alt3_p2');
             $table->string('alt4_p1');
             $table->string('alt4_p2');
+
+            // status pendaftaran
+            $table->string('status');
         });
     }
 

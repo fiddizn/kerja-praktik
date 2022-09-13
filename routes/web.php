@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Detail_MahasiswaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\List_pendaftaran_ta_1Controller;
+use App\Models\Pendaftaran;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +51,7 @@ Route::get('/koordinator', function () {
         'role' => 'Koordinator'
     ]);
 });
+
+Route::get('/koordinator/list-pendaftaran-ta-1', [List_pendaftaran_ta_1Controller::class, 'index']);
+
+Route::get('/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{pendaftaran_id}', [Detail_MahasiswaController::class, 'index']);

@@ -59,6 +59,9 @@ class PendaftaranFactory extends Factory
             'alt3_p2' => fake()->name(),
             'alt4_p1' => fake()->name(),
             'alt4_p2' => fake()->name(),
+
+            // status
+            'status' => ''
         ];
     }
 }
