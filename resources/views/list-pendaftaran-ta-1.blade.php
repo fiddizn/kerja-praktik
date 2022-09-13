@@ -32,4 +32,7 @@
     </tbody>
     @endforeach
 </table>
+<div class="col-12 my-5">
+    <a class="btn " href="/koordinator" role="button" style="width: 5rem;background-color:#ff8c1a;">Back</a>
+</div>
 @endsection

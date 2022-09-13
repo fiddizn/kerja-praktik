@@ -3,7 +3,7 @@
 <h2 style="text-align:center;">Pendaftaran Tugas Akhir 1</h2>
 
 <div class="row align-items-start mt-3">
-    <form class="row g-3" action="/mahasiswa/pendaftaran-ta-1/status" method="GET">
+    <div class="row g-3">
         <div class="col-md-6">
             <label for="nim" class="form-label">NIM</label>
             <input type="number" class="form-control" name="nim" id="nim" readonly value="{{ $pendaftaran->nim }}">
@@ -51,15 +51,8 @@
             <input type="text" class="form-control" name="address" id="address" readonly
                 value="{{ $pendaftaran->address }}">
         </div>
-
-
-
         <div class="my-4">
-
         </div>
-
-
-
         <div class="col-md-3">
             <label for="algo" class="form-label">Algoritma</label>
             <input type="text" class="form-control" name="algo" id="algo" readonly value="{{ $pendaftaran->algo }}">
@@ -201,9 +194,24 @@
             <input type="text" class="form-control" name="alt4_p2" id="alt4_p2" readonly
                 value="{{ $pendaftaran->alt4_p2 }}">
         </div>
-
         <div class="mt-4">
+        </div>
 
+        <h5 style="text-align:center;">Siswa di atas dinyatakan:</h5>
+        <div class="d-flex justify-content-center mt-3">
+            <div class="col-3 ">
+                <button class=" btn btn-success" type="submit" style="width: 10rem; height: 3rem;">Lolos</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-warning" type="submit" style="width: 10rem; height: 3rem;">Lolos
+                    Bersyarat</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-danger" type="submit" style="width: 10rem; height: 3rem;">Pending</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-dark" type="submit" style="width: 10rem; height: 3rem;">Tidak Lolos</button>
+            </div>
         </div>
         <div class="col-12 m-2">
             <a class="btn " href="/koordinator/list-pendaftaran-ta-1" role="button"
@@ -211,7 +219,7 @@
         </div>
         <div style=" height: 100px;">
         </div>
-    </form>
+    </div>
 
 </div>
 
