@@ -18,7 +18,7 @@ class PendaftaranFactory extends Factory
     {
         return [
             'mahasiswa_id' => mt_rand(1, 10),
-            'nim' => fake()->numberBetween(91000, 91999),
+            'nim' => fake()->numberBetween(3411191000, 3411191999),
             'tempat_lahir' => fake()->city(),
             'tanggal_lahir' => fake()->dateTime(),
             'gender' => fake()->titleMale(),
