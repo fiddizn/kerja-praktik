@@ -18,7 +18,6 @@ class KoordinatorFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'nip' => fake()->numberBetween(412100000, 412199999),
             'email' =>  fake()->safeEmail(),
             'password' => '$2y$10$92IXUNpr4feg5hsfkjO0byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ];

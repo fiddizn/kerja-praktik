@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mahasiswa extends Model
+class Pendaftaran extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function pendaftaran()
+    public function mahasiswa()
     {
-        return $this->hasOne(Pendaftaran::class);
+        return $this->belongsTo(Mahasiswa::class);
     }
 
     // public function user()

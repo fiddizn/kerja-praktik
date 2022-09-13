@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Koordinator;
 use App\Models\Mahasiswa;
+use App\Models\Pendaftaran;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,5 +20,6 @@ class DatabaseSeeder extends Seeder
     {
         Mahasiswa::factory(10)->create();
         Koordinator::factory(1)->create();
+        Pendaftaran::factory(10)->create();
     }
 }

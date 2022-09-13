@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('koordinators', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('nip');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('nim');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();
