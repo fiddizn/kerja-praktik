@@ -29,7 +29,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Informasi Nilai Mahasiswa
-            $table->integer('ipk');
+            $table->float('ipk');
             $table->integer('jumlah_sks');
             $table->integer('jumlah_teori_d');
             $table->integer('jumlah_prak_d');

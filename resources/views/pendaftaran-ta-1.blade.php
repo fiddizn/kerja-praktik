@@ -72,7 +72,7 @@
                 <option>C</option>
                 <option>D</option>
                 <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Belum Diambil</option>
             </select>
         </div>
         <div class="col-md-3">
@@ -86,7 +86,7 @@
                 <option>C</option>
                 <option>D</option>
                 <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Belum Diambil</option>
             </select>
         </div>
         <div class="col-md-3">
@@ -100,7 +100,7 @@
                 <option>C</option>
                 <option>D</option>
                 <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Belum Diambil</option>
             </select>
         </div>
         <div class="col-md-3">
@@ -114,7 +114,7 @@
                 <option>C</option>
                 <option>D</option>
                 <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Belum Diambil</option>
             </select>
         </div>
         <div class="col-md-3">
@@ -128,77 +128,55 @@
                 <option>C</option>
                 <option>D</option>
                 <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Belum Diambil</option>
             </select>
+        </div>
+        <div class="mt-4">
+
         </div>
         <div class="col-md-3">
             <label for="pemweb" class="form-label">Pemrograman Web</label>
             <select type="text" class="form-select" name="pemweb" id="pemweb">
                 <option selected> </option>
-                <option>A</option>
-                <option>AB</option>
-                <option>B</option>
-                <option>BC</option>
-                <option>C</option>
-                <option>D</option>
-                <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Sudah Selesai</option>
+                <option>Sedang Diambil</option>
+                <option>Belum Diambil</option>
             </select>
         </div>
         <div class="col-md-3">
             <label for="prak_pemweb" class="form-label">Prak. Pemrograman Web</label>
             <select type="text" class="form-select" name="prak_pemweb" id="prak_pemweb">
                 <option selected> </option>
-                <option>A</option>
-                <option>AB</option>
-                <option>B</option>
-                <option>BC</option>
-                <option>C</option>
-                <option>D</option>
-                <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Sudah Selesai</option>
+                <option>Sedang Diambil</option>
+                <option>Belum Diambil</option>
             </select>
         </div>
         <div class="col-md-3">
             <label for="po1" class="form-label">Pemrograman Objek 1</label>
             <select type="text" class="form-select" name="po1" id="po1">
                 <option selected> </option>
-                <option>A</option>
-                <option>AB</option>
-                <option>B</option>
-                <option>BC</option>
-                <option>C</option>
-                <option>D</option>
-                <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Sudah Selesai</option>
+                <option>Sedang Diambil</option>
+                <option>Belum Diambil</option>
             </select>
         </div>
         <div class="col-md-3">
             <label for="prak_po1" class="form-label">Prak. Pemrograman Objek 1</label>
             <select type="text" class="form-select" name="prak_po1" id="prak_po1">
                 <option selected> </option>
-                <option>A</option>
-                <option>AB</option>
-                <option>B</option>
-                <option>BC</option>
-                <option>C</option>
-                <option>D</option>
-                <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Sudah Selesai</option>
+                <option>Sedang Diambil</option>
+                <option>Belum Diambil</option>
             </select>
         </div>
         <div class="col-md-3">
             <label for="appl" class="form-label">Analisis & Perancangan PL</label>
             <select type="text" class="form-select" name="appl" id="appl">
                 <option selected> </option>
-                <option>A</option>
-                <option>AB</option>
-                <option>B</option>
-                <option>BC</option>
-                <option>C</option>
-                <option>D</option>
-                <option>E</option>
-                <option>Belum Lulus</option>
+                <option>Sudah Selesai</option>
+                <option>Sedang Diambil</option>
+                <option>Belum Diambil</option>
             </select>
         </div>
 

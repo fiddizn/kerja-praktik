@@ -55,26 +55,55 @@
         </div>
         <div class="col-md-3">
             <label for="algo" class="form-label">Algoritma</label>
-            <input type="text" class="form-control" name="algo" id="algo" readonly value="{{ $pendaftaran->algo }}">
+            <input type="text" class="form-control {{
+                ($pendaftaran->algo != 'A' && 
+                $pendaftaran->algo != 'AB' &&
+                $pendaftaran->algo != 'B' &&
+                $pendaftaran->algo != 'BC' &&
+                $pendaftaran->algo != 'C') ? 'is-invalid' : ''; }}" name="algo" id="algo" readonly
+                value="{{ $pendaftaran->algo }}">
         </div>
         <div class="col-md-3">
             <label for="stukdat" class="form-label">Struktur Data</label>
-            <input type="text" class="form-control" name="stukdat" id="stukdat" readonly
+            <input type="text" class="form-control {{
+                ($pendaftaran->strukdat != 'A' && 
+                $pendaftaran->strukdat != 'AB' &&
+                $pendaftaran->strukdat != 'B' &&
+                $pendaftaran->strukdat != 'BC' &&
+                $pendaftaran->strukdat != 'C') ? 'is-invalid' : ''; }}" name="stukdat" id="stukdat" readonly
                 value="{{ $pendaftaran->strukdat }}">
         </div>
         <div class="col-md-3">
             <label for="basdat" class="form-label">Basis Data</label>
-            <input type="text" class="form-control" name="basdat" id="basdat" readonly
+            <input type="text" class="form-control {{
+                ($pendaftaran->basdat != 'A' && 
+                $pendaftaran->basdat != 'AB' &&
+                $pendaftaran->basdat != 'B' &&
+                $pendaftaran->basdat != 'BC' &&
+                $pendaftaran->basdat != 'C') ? 'is-invalid' : ''; }}" name="basdat" id="basdat" readonly
                 value="{{ $pendaftaran->basdat }}">
         </div>
         <div class="col-md-3">
             <label for="rpl" class="form-label">Rekayasa Perangkat Lunak</label>
-            <input type="text" class="form-control" name="rpl" id="rpl" readonly value="{{ $pendaftaran->rpl }}">
+            <input type="text" class="form-control {{
+                ($pendaftaran->rpl != 'A' && 
+                $pendaftaran->rpl != 'AB' &&
+                $pendaftaran->rpl != 'B' &&
+                $pendaftaran->rpl != 'BC' &&
+                $pendaftaran->rpl != 'C') ? 'is-invalid' : ''; }}" name="rpl" id="rpl" readonly
+                value="{{ $pendaftaran->rpl }}">
         </div>
         <div class="col-md-3">
             <label for="metpen" class="form-label">Metode Penelitian</label>
-            <input type="text" class="form-control" name="metpen" id="metpen" readonly
+            <input type="text" class="form-control {{
+                ($pendaftaran->metpen != 'A' && 
+                $pendaftaran->metpen != 'AB' &&
+                $pendaftaran->metpen != 'B' &&
+                $pendaftaran->metpen != 'BC' &&
+                $pendaftaran->metpen != 'C') ? 'is-invalid' : ''; }}" name="metpen" id="metpen" readonly
                 value="{{ $pendaftaran->metpen }}">
+        </div>
+        <div class="my-4">
         </div>
         <div class="col-md-3">
             <label for="pemweb" class="form-label">Pemrograman Web</label>
@@ -103,27 +132,28 @@
         </div>
         <div class="col-md-3">
             <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
-            <input type="text" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" readonly
-                value="{{ $pendaftaran->jumlah_teori_d }}">
+            <input type="text" class="form-control {{($pendaftaran->jumlah_teori_d > 6 ) ? 'is-invalid' : ''; }}"
+                name="jumlah_teori_d" id="jumlah_teori_d" readonly value="{{ $pendaftaran->jumlah_teori_d }}">
         </div>
         <div class="col-md-3">
             <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
-            <input type="text" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" readonly
-                value="{{ $pendaftaran->jumlah_prak_d }}">
+            <input type="text" class="form-control {{($pendaftaran->jumlah_prak_d != 0 ) ? 'is-invalid' : ''; }}"
+                name="jumlah_prak_d" id="jumlah_prak_d" readonly value="{{ $pendaftaran->jumlah_prak_d }}">
         </div>
         <div class="col-md-3">
             <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
-            <input type="text" class="form-control" name="jumlah_e" id="jumlah_e" readonly
-                value="{{ $pendaftaran->jumlah_e }}">
+            <input type="text" class="form-control {{($pendaftaran->jumlah_e != 0 ) ? 'is-invalid' : ''; }}"
+                name="jumlah_e" id="jumlah_e" readonly value="{{ $pendaftaran->jumlah_e }}">
         </div>
         <div class="col-md-3">
             <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
-            <input type="text" class="form-control" name="jumlah_sks" id="jumlah_sks" readonly
-                value="{{ $pendaftaran->jumlah_sks }}">
+            <input type="text" class="form-control {{($pendaftaran->jumlah_sks < 130 ) ? 'is-invalid' : ''; }}"
+                name="jumlah_sks" id="jumlah_sks" readonly value="{{ $pendaftaran->jumlah_sks }}">
         </div>
         <div class="col-md-3">
             <label for="ipk" class="form-label">IPK</label>
-            <input type="text" class="form-control" name="ipk" id="ipk" readonly value="{{ $pendaftaran->ipk }}">
+            <input type="text" class="form-control {{($pendaftaran->ipk < 2.8 ) ? 'is-invalid' : ''; }}" name="ipk"
+                id="ipk" readonly value="{{ $pendaftaran->ipk }}">
         </div>
         <div class="my-4">
         </div>
@@ -198,28 +228,40 @@
         </div>
 
         <h5 style="text-align:center;">Siswa di atas dinyatakan:</h5>
-        <div class="d-flex justify-content-center mt-3">
-            <div class="col-3 ">
-                <button class=" btn btn-success" type="submit" style="width: 10rem; height: 3rem;">Lolos</button>
+        <div class="d-flex justify-content-center mt-3 ">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
+                        <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Lolos">
+                        <button type="submit" class="btn btn-success mx-2"
+                            style="width: 10rem; height: 3rem;">Lolos</button>
+                    </form>
+                </div>
+                <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
+                    <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Lolos Bersyarat">
+                    <button type="submit" class="btn btn-warning mx-2" style="width: 10rem; height: 3rem;">Lolos
+                        Bersyarat</button>
+                </form>
+                <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
+                    <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Pending">
+                    <button type="submit" class="btn btn-danger mx-2"
+                        style="width: 10rem; height: 3rem;">Pending</button>
+                </form>
+                <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
+                    <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Tidak Lolos">
+                    <button type="submit" class="btn btn-secondary mx-2" style="width: 10rem; height: 3rem;">Tidak
+                        Lolos</button>
+                </form>
             </div>
-            <div class="col-3">
-                <button class="btn btn-warning" type="submit" style="width: 10rem; height: 3rem;">Lolos
-                    Bersyarat</button>
-            </div>
-            <div class="col-3">
-                <button class="btn btn-danger" type="submit" style="width: 10rem; height: 3rem;">Pending</button>
-            </div>
-            <div class="col-3">
-                <button class="btn btn-dark" type="submit" style="width: 10rem; height: 3rem;">Tidak Lolos</button>
-            </div>
-        </div>
-        <div class="col-12 m-2">
-            <a class="btn " href="/koordinator/list-pendaftaran-ta-1" role="button"
-                style="width: 5rem;background-color:#ff8c1a;">Back</a>
-        </div>
-        <div style=" height: 100px;">
         </div>
     </div>
+    <div class="col-12 mt-5">
+        <a class="btn " href="/koordinator/list-pendaftaran-ta-1" role="button"
+            style="width: 5rem;background-color:#ff8c1a;">Back</a>
+    </div>
+    <div style=" height: 100px;">
+    </div>
+</div>
 
 </div>
 
