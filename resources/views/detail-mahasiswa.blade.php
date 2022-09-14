@@ -107,26 +107,30 @@
         </div>
         <div class="col-md-3">
             <label for="pemweb" class="form-label">Pemrograman Web</label>
-            <input type="text" class="form-control" name="pemweb" id="pemweb" readonly
-                value="{{ $pendaftaran->pemweb }}">
+            <input type="text" class="form-control {{($pendaftaran->pemweb == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+                name="pemweb" id="pemweb" readonly value="{{ $pendaftaran->pemweb }}">
         </div>
         <div class="col-md-3">
             <label for="prak_pemweb" class="form-label">Prak. Pemrograman Web</label>
-            <input type="text" class="form-control" name="prak_pemweb" id="prak_pemweb" readonly
-                value="{{ $pendaftaran->prak_pemweb }}">
+            <input type="text"
+                class="form-control {{($pendaftaran->prak_pemweb == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+                name="prak_pemweb" id="prak_pemweb" readonly value="{{ $pendaftaran->prak_pemweb }}">
         </div>
         <div class="col-md-3">
             <label for="po1" class="form-label">Pemrograman Objek 1</label>
-            <input type="text" class="form-control" name="po1" id="po1" readonly value="{{ $pendaftaran->po1 }}">
+            <input type="text" class="form-control {{($pendaftaran->po1 == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+                name="po1" id="po1" readonly value="{{ $pendaftaran->po1 }}">
         </div>
         <div class="col-md-3">
             <label for="prak_po1" class="form-label">Prak. Pemrograman Objek 1</label>
-            <input type="text" class="form-control" name="prak_po1" id="prak_po1" readonly
-                value="{{ $pendaftaran->prak_po1 }}">
+            <input type="text"
+                class="form-control {{($pendaftaran->prak_po1 == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+                name="prak_po1" id="prak_po1" readonly value="{{ $pendaftaran->prak_po1 }}">
         </div>
         <div class="col-md-3">
             <label for="appl" class="form-label">Analisis & Perancangan PL</label>
-            <input type="text" class="form-control" name="appl" id="appl" readonly value="{{ $pendaftaran->appl }}">
+            <input type="text" class="form-control {{($pendaftaran->appl == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+                name="appl" id="appl" readonly value="{{ $pendaftaran->appl }}">
         </div>
         <div class="my-4">
         </div>
