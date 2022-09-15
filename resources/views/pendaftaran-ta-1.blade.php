@@ -4,7 +4,8 @@
 <h2 style="text-align:center;">Pendaftaran Tugas Akhir 1</h2>
 
 <div class="row align-items-start mt-3">
-    <form class="row g-3" action="/mahasiswa/pendaftaran-ta-1/status" method="GET">
+    <form class="row g-3" action="/mahasiswa/pendaftaran-ta-1" method="POST">
+        @csrf
         <div class="col-md-6">
             <label for="nim" class="form-label">NIM</label>
             <input type="number" class="form-control" name="nim" id="nim">

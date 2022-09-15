@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Detail_MahasiswaController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\List_pendaftaran_ta_1Controller;
 use App\Models\Pendaftaran;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Detail_MahasiswaController;
+use App\Http\Controllers\List_pendaftaran_ta_1Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,21 +29,9 @@ Route::get('/mahasiswa', function () {
     ]);
 });
 
-Route::get('/mahasiswa/pendaftaran-ta-1', function () {
-    return view('pendaftaran-ta-1', [
-        'title' => 'Pendaftaran TA 1',
-        'name' => 'Fahmi Yusron Fiddin',
-        'role' => 'Mahasiswa'
-    ]);
-});
 
-Route::get('/mahasiswa/pendaftaran-ta-1/status', function () {
-    return view('status-pendaftaran-ta-1', [
-        'title' => 'Status Pendaftaran',
-        'name' => 'Fahmi Yusron Fiddin',
-        'role' => 'Mahasiswa'
-    ]);
-});
+Route::get('/mahasiswa/pendaftaran-ta-1', [RegisterController::class, 'index']);
+Route::post('/mahasiswa/pendaftaran-ta-1', [RegisterController::class, 'store']);
 
 Route::get('/koordinator', function () {
     return view('koordinator', [
