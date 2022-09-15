@@ -34,47 +34,52 @@
                         </svg>
                     </a>
                 </div>
-
             </div>
 
-            <table class="table table-hover mt-3">
+            <table class="table table-hover table-sm mt-3">
                 <thead>
                     <tr>
                         <th scope="col">NO</th>
                         <th scope="col">NIM</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Peminatan</th>
-                        <th scope="col">Judul</th>
                         <th scope="col">Status</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
-                @foreach ($pendaftarans as $pendaftaran)
+                @foreach ($list_mahasiswa as $mahasiswa)
                 <tbody>
                     <tr>
-                        <th scope="row">{{ $pendaftaran->id }}</th>
-                        <td>{{ $pendaftaran->nim }}</td>
-                        <td>{{ $pendaftaran->mahasiswa->name }}</td>
-                        <td>{{ $pendaftaran->peminatan }}</td>
-                        <td>{{ $pendaftaran->judul_ta1 }}</td>
+                        <th scope="row">{{$mahasiswa->id }}</th>
+                        <td>{{ $mahasiswa->nim }}</td>
+                        <td>{{ $mahasiswa->mahasiswa->name }}</td>
+                        <td>{{ $mahasiswa->peminatan }}</td>
                         <td><button type="submit" class="btn
               
-                {{($pendaftaran->status == 'Lolos' ) ? 'btn-success' : '';}}
-                {{($pendaftaran->status == 'Lolos Bersyarat' ) ? 'btn-warning' : '';}}
-                {{($pendaftaran->status == 'Pending' ) ? 'btn-danger' : '';}}
-                {{($pendaftaran->status == 'Tidak Lolos' ) ? 'btn-secondary' : '';}}
-            " style="width: 9rem; ">{{ $pendaftaran->status }}</button>
+                {{($mahasiswa->status == 'Lolos' ) ? 'btn-success' : '';}}
+                {{($mahasiswa->status == 'Lolos Bersyarat' ) ? 'btn-warning' : '';}}
+                {{($mahasiswa->status == 'Pending' ) ? 'btn-danger' : '';}}
+                {{($mahasiswa->status == 'Tidak Lolos' ) ? 'btn-secondary' : '';}}
+            " style="width: 9rem; ">{{ $mahasiswa->status }}</button>
                         </td>
                         <td>
                             <a class="btn"
-                                href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $pendaftaran->id }}"
+                                href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $mahasiswa->id }}"
                                 role="button" style="background-color:#ff8c1a;">Detail</a>
                         </td>
                     </tr>
                 </tbody>
                 @endforeach
             </table>
-            <div class="col-12 my-5">
-                <a class="btn " href="/koordinator" role="button" style="width: 5rem;background-color:#ff8c1a;">Back</a>
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center" style="position:absolute; bottom: 3rem;">
+                    <a class="btn" href="/koordinator" role="button"
+                        style="background-color:#ff8c1a; width:6rem;">Back</a>
+                </div>
+                <div class="d-flex align-items-center"
+                    style="position:absolute; bottom: 2rem; left: 50%; transform: translate(-50%, -10%);">
+                    {{ $list_mahasiswa->links() }}
+                </div>
+
             </div>
             @endsection

@@ -13,7 +13,7 @@ class Mahasiswa extends Model
 
     public function pendaftaran()
     {
-        return $this->hasOne(Pendaftaran::class);
+        return $this->hasOne(Pendaftaran::class, 'mahasiswa_id', 'id');
     }
 
     // public function user()
