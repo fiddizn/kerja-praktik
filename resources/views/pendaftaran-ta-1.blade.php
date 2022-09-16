@@ -206,7 +206,7 @@
         </div>
         <div class="col-md-3">
             <label for="ipk" class="form-label">IPK</label>
-            <input type="number" class="form-control" name="ipk" id="ipk">
+            <input type="number" step="0.01" class="form-control" name="ipk" id="ipk">
         </div>
 
         <div class="my-4">

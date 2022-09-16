@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Mahasiswa::factory(10)->create();
+        Mahasiswa::factory(50)->create();
         Koordinator::factory(1)->create();
-        Pendaftaran::factory(10)->create();
+        Pendaftaran::factory(50)->create();
     }
 }

@@ -6,7 +6,7 @@
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
         <form action="/koordinator/list-pendaftaran-ta-1">
-            <div class="input-group " style=" width: 500px;">
+            <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
                     value="{{ request('search') }}">
                 <div class=" input-group-append">
@@ -47,10 +47,10 @@
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
-                @foreach ($list_mahasiswa as $mahasiswa)
+                @foreach ($list_mahasiswa as $key=> $mahasiswa)
                 <tbody>
                     <tr>
-                        <th scope="row">{{$mahasiswa->id }}</th>
+                        <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
                         <td>{{ $mahasiswa->nim }}</td>
                         <td>{{ $mahasiswa->mahasiswa->name }}</td>
                         <td>{{ $mahasiswa->peminatan }}</td>
@@ -71,15 +71,29 @@
                 </tbody>
                 @endforeach
             </table>
+
             <div class="d-flex justify-content-between">
-                <div class="d-flex align-items-center" style="position:absolute; bottom: 3rem;">
+                <div>
                     <a class="btn" href="/koordinator" role="button"
-                        style="background-color:#ff8c1a; width:6rem;">Back</a>
+                        style="background-color:#ff8c1a; width: 6rem;">Back</a>
                 </div>
-                <div class="d-flex align-items-center"
-                    style="position:absolute; bottom: 2rem; left: 50%; transform: translate(-50%, -10%);">
+                <div>
+                    Showing
+                    {{ $list_mahasiswa->firstItem() }}
+                    to
+                    {{ $list_mahasiswa->lastItem() }}
+                    of
+                    {{ $list_mahasiswa->total() }}
+                    enteries
+                </div>
+                <div>
                     {{ $list_mahasiswa->links() }}
                 </div>
+                <!-- <div class="position-fixed"
+                    style="position:absolute; bottom: 2rem; left: 50%; transform: translate(-50%, -10%);">
 
+                </div> -->
             </div>
+
+
             @endsection
