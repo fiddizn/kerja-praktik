@@ -12,7 +12,8 @@ class RegisterController extends Controller
         return view('pendaftaran-ta-1', [
             'title' => 'Pendaftaran TA 1',
             'name' => 'Fahmi Yusron Fiddin',
-            'role' => 'Mahasiswa'
+            'role' => 'Mahasiswa',
+            'seminar' => ''
         ]);
     }
     public function store()
