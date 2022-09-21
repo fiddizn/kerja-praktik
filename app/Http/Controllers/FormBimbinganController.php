@@ -41,7 +41,7 @@ class FormBimbinganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return request()->all();
     }
 
     /**
@@ -50,9 +50,18 @@ class FormBimbinganController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($x)
     {
-        //
+        return
+            view(
+                'isian-form-bimbingan',
+                [
+                    'title' => 'Form Bimbingan',
+                    'name' => 'Fahmi Yusron Fiddin',
+                    'role' => 'Mahasiswa',
+                    'bimbingan_ke' => $x
+                ]
+            );
     }
 
     /**

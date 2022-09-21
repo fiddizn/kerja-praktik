@@ -40,6 +40,10 @@ Route::get('/mahasiswa/hasil-review', [HasilReviewController::class, 'index']);
 
 Route::get('/mahasiswa/form-bimbingan', [FormBimbinganController::class, 'index']);
 
+Route::get('/mahasiswa/form-bimbingan/bimbingan-{x}', [FormBimbinganController::class, 'show']);
+
+Route::post('/mahasiswa/form-bimbingan/bimbingan-{x}', [FormBimbinganController::class, 'store']);
+
 Route::get('/mahasiswa/pendaftaran-seminar-ta-1', [RegisterSeminarController::class, 'index']);
 
 Route::post('/mahasiswa/pendaftaran-seminar-ta-1', [RegisterSeminarController::class, 'store']);
