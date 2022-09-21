@@ -1,6 +1,6 @@
 @extends('layouts/main')
 @section('container')
-<h2 style="text-align:center;">Pendaftaran Tugas Akhir 1</h2>
+<h2 style="text-align:center;">Seleksi Adiministrasi</h2>
 
 <div class="row align-items-start mt-3">
     <div class="row g-3">
@@ -241,26 +241,22 @@
                             style="width: 10rem; height: 3rem;">Lolos</button>
                     </form>
                 </div>
-                <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
-                    <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Lolos Bersyarat">
-                    <button type="submit" class="btn btn-warning mx-2" style="width: 10rem; height: 3rem;">Lolos
-                        Bersyarat</button>
-                </form>
+                <a class="btn btn-warning"
+                    href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $pendaftaran->id }}/lolos-bersyarat"
+                    role="button" style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
                 <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
                     <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Pending">
                     <button type="submit" class="btn btn-danger mx-2"
                         style="width: 10rem; height: 3rem;">Pending</button>
                 </form>
-                <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
-                    <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Tidak Lolos">
-                    <button type="submit" class="btn btn-secondary mx-2" style="width: 10rem; height: 3rem;">Tidak
-                        Lolos</button>
-                </form>
+                <a class="btn btn-dark"
+                    href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $pendaftaran->id }}/tidak-lolos"
+                    role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
         </div>
     </div>
     <div class="col-12 mt-5">
-        <a class="btn " href="/koordinator/list-pendaftaran-ta-1" role="button"
+        <a class="btn" href="/koordinator/list-pendaftaran-ta-1" role="button"
             style="width: 5rem;background-color:#ff8c1a;">Back</a>
     </div>
     <div style=" height: 100px;">

@@ -56,4 +56,6 @@ Route::get('/koordinator/list-pendaftaran-ta-1', [List_pendaftaran_ta_1Controlle
 
 Route::get('/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{pendaftaran_id}', [Detail_MahasiswaController::class, 'index']);
 
+Route::get('/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{pendaftaran_id}/{status}', [Detail_MahasiswaController::class, 'show']);
+
 Route::get('/koordinator/list-pendaftaran-seminar-ta-1', [List_pendaftaran_seminar_ta_1Controller::class, 'index']);
