@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 
-<h2 class="text-center mb-5">Bimbingan {{$bimbingan_ke}}</h2>
+<h2 class="text-center mb-5">Plotting Dosen Pembimbing</h2>
 <form class="row my-2" action="/mahasiswa/form-bimbingan/bimbingan-{{$bimbingan_ke}}" method="POST">
     @csrf
     <div class="row">

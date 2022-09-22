@@ -8,6 +8,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\HasilReviewController;
 use App\Http\Controllers\KoordinatorController;
 use App\Http\Controllers\FormBimbinganController;
+use App\Http\Controllers\Plotting_dosen_pembimbing;
 use App\Http\Controllers\RegisterSeminarController;
 use App\Http\Controllers\Detail_MahasiswaController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
@@ -59,3 +60,7 @@ Route::get('/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{pendaftaran_id}
 Route::get('/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{pendaftaran_id}/{status}', [Detail_MahasiswaController::class, 'show']);
 
 Route::get('/koordinator/list-pendaftaran-seminar-ta-1', [List_pendaftaran_seminar_ta_1Controller::class, 'index']);
+
+Route::get('/koordinator/plotting-dosen-pembimbing', [Plotting_dosen_pembimbing::class, 'index']);
+
+Route::get('/koordinator/plotting-dosen-pembimbing/{id}', [Plotting_dosen_pembimbing::class, 'show']);
