@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RegisterSeminarController extends Controller
+class Plotting_dosen_reviewerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,12 @@ class RegisterSeminarController extends Controller
     public function index()
     {
         return view(
-            'pendaftaran-ta-1',
+            'plotting-dosen-reviewer',
             [
-                'title' => 'Pendaftaran Seminar TA 1',
-                'name' => 'Fahmi Yusron Fiddin',
-                'role' => 'Mahasiswa',
-                'seminar' => ' Seminar '
+                'title' => 'Plotting Dosen reviewer',
+                'name' => 'Galang Setia Nugroho',
+                'role' => 'Koordinator',
+                'list_mahasiswa' => \App\Models\Pendaftaran::latest()->filter(request('search'))->paginate(7)->withQueryString()
             ]
         );
     }
@@ -42,6 +42,7 @@ class RegisterSeminarController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -50,9 +51,18 @@ class RegisterSeminarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\App\Models\Pendaftaran $id)
     {
-        //
+        return view(
+            'isian-plotting-dosen-pembimbing',
+            [
+                'title' => 'Pendaftaran TA 1',
+                'name' => 'Galang Setia Nugroho',
+                'role' => 'Koordinator',
+                'plotting_dosen' => 'Reviewer',
+                'mahasiswa' => $id
+            ]
+        );
     }
 
     /**

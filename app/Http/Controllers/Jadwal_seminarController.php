@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RegisterSeminarController extends Controller
+class Jadwal_seminarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,11 @@ class RegisterSeminarController extends Controller
     public function index()
     {
         return view(
-            'pendaftaran-ta-1',
+            'jadwal-seminar',
             [
-                'title' => 'Pendaftaran Seminar TA 1',
-                'name' => 'Fahmi Yusron Fiddin',
-                'role' => 'Mahasiswa',
-                'seminar' => ' Seminar '
+                'title' => 'Jadwal Seminar',
+                'name' => 'Galang Setia Nugroho',
+                'role' => 'Koordinator'
             ]
         );
     }
@@ -42,6 +41,7 @@ class RegisterSeminarController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 
-<h2 class="text-center">Plotting Dosen Pembimbing</h2>
+<h2 class="text-center">Plotting Dosen {{ $plotting_dosen }}</h2>
 
 <div class="row align-items-start">
     <div class="row g-3">
@@ -133,8 +133,16 @@
     </div>
 </div>
 <div class="row mt-2">
+    @if ($plotting_dosen == 'Pembimbing')
     <a class="btn" href="/koordinator/plotting-dosen-pembimbing" role="button"
         style="width: 5rem;background-color:#ff8c1a;">Back</a>
+    @elseif ($plotting_dosen == 'Reviewer')
+    <a class="btn" href="/koordinator/plotting-dosen-reviewer" role="button"
+        style="width: 5rem;background-color:#ff8c1a;">Back</a>
+    @else
+    <a class="btn" href="/koordinator/plotting-dosen-penguji" role="button"
+        style="width: 5rem;background-color:#ff8c1a;">Back</a>
+    @endif
     <button type="submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">Submit</button>
 </div>
 

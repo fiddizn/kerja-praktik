@@ -2,7 +2,6 @@
 @section('container')
 
 <h2 class="text-center">{{ $title }}</h2>
-
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
         <form action="/koordinator/list-pendaftaran-ta-1">

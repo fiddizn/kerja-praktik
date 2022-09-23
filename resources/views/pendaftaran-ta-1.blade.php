@@ -18,8 +18,8 @@
         <input type="number" class="form-control" name="nim" id="nim">
     </div>
     <div class="col-md-6">
-        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-        <select type="text" class="form-select" name="jenis_kelamin" id="jenis_kelamin">
+        <label for="gender" class="form-label">Jenis Kelamin</label>
+        <select type="text" class="form-select" name="gender" id="gender">
             <option selected>Pilih...</option>
             <option>Laki-laki</option>
             <option>Perempuan</option>
@@ -84,8 +84,8 @@
         </select>
     </div>
     <div class="col-md-3">
-        <label for="stukdat" class="form-label">Struktur Data</label>
-        <select type="text" class="form-select" name="stukdat" id="stukdat">
+        <label for="strukdat" class="form-label">Struktur Data</label>
+        <select type="text" class="form-select" name="strukdat" id="strukdat">
             <option selected> </option>
             <option>A</option>
             <option>AB</option>
@@ -126,8 +126,8 @@
         </select>
     </div>
     <div class="col-md-3">
-        <label for="metnum" class="form-label">Metode Penelitian</label>
-        <select type="text" class="form-select" name="metnum" id="metnum">
+        <label for="metpen" class="form-label">Metode Penelitian</label>
+        <select type="text" class="form-select" name="metpen" id="metpen">
             <option selected> </option>
             <option>A</option>
             <option>AB</option>

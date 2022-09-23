@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 
-<h2 class="text-center">{{ $title }}</h2>
+<h2 class="text-center">Plotting Dosen Penguji</h2>
 
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
@@ -43,7 +43,8 @@
                         <th scope="col">NIM</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Peminatan</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">R1</th>
+                        <th scope="col">R2</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -54,18 +55,15 @@
                         <td>{{ $mahasiswa->nim }}</td>
                         <td>{{ $mahasiswa->mahasiswa->name }}</td>
                         <td>{{ $mahasiswa->peminatan }}</td>
-                        <td><button type="submit" class="btn
-              
-                {{($mahasiswa->status == 'Lolos' ) ? 'btn-success' : '';}}
-                {{($mahasiswa->status == 'Lolos Bersyarat' ) ? 'btn-warning' : '';}}
-                {{($mahasiswa->status == 'Pending' ) ? 'btn-danger' : '';}}
-                {{($mahasiswa->status == 'Tidak Lolos' ) ? 'btn-secondary' : '';}}
-            " style="width: 9rem; ">{{ $mahasiswa->status }}</button>
+                        <td>
+
                         </td>
                         <td>
-                            <a class="btn"
-                                href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $mahasiswa->id }}"
-                                role="button" style="background-color:#ff8c1a;">Detail</a>
+
+                        </td>
+                        <td>
+                            <a class="btn" href="/koordinator/plotting-dosen-penguji/{{ $mahasiswa->id }}" role="button"
+                                style="background-color:#ff8c1a;">Detail</a>
                         </td>
                     </tr>
                 </tbody>
@@ -89,11 +87,5 @@
                 <div>
                     {{ $list_mahasiswa->links() }}
                 </div>
-                <!-- <div class="position-fixed"
-                    style="position:absolute; bottom: 2rem; left: 50%; transform: translate(-50%, -10%);">
-
-                </div> -->
             </div>
-    </div>
-</div>
-@endsection
+            @endsection

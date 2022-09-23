@@ -1,17 +1,20 @@
 <?php
 
-use App\Models\Koordinator;
-use App\Models\Pendaftaran;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\HasilReviewController;
 use App\Http\Controllers\KoordinatorController;
 use App\Http\Controllers\FormBimbinganController;
+use App\Http\Controllers\Jadwal_seminarController;
 use App\Http\Controllers\Plotting_dosen_pembimbing;
 use App\Http\Controllers\RegisterSeminarController;
 use App\Http\Controllers\Detail_MahasiswaController;
+use App\Http\Controllers\Penilaian_seminarController;
+use App\Http\Controllers\Hasil_review_proposalController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
+use App\Http\Controllers\Plotting_dosen_pengujiController;
+use App\Http\Controllers\Plotting_dosen_reviewerController;
 use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
 
 /*
@@ -64,3 +67,23 @@ Route::get('/koordinator/list-pendaftaran-seminar-ta-1', [List_pendaftaran_semin
 Route::get('/koordinator/plotting-dosen-pembimbing', [Plotting_dosen_pembimbing::class, 'index']);
 
 Route::get('/koordinator/plotting-dosen-pembimbing/{id}', [Plotting_dosen_pembimbing::class, 'show']);
+
+Route::get('/koordinator/plotting-dosen-reviewer', [Plotting_dosen_reviewerController::class, 'index']);
+
+Route::get('/koordinator/plotting-dosen-reviewer/{id}', [Plotting_dosen_reviewerController::class, 'show']);
+
+Route::get('/koordinator/plotting-dosen-penguji', [Plotting_dosen_pengujiController::class, 'index']);
+
+Route::get('/koordinator/plotting-dosen-penguji/{id}', [Plotting_dosen_pengujiController::class, 'show']);
+
+Route::get('/koordinator/jadwal-seminar', [Jadwal_seminarController::class, 'index']);
+
+Route::post('/koordinator/jadwal-seminar', [Jadwal_seminarController::class, 'store']);
+//
+Route::get('/koordinator/hasil-review-proposal', [Hasil_review_proposalController::class, 'index']);
+
+Route::get('/koordinator/hasil-review-proposal/{id}', [Hasil_review_proposalController::class, 'show']);
+
+Route::get('/koordinator/penilaian-seminar', [Penilaian_seminarController::class, 'index']);
+
+Route::get('/koordinator/penilaian-seminar/{id}', [Penilaian_seminarController::class, 'show']);

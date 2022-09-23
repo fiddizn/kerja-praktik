@@ -16,7 +16,7 @@ class Plotting_dosen_pembimbing extends Controller
         return view(
             'plotting-dosen-pembimbing',
             [
-                'title' => 'Pendaftaran TA 1',
+                'title' => 'Plotting Dosen Pembimbing',
                 'name' => 'Galang Setia Nugroho',
                 'role' => 'Koordinator',
                 'list_mahasiswa' => \App\Models\Pendaftaran::latest()->filter(request('search'))->paginate(7)->withQueryString()
@@ -58,6 +58,7 @@ class Plotting_dosen_pembimbing extends Controller
                 'title' => 'Pendaftaran TA 1',
                 'name' => 'Galang Setia Nugroho',
                 'role' => 'Koordinator',
+                'plotting_dosen' => 'Pembimbing',
                 'mahasiswa' => $id
             ]
         );
