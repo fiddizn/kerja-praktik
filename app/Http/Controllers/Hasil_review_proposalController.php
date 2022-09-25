@@ -51,9 +51,14 @@ class Hasil_review_proposalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\App\Models\Pendaftaran $id)
     {
-        //
+        return view('detail-hasil-review', [
+            'title' => 'Hasil Review Proposal',
+            'name' => 'Galang Setia Nugroho',
+            'role' => 'Koordinator',
+            'mahasiswa' => $id
+        ]);
     }
 
     /**

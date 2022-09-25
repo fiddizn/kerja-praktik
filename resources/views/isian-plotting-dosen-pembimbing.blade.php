@@ -18,6 +18,7 @@
 </div>
 <div class="row">
     <div class="col-md-6">
+        @if ($plotting_dosen == 'Pembimbing')
         <div class="row my-4">
             <div class="col-md-6">
                 <h5>Alternatif 1</h5>
@@ -66,6 +67,33 @@
                 </div>
             </div>
         </div>
+        @elseif ($plotting_dosen == 'Reviewer')
+        <form action="/koordinator/plotting-dosen-reviewer" method="GET" id="plotting">
+            <div class="row mt-5">
+                <label for=" r1" class="col-sm-3 col-form-label">Reviewer 1</label>
+                <div class="col">
+                    <select type="text" class="form-select" name="r1" id="r1">
+                        <option selected>Pilih...</option>
+                        <option>Genta Febi</option>
+                        <option>Nurul Widiastuti</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        @else
+        <form action="/koordinator/plotting-dosen-penguji" method="GET" id="plotting">
+            <div class="row mt-3 pe-3 ps-2">
+                <label for="r1" class="col col-form-label">Penguji 1</label>
+                <input type="text" class="form-control" name="r1" id="r1" readonly value="{{ $mahasiswa->r1 }}">
+                <label for="r2" class="form-label mt-4">Penguji 2</label>
+                <select type="text" class="form-select" name="r2" id="r2">
+                    <option selected>Pilih...</option>
+                    <option>Genta Febi</option>
+                    <option>Nurul Widiastuti</option>
+                </select>
+            </div>
+        </form>
+        @endif
     </div>
     <div class="col-md-6">
         <table class="table table-hover mt-3">
@@ -110,7 +138,8 @@
                 </tr>
             </tbody>
         </table>
-        <form action="/koordinator/plotting-dosen-pembimbing" method="GET">
+        @if ($plotting_dosen == 'Pembimbing')
+        <form id="plotting" action="/koordinator/plotting-dosen-pembimbing" method="GET">
             <div class="row>
                 <label for=" p1_alt4" class="col-sm-6 col-form-label">Pembimbing 1</label>
                 <div class="col">
@@ -130,6 +159,7 @@
                 </div>
             </div>
         </form>
+        @endif
     </div>
 </div>
 <div class="row mt-2">
@@ -143,10 +173,9 @@
     <a class="btn" href="/koordinator/plotting-dosen-penguji" role="button"
         style="width: 5rem;background-color:#ff8c1a;">Back</a>
     @endif
-    <button type="submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">Submit</button>
+    <input form="plotting" type="submit" value="Submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">
+
 </div>
-
-
 <div style=" height: 100px;">
 </div>
 @endsection

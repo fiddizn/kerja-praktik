@@ -14,7 +14,7 @@ class HasilReviewController extends Controller
     public function index()
     {
         return view(
-            'hasil-review',
+            'm-hasil-review',
             [
                 'title' => 'Hasil Review',
                 'name' => 'Fahmi Yusron Fiddin',

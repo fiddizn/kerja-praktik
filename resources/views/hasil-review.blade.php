@@ -63,9 +63,8 @@
             " style="width: 9rem; ">{{ $mahasiswa->status }}</button>
                         </td>
                         <td>
-                            <a class="btn"
-                                href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $mahasiswa->id }}"
-                                role="button" style="background-color:#ff8c1a;">Detail</a>
+                            <a class="btn" href="/koordinator/hasil-review-proposal/{{$mahasiswa->id}}" role="button"
+                                style="background-color:#ff8c1a;">Detail</a>
                         </td>
                     </tr>
                 </tbody>
