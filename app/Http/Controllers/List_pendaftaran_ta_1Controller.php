@@ -10,7 +10,7 @@ class List_pendaftaran_ta_1Controller extends Controller
     public function index()
     {
         return view(
-            'list-pendaftaran-ta-1',
+            'k-list-pendaftaran-ta-1',
             [
                 'title' => 'Pendaftaran TA 1',
                 'name' => 'Galang Setia Nugroho',

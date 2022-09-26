@@ -14,7 +14,7 @@ class FormBimbinganController extends Controller
     public function index()
     {
         return view(
-            'form-bimbingan',
+            'm-form-bimbingan',
             [
                 'title' => 'Form Bimbingan',
                 'name' => 'Fahmi Yusron Fiddin',
@@ -54,7 +54,7 @@ class FormBimbinganController extends Controller
     {
         return
             view(
-                'isian-form-bimbingan',
+                'm-isian-form-bimbingan',
                 [
                     'title' => 'Form Bimbingan',
                     'name' => 'Fahmi Yusron Fiddin',

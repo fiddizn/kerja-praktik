@@ -15,7 +15,7 @@ class List_pendaftaran_seminar_ta_1Controller extends Controller
     public function index()
     {
         return view(
-            'list-pendaftaran-ta-1',
+            'k-list-pendaftaran-ta-1',
             [
                 'title' => 'Pendaftaran Seminar TA 1',
                 'name' => 'Galang Setia Nugroho',

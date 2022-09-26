@@ -14,7 +14,7 @@ class Plotting_dosen_pembimbing extends Controller
     public function index()
     {
         return view(
-            'plotting-dosen-pembimbing',
+            'k-plotting-dosen-pembimbing',
             [
                 'title' => 'Plotting Dosen Pembimbing',
                 'name' => 'Galang Setia Nugroho',
@@ -53,7 +53,7 @@ class Plotting_dosen_pembimbing extends Controller
     public function show(\App\Models\Pendaftaran $id)
     {
         return view(
-            'isian-plotting-dosen-pembimbing',
+            'k-isian-plotting-dosen-pembimbing',
             [
                 'title' => 'Pendaftaran TA 1',
                 'name' => 'Galang Setia Nugroho',

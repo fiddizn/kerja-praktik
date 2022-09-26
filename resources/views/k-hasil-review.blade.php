@@ -88,10 +88,6 @@
                 <div>
                     {{ $list_mahasiswa->links() }}
                 </div>
-                <!-- <div class="position-fixed"
-                    style="position:absolute; bottom: 2rem; left: 50%; transform: translate(-50%, -10%);">
-
-                </div> -->
             </div>
     </div>
 </div>

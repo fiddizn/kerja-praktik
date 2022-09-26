@@ -20,7 +20,7 @@
     <div class="col-md-6">
         <label for="gender" class="form-label">Jenis Kelamin</label>
         <select type="text" class="form-select" name="gender" id="gender">
-            <option selected>Pilih...</option>
+            <option disabled selected>Pilih...</option>
             <option>Laki-laki</option>
             <option>Perempuan</option>
         </select>
@@ -32,7 +32,7 @@
     <div class="col-md-6">
         <label for="peminatan" class="form-label">Peminatan</label>
         <select type="text" class="form-select" name="peminatan" id="peminatan">
-            <option selected>Pilih...</option>
+            <option disabled selected>Pilih...</option>
             <option>AIG</option>
             <option>DSE</option>
         </select>
@@ -72,7 +72,7 @@
     <div class="col-md-3">
         <label for="algo" class="form-label">Algoritma</label>
         <select type="text" class="form-select" name="algo" id="algo">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>A</option>
             <option>AB</option>
             <option>B</option>
@@ -86,7 +86,7 @@
     <div class="col-md-3">
         <label for="strukdat" class="form-label">Struktur Data</label>
         <select type="text" class="form-select" name="strukdat" id="strukdat">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>A</option>
             <option>AB</option>
             <option>B</option>
@@ -100,7 +100,7 @@
     <div class="col-md-3">
         <label for="basdat" class="form-label">Basis Data</label>
         <select type="text" class="form-select" name="basdat" id="basdat">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>A</option>
             <option>AB</option>
             <option>B</option>
@@ -114,7 +114,7 @@
     <div class="col-md-3">
         <label for="rpl" class="form-label">Rekayasa Perangkat Lunak</label>
         <select type="text" class="form-select" name="rpl" id="rpl">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>A</option>
             <option>AB</option>
             <option>B</option>
@@ -128,7 +128,7 @@
     <div class="col-md-3">
         <label for="metpen" class="form-label">Metode Penelitian</label>
         <select type="text" class="form-select" name="metpen" id="metpen">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>A</option>
             <option>AB</option>
             <option>B</option>
@@ -145,7 +145,7 @@
     <div class="col-md-3">
         <label for="pemweb" class="form-label">Pemrograman Web</label>
         <select type="text" class="form-select" name="pemweb" id="pemweb">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>Sudah Selesai</option>
             <option>Sedang Diambil</option>
             <option>Belum Diambil</option>
@@ -154,7 +154,7 @@
     <div class="col-md-3">
         <label for="prak_pemweb" class="form-label">Prak. Pemrograman Web</label>
         <select type="text" class="form-select" name="prak_pemweb" id="prak_pemweb">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>Sudah Selesai</option>
             <option>Sedang Diambil</option>
             <option>Belum Diambil</option>
@@ -163,7 +163,7 @@
     <div class="col-md-3">
         <label for="po1" class="form-label">Pemrograman Objek 1</label>
         <select type="text" class="form-select" name="po1" id="po1">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>Sudah Selesai</option>
             <option>Sedang Diambil</option>
             <option>Belum Diambil</option>
@@ -172,7 +172,7 @@
     <div class="col-md-3">
         <label for="prak_po1" class="form-label">Prak. Pemrograman Objek 1</label>
         <select type="text" class="form-select" name="prak_po1" id="prak_po1">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>Sudah Selesai</option>
             <option>Sedang Diambil</option>
             <option>Belum Diambil</option>
@@ -181,7 +181,7 @@
     <div class="col-md-3">
         <label for="appl" class="form-label">Analisis & Perancangan PL</label>
         <select type="text" class="form-select" name="appl" id="appl">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>Sudah Selesai</option>
             <option>Sedang Diambil</option>
             <option>Belum Diambil</option>
@@ -246,21 +246,18 @@
     <div class="my-4">
 
     </div>
-    <?php
-    if ($seminar == '') {
-        echo
-        '
-        <div class="col-md-6 p-2">
+    @if ($seminar == '')
+    <div class="col-md-6 p-2">
         <h6 style="text-align:center;">Alternatif 1</h6>
         <label for="alt1_p1" class="form-label">Pembimbing 1</label>
         <select type="text" class="form-select" name="alt1_p1" id="alt1_p1">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>dosen1</option>
             <option>dosen2</option>
         </select>
         <label for="alt1_p2" class="form-label mt-2">Pembimbing 2</label>
         <select type="text" class="form-select" name="alt1_p2" id="alt1_p2">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>dosen1</option>
             <option>dosen2</option>
         </select>
@@ -269,13 +266,13 @@
         <h6 style="text-align:center;">Alternatif 2</h6>
         <label for="alt2_p1" class="form-label">Pembimbing 1</label>
         <select type="text" class="form-select" name="alt2_p1" id="alt2_p1">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>dosen1</option>
             <option>dosen2</option>
         </select>
         <label for="alt2_p2" class="form-label mt-2">Pembimbing 2</label>
         <select type="text" class="form-select" name="alt2_p2" id="alt2_p2">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>dosen1</option>
             <option>dosen2</option>
         </select>
@@ -284,13 +281,13 @@
         <h6 style="text-align:center;">Alternatif 3</h6>
         <label for="alt3_p1" class="form-label">Pembimbing 1</label>
         <select type="text" class="form-select" name="alt3_p1" id="alt3_p1">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>dosen1</option>
             <option>dosen2</option>
         </select>
         <label for="alt3_p2" class="form-label mt-2">Pembimbing 2</label>
         <select type="text" class="form-select" name="alt3_p2" id="alt3_p2">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>dosen1</option>
             <option>dosen2</option>
         </select>
@@ -299,20 +296,18 @@
         <h6 style="text-align:center;">Alternatif 4</h6>
         <label for="alt4_p1" class="form-label">Pembimbing 1</label>
         <select type="text" class="form-select" name="alt4_p1" id="alt4_p1">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>dosen1</option>
             <option>dosen2</option>
         </select>
         <label for="alt4_p2" class="form-label mt-2">Pembimbing 2</label>
         <select type="text" class="form-select" name="alt4_p2" id="alt4_p2">
-            <option selected> </option>
+            <option disabled selected> </option>
             <option>dosen1</option>
             <option>dosen2</option>
         </select>
     </div>
-        ';
-    }
-    ?>
+    @endif
     <div class="mt-4">
 
     </div>

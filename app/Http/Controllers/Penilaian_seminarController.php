@@ -14,7 +14,7 @@ class Penilaian_seminarController extends Controller
     public function index()
     {
         return view(
-            'penilaian-seminar',
+            'k-penilaian-seminar',
             [
                 'title' => 'Penilaian Seminar',
                 'name' => 'Galang Setia Nugroho',

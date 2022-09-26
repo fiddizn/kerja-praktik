@@ -73,7 +73,7 @@
                 <label for=" r1" class="col-sm-3 col-form-label">Reviewer 1</label>
                 <div class="col">
                     <select type="text" class="form-select" name="r1" id="r1">
-                        <option selected>Pilih...</option>
+                        <option selected disabled>Pilih...</option>
                         <option>Genta Febi</option>
                         <option>Nurul Widiastuti</option>
                     </select>
@@ -87,7 +87,7 @@
                 <input type="text" class="form-control" name="r1" id="r1" readonly value="{{ $mahasiswa->r1 }}">
                 <label for="r2" class="form-label mt-4">Penguji 2</label>
                 <select type="text" class="form-select" name="r2" id="r2">
-                    <option selected>Pilih...</option>
+                    <option selected disabled>Pilih...</option>
                     <option>Genta Febi</option>
                     <option>Nurul Widiastuti</option>
                 </select>
@@ -144,7 +144,7 @@
                 <label for=" p1_alt4" class="col-sm-6 col-form-label">Pembimbing 1</label>
                 <div class="col">
                     <select type="text" class="form-select" name="p1" id="p1">
-                        <option selected>Pilih...</option>
+                        <option selected disabled>Pilih...</option>
                         <option>Genta Febi</option>
                         <option>Nurul Widiastuti</option>
                     </select>
@@ -152,7 +152,7 @@
                 <label for="p2_alt4" class="col-sm-6 col-form-label">Pembimbing 2</label>
                 <div class="col">
                     <select type="text" class="form-select" name="p2" id="p2">
-                        <option selected>Pilih...</option>
+                        <option selected disabled>Pilih...</option>
                         <option>Wisnu Olga</option>
                         <option>Tania Farida</option>
                     </select>

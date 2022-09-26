@@ -14,7 +14,7 @@ class Jadwal_seminarController extends Controller
     public function index()
     {
         return view(
-            'jadwal-seminar',
+            'k-jadwal-seminar',
             [
                 'title' => 'Jadwal Seminar',
                 'name' => 'Galang Setia Nugroho',

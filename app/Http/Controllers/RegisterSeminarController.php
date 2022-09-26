@@ -14,7 +14,7 @@ class RegisterSeminarController extends Controller
     public function index()
     {
         return view(
-            'pendaftaran-ta-1',
+            'm-pendaftaran-ta-1',
             [
                 'title' => 'Pendaftaran Seminar TA 1',
                 'name' => 'Fahmi Yusron Fiddin',

@@ -9,7 +9,7 @@ class Detail_MahasiswaController extends Controller
 {
     public function index(Pendaftaran $pendaftaran_id)
     {
-        return view('detail-mahasiswa', [
+        return view('k-detail-mahasiswa', [
             'title' => 'Pendaftaran TA 1',
             'name' => 'Galang Setia Nugroho',
             'role' => 'Koordinator',
@@ -19,7 +19,7 @@ class Detail_MahasiswaController extends Controller
 
     public function show(Pendaftaran $pendaftaran_id, $status)
     {
-        return view('catatan', [
+        return view('k-catatan', [
             'title' => 'Pendaftaran TA 1',
             'name' => 'Galang Setia Nugroho',
             'role' => 'Koordinator',

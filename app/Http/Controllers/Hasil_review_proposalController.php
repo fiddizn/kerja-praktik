@@ -14,7 +14,7 @@ class Hasil_review_proposalController extends Controller
     public function index()
     {
         return view(
-            'hasil-review',
+            'k-hasil-review',
             [
                 'title' => 'Hasil Review Proposal',
                 'name' => 'Galang Setia Nugroho',
@@ -53,7 +53,7 @@ class Hasil_review_proposalController extends Controller
      */
     public function show(\App\Models\Pendaftaran $id)
     {
-        return view('detail-hasil-review', [
+        return view('k-detail-hasil-review', [
             'title' => 'Hasil Review Proposal',
             'name' => 'Galang Setia Nugroho',
             'role' => 'Koordinator',
