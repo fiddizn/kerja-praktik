@@ -33,7 +33,6 @@ body {
 
 .registration-form .item {
     border-radius: 20px;
-    margin-bottom: 25px;
     padding: 10px 20px;
 }
 
@@ -52,7 +51,7 @@ body {
     max-width: 600px;
     background-color: #fff;
     margin: auto;
-    padding: 35px 0;
+    padding: 35px;
     text-align: center;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;

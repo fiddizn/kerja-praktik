@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -32,7 +34,17 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'email' => 'email:dns|unique:users',
+            'password' => 'min:5|max:255',
+            'password2' => 'min:5|max:255'
+        ]);
+        if ($validatedData['password'] == $validatedData['password2']) {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+            User::create($validatedData);
+
+            return redirect('/')->with('success', 'Registrasi suskes! Silakan login.');
+        }
     }
 
     /**

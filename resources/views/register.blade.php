@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
         rel="stylesheet">
@@ -20,11 +22,11 @@
         <div class="row align-items-center">
             <div class="col-sm">
                 <div class="registration-form">
-                    <form>
+                    <form action="/register" method="post">@csrf
                         <div class="form-icon">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
-                                    class="bi bi-person-plus-fill" viewBox="0 -6 14 20">
+                                    class="bi bi-person-plus-fill" viewBox="0 0 14 20">
                                     <path
                                         d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                     <path fill-rule="evenodd"
@@ -33,17 +35,22 @@
                             </span>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control item" id="email" placeholder="Email">
+                            <input type="text" class="form-control item @error('email')is-invalid @enderror"
+                                name="email" id="email" placeholder="Email" required value="{{ old('email') }}">
+                            <div id="email" class="invalid-feedback">Mohon menggunakan email Unjani!</div>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control item" id="password" placeholder="Password">
+                            <input type="password" class="form-control item @error('password')is-invalid @enderror"
+                                name="password" id="password" placeholder="Password" required>
+                            <div id="email" class="invalid-feedback">Password harus lebih dari 4 karakter!</div>
+                        </div>
+                        <div class=" form-group">
+                            <input type="password" class="form-control item @error('password2')is-invalid @enderror"
+                                name="password2" id="password2" placeholder="Verify Password" required>
+                            <div id="email" class="invalid-feedback">Password harus lebih dari 4 karakter!</div>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control item" id="password2"
-                                placeholder="Verify Password">
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-block create-account">Register</button>
+                            <button type="submit" class="btn btn-block create-account">Register</button>
                             <div class="span">
                                 <span>Sudah punya akun? Login <a href="/">di sini</a></span>
                             </div>
@@ -64,6 +71,9 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

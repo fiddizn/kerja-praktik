@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Koordinator;
 use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,8 +19,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Mahasiswa::factory(50)->create();
+        Mahasiswa::factory(15)->create();
         Koordinator::factory(1)->create();
         Pendaftaran::factory(50)->create();
+        User::factory(2)->create();
     }
 }

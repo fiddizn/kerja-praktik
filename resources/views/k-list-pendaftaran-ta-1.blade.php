@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 
-<h2 class="text-center">List Pendaftaran TA 1</h2>
+<h2 class="text-center">{{ $title }}</h2>
 
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
