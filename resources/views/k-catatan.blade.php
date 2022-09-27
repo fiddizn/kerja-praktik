@@ -10,8 +10,7 @@
             </div>
             <div class="col-md-6">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" name="name" id="name" readonly
-                    value="{{ $pendaftaran->mahasiswa->name }}">
+                <input type="text" class="form-control" name="name" id="name" readonly value="{{ $pendaftaran->name }}">
             </div>
         </div>
     </div>

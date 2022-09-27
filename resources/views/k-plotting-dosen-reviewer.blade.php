@@ -52,7 +52,7 @@
                     <tr>
                         <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
                         <td>{{ $mahasiswa->nim }}</td>
-                        <td>{{ $mahasiswa->mahasiswa->name }}</td>
+                        <td>{{ $mahasiswa->name }}</td>
                         <td>{{ $mahasiswa->peminatan }}</td>
                         <td>
 

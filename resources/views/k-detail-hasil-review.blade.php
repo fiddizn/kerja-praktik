@@ -11,8 +11,7 @@
             </div>
             <div class="row mt-2 px-3">
                 <label for="name" class="form-label">Nama Mahasiswa</label>
-                <input type="text" class="form-control" name="name" id="name" readonly
-                    value="{{ $mahasiswa->mahasiswa->name }}">
+                <input type="text" class="form-control" name="name" id="name" readonly value="{{ $mahasiswa->name }}">
             </div>
         </div>
         <div class="col-md-6">
@@ -21,8 +20,7 @@
                 <input type="number" class="form-control" name="nim" id="nim" readonly value="{{ $mahasiswa->nim }}">
             </div>
             <div class="row mt-2 px-3"><label for="name" class="form-label">Nama Dosen Reviewer</label>
-                <input type="text" class="form-control" name="name" id="name" readonly
-                    value="{{ $mahasiswa->mahasiswa->name }}">
+                <input type="text" class="form-control" name="name" id="name" readonly value="{{ $mahasiswa->name }}">
             </div>
         </div>
     </div>
