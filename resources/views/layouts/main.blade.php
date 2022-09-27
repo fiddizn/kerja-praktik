@@ -14,7 +14,7 @@
     <title>{{ $title }} | Sistem Informasi TA 1</title>
 </head>
 
-<body class="bg-light">
+<body style="background-color: #f5f5f5;">
     @include('partials/navbar')
 
     <div class=" container pt-4">

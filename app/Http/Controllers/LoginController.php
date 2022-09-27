@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class MahasiswaController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +13,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa', [
-            'title' => 'Home',
-            'name' => 'Fahmi Yusron Fiddin',
-            'role' => 'Mahasiswa'
+        return view('login', [
+            'title' => 'Login',
+            'name' => NULL
         ]);
     }
 

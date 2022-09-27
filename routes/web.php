@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\HasilReviewController;
 use App\Http\Controllers\KoordinatorController;
+use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\FormBimbinganController;
 use App\Http\Controllers\Jadwal_seminarController;
 use App\Http\Controllers\Plotting_dosen_pembimbing;
@@ -28,17 +30,17 @@ use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
 |
 */
 
-// Route::get('/', function () {
-//     return 'Halaman Login';
-// });
+Route::get('/', [LoginController::class, 'index']);
+
+Route::get('/register', [RegisterController::class, 'index']);
 
 // Mahasiswa
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 
-Route::get('/mahasiswa/pendaftaran-ta-1', [RegisterController::class, 'index']);
+Route::get('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'index']);
 
-Route::post('/mahasiswa/pendaftaran-ta-1', [RegisterController::class, 'store']);
+Route::post('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'store']);
 
 Route::get('/mahasiswa/hasil-review', [HasilReviewController::class, 'index']);
 
