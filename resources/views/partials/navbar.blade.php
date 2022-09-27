@@ -16,7 +16,10 @@
                     </div>
                 </li>
                 <li class=" nav-item">
-                    <a class="btn btn-outline-light btn-sm" href="#" role="button">Logout</a>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-light btn-sm" href="#">Logout</button>
+                    </form>
                 </li>
                 @endif
             </ul>

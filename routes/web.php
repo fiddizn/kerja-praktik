@@ -30,18 +30,23 @@ use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
 |
 */
 
-Route::get('/', [LoginController::class, 'index']);
-
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/', [LoginController::class, 'store']);
+
+Route::post('/logout', [LoginController::class, 'logout']);
 
 // Mahasiswa
 
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->middleware('auth');
 
 Route::get('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'index']);
 
 Route::post('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'store']);
+
+Route::get('/mahasiswa/pendaftaran-ta-1/status', [PendaftaranController::class, 'status']);
 
 Route::get('/mahasiswa/hasil-review', [HasilReviewController::class, 'index']);
 
@@ -57,7 +62,7 @@ Route::post('/mahasiswa/pendaftaran-seminar-ta-1', [RegisterSeminarController::c
 
 //Koordinator
 
-Route::get('/koordinator', [KoordinatorController::class, 'index']);
+Route::get('/koordinator', [KoordinatorController::class, 'index'])->middleware('auth');;
 
 Route::get('/koordinator/list-pendaftaran-ta-1', [List_pendaftaran_ta_1Controller::class, 'index']);
 

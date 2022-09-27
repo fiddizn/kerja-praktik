@@ -25,6 +25,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
+
+        @if (session()->has('loginError'))
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            {{ session('loginError') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <div class="row align-items-center">
             <div class="col-sm-5">
                 <div class="title-home">
@@ -33,7 +40,8 @@
             </div>
             <div class="col-sm">
                 <div class="registration-form px-4">
-                    <form>
+                    <form action="/" method="post">
+                        @csrf
                         <div class="form-icon">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" fill="currentColor"
@@ -44,13 +52,21 @@
                             </span>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control item" id="email" placeholder="Email">
+                            <input type="text" class="form-control item @error('email') is-invalid @enderror"
+                                name="email" id="email" placeholder="Email" required autofocus
+                                value="{{ old('email') }}">
+                            @error('email')
+                            <div class="invalid-feedback">
+                                {{ message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control item" id="password" placeholder="Password">
+                            <input type="password" class="form-control item @error('password') is-invalid @enderror"
+                                name="password" id="password" placeholder="Password" required>
                         </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-block create-account">Login</button>
+                        <div class=" form-group">
+                            <button type="submit" class="btn btn-block create-account">Login</button>
                             <div class="span">
                                 <span>Tidak punya akun? Daftar <a href="/register">di sini</a></span>
                             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PendaftaranController extends Controller
 {
@@ -21,7 +22,8 @@ class PendaftaranController extends Controller
     {
         Pendaftaran::create([
             'nim' => request('nim'),
-            'mahasiswa_id' => 4,
+            'name' => request('name'),
+            'user_id' => auth()->user()->id,
             'tempat_lahir' => request('tempat_lahir'),
             'tanggal_lahir' => request('tanggal_lahir'),
             'gender' => request('gender'),
@@ -57,6 +59,17 @@ class PendaftaranController extends Controller
             'alt4_p1' => request('alt4_p1'),
             'alt4_p2' => request('alt4_p2'),
             'status' => '',
+        ]);
+
+        return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
+    }
+
+    public function status()
+    {
+        return view('m-status-pendaftaran-ta-1', [
+            'title' => 'Status Pendaftaran TA 1',
+            'name' => 'Fahmi Yusron Fiddin',
+            'role' => 'Mahasiswa'
         ]);
     }
 }
