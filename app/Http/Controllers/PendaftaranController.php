@@ -11,12 +11,16 @@ class PendaftaranController extends Controller
 
     public function index()
     {
-        return view('m-pendaftaran-ta-1', [
-            'title' => 'Pendaftaran TA 1',
-            'name' => 'Fahmi Yusron Fiddin',
-            'role' => 'Mahasiswa',
-            'seminar' => ''
-        ]);
+        if (!isset(auth()->user()->pendaftaran)) {
+            return view('m-pendaftaran-ta-1', [
+                'title' => 'Pendaftaran TA 1',
+                'name' => 'Fahmi Yusron Fiddin',
+                'role' => 'Mahasiswa',
+                'seminar' => ''
+            ]);
+        } else {
+            return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
+        }
     }
     public function store(Request $request)
     {

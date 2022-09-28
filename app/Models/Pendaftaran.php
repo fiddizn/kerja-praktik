@@ -16,11 +16,8 @@ class Pendaftaran extends Model
         $query->when($filters ?? false, function ($query, $search) {
             return $query->where('nim', 'like', '%' .  $search . '%')
                 ->orWhere('peminatan', 'like', '%' .  $search . '%')
-                ->orWhere('judul_ta1', 'like', '%' .  $search . '%')
                 ->orWhere('status', 'like', '%' .  $search . '%')
-                ->orWhereHas('mahasiswa', function ($query) use ($search) {
-                    $query->where('name', 'like', '%' .  $search . '%');
-                });
+                ->orWhere('name', 'like', '%' .  $search . '%');
         });
     }
 
