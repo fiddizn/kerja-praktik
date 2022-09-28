@@ -17,7 +17,7 @@ return new class extends Migration
 
             // Informasi Diri Mahasiswa
             $table->id();
-            $table->foreignId('user_id');
+            $table->integer('user_id');
             $table->string('name');
             $table->bigInteger('nim');
             $table->string('tempat_lahir');

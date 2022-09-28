@@ -15,7 +15,6 @@ class MahasiswaController extends Controller
     {
         return view('mahasiswa', [
             'title' => 'Home',
-            'name' => 'Fahmi Yusron Fiddin',
             'role' => 'Mahasiswa'
         ]);
     }

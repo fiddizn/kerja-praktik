@@ -40,6 +40,18 @@ class User extends Authenticatable
 
     public function pendaftaran()
     {
-        return $this->hasOne(Pendaftaran::class, 'user_id', 'id');
+        return $this->hasOne(Pendaftaran::class);
+    }
+
+    public function scopeFilter($query, $filters)
+    {
+        $query->when($filters ?? false, function ($query, $search) {
+            return $query->whereHas('pendaftaran', function ($query) use ($search) {
+                $query->where('name', 'like', '%' .  $search . '%')
+                    ->orWhere('nim', 'like', '%' .  $search . '%')
+                    ->orWhere('peminatan', 'like', '%' .  $search . '%')
+                    ->orWhere('status', 'like', '%' .  $search . '%');
+            });
+        });
     }
 }

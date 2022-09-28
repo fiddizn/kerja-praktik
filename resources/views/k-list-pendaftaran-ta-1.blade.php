@@ -48,12 +48,13 @@
                     </tr>
                 </thead>
                 @foreach ($list_mahasiswa as $key=> $mahasiswa)
+                @if ($mahasiswa->pendaftaran != NULL)
                 <tbody>
                     <tr>
                         <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
-                        <td>{{ $mahasiswa->nim }}</td>
-                        <td>{{ $mahasiswa->name }}</td>
-                        <td>{{ $mahasiswa->peminatan }}</td>
+                        <td>{{ $mahasiswa->pendaftaran->nim }}</td>
+                        <td>{{ $mahasiswa->pendaftaran->name }}</td>
+                        <td>{{ $mahasiswa->pendaftaran->peminatan }}</td>
                         <td><button type="submit" class="btn
               
                 {{($mahasiswa->status == 'Lolos' ) ? 'btn-success' : '';}}
@@ -69,6 +70,7 @@
                         </td>
                     </tr>
                 </tbody>
+                @endif
                 @endforeach
             </table>
 

@@ -9,10 +9,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto ">
-                @if (isset($name))
+                @if (isset(auth()->user()->email))
                 <li class="nav-item">
                     <div class="keterangan mt-1 me-4 text-secondary" ">
-                        <small style=" color:#e6e6e6">{{ $name }} ({{ $role }})</small>
+                        @if (isset(auth()->user()->pendaftaran->name))
+                        <small style=" color:#e6e6e6">{{ auth()->user()->pendaftaran->name }} ({{ $role }})</small>
+                        @else
+                        <small style=" color:#e6e6e6">{{ auth()->user()->email }} ({{ $role }})</small>
+                        @endif
+
                     </div>
                 </li>
                 <li class=" nav-item">
