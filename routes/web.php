@@ -13,6 +13,7 @@ use App\Http\Controllers\Plotting_dosen_pembimbing;
 use App\Http\Controllers\RegisterSeminarController;
 use App\Http\Controllers\Detail_MahasiswaController;
 use App\Http\Controllers\Penilaian_seminarController;
+use App\Http\Controllers\ListPendaftaranTA1Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
 use App\Http\Controllers\Plotting_dosen_pengujiController;
@@ -64,9 +65,7 @@ Route::post('/mahasiswa/pendaftaran-seminar-ta-1', [RegisterSeminarController::c
 
 Route::get('/koordinator', [KoordinatorController::class, 'index'])->middleware('auth');;
 
-Route::get('/koordinator/list-pendaftaran-ta-1', [List_pendaftaran_ta_1Controller::class, 'index']);
-
-Route::get('/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{pendaftaran_id}', [Detail_MahasiswaController::class, 'index']);
+Route::resource('/koordinator/list-pendaftaran-ta-1', ListPendaftaranTA1Controller::class);
 
 Route::get('/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{pendaftaran_id}/{status}', [Detail_MahasiswaController::class, 'show']);
 

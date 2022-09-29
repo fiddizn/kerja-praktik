@@ -30,4 +30,9 @@ class Pendaftaran extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getRouteKey()
+    {
+        return 'id';
+    }
 }

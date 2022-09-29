@@ -1,7 +1,12 @@
 @extends('layouts/main')
 @section('container')
-
 <h2 class="text-center">{{ $title }}</h2>
+@if(session()->has('success'))
+<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
@@ -47,25 +52,32 @@
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
-                @foreach ($list_mahasiswa as $key=> $mahasiswa)
+                @foreach ($list_mahasiswa as $key=> $pendaftaran)
                 <tbody>
                     <tr>
                         <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
-                        <td>{{ $mahasiswa->nim }}</td>
-                        <td>{{ $mahasiswa->name }}</td>
-                        <td>{{ $mahasiswa->peminatan }}</td>
+                        <td>{{ $pendaftaran->nim }}</td>
+                        <td>{{ $pendaftaran->name }}</td>
+                        <td>{{ $pendaftaran->peminatan }}</td>
                         <td><button type="submit" class="btn
-              
-                {{($mahasiswa->status == 'Lolos' ) ? 'btn-success' : '';}}
-                {{($mahasiswa->status == 'Lolos Bersyarat' ) ? 'btn-warning' : '';}}
-                {{($mahasiswa->status == 'Pending' ) ? 'btn-danger' : '';}}
-                {{($mahasiswa->status == 'Tidak Lolos' ) ? 'btn-secondary' : '';}}
-            " style="width: 9rem; ">{{ $mahasiswa->status }}</button>
+                            {{($pendaftaran->status == 'Lolos' ) ? 'btn-success' : '';}}
+                            {{($pendaftaran->status == 'Lolos Bersyarat' ) ? 'btn-warning' : '';}}
+                            {{($pendaftaran->status == 'Pending' ) ? 'btn-danger' : '';}}
+                            {{($pendaftaran->status == 'Tidak Lolos' ) ? 'btn-secondary' : '';}}
+                            " style="width: 9rem; ">{{ $pendaftaran->status }}</button>
                         </td>
                         <td>
-                            <a class="btn"
-                                href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $mahasiswa->id }}"
-                                role="button" style="background-color:#ff8c1a;">Detail</a>
+                            <a class="btn" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}"
+                                style="background-color:#ff8c1a;">Detail</a>
+                            <a class="btn btn-warning"
+                                href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/edit">Edit</a>
+                            <form action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}" method="post"
+                                class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger" role="button"
+                                    onclick="return confirm('Apakah anda yakin?')">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 </tbody>
@@ -94,8 +106,8 @@
 
                 </div> -->
             </div>
+            </>
     </div>
-</div>
 
 
-@endsection
+    @endsection

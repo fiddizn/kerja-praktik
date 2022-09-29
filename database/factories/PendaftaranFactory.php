@@ -17,7 +17,8 @@ class PendaftaranFactory extends Factory
     public function definition()
     {
         return [
-            'mahasiswa_id' => mt_rand(1, 10),
+            'user_id' => mt_rand(1, 10),
+            'name' => fake()->name(),
             'nim' => fake()->numberBetween(3411191000, 3411191999),
             'tempat_lahir' => fake()->city(),
             'tanggal_lahir' => fake()->dateTime(),

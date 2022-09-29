@@ -17,8 +17,8 @@
     <div class="row my-3">
         <div class="form-group">
             <label for="pembahasan_bimbingan">Pembahasan / Hasil / Saran / Tugas</label>
-            <textarea class="form-control mt-2" rows="10" id="pembahasan_bimbingan" name="pembahasan_bimbingan"
-                id="pembahasan_bimbingan"></textarea>
+            <input id="pembahasan_bimbingan" type="hidden" name="pembahasan_bimbingan">
+            <trix-editor input="pembahasan_bimbingan"></trix-editor>
         </div>
     </div>
     <div class="col-12 mt-5">
@@ -27,4 +27,10 @@
         <button type=" submit" class="btn" style="width: 5rem ; background-color:#ff8c1a;">Submit</button>
     </div>
 </form>
+
+<script>
+document.addEventListener('trix-file-accept', function(e) {
+    e.preventDefault
+})
+</script>
 @endsection

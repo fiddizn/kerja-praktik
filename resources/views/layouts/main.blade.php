@@ -11,6 +11,14 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="shortcut icon" href="https://ifwdc2018k4.files.wordpress.com/2018/09/cropped-logo-ifa12.png"
         type="image">
+    <!-- Trix Editor -->
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
+    <style>
+    trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+    }
+    </style>
     <title>{{ $title }} | Sistem Informasi TA 1</title>
 </head>
 
