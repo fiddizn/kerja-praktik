@@ -38,15 +38,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function pendaftaran()
-    {
-        return $this->hasOne(Pendaftaran::class);
-    }
-
     public function role()
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function mahasiswa()
+    {
+        return $this->hasOne(Mahasiswa::class);
+    }
+
+    public function pendaftaran()
+    {
+        return $this->hasOneThrough(Pendaftaran::class, Mahasiswa::class);
+    }
+
 
     public function scopeFilter($query, $filters)
     {

@@ -11,13 +11,13 @@ class Mahasiswa extends Model
 
     protected $guarded = ['id'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function pendaftaran()
     {
         return $this->hasOne(Pendaftaran::class, 'mahasiswa_id', 'id');
     }
-
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
 }

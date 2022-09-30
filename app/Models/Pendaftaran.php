@@ -21,15 +21,16 @@ class Pendaftaran extends Model
         });
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function mahasiswa()
     {
         return $this->belongsTo(Mahasiswa::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function getRouteKey()
     {

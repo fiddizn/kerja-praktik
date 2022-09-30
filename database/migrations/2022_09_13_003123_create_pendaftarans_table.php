@@ -16,52 +16,53 @@ return new class extends Migration
         Schema::create('pendaftarans', function (Blueprint $table) {
 
             // Informasi Diri Mahasiswa
+
             $table->id();
-            $table->integer('user_id');
-            $table->string('name');
-            $table->bigInteger('nim');
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
-            $table->string('gender');
-            $table->string('phone_number');
-            $table->string('address');
-            $table->string('peminatan');
-            $table->integer('angkatan');
+            $table->integer('mahasiswa_id');
+            $table->string('tempat_lahir')->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('address')->nullable();
+            $table->string('peminatan')->nullable();
+            $table->integer('angkatan')->nullable();
             $table->timestamps();
 
             // Informasi Nilai Mahasiswa
-            $table->float('ipk');
-            $table->integer('jumlah_sks');
-            $table->integer('jumlah_teori_d');
-            $table->integer('jumlah_prak_d');
-            $table->integer('jumlah_e');
-            $table->string('algo');
-            $table->string('strukdat');
-            $table->string('basdat');
-            $table->string('rpl');
-            $table->string('metpen');
-            $table->string('pemweb');
-            $table->string('prak_pemweb');
-            $table->string('po1');
-            $table->string('prak_po1');
-            $table->string('appl');
-            $table->string('tagihan_uang');
-            $table->string('lunas_pembayaran');
-            $table->string('judul_ta1');
-            $table->string('berkas_ta1');
+
+            $table->float('ipk')->nullable();
+            $table->integer('jumlah_sks')->nullable();
+            $table->integer('jumlah_teori_d')->nullable();
+            $table->integer('jumlah_prak_d')->nullable();
+            $table->integer('jumlah_e')->nullable();
+            $table->string('algo')->nullable();
+            $table->string('strukdat')->nullable();
+            $table->string('basdat')->nullable();
+            $table->string('rpl')->nullable();
+            $table->string('metpen')->nullable();
+            $table->string('pemweb')->nullable();
+            $table->string('prak_pemweb')->nullable();
+            $table->string('po1')->nullable();
+            $table->string('prak_po1')->nullable();
+            $table->string('appl')->nullable();
+            $table->string('tagihan_uang')->nullable();
+            $table->string('lunas_pembayaran')->nullable();
+            $table->string('khs')->nullable();
+            $table->string('berkas_ta1')->nullable();
+            $table->string('judul_ta1')->nullable();
 
             // Ajuan Dosen
-            $table->string('alt1_p1');
-            $table->string('alt1_p2');
-            $table->string('alt2_p1');
-            $table->string('alt2_p2');
-            $table->string('alt3_p1');
-            $table->string('alt3_p2');
-            $table->string('alt4_p1');
-            $table->string('alt4_p2');
+            $table->string('alt1_p1')->nullable();
+            $table->string('alt1_p2')->nullable();
+            $table->string('alt2_p1')->nullable();
+            $table->string('alt2_p2')->nullable();
+            $table->string('alt3_p1')->nullable();
+            $table->string('alt3_p2')->nullable();
+            $table->string('alt4_p1')->nullable();
+            $table->string('alt4_p2')->nullable();
 
             // status pendaftaran
-            $table->string('status');
+            $table->string('status')->nullable();
         });
     }
 

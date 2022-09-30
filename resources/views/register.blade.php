@@ -35,6 +35,15 @@
                             </span>
                         </div>
                         <div class="form-group">
+                            <input type="number" class="form-control item @error('nim')is-invalid @enderror" name="nim"
+                                id="nim" placeholder="NIM" required value="{{ old('nim') }}">
+                            <div id="nim" class="invalid-feedback">Mohon menggunakan NIM yang benar!</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control item @error('name')is-invalid @enderror" name="name"
+                                id="name" placeholder="Nama Lengkap" required value="{{ old('name') }}">
+                        </div>
+                        <div class="form-group">
                             <input type="text" class="form-control item @error('email')is-invalid @enderror"
                                 name="email" id="email" placeholder="Email" required value="{{ old('email') }}">
                             <div id="email" class="invalid-feedback">Mohon menggunakan email Unjani!</div>
@@ -55,6 +64,7 @@
                                 <span>Sudah punya akun? Login <a href="/">di sini</a></span>
                             </div>
                         </div>
+                        <input type="hidden" id="role_id" name="role_id" value='1'>
                     </form>
                 </div>
                 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

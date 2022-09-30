@@ -21,10 +21,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Mahasiswa::factory(15)->create();
+        Mahasiswa::factory(10)->create();
         Koordinator::factory(1)->create();
-        Pendaftaran::factory(15)->create();
-        User::factory(20)->create();
+        Pendaftaran::factory(5)->create();
+        User::factory(10)->create();
 
         Role::create([
             'name' => 'Mahasiswa',
@@ -49,6 +49,14 @@ class DatabaseSeeder extends Seeder
         Role::create([
             'name' => 'Penguji 2',
             'redirect_to' => '/dosen',
+        ]);
+        Role::create([
+            'name' => 'Admin',
+            'redirect_to' => '/admin',
+        ]);
+        Role::create([
+            'name' => 'TU',
+            'redirect_to' => '/tu',
         ]);
     }
 }

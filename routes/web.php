@@ -36,18 +36,49 @@ use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'role:Mahasiswa'], function () {
         Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+        // Route::get('/mahasiswa', function () {
+        //     return 'Hallo mahasiswa <br>emailmu adalah ' . auth()->user()->email .
+        //         '<br>dan nama anda adalah ' . auth()->user()->mahasiswa->name .
+        //         '<br>dan anda lahir di ' . auth()->user()->pendaftaran->tempat_lahir;
+        // });
     });
 
     Route::group(['middleware' => 'role:Koordinator'], function () {
         Route::get('/koordinator', [KoordinatorController::class, 'index']);
     });
     Route::group(['middleware' => 'role:Pembimbing 1'], function () {
-        Route::get('/dosen', function () {
+        Route::get('/pembimbing-1', function () {
             return 'Hallo Pembimbing 1 emailmu adalah ' . auth()->user()->email;
+        });
+    });
+    Route::group(['middleware' => 'role:Pembimbing 2'], function () {
+        Route::get('/pembimbing-2', function () {
+            return 'Hallo Pembimbing 2 emailmu adalah ' . auth()->user()->email;
+        });
+    });
+    Route::group(['middleware' => 'role:Penguji 1'], function () {
+        Route::get('/penguji-1', function () {
+            return 'Hallo Penguji 1 emailmu adalah ' . auth()->user()->email;
+        });
+    });
+    Route::group(['middleware' => 'role:Penguji 2'], function () {
+        Route::get('/penguji-2', function () {
+            return 'Hallo Penguji 2 emailmu adalah ' . auth()->user()->email;
+        });
+    });
+    Route::group(['middleware' => 'role:Admin'], function () {
+        Route::get('/admin', function () {
+            return 'Hallo Admin emailmu adalah ' . auth()->user()->email;
+        });
+    });
+    Route::group(['middleware' => 'role:TU'], function () {
+        Route::get('/tu', function () {
+            return 'Hallo TU emailmu adalah ' . auth()->user()->email;
         });
     });
 });
 
+// Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 // Register
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -34,14 +35,24 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedDataLogin = $request->validate([
             'email' => 'email:dns|unique:users',
             'password' => 'min:5|max:255',
-            'password2' => 'min:5|max:255'
+            'password2' => 'min:5|max:255',
+            'role_id' => 'required'
         ]);
-        if ($validatedData['password'] == $validatedData['password2']) {
-            $validatedData['password'] = Hash::make($validatedData['password']);
-            User::create($validatedData);
+        if ($validatedDataLogin['password'] == $validatedDataLogin['password2']) {
+            $validatedDataLogin['password'] = Hash::make($validatedDataLogin['password']);
+
+            $user = User::create($validatedDataLogin);
+
+            $current_id = $user->id;
+
+            Mahasiswa::create([
+                'user_id' => $current_id,
+                'nim' => request('nim'),
+                'name' => request('name')
+            ]);
 
             return redirect('/')->with('success', 'Registrasi suskes! Silakan login.');
         }
