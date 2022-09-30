@@ -9,7 +9,8 @@
         <div class="row g-3">
             <div class="col-md-6">
                 <label for="nim" class="form-label">NIM</label>
-                <input type="number" class="form-control" name="nim" id="nim" value="{{ $pendaftaran->nim }}">
+                <input type="number" class="form-control" name="nim" id="nim"
+                    value="{{ $pendaftaran->mahasiswa->nim }}">
             </div>
             <div class="col-md-6">
                 <label for="gender" class="form-label">Jenis Kelamin</label>
@@ -17,7 +18,8 @@
             </div>
             <div class="col-md-6">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" name="name" id="name" value="{{ $pendaftaran->name }}">
+                <input type="text" class="form-control" name="name" id="name"
+                    value="{{ $pendaftaran->mahasiswa->name }}">
             </div>
             <div class="col-md-6">
                 <label for="peminatan" class="form-label">Peminatan</label>
@@ -189,6 +191,12 @@
                         value="{{ $pendaftaran->lunas_pembayaran }}">
                 </div>
             </div>
+            <div class="row mt-4">
+                <div class="col-md-5">
+                    <label for="khs" class="form-label">KHS</label>
+                    <input class="form-control" type="file" id="khs" name="khs" value="{{ $pendaftaran->khs }}">
+                </div>
+            </div>
 
             <div class="my-4">
 
@@ -224,40 +232,18 @@
             </div>
             <div class="mt-4">
             </div>
-
-            <h5 style="text-align:center;">Siswa di atas dinyatakan:</h5>
-            <div class="d-flex justify-content-center mt-3 ">
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
-                            <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Lolos">
-                            <button type="submit" class="btn btn-success mx-2"
-                                style="width: 10rem; height: 3rem;">Lolos</button>
-                        </form>
-                    </div>
-                    <a class="btn btn-warning"
-                        href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $pendaftaran->id }}/lolos-bersyarat"
-                        role="button" style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                    <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
-                        <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Pending">
-                        <button type="submit" class="btn btn-danger mx-2"
-                            style="width: 10rem; height: 3rem;">Pending</button>
-                    </form>
-                    <a class="btn btn-dark"
-                        href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $pendaftaran->id }}/tidak-lolos"
-                        role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
-                </div>
-            </div>
         </div>
         <div class="col-12 mt-5">
             <a class="btn" href="/koordinator/list-pendaftaran-ta-1" role="button"
                 style="width: 5rem;background-color:#ff8c1a;">Back</a>
+            <input type="hidden" id="status" name="status" value="{{ $pendaftaran->status }}">
             <button type="submit" class="btn" style="width: 5rem;background-color:#ff8c1a;">Update</button>
         </div>
         <div style=" height: 100px;">
         </div>
     </div>
 </form>
+
 
 </div>
 

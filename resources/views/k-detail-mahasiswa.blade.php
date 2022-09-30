@@ -170,22 +170,28 @@
         <div class="row mt-4">
             <div class="col-md-5">
                 <label for="berkas_ta1" class="form-label">Berkas Proposal</label>
-                <input class="form-control" type="file" id="berkas_ta1" name="berkas_ta1" readonly
+                <input class="form-control" type="file" id="berkas_ta1" name="berkas_ta1" disabled
                     value="{{ $pendaftaran->berkas_ta1 }}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-5">
                 <label for="tagihan_uang" class="form-label">Tagihan Uang Kuliah</label>
-                <input class="form-control" type="file" id="tagihan_uang" name="tagihan_uang" readonly
+                <input class="form-control" type="file" id="tagihan_uang" name="tagihan_uang" disabled
                     value="{{ $pendaftaran->tagihan_uang }}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-5">
                 <label for="lunas_pembayaran" class="form-label">Bukti Lunas Pembayaran</label>
-                <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran" readonly
+                <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran" disabled
                     value="{{ $pendaftaran->lunas_pembayaran }}">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-5">
+                <label for="khs" class="form-label">KHS</label>
+                <input class="form-control" type="file" id="khs" name="khs" disabled value="{{ $pendaftaran->khs }}">
             </div>
         </div>
 
@@ -236,8 +242,10 @@
         <div class="d-flex justify-content-center mt-3 ">
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
-                        <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Lolos">
+                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                        @method('put')
+                        @csrf
+                        <input type="hidden" id="status" name="status" value="Lolos">
                         <button type="submit" class="btn btn-success mx-2"
                             style="width: 10rem; height: 3rem;">Lolos</button>
                     </form>
@@ -245,8 +253,10 @@
                 <a class="btn btn-warning"
                     href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $pendaftaran->id }}/lolos-bersyarat"
                     role="button" style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form action="/koordinator/list-pendaftaran-ta-1" method="GET">
-                    <input type="hidden" id="status_pendaftaran" name="status_pendaftaran" value="Pending">
+                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    @method('put')
+                    @csrf
+                    <input type="hidden" id="status" name="status" value="Pending">
                     <button type="submit" class="btn btn-danger mx-2"
                         style="width: 10rem; height: 3rem;">Pending</button>
                 </form>

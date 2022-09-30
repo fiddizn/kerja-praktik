@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,6 +64,10 @@ class PendaftaranController extends Controller
             'status' => '',
         ]);
 
+        Mahasiswa::where('id', auth()->user()->mahasiswa->id)->update([
+            'pendaftaran_administrasi_id' => auth()->user()->pendaftaran->id
+        ]);
+
         return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
     }
 
@@ -71,7 +76,8 @@ class PendaftaranController extends Controller
         return view('m-status-pendaftaran-ta-1', [
             'title' => 'Status Pendaftaran TA 1',
             'name' => 'Fahmi Yusron Fiddin',
-            'role' => 'Mahasiswa'
+            'role' => 'Mahasiswa',
+            'status' => auth()->user()->pendaftaran->status
         ]);
     }
 }

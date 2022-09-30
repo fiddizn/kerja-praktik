@@ -19,7 +19,7 @@ class PendaftaranFactory extends Factory
         return [
             // Informasi Diri Mahasiswa
 
-            'mahasiswa_id' => fake()->unique()->mt_rand(1, 10)
+            'mahasiswa_id' => fake()->unique()->numberBetween(1, 100)
             // 'tempat_lahir' => fake()->city(),
             // 'tanggal_lahir' => fake()->dateTime(),
             // 'gender' => fake()->titleMale(),
