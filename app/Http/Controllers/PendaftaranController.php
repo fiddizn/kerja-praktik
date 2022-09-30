@@ -22,12 +22,10 @@ class PendaftaranController extends Controller
             return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
         }
     }
-    public function store(Request $request)
+    public function store()
     {
         Pendaftaran::create([
-            'nim' => request('nim'),
-            'name' => request('name'),
-            'user_id' => auth()->user()->id,
+            'mahasiswa_id' => auth()->user()->mahasiswa->id,
             'tempat_lahir' => request('tempat_lahir'),
             'tanggal_lahir' => request('tanggal_lahir'),
             'gender' => request('gender'),

@@ -31,20 +31,26 @@ use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
 |
 */
 
-// Route::get('/koordinator', [KoordinatorController::class, 'index']);
-
 Route::group(['middleware' => 'auth'], function () {
+
+    // Sesi Mahasiswa
+
     Route::group(['middleware' => 'role:Mahasiswa'], function () {
         Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
-        // Route::get('/mahasiswa', function () {
-        //     return 'Hallo mahasiswa <br>emailmu adalah ' . auth()->user()->email .
-        //         '<br>dan nama anda adalah ' . auth()->user()->mahasiswa->name .
-        //         '<br>dan anda lahir di ' . auth()->user()->pendaftaran->tempat_lahir;
-        // });
+
+        Route::get('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'index']);
+
+        Route::post('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'store']);
+
+        Route::get('/mahasiswa/pendaftaran-ta-1/status', [PendaftaranController::class, 'status']);
     });
+
+    // Sesi Koordinator
 
     Route::group(['middleware' => 'role:Koordinator'], function () {
         Route::get('/koordinator', [KoordinatorController::class, 'index']);
+
+        Route::resource('/koordinator/list-pendaftaran-ta-1', ListPendaftaranTA1Controller::class);
     });
     Route::group(['middleware' => 'role:Pembimbing 1'], function () {
         Route::get('/pembimbing-1', function () {
@@ -95,11 +101,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 // Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->middleware('auth');
 
-// Route::get('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'index']);
 
-// Route::post('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'store']);
-
-// Route::get('/mahasiswa/pendaftaran-ta-1/status', [PendaftaranController::class, 'status']);
 
 // Route::get('/mahasiswa/hasil-review', [HasilReviewController::class, 'index']);
 

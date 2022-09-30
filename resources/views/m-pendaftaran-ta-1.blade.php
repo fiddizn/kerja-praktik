@@ -12,7 +12,8 @@
             @csrf
             <div class="col-md-6">
                 <label for="nim" class="form-label">NIM</label>
-                <input type="number" class="form-control" name="nim" id="nim">
+                <input type="number" class="form-control" name="nim" id="nim"
+                    value="{{ auth()->user()->mahasiswa->nim }}" disabled>
             </div>
             <div class="col-md-6">
                 <label for="gender" class="form-label">Jenis Kelamin</label>
@@ -24,7 +25,8 @@
             </div>
             <div class="col-md-6">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" name="name" id="name">
+                <input type="text" class="form-control" name="name" id="name"
+                    value="{{ auth()->user()->mahasiswa->name }}" disabled>
             </div>
             <div class="col-md-6">
                 <label for="peminatan" class="form-label">Peminatan</label>

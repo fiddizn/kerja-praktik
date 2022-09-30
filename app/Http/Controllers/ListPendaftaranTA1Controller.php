@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
@@ -14,14 +15,13 @@ class ListPendaftaranTA1Controller extends Controller
      */
     public function index()
     {
-        $list_pendaftaran = Pendaftaran::oldest()->filter(request('search'))->paginate(7)->withQueryString();
+        $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))->paginate(7)->withQueryString();
         return view(
             'k-list-pendaftaran-ta-1',
             [
                 'title' => 'Pendaftaran Administrasi TA 1',
-                'name' => 'Galang Setia Nugroho',
                 'role' => 'Koordinator',
-                'list_mahasiswa' => $list_pendaftaran
+                'list_pendaftaran' => $list_pendaftaran
             ]
         );
     }
@@ -55,7 +55,7 @@ class ListPendaftaranTA1Controller extends Controller
      */
     public function show($id)
     {
-        $pendaftaran = Pendaftaran::find($id);
+        $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
         return view('k-detail-mahasiswa', [
             'title' => 'Pendaftaran TA 1',
             'name' => 'Galang Setia Nugroho',

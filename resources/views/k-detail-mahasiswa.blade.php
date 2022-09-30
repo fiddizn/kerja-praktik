@@ -6,7 +6,8 @@
     <div class="row g-3">
         <div class="col-md-6">
             <label for="nim" class="form-label">NIM</label>
-            <input type="number" class="form-control" name="nim" id="nim" readonly value="{{ $pendaftaran->nim }}">
+            <input type="number" class="form-control" name="nim" id="nim" readonly
+                value="{{ $pendaftaran->mahasiswa->nim }}">
         </div>
         <div class="col-md-6">
             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
@@ -15,7 +16,8 @@
         </div>
         <div class="col-md-6">
             <label for="name" class="form-label">Nama Lengkap</label>
-            <input type="text" class="form-control" name="name" id="name" readonly value="{{ $pendaftaran->name }}">
+            <input type="text" class="form-control" name="name" id="name" readonly
+                value="{{ $pendaftaran->mahasiswa->name }}">
         </div>
         <div class="col-md-6">
             <label for="peminatan" class="form-label">Peminatan</label>

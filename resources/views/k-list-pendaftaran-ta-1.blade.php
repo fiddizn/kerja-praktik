@@ -52,12 +52,12 @@
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
-                @foreach ($list_mahasiswa as $key=> $pendaftaran)
+                @foreach ($list_pendaftaran as $key=> $pendaftaran)
                 <tbody>
                     <tr>
-                        <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
-                        <td>{{ $pendaftaran->nim }}</td>
-                        <td>{{ $pendaftaran->name }}</td>
+                        <th scope="row">{{ $list_pendaftaran->firstItem()+ $key}}</th>
+                        <td>{{ $pendaftaran->mahasiswa->nim }}</td>
+                        <td>{{ $pendaftaran->mahasiswa->name }}</td>
                         <td>{{ $pendaftaran->peminatan }}</td>
                         <td><button type="submit" class="btn
                             {{($pendaftaran->status == 'Lolos' ) ? 'btn-success' : '';}}
@@ -91,15 +91,15 @@
                 </div>
                 <div>
                     Showing
-                    {{ $list_mahasiswa->firstItem() }}
+                    {{ $list_pendaftaran->firstItem() }}
                     to
-                    {{ $list_mahasiswa->lastItem() }}
+                    {{ $list_pendaftaran->lastItem() }}
                     of
-                    {{ $list_mahasiswa->total() }}
+                    {{ $list_pendaftaran->total() }}
                     enteries
                 </div>
                 <div>
-                    {{ $list_mahasiswa->links() }}
+                    {{ $list_pendaftaran->links() }}
                 </div>
                 <!-- <div class="position-fixed"
                     style="position:absolute; bottom: 2rem; left: 50%; transform: translate(-50%, -10%);">

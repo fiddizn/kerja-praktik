@@ -12,8 +12,10 @@
                 @if (isset(auth()->user()->email))
                 <li class="nav-item">
                     <div class="keterangan mt-1 me-4 text-secondary" ">
-                        @if (isset(auth()->user()->pendaftaran->name))
-                        <small style=" color:#e6e6e6">{{ auth()->user()->pendaftaran->name }} ({{ $role }})</small>
+                        @if (isset(auth()->user()->mahasiswa->name))
+                        <small style=" color:#e6e6e6">{{ auth()->user()->mahasiswa->name }} ({{ $role }})</small>
+                        @elseif (isset(auth()->user()->kooridinator->name))
+                        <small style=" color:#e6e6e6">{{ auth()->user()->koordinator->name }} ({{ $role }})</small>
                         @else
                         <small style=" color:#e6e6e6">{{ auth()->user()->email }} ({{ $role }})</small>
                         @endif
