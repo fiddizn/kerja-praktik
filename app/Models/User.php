@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasOne(Pendaftaran::class);
     }
 
+    public function role()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function scopeFilter($query, $filters)
     {
         $query->when($filters ?? false, function ($query, $search) {
