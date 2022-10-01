@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
+// use Clockwork\Storage\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ListPendaftaranTA1Controller extends Controller
 {
@@ -59,6 +61,30 @@ class ListPendaftaranTA1Controller extends Controller
             'role' => 'Koordinator',
             'pendaftaran' => $pendaftaran
         ]);
+    }
+    public function downloadTagihanUang($id)
+    {
+        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
+        $filepath = public_path("storage/{$data->tagihan_uang}");
+        return response()->download($filepath);
+    }
+    public function downloadLunasPembayaran($id)
+    {
+        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
+        $filepath = public_path("storage/{$data->lunas_pembayaran}");
+        return response()->download($filepath);
+    }
+    public function downloadBerkasTa1($id)
+    {
+        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
+        $filepath = public_path("storage/{$data->berkas_ta1}");
+        return response()->download($filepath);
+    }
+    public function downloadKhs($id)
+    {
+        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
+        $filepath = public_path("storage/{$data->khs}");
+        return response()->download($filepath);
     }
 
     /**

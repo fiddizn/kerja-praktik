@@ -52,17 +52,4 @@ class User extends Authenticatable
     {
         return $this->hasOneThrough(Pendaftaran::class, Mahasiswa::class);
     }
-
-
-    public function scopeFilter($query, $filters)
-    {
-        $query->when($filters ?? false, function ($query, $search) {
-            return $query->whereHas('pendaftaran', function ($query) use ($search) {
-                $query->where('name', 'like', '%' .  $search . '%')
-                    ->orWhere('nim', 'like', '%' .  $search . '%')
-                    ->orWhere('peminatan', 'like', '%' .  $search . '%')
-                    ->orWhere('status', 'like', '%' .  $search . '%');
-            });
-        });
-    }
 }

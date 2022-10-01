@@ -25,6 +25,26 @@ class PendaftaranController extends Controller
     }
     public function store()
     {
+        $file = request()->validate([
+            'berkas_ta1' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
+            'tagihan_uang' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
+            'lunas_pembayaran' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx',
+            'khs' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
+        ]);
+
+        if (request()->file('berkas_ta1')) {
+            $file['berkas_ta1'] = request()->file('berkas_ta1')->store('berkas_ta1');
+        }
+        if (request()->file('tagihan_uang')) {
+            $file['tagihan_uang'] = request()->file('tagihan_uang')->store('tagihan_uang');
+        }
+        if (request()->file('lunas_pembayaran')) {
+            $file['lunas_pembayaran'] = request()->file('lunas_pembayaran')->store('lunas_pembayaran');
+        }
+        if (request()->file('khs')) {
+            $file['khs'] = request()->file('khs')->store('khs');
+        }
+
         Pendaftaran::create([
             'mahasiswa_id' => auth()->user()->mahasiswa->id,
             'tempat_lahir' => request('tempat_lahir'),
@@ -49,10 +69,10 @@ class PendaftaranController extends Controller
             'po1' => request('po1'),
             'prak_po1' => request('prak_po1'),
             'appl' => request('appl'),
-            'tagihan_uang' => request('tagihan_uang'),
-            'lunas_pembayaran' => request('lunas_pembayaran'),
-            'judul_ta1' => request('judul_ta1'),
-            'berkas_ta1' => request('berkas_ta1'),
+            'berkas_ta1' => $file['berkas_ta1'],
+            'tagihan_uang' => $file['tagihan_uang'],
+            'lunas_pembayaran' => $file['lunas_pembayaran'],
+            'khs' => $file['khs'],
             'alt1_p1' => request('alt1_p1'),
             'alt1_p2' => request('alt1_p2'),
             'alt2_p1' => request('alt2_p1'),

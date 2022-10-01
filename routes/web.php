@@ -51,7 +51,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator', [KoordinatorController::class, 'index']);
 
         Route::resource('/koordinator/list-pendaftaran-ta-1', ListPendaftaranTA1Controller::class);
+        Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadTagihanUang', [ListPendaftaranTA1Controller::class, 'downloadTagihanUang']);
+        Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadLunasPembayaran', [ListPendaftaranTA1Controller::class, 'downloadLunasPembayaran']);
+        Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadBerkasTa1', [ListPendaftaranTA1Controller::class, 'downloadBerkasTa1']);
+        Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadKhs', [ListPendaftaranTA1Controller::class, 'downloadKhs']);
     });
+
     Route::group(['middleware' => 'role:Pembimbing 1'], function () {
         Route::get('/pembimbing-1', function () {
             return 'Hallo Pembimbing 1 emailmu adalah ' . auth()->user()->email;

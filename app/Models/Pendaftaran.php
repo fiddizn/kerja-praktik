@@ -14,10 +14,12 @@ class Pendaftaran extends Model
     public function scopeFilter($query, $filters)
     {
         $query->when($filters ?? false, function ($query, $search) {
-            return $query->where('nim', 'like', '%' .  $search . '%')
-                ->orWhere('peminatan', 'like', '%' .  $search . '%')
+            return $query->Where('peminatan', 'like', '%' .  $search . '%')
                 ->orWhere('status', 'like', '%' .  $search . '%')
-                ->orWhere('name', 'like', '%' .  $search . '%');
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
+                    $query->where('nim', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%');
+                });
         });
     }
 

@@ -5,7 +5,7 @@
 
 <div class="row align-items-start mt-3">
     @if ($seminar == '')
-    <form class="row g-3" action="/mahasiswa/pendaftaran-ta-1" method="POST">
+    <form class="row g-3" action="/mahasiswa/pendaftaran-ta-1" method="POST" enctype="multipart/form-data">
         @else
         <form class="row g-3" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST">
             @endif
@@ -239,6 +239,12 @@
                 <div class="col-md-5">
                     <label for="lunas_pembayaran" class="form-label">Bukti Lunas Pembayaran</label>
                     <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran">
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-5">
+                    <label for="khs" class="form-label">Kartu Hasil Studi</label>
+                    <input class="form-control" type="file" id="khs" name="khs">
                 </div>
             </div>
 

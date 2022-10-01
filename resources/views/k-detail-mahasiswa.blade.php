@@ -10,8 +10,8 @@
                 value="{{ $pendaftaran->mahasiswa->nim }}">
         </div>
         <div class="col-md-6">
-            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-            <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin" readonly
+            <label for="gender" class="form-label">Jenis Kelamin</label>
+            <input type="text" class="form-control" name="gender" id="gender" readonly
                 value="{{ $pendaftaran->gender }}">
         </div>
         <div class="col-md-6">
@@ -169,29 +169,62 @@
         </div>
         <div class="row mt-4">
             <div class="col-md-5">
-                <label for="berkas_ta1" class="form-label">Berkas Proposal</label>
-                <input class="form-control" type="file" id="berkas_ta1" name="berkas_ta1" disabled
-                    value="{{ $pendaftaran->berkas_ta1 }}">
+                <label for="berkas_ta1" class="form-label col-sm-5">Berkas Proposal</label>
+                <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
+                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadBerkasTa1">Download <svg
+                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-download" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                        <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                    </svg>
+                </a>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-5">
-                <label for="tagihan_uang" class="form-label">Tagihan Uang Kuliah</label>
-                <input class="form-control" type="file" id="tagihan_uang" name="tagihan_uang" disabled
-                    value="{{ $pendaftaran->tagihan_uang }}">
+                <label for="tagihan_uang" class="form-label col-sm-5">Tagihan Uang Kuliah</label>
+                <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
+                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadTagihanUang">Download <svg
+                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-download" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                        <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                    </svg>
+                </a>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-5">
-                <label for="lunas_pembayaran" class="form-label">Bukti Lunas Pembayaran</label>
-                <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran" disabled
-                    value="{{ $pendaftaran->lunas_pembayaran }}">
+                <label for="lunas_pembayaran" class="form-label col-sm-5">Bukti Lunas Pembayaran</label>
+                <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
+                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadLunasPembayaran">Download
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-download" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                        <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                    </svg>
+                </a>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-5">
-                <label for="khs" class="form-label">KHS</label>
-                <input class="form-control" type="file" id="khs" name="khs" disabled value="{{ $pendaftaran->khs }}">
+                <label for="khs" class="form-label col-sm-5">KHS</label>
+                <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
+                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadKhs">Download <svg
+                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-download" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                        <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                    </svg>
+                </a>
             </div>
         </div>
 

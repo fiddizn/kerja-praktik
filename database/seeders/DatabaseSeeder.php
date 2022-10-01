@@ -36,19 +36,19 @@ class DatabaseSeeder extends Seeder
         ]);
         Role::create([
             'name' => 'Pembimbing 1',
-            'redirect_to' => '/dosen',
+            'redirect_to' => '/pembimbing1-1',
         ]);
         Role::create([
             'name' => 'Pembimbing 2',
-            'redirect_to' => '/dosen',
+            'redirect_to' => '/pembimbing1-2',
         ]);
         Role::create([
             'name' => 'Penguji 1',
-            'redirect_to' => '/dosen',
+            'redirect_to' => '/reviewer-1',
         ]);
         Role::create([
             'name' => 'Penguji 2',
-            'redirect_to' => '/dosen',
+            'redirect_to' => '/reviewer-2',
         ]);
         Role::create([
             'name' => 'Admin',
