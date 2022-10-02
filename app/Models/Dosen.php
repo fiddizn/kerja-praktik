@@ -16,6 +16,11 @@ class Dosen extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function jabfun()
+    {
+        return $this->belongsTo(Jabfun::class);
+    }
+
     public function pembimbing1()
     {
         return $this->hasOne(Pembimbing1::class);

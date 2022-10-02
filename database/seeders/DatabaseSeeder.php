@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Dosen;
+use App\Models\Jabfun;
 use App\Models\Mahasiswa;
 use App\Models\Reviewer1;
 use App\Models\Reviewer2;
@@ -51,6 +52,26 @@ class DatabaseSeeder extends Seeder
         Role::create([
             'name' => 'TU',
             'redirect_to' => '/tu',
+        ]);
+
+        Jabfun::create([
+            'name' => 'Non Jabfun'
+        ]);
+
+        Jabfun::create([
+            'name' => 'Asisten Ahli'
+        ]);
+
+        Jabfun::create([
+            'name' => 'Lektor'
+        ]);
+
+        Jabfun::create([
+            'name' => 'Lektor Kepala'
+        ]);
+
+        Jabfun::create([
+            'name' => 'Guru Besar'
         ]);
     }
 }

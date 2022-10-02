@@ -19,6 +19,7 @@ use App\Http\Controllers\List_pendaftaran_ta_1Controller;
 use App\Http\Controllers\Plotting_dosen_pengujiController;
 use App\Http\Controllers\Plotting_dosen_reviewerController;
 use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
+use App\Models\Pembimbing1;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'role:Dosen'], function () {
         Route::get('/dosen', function () {
-            return isset(auth()->user()->dosen->reviewer2) ? 'haha' : 'hoho';
+            return 'hay kamu adalah dosen yang jabfungnya adalah ' . auth()->user()->dosen->jabfun->name;
         });
     });
     Route::group(['middleware' => 'role:Admin'], function () {

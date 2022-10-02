@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,12 +13,17 @@ class PendaftaranController extends Controller
 
     public function index()
     {
+        $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
+        $list_p2 = \App\Models\Dosen::all();
+
         if (!isset(auth()->user()->pendaftaran)) {
             return view('m-pendaftaran-ta-1', [
                 'title' => 'Pendaftaran TA 1',
                 'name' => 'Fahmi Yusron Fiddin',
                 'role' => 'Mahasiswa',
-                'seminar' => ''
+                'seminar' => '',
+                'list_p1' => $list_p1,
+                'list_p2' => $list_p2
             ]);
         } else {
             return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
@@ -69,10 +75,10 @@ class PendaftaranController extends Controller
             'po1' => request('po1'),
             'prak_po1' => request('prak_po1'),
             'appl' => request('appl'),
-            'berkas_ta1' => $file['berkas_ta1'],
-            'tagihan_uang' => $file['tagihan_uang'],
-            'lunas_pembayaran' => $file['lunas_pembayaran'],
-            'khs' => $file['khs'],
+            // 'berkas_ta1' => $file['berkas_ta1'],
+            // 'tagihan_uang' => $file['tagihan_uang'],
+            // 'lunas_pembayaran' => $file['lunas_pembayaran'],
+            // 'khs' => $file['khs'],
             'alt1_p1' => request('alt1_p1'),
             'alt1_p2' => request('alt1_p2'),
             'alt2_p1' => request('alt2_p1'),

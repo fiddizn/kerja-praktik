@@ -15,4 +15,9 @@ class Pembimbing1 extends Model
     {
         return $this->belongsTo(Dosen::class);
     }
+
+    public function user()
+    {
+        return $this->belongsToThrough(User::class, Dosen::class);
+    }
 }

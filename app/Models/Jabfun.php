@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pembimbing2 extends Model
+class Jabfun extends Model
 {
     use HasFactory;
 
@@ -13,11 +14,6 @@ class Pembimbing2 extends Model
 
     public function dosen()
     {
-        return $this->belongsTo(Dosen::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsToThrough(User::class, Dosen::class);
+        return $this->hasOne(Dosen::class);
     }
 }

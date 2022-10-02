@@ -48,6 +48,26 @@ class User extends Authenticatable
         return $this->hasOne(Dosen::class);
     }
 
+    public function pembimbing1()
+    {
+        return $this->hasOneThrough(Pembimbing1::class, Dosen::class);
+    }
+
+    public function pembimbing2()
+    {
+        return $this->hasOneThrough(Pembimbing2::class, Dosen::class);
+    }
+
+    public function reviewer1()
+    {
+        return $this->hasOneThrough(Reviewer1::class, Dosen::class);
+    }
+
+    public function reviewer2()
+    {
+        return $this->hasOneThrough(Reviewer2::class, Dosen::class);
+    }
+
     public function mahasiswa()
     {
         return $this->hasOne(Mahasiswa::class);
@@ -57,4 +77,13 @@ class User extends Authenticatable
     {
         return $this->hasOneThrough(Pendaftaran::class, Mahasiswa::class);
     }
+
+    // class Country
+    // {
+    //     public function employees()
+    //     {
+    //         return $this->hasManyDeep(Employees::class, [City::class, Shop::class]);
+    //     }
+    // }
+
 }

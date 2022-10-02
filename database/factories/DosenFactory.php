@@ -19,7 +19,8 @@ class DosenFactory extends Factory
         return [
             'user_id' => fake()->numberBetween(1, 5),
             'nip' => fake()->numberBetween(412100000, 412199999),
-            'name' => fake()->name()
+            'name' => fake()->name(),
+            'jabfun_id' => fake()->numberBetween(1, 5)
         ];
     }
 }

@@ -7,7 +7,8 @@
     @if ($seminar == '')
     <form class="row g-3" action="/mahasiswa/pendaftaran-ta-1" method="POST" enctype="multipart/form-data">
         @else
-        <form class="row g-3" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST">
+        <form class="row g-3" name="formPendaftaran" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST"
+            onsubmit="return validateForm()">
             @endif
             @csrf
             <div class="col-md-6">
@@ -38,11 +39,12 @@
             </div>
             <div class="col-md-6">
                 <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir">
+                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"
+                    placeholder="Tempat Lahir">
             </div>
             <div class="col-md-6">
                 <label for="angkatan" class="form-label">Angkatan</label>
-                <input type="number" class="form-control" name="angkatan" id="angkatan">
+                <input type="number" class="form-control" name="angkatan" id="angkatan" placeholder="Angkatan">
             </div>
             <div class="col-md-6">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
@@ -52,12 +54,13 @@
                 <div class="input-group">
                     <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
                     <div class="input-group-text">+62</div>
-                    <input type="text" class="form-control" id="phone_number" name="phone_number">
+                    <input type="text" class="form-control" id="phone_number" name="phone_number"
+                        placeholder="81234567890">
                 </div>
             </div>
             <div class="col-md-12">
                 <label for="address" class="form-label">Alamat</label>
-                <input type="text" class="form-control" name="address" id="address">
+                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat">
             </div>
 
 
@@ -71,7 +74,7 @@
             <div class="col-md-3">
                 <label for="algo" class="form-label">Algoritma</label>
                 <select type="text" class="form-select" name="algo" id="algo">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>A</option>
                     <option>AB</option>
                     <option>B</option>
@@ -85,7 +88,7 @@
             <div class="col-md-3">
                 <label for="strukdat" class="form-label">Struktur Data</label>
                 <select type="text" class="form-select" name="strukdat" id="strukdat">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>A</option>
                     <option>AB</option>
                     <option>B</option>
@@ -99,7 +102,7 @@
             <div class="col-md-3">
                 <label for="basdat" class="form-label">Basis Data</label>
                 <select type="text" class="form-select" name="basdat" id="basdat">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>A</option>
                     <option>AB</option>
                     <option>B</option>
@@ -113,7 +116,7 @@
             <div class="col-md-3">
                 <label for="rpl" class="form-label">Rekayasa Perangkat Lunak</label>
                 <select type="text" class="form-select" name="rpl" id="rpl">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>A</option>
                     <option>AB</option>
                     <option>B</option>
@@ -127,7 +130,7 @@
             <div class="col-md-3">
                 <label for="metpen" class="form-label">Metode Penelitian</label>
                 <select type="text" class="form-select" name="metpen" id="metpen">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>A</option>
                     <option>AB</option>
                     <option>B</option>
@@ -144,7 +147,7 @@
             <div class="col-md-3">
                 <label for="pemweb" class="form-label">Pemrograman Web</label>
                 <select type="text" class="form-select" name="pemweb" id="pemweb">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>Sudah Selesai</option>
                     <option>Sedang Diambil</option>
                     <option>Belum Diambil</option>
@@ -153,7 +156,7 @@
             <div class="col-md-3">
                 <label for="prak_pemweb" class="form-label">Prak. Pemrograman Web</label>
                 <select type="text" class="form-select" name="prak_pemweb" id="prak_pemweb">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>Sudah Selesai</option>
                     <option>Sedang Diambil</option>
                     <option>Belum Diambil</option>
@@ -162,7 +165,7 @@
             <div class="col-md-3">
                 <label for="po1" class="form-label">Pemrograman Objek 1</label>
                 <select type="text" class="form-select" name="po1" id="po1">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>Sudah Selesai</option>
                     <option>Sedang Diambil</option>
                     <option>Belum Diambil</option>
@@ -171,7 +174,7 @@
             <div class="col-md-3">
                 <label for="prak_po1" class="form-label">Prak. Pemrograman Objek 1</label>
                 <select type="text" class="form-select" name="prak_po1" id="prak_po1">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>Sudah Selesai</option>
                     <option>Sedang Diambil</option>
                     <option>Belum Diambil</option>
@@ -180,7 +183,7 @@
             <div class="col-md-3">
                 <label for="appl" class="form-label">Analisis & Perancangan PL</label>
                 <select type="text" class="form-select" name="appl" id="appl">
-                    <option disabled selected> </option>
+                    <option disabled selected>Pilih.. </option>
                     <option>Sudah Selesai</option>
                     <option>Sedang Diambil</option>
                     <option>Belum Diambil</option>
@@ -196,23 +199,23 @@
 
             <div class="col-md-3">
                 <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
-                <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d">
+                <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0">
             </div>
             <div class="col-md-3">
                 <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
-                <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d">
+                <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" placeholder="0">
             </div>
             <div class="col-md-3">
                 <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
-                <input type="number" class="form-control" name="jumlah_e" id="jumlah_e">
+                <input type="number" class="form-control" name="jumlah_e" id="jumlah_e" placeholder="0">
             </div>
             <div class="col-md-3">
                 <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
-                <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks">
+                <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks" placeholder="138">
             </div>
             <div class="col-md-3">
                 <label for="ipk" class="form-label">IPK</label>
-                <input type="number" step="0.01" class="form-control" name="ipk" id="ipk">
+                <input type="number" step="0.01" class="form-control" name="ipk" id="ipk" placeholder="3.10">
             </div>
 
             <div class="my-4">
@@ -221,7 +224,7 @@
 
             <div class="col-md-12">
                 <label for="judul_ta1" class="form-label">Judul Proposal</label>
-                <input type="text" class="form-control" name="judul_ta1" id="judul_ta1">
+                <input type="text" class="form-control" name="judul_ta1" id="judul_ta1" placeholder="Judul Penelitian">
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
@@ -256,60 +259,68 @@
                 <h6 style="text-align:center;">Alternatif 1</h6>
                 <label for="alt1_p1" class="form-label">Pembimbing 1</label>
                 <select type="text" class="form-select" name="alt1_p1" id="alt1_p1">
-                    <option disabled selected> </option>
-                    <option>dosen1</option>
-                    <option>dosen2</option>
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p1 as $p1)
+                    <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
+                    @endforeach
                 </select>
                 <label for="alt1_p2" class="form-label mt-2">Pembimbing 2</label>
                 <select type="text" class="form-select" name="alt1_p2" id="alt1_p2">
-                    <option disabled selected> </option>
-                    <option>dosen1</option>
-                    <option>dosen2</option>
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p2 as $p2)
+                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6 p-2">
                 <h6 style="text-align:center;">Alternatif 2</h6>
                 <label for="alt2_p1" class="form-label">Pembimbing 1</label>
                 <select type="text" class="form-select" name="alt2_p1" id="alt2_p1">
-                    <option disabled selected> </option>
-                    <option>dosen1</option>
-                    <option>dosen2</option>
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p1 as $p1)
+                    <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
+                    @endforeach
                 </select>
                 <label for="alt2_p2" class="form-label mt-2">Pembimbing 2</label>
                 <select type="text" class="form-select" name="alt2_p2" id="alt2_p2">
-                    <option disabled selected> </option>
-                    <option>dosen1</option>
-                    <option>dosen2</option>
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p2 as $p2)
+                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6 p-2">
                 <h6 style="text-align:center;">Alternatif 3</h6>
                 <label for="alt3_p1" class="form-label">Pembimbing 1</label>
                 <select type="text" class="form-select" name="alt3_p1" id="alt3_p1">
-                    <option disabled selected> </option>
-                    <option>dosen1</option>
-                    <option>dosen2</option>
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p1 as $p1)
+                    <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
+                    @endforeach
                 </select>
                 <label for="alt3_p2" class="form-label mt-2">Pembimbing 2</label>
                 <select type="text" class="form-select" name="alt3_p2" id="alt3_p2">
-                    <option disabled selected> </option>
-                    <option>dosen1</option>
-                    <option>dosen2</option>
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p2 as $p2)
+                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6 p-2">
                 <h6 style="text-align:center;">Alternatif 4</h6>
                 <label for="alt4_p1" class="form-label">Pembimbing 1</label>
                 <select type="text" class="form-select" name="alt4_p1" id="alt4_p1">
-                    <option disabled selected> </option>
-                    <option>dosen1</option>
-                    <option>dosen2</option>
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p1 as $p1)
+                    <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
+                    @endforeach
                 </select>
                 <label for="alt4_p2" class="form-label mt-2">Pembimbing 2</label>
                 <select type="text" class="form-select" name="alt4_p2" id="alt4_p2">
-                    <option disabled selected> </option>
-                    <option>dosen1</option>
-                    <option>dosen2</option>
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p2 as $p2)
+                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
+                    @endforeach
                 </select>
             </div>
             @endif
@@ -325,5 +336,29 @@
         </form>
     </form>
 </div>
+<p id="demo"></p>
+<script>
+function validateForm() {
+    let alt1_p1 = document.forms["formPendaftaran"]["alt2_p1"].value;
+    let alt2_p1 = document.forms["formPendaftaran"]["alt2_p1"].value;
+    let alt3_p1 = document.forms["formPendaftaran"]["alt3_p1"].value;
+    let alt4_p1 = document.forms["formPendaftaran"]["alt4_p1"].value;
+
+    let alt1_p2 = document.forms["formPendaftaran"]["alt1_p1"].value;
+    let alt2_p2 = document.forms["formPendaftaran"]["alt2_p1"].value;
+    let alt3_p2 = document.forms["formPendaftaran"]["alt3_p1"].value;
+    let alt4_p2 = document.forms["formPendaftaran"]["alt4_p1"].value;
+
+    if (alt1_p1 == alt2_p1 ||
+        alt1_p1 == alt3_p1 ||
+        alt1_p1 == alt4_p1 ||
+        alt2_p1 == alt3_p1 ||
+        alt2_p1 == alt4_p1 ||
+        alt3_p1 == alt4_p1) {
+        alert("Ente kadang-kadang!");
+        return false;
+    }
+}
+</script>
 
 @endsection

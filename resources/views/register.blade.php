@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <input type="number" class="form-control item @error('nim')is-invalid @enderror" name="nim"
-                                id="nim" placeholder="NIM" required value="{{ old('nim') }}">
+                                id="nim" placeholder="NIM" required autofocus value="{{ old('nim') }}">
                             <div id="nim" class="invalid-feedback">Mohon menggunakan NIM yang benar!</div>
                         </div>
                         <div class="form-group">
