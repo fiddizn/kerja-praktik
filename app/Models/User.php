@@ -40,7 +40,12 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(Role::class);
+    }
+
+    public function dosen()
+    {
+        return $this->hasOne(Dosen::class);
     }
 
     public function mahasiswa()

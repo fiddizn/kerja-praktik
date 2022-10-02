@@ -57,24 +57,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadKhs', [ListPendaftaranTA1Controller::class, 'downloadKhs']);
     });
 
-    Route::group(['middleware' => 'role:Pembimbing 1'], function () {
-        Route::get('/pembimbing-1', function () {
-            return 'Hallo Pembimbing 1 emailmu adalah ' . auth()->user()->email;
-        });
-    });
-    Route::group(['middleware' => 'role:Pembimbing 2'], function () {
-        Route::get('/pembimbing-2', function () {
-            return 'Hallo Pembimbing 2 emailmu adalah ' . auth()->user()->email;
-        });
-    });
-    Route::group(['middleware' => 'role:Penguji 1'], function () {
-        Route::get('/penguji-1', function () {
-            return 'Hallo Penguji 1 emailmu adalah ' . auth()->user()->email;
-        });
-    });
-    Route::group(['middleware' => 'role:Penguji 2'], function () {
-        Route::get('/penguji-2', function () {
-            return 'Hallo Penguji 2 emailmu adalah ' . auth()->user()->email;
+    Route::group(['middleware' => 'role:Dosen'], function () {
+        Route::get('/dosen', function () {
+            return isset(auth()->user()->dosen->reviewer2) ? 'haha' : 'hoho';
         });
     });
     Route::group(['middleware' => 'role:Admin'], function () {

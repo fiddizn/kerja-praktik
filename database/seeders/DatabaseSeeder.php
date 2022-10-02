@@ -6,8 +6,13 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Dosen;
 use App\Models\Mahasiswa;
+use App\Models\Reviewer1;
+use App\Models\Reviewer2;
 use App\Models\Koordinator;
+use App\Models\Pembimbing1;
+use App\Models\Pembimbing2;
 use App\Models\Pendaftaran;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -21,10 +26,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Mahasiswa::factory(10)->create();
+        Mahasiswa::factory(5)->create();
         Koordinator::factory(1)->create();
         Pendaftaran::factory(5)->create();
         User::factory(10)->create();
+        Dosen::factory(4)->create();
 
         Role::create([
             'name' => 'Mahasiswa',
@@ -35,20 +41,8 @@ class DatabaseSeeder extends Seeder
             'redirect_to' => '/koordinator',
         ]);
         Role::create([
-            'name' => 'Pembimbing 1',
-            'redirect_to' => '/pembimbing1-1',
-        ]);
-        Role::create([
-            'name' => 'Pembimbing 2',
-            'redirect_to' => '/pembimbing1-2',
-        ]);
-        Role::create([
-            'name' => 'Penguji 1',
-            'redirect_to' => '/reviewer-1',
-        ]);
-        Role::create([
-            'name' => 'Penguji 2',
-            'redirect_to' => '/reviewer-2',
+            'name' => 'Dosen',
+            'redirect_to' => '/dosen',
         ]);
         Role::create([
             'name' => 'Admin',
