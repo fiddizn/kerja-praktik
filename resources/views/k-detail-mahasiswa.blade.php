@@ -284,8 +284,8 @@
                     </form>
                 </div>
                 <a class="btn btn-warning"
-                    href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $pendaftaran->id }}/lolos-bersyarat"
-                    role="button" style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
+                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
                 <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
@@ -293,8 +293,7 @@
                     <button type="submit" class="btn btn-danger mx-2"
                         style="width: 10rem; height: 3rem;">Pending</button>
                 </form>
-                <a class="btn btn-dark"
-                    href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $pendaftaran->id }}/tidak-lolos"
+                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
         </div>

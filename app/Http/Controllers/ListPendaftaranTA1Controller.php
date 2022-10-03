@@ -17,7 +17,8 @@ class ListPendaftaranTA1Controller extends Controller
      */
     public function index()
     {
-        $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))->paginate(7)->withQueryString();
+        $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))
+            ->orderBy(Mahasiswa::select('name')->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'))->paginate(7)->withQueryString();
         return view(
             'k-list-pendaftaran-ta-1',
             [
@@ -26,6 +27,27 @@ class ListPendaftaranTA1Controller extends Controller
                 'list_pendaftaran' => $list_pendaftaran
             ]
         );
+    }
+
+    public function keterangan($id, $kelolosan)
+    {
+        $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
+        // dd($pendaftaran);
+        return view('k-catatan', [
+            'title' => 'Pendaftaran TA 1',
+            'role' => 'Koordinator',
+            'status_kelolosan' => $kelolosan,
+            'pendaftaran' => $pendaftaran
+        ]);
+    }
+
+    public function edit_keterangan_kelolosan($id)
+    {
+        Pendaftaran::where('id', $id)->update([
+            'status' => request('status'),
+            'keterangan_status' => request('keterangan_status')
+        ]);
+        return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Pendaftaran telah diperbarui!');
     }
 
     /**

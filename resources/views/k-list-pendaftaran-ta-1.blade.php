@@ -44,11 +44,36 @@
             <table class="table table-hover table-sm mt-3">
                 <thead>
                     <tr>
-                        <th scope="col">NO</th>
-                        <th scope="col">NIM</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Peminatan</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">NO
+                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                            </span>
+                        </th>
+                        <th scope="col">NIM
+                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                            </span>
+                        </th>
+                        <th scope="col">Nama
+                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                            </span>
+                        </th>
+                        <th scope="col">Peminatan
+                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                            </span>
+                        </th>
+                        <th scope="col">Status
+                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                            </span>
+                        </th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>

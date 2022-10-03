@@ -56,6 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadLunasPembayaran', [ListPendaftaranTA1Controller::class, 'downloadLunasPembayaran']);
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadBerkasTa1', [ListPendaftaranTA1Controller::class, 'downloadBerkasTa1']);
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadKhs', [ListPendaftaranTA1Controller::class, 'downloadKhs']);
+        Route::get('/koordinator/list-pendaftaran-ta-1/{id}/{kelolosan}', [ListPendaftaranTA1Controller::class, 'keterangan']);
+        Route::post('/koordinator/list-pendaftaran-ta-1/{id}', [ListPendaftaranTA1Controller::class, 'edit_keterangan_kelolosan']);
     });
 
     Route::group(['middleware' => 'role:Dosen'], function () {

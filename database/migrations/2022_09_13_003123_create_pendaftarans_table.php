@@ -63,6 +63,7 @@ return new class extends Migration
 
             // status pendaftaran
             $table->string('status')->nullable();
+            $table->string('keterangan_status')->nullable();
         });
     }
 
