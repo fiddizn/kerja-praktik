@@ -12,8 +12,10 @@
             <h3 class="card-title" style="text-align: center;">Pending</h3>
             @elseif ($status == 'Lolos Bersyarat')
             <h3 class="card-title" style="text-align: center;">Lolos Bersyarat</h3>
+            <p style="text-align:center ;">Perhatikan syaratnya!</p>
             @elseif ($status == 'Tidak Lolos')
             <h3 class="card-title" style="text-align: center;">Tidak Lolos</h3>
+            <p style="text-align:center ;">{{ auth()->user()->pendaftaran->keterangan_status }}</p>
             @else
             <h3 class="card-title" style="text-align: center;">Seleksi Administrasi</h3>
             @endif
@@ -24,5 +26,8 @@
 </div>
 <div class="d-flex justify-content-center mt-5">
     <a href="/mahasiswa" class="btn" style="background-color:#ff8c1a;">Kembali</a>
+    @if ($status == 'Lolos Bersyarat')
+    <a href="#" class="btn mx-2" style="background-color:#ff8c1a;">Syarat</a>
+    @endif
 </div>
 @endsection

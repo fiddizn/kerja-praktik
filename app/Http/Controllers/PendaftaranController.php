@@ -75,10 +75,10 @@ class PendaftaranController extends Controller
             'po1' => request('po1'),
             'prak_po1' => request('prak_po1'),
             'appl' => request('appl'),
-            // 'berkas_ta1' => $file['berkas_ta1'],
-            // 'tagihan_uang' => $file['tagihan_uang'],
-            // 'lunas_pembayaran' => $file['lunas_pembayaran'],
-            // 'khs' => $file['khs'],
+            'berkas_ta1' => $file['berkas_ta1'],
+            'tagihan_uang' => $file['tagihan_uang'],
+            'lunas_pembayaran' => $file['lunas_pembayaran'],
+            'khs' => $file['khs'],
             'alt1_p1' => request('alt1_p1'),
             'alt1_p2' => request('alt1_p2'),
             'alt2_p1' => request('alt2_p1'),
@@ -99,6 +99,7 @@ class PendaftaranController extends Controller
 
     public function status()
     {
+        // dd(auth()->user()->pendaftaran->status == 'Lolos');
         return view('m-status-pendaftaran-ta-1', [
             'title' => 'Status Pendaftaran TA 1',
             'name' => 'Fahmi Yusron Fiddin',
