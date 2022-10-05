@@ -40,16 +40,16 @@ class PendaftaranController extends Controller
 
         if (request()->file('berkas_ta1')) {
             $file['berkas_ta1'] = request()->file('berkas_ta1')->store('berkas_ta1');
-        }
+        } else $file['berkas_ta1'] = null;
         if (request()->file('tagihan_uang')) {
             $file['tagihan_uang'] = request()->file('tagihan_uang')->store('tagihan_uang');
-        }
+        } else $file['tagihan_uang'] = null;
         if (request()->file('lunas_pembayaran')) {
             $file['lunas_pembayaran'] = request()->file('lunas_pembayaran')->store('lunas_pembayaran');
-        }
+        } else $file['lunas_pembayaran'] = null;
         if (request()->file('khs')) {
             $file['khs'] = request()->file('khs')->store('khs');
-        }
+        } else $file['khs'] = null;
 
         Pendaftaran::create([
             'mahasiswa_id' => auth()->user()->mahasiswa->id,
