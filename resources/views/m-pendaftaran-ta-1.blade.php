@@ -5,9 +5,10 @@
 
 <div class="row align-items-start mt-3">
     @if ($seminar == '')
-    <form class="row g-3" action="/mahasiswa/pendaftaran-ta-1" method="POST" enctype="multipart/form-data">
+    <form class="row g-3" naame="formPendaftaran" action="/mahasiswa/pendaftaran-ta-1" method="POST"
+        enctype="multipart/form-data">
         @else
-        <form class="row g-3" name="formPendaftaran" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST"
+        <form class="row g-3" name="formPendaftaranSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST"
             onsubmit="return validateForm()">
             @endif
             @csrf
