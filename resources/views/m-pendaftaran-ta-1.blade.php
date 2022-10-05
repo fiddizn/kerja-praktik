@@ -1,15 +1,19 @@
 @extends('layouts/main')
 @section('container')
-
+@if (session()->has('ajuanPembimbingNotValid'))
+<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    {{ session('ajuanPembimbingNotValid') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <h2 style="text-align:center;">Pendaftaran{{$seminar}}Tugas Akhir 1</h2>
 
 <div class="row align-items-start mt-3">
     @if ($seminar == '')
-    <form class="row g-3" naame="formPendaftaran" action="/mahasiswa/pendaftaran-ta-1" method="POST"
+    <form class="row g-3" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-1" method="POST"
         enctype="multipart/form-data">
         @else
-        <form class="row g-3" name="formPendaftaranSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST"
-            onsubmit="return validateForm()">
+        <form class="row g-3" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST">
             @endif
             @csrf
             <div class="col-md-6">
@@ -19,7 +23,7 @@
             </div>
             <div class="col-md-6">
                 <label for="gender" class="form-label">Jenis Kelamin</label>
-                <select type="text" class="form-select" name="gender" id="gender">
+                <select type="text" class="form-select" name="gender" id="gender" required>
                     <option disabled selected>Pilih...</option>
                     <option>Laki-laki</option>
                     <option>Perempuan</option>
@@ -32,7 +36,7 @@
             </div>
             <div class="col-md-6">
                 <label for="peminatan" class="form-label">Peminatan</label>
-                <select type="text" class="form-select" name="peminatan" id="peminatan">
+                <select type="text" class="form-select" name="peminatan" id="peminatan" required>
                     <option disabled selected>Pilih...</option>
                     <option>AIG</option>
                     <option>DSE</option>
@@ -40,28 +44,28 @@
             </div>
             <div class="col-md-6">
                 <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"
-                    placeholder="Tempat Lahir">
+                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir"
+                    required>
             </div>
             <div class="col-md-6">
                 <label for="angkatan" class="form-label">Angkatan</label>
-                <input type="number" class="form-control" name="angkatan" id="angkatan" placeholder="Angkatan">
+                <input type="number" class="form-control" name="angkatan" id="angkatan" placeholder="Angkatan" required>
             </div>
             <div class="col-md-6">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir">
+                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
             </div>
             <div class="col-md-6 ">
                 <div class="input-group">
                     <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
                     <div class="input-group-text">+62</div>
                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890">
+                        placeholder="81234567890" required>
                 </div>
             </div>
             <div class="col-md-12">
                 <label for="address" class="form-label">Alamat</label>
-                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat">
+                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat" required>
             </div>
 
 
@@ -200,23 +204,25 @@
 
             <div class="col-md-3">
                 <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
-                <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0">
+                <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0"
+                    required>
             </div>
             <div class="col-md-3">
                 <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
-                <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" placeholder="0">
+                <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" placeholder="0"
+                    required>
             </div>
             <div class="col-md-3">
                 <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
-                <input type="number" class="form-control" name="jumlah_e" id="jumlah_e" placeholder="0">
+                <input type="number" class="form-control" name="jumlah_e" id="jumlah_e" placeholder="0" required>
             </div>
             <div class="col-md-3">
                 <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
-                <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks" placeholder="138">
+                <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks" placeholder="138" required>
             </div>
             <div class="col-md-3">
                 <label for="ipk" class="form-label">IPK</label>
-                <input type="number" step="0.01" class="form-control" name="ipk" id="ipk" placeholder="3.10">
+                <input type="number" step="0.01" class="form-control" name="ipk" id="ipk" placeholder="3.10" required>
             </div>
 
             <div class="my-4">
@@ -225,7 +231,8 @@
 
             <div class="col-md-12">
                 <label for="judul_ta1" class="form-label">Judul Proposal</label>
-                <input type="text" class="form-control" name="judul_ta1" id="judul_ta1" placeholder="Judul Penelitian">
+                <input type="text" class="form-control error" name="judul_ta1" id="judul_ta1"
+                    placeholder="Judul Penelitian">
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
@@ -236,19 +243,19 @@
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="tagihan_uang" class="form-label">Tagihan Uang Kuliah</label>
-                    <input class="form-control" type="file" id="tagihan_uang" name="tagihan_uang">
+                    <input class="form-control" type="file" id="tagihan_uang" name="tagihan_uang" required>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="lunas_pembayaran" class="form-label">Bukti Lunas Pembayaran</label>
-                    <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran">
+                    <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran" required>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="khs" class="form-label">Kartu Hasil Studi</label>
-                    <input class="form-control" type="file" id="khs" name="khs">
+                    <input class="form-control" type="file" id="khs" name="khs" required>
                 </div>
             </div>
 
@@ -257,66 +264,60 @@
             </div>
             @if ($seminar == '')
             <div class="col-md-6 p-2">
-                <h6 style="text-align:center;">Alternatif 1</h6>
-                <label for="alt1_p1" class="form-label">Pembimbing 1</label>
+                <h6 style="text-align:center;">Pembimbing 1</h6>
+                <label for="alt1_p1" class="form-label error">Alternatif 1</label>
                 <select type="text" class="form-select" name="alt1_p1" id="alt1_p1">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($list_p1 as $p1)
                     <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
                     @endforeach
                 </select>
-                <label for="alt1_p2" class="form-label mt-2">Pembimbing 2</label>
-                <select type="text" class="form-select" name="alt1_p2" id="alt1_p2">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($list_p2 as $p2)
-                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-6 p-2">
-                <h6 style="text-align:center;">Alternatif 2</h6>
-                <label for="alt2_p1" class="form-label">Pembimbing 1</label>
+                <label for="alt2_p1" class="form-label mt-2">Alternatif 2</label>
                 <select type="text" class="form-select" name="alt2_p1" id="alt2_p1">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($list_p1 as $p1)
                     <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
                     @endforeach
                 </select>
-                <label for="alt2_p2" class="form-label mt-2">Pembimbing 2</label>
-                <select type="text" class="form-select" name="alt2_p2" id="alt2_p2">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($list_p2 as $p2)
-                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-6 p-2">
-                <h6 style="text-align:center;">Alternatif 3</h6>
-                <label for="alt3_p1" class="form-label">Pembimbing 1</label>
+                <label for="alt3_p1" class="form-label mt-2 ">Alternatif 3</label>
                 <select type="text" class="form-select" name="alt3_p1" id="alt3_p1">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($list_p1 as $p1)
                     <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
                     @endforeach
                 </select>
-                <label for="alt3_p2" class="form-label mt-2">Pembimbing 2</label>
-                <select type="text" class="form-select" name="alt3_p2" id="alt3_p2">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($list_p2 as $p2)
-                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-6 p-2">
-                <h6 style="text-align:center;">Alternatif 4</h6>
-                <label for="alt4_p1" class="form-label">Pembimbing 1</label>
+                <label for="alt4_p1" class="form-label mt-2">Alternatif 4</label>
                 <select type="text" class="form-select" name="alt4_p1" id="alt4_p1">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($list_p1 as $p1)
                     <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
                     @endforeach
                 </select>
-                <label for="alt4_p2" class="form-label mt-2">Pembimbing 2</label>
+            </div>
+            <div class="col-md-6 p-2">
+                <h6 style="text-align:center;">Pembimbing 2</h6>
+                <label for="alt1_p2" class="form-label">Alternatif 1</label>
+                <select type="text" class="form-select" name="alt1_p2" id="alt1_p2">
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p2 as $p2)
+                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
+                    @endforeach
+                </select>
+                <label for="alt2_p2" class="form-label mt-2">Alternatif 2</label>
+                <select type="text" class="form-select" name="alt2_p2" id="alt2_p2">
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p2 as $p2)
+                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
+                    @endforeach
+                </select>
+                <label for="alt3_p2" class="form-label mt-2">Alternatif 3</label>
+                <select type="text" class="form-select" name="alt3_p2" id="alt3_p2">
+                    <option disabled selected>Pilih.. </option>
+                    @foreach ($list_p2 as $p2)
+                    <option>{{ $p2->name }} ({{ $p2->jabfun->name }})</option>
+                    @endforeach
+                </select>
+                <label for="alt4_p2" class="form-label mt-2">Alternatif 4</label>
                 <select type="text" class="form-select" name="alt4_p2" id="alt4_p2">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($list_p2 as $p2)
@@ -336,30 +337,7 @@
             </div>
         </form>
     </form>
+    <script type="text/javascript" src="/js/validasiPembimbing.js"></script>
+    <script type="text/javascript" src="/js/validasiJabfun.js"></script>
 </div>
-<p id="demo"></p>
-<script>
-function validateForm() {
-    let alt1_p1 = document.forms["formPendaftaran"]["alt2_p1"].value;
-    let alt2_p1 = document.forms["formPendaftaran"]["alt2_p1"].value;
-    let alt3_p1 = document.forms["formPendaftaran"]["alt3_p1"].value;
-    let alt4_p1 = document.forms["formPendaftaran"]["alt4_p1"].value;
-
-    let alt1_p2 = document.forms["formPendaftaran"]["alt1_p1"].value;
-    let alt2_p2 = document.forms["formPendaftaran"]["alt2_p1"].value;
-    let alt3_p2 = document.forms["formPendaftaran"]["alt3_p1"].value;
-    let alt4_p2 = document.forms["formPendaftaran"]["alt4_p1"].value;
-
-    if (alt1_p1 == alt2_p1 ||
-        alt1_p1 == alt3_p1 ||
-        alt1_p1 == alt4_p1 ||
-        alt2_p1 == alt3_p1 ||
-        alt2_p1 == alt4_p1 ||
-        alt3_p1 == alt4_p1) {
-        alert("Ente kadang-kadang!");
-        return false;
-    }
-}
-</script>
-
 @endsection

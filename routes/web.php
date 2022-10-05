@@ -32,6 +32,10 @@ use App\Models\Pembimbing1;
 |
 */
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::group(['middleware' => 'auth'], function () {
 
     // Sesi Mahasiswa

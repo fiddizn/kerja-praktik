@@ -27,7 +27,7 @@
             <input type="hidden" id="status" name="status" value="Tidak Lolos">
             @else
             <label for="keterangan_status">Mahasiswa di atas dinyatakan <b>lolos seleksi</b> administrasi dengan
-                <b>syarat</b>sebagai berikut:</label>
+                <b>syarat </b>sebagai berikut:</label>
             <input id="keterangan_status" type="hidden" name="keterangan_status">
             <trix-editor input="keterangan_status"></trix-editor>
             <input type="hidden" id="status" name="status" value="Lolos Bersyarat">

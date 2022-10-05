@@ -32,7 +32,6 @@ class ListPendaftaranTA1Controller extends Controller
     public function keterangan($id, $kelolosan)
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
-        // dd($pendaftaran);
         return view('k-catatan', [
             'title' => 'Pendaftaran TA 1',
             'role' => 'Koordinator',
@@ -134,7 +133,7 @@ class ListPendaftaranTA1Controller extends Controller
      */
     public function update($id)
     {
-        $pendaftaran = Pendaftaran::where('id', $id)->get()[0];
+        $pendaftaran = Pendaftaran::with('mahasiswa')->where('id', $id)->get()[0];
         if (request('status') != $pendaftaran->status) {
             Pendaftaran::where('id', $id)->update(['status' => request('status')]);
         } else {
@@ -175,6 +174,12 @@ class ListPendaftaranTA1Controller extends Controller
                 'alt4_p1' => request('alt4_p1'),
                 'alt4_p2' => request('alt4_p2'),
                 'status' => request('status'),
+            ]);
+
+            $mahasiswa_id =  Pendaftaran::where('id', $id)->get()[0]->mahasiswa_id;
+            Mahasiswa::where('id', $mahasiswa_id)->update([
+                'name' => request('name'),
+                'nim' => request('nim')
             ]);
         }
         return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Pendaftaran telah diperbarui!');

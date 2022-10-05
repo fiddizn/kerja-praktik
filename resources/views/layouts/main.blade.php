@@ -12,6 +12,10 @@
     <link rel="shortcut icon" href="https://ifwdc2018k4.files.wordpress.com/2018/09/cropped-logo-ifa12.png"
         type="image">
 
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
     <!-- installation of Font Awesome via CDN -->
     <script src="https://kit.fontawesome.com/02ffe47e92.js" crossorigin="anonymous"></script>
 
@@ -23,6 +27,7 @@
         display: none;
     }
     </style>
+
     <title>{{ $title }} | Sistem Informasi TA 1</title>
 </head>
 
