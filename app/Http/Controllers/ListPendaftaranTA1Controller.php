@@ -80,7 +80,8 @@ class ListPendaftaranTA1Controller extends Controller
             'title' => 'Pendaftaran TA 1',
             'name' => 'Galang Setia Nugroho',
             'role' => 'Koordinator',
-            'pendaftaran' => $pendaftaran
+            'pendaftaran' => $pendaftaran,
+            'status' => $pendaftaran->status
         ]);
     }
     public function downloadTagihanUang($id)

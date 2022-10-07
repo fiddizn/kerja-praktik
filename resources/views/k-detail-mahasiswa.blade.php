@@ -278,23 +278,39 @@
                     <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
+
+                        @if ($status != "Lolos")
                         <input type="hidden" id="status" name="status" value="Lolos">
                         <button type="submit" class="btn btn-success mx-2"
                             style="width: 10rem; height: 3rem;">Lolos</button>
+                        @endif
+
                     </form>
                 </div>
+
+                @if ($status != "Lolos Bersyarat")
                 <a class="btn btn-warning"
                     href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
                     style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                @endif
+
                 <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
+
+                    @if ($status != "Pending")
                     <input type="hidden" id="status" name="status" value="Pending">
                     <button type="submit" class="btn btn-danger mx-2"
                         style="width: 10rem; height: 3rem;">Pending</button>
+                    @endif
+
                 </form>
+
+                @if ($status != "Tidak Lolos")
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
+                @endif
+
             </div>
         </div>
     </div>

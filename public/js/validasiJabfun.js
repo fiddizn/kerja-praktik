@@ -55,7 +55,9 @@ function checkRole (str){
     console.log(str == 'Lektor');
     console.log(str == 'Asisten Ahli');
     console.log(str == 'Non Jabfun');
-    if(str == 'Lektor Kepala'){
+    if (str == 'Guru Besar'){
+        return 5;
+    }else if(str == 'Lektor Kepala'){
         return 4;
     }else if (str == 'Lektor'){
         return 3;
