@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Pembimbing1;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -16,10 +17,11 @@ use App\Http\Controllers\Penilaian_seminarController;
 use App\Http\Controllers\ListPendaftaranTA1Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
+use App\Http\Controllers\PlottingDosenReviewerController;
 use App\Http\Controllers\Plotting_dosen_pengujiController;
 use App\Http\Controllers\Plotting_dosen_reviewerController;
+use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
-use App\Models\Pembimbing1;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +33,21 @@ use App\Models\Pembimbing1;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Register
 
-Route::get('/test', function () {
-    return view('test');
-});
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+// Login
+
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/', [LoginController::class, 'store']);
+
+// Logout
+
+Route::post('/logout', [LoginController::class, 'logout']);
+
+// Sesi Login
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -55,6 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'role:Koordinator'], function () {
         Route::get('/koordinator', [KoordinatorController::class, 'index']);
 
+        // Pendaftaran Administrasi TA 1
         Route::resource('/koordinator/list-pendaftaran-ta-1', ListPendaftaranTA1Controller::class);
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadTagihanUang', [ListPendaftaranTA1Controller::class, 'downloadTagihanUang']);
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadLunasPembayaran', [ListPendaftaranTA1Controller::class, 'downloadLunasPembayaran']);
@@ -62,6 +76,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadKhs', [ListPendaftaranTA1Controller::class, 'downloadKhs']);
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/{kelolosan}', [ListPendaftaranTA1Controller::class, 'keterangan']);
         Route::post('/koordinator/list-pendaftaran-ta-1/{id}', [ListPendaftaranTA1Controller::class, 'edit_keterangan_kelolosan']);
+
+        // Plotting Dosen Pembimbing, Reviewer, Penguji
+        Route::resource('/koordinator/plotting-dosen-pembimbing', PlottingDosenPembimbingController::class);
+        Route::resource('/koordinator/plotting-dosen-reviewer', PlottingDosenReviewerController::class);
     });
 
     Route::group(['middleware' => 'role:Dosen'], function () {
@@ -81,18 +99,34 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
+
+// Test
+Route::get('/test', function () {
+    return view('test');
+});
 // Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
-// Register
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
 
-// Login
 
-Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/', [LoginController::class, 'store']);
 
-Route::post('/logout', [LoginController::class, 'logout']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // Mahasiswa
 

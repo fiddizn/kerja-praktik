@@ -51,12 +51,14 @@
                 <tbody>
                     <tr>
                         <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
-                        <td>{{ $mahasiswa->nim }}</td>
-                        <td>{{ $mahasiswa->name }}</td>
+                        <td>{{ $mahasiswa->mahasiswa->nim }}</td>
+                        <td>{{ $mahasiswa->mahasiswa->name }}</td>
                         <td>{{ $mahasiswa->peminatan }}</td>
-                        <td>
-
-                        </td>
+                        @if ($mahasiswa->mahasiswa->r1 != null)
+                        <td>{{ $mahasiswa->mahasiswa->r1->dosen->name }}</td>
+                        @else
+                        <td></td>
+                        @endif
                         <td>
                             <a class="btn" href="/koordinator/plotting-dosen-reviewer/{{ $mahasiswa->id }}"
                                 role="button" style="background-color:#ff8c1a;">Detail</a>

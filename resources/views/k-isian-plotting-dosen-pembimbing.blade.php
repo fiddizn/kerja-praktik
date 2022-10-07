@@ -7,11 +7,13 @@
     <div class="row g-3">
         <div class="col-md-6">
             <label for="nim" class="form-label">NIM</label>
-            <input type="number" class="form-control" name="nim" id="nim" readonly value="{{ $mahasiswa->nim }}">
+            <input type="number" class="form-control" name="nim" id="nim" readonly
+                value="{{ $pendaftaran->mahasiswa->nim }}" disabled>
         </div>
         <div class="col-md-6">
             <label for="name" class="form-label">Nama Lengkap</label>
-            <input type="text" class="form-control" name="name" id="name" readonly value="{{ $mahasiswa->name }}">
+            <input type="text" class="form-control" name="name" id="name" readonly
+                value="{{ $pendaftaran->mahasiswa->name }}" disabled>
         </div>
     </div>
 </div>
@@ -20,49 +22,38 @@
         @if ($plotting_dosen == 'Pembimbing')
         <div class="row my-4">
             <div class="col-md-6">
-                <h5>Alternatif 1</h5>
-                <label for="p1_alt1" class="col-sm-6 col-form-label">Pembimbing 1</label>
+                <h5>Pembimbing 1</h5>
+                <label for="p1_alt1" class="col-sm-6 col-form-label">Alternatif 1</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" id="p1_alt1" value="{{ $mahasiswa->alt1_p1 }}">
+                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt1_p1 }}" disabled>
                 </div>
-                <label for="p2_alt1" class="col-sm-6 col-form-label">Pembimbing 2</label>
+                <label class="col-sm-6 col-form-label">Alternatif 2</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" id="p2_alt1" value="{{ $mahasiswa->alt1_p2 }}">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h5>Alternatif 2</h5>
-                <label for="p1_alt2" class="col-sm-6 col-form-label">Pembimbing 1</label>
+                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt2_p1 }}" disabled>
+                </div><label class="col-sm-6 col-form-label">Alternatif 3</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" id="p1_alt2" value="{{ $mahasiswa->alt2_p1 }}">
-                </div>
-                <label for="p2_alt2" class="col-sm-6 col-form-label">Pembimbing 2</label>
+                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt3_p1 }}" disabled>
+                </div><label class="col-sm-6 col-form-label">Alternatif 4</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" id="p2_alt2" value="{{ $mahasiswa->alt2_p2 }}">
-                </div>
-            </div>
-        </div>
-        <div class="row my-4">
-            <div class="col-md-6">
-                <h5>Alternatif 3</h5>
-                <label for="p1_alt3" class="col-sm-6 col-form-label">Pembimbing 1</label>
-                <div class="col">
-                    <input type="text" readonly class="form-control" id="p1_alt3" value="{{ $mahasiswa->alt3_p1 }}">
-                </div>
-                <label for="p2_alt3" class="col-sm-6 col-form-label">Pembimbing 2</label>
-                <div class="col">
-                    <input type="text" readonly class="form-control" id="p2_alt3" value="{{ $mahasiswa->alt3_p2 }}">
+                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt4_p1 }}" disabled>
                 </div>
             </div>
             <div class="col-md-6">
-                <h5>Alternatif 4</h5>
-                <label for="p1_alt4" class="col-sm-6 col-form-label">Pembimbing 1</label>
+                <h5>Pembimbing 2</h5>
+                <label class="col-sm-6 col-form-label">Alternatif 1</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" id="p1_alt4" value="{{ $mahasiswa->alt4_p1 }}">
+                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt1_p2 }}" disabled>
                 </div>
-                <label for="p2_alt4" class="col-sm-6 col-form-label">Pembimbing 2</label>
+                <label class="col-sm-6 col-form-label">Alternatif 2</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" id="p2_alt4" value="{{ $mahasiswa->alt4_p2 }}">
+                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt2_p2 }}" disabled>
+                </div>
+                <label class="col-sm-6 col-form-label">Alternatif 3</label>
+                <div class="col">
+                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt3_p2 }}" disabled>
+                </div><label class="col-sm-6 col-form-label">Alternatif 4</label>
+                <div class="col">
+                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt4_p2 }}" disabled>
                 </div>
             </div>
         </div>
@@ -73,8 +64,9 @@
                 <div class="col">
                     <select type="text" class="form-select" name="r1" id="r1">
                         <option selected disabled>Pilih...</option>
-                        <option>Genta Febi</option>
-                        <option>Nurul Widiastuti</option>
+                        @foreach ($list_r1 as $r1)
+                        <option>{{ $r1->dosen->name }} ({{ $r1->dosen->jabfun->name }})</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -83,79 +75,94 @@
         <form action="/koordinator/plotting-dosen-penguji" method="GET" id="plotting">
             <div class="row mt-3 pe-3 ps-2">
                 <label for="r1" class="col col-form-label">Penguji 1</label>
-                <input type="text" class="form-control" name="r1" id="r1" readonly value="{{ $mahasiswa->r1 }}">
+                <input type="text" class="form-control" name="r1" id="r1" readonly value="{{ $pendaftaran->r1 }}">
                 <label for="r2" class="form-label mt-4">Penguji 2</label>
                 <select type="text" class="form-select" name="r2" id="r2">
                     <option selected disabled>Pilih...</option>
-                    <option>Genta Febi</option>
-                    <option>Nurul Widiastuti</option>
+                    @foreach ($list_p2 as $p2)
+                    <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfun->name }})</option>
+                    @endforeach
                 </select>
             </div>
         </form>
         @endif
     </div>
     <div class="col-md-6">
-        <table class="table table-hover mt-3">
+        <table class="table table-hover mt-3" style="min-height: 210px;">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">NO</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Jabatan</th>
-                    <th scope="col">Jumlah</th>
+                    <th scope="col">P1</th>
+                    <th scope="col">P2</th>
                 </tr>
             </thead>
+            @foreach ($list_dosen as $key=> $dosen)
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>SGD</td>
-                    <td>Guru Besar</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>OPR</td>
-                    <td>Lektor Kepala</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>HGT</td>
-                    <td>Lektor</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>YTU</td>
-                    <td>Asisten Ahli</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>PVT</td>
-                    <td>Non-Jabfung</td>
-                    <td>1</td>
+                    <th scope="row">{{$list_dosen->firstItem()+ $key}}</th>
+                    <td>{{ $dosen->name }}</td>
+                    <td>{{ $dosen->jabfun->name }}</td>
+                    @if ($dosen->pembimbing1 != null)
+                    <td>{{ $mahasiswa->where('p1_id',$dosen->pembimbing1->id)->count() }}</td>
+                    @else
+                    <td>-</td>
+                    @endif
+                    <td>{{ $mahasiswa->where('p2_id',$dosen->pembimbing2->id)->count() }}</td>
                 </tr>
             </tbody>
+            @endforeach
         </table>
+        {{ $list_dosen->links() }}
         @if ($plotting_dosen == 'Pembimbing')
-        <form id="plotting" action="/koordinator/plotting-dosen-pembimbing" method="GET">
-            <div class="row>
-                <label for=" p1_alt4" class="col-sm-6 col-form-label">Pembimbing 1</label>
+        <form id="plotting" action="/koordinator/plotting-dosen-pembimbing/{{ $pendaftaran->mahasiswa->id }}"
+            method="post">
+            @method('put')
+            @csrf
+            <div class="row">
+                @if ($pendaftaran->mahasiswa->p1_id == null)
+                <label for="p1" class="col-sm-6 col-form-label">Pembimbing 1</label>
                 <div class="col">
                     <select type="text" class="form-select" name="p1" id="p1">
                         <option selected disabled>Pilih...</option>
-                        <option>Genta Febi</option>
-                        <option>Nurul Widiastuti</option>
+                        @foreach ($list_p1 as $p1)
+                        <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
+                        @endforeach
                     </select>
                 </div>
-                <label for="p2_alt4" class="col-sm-6 col-form-label">Pembimbing 2</label>
+                @else
+                <label for="p1" class="col-sm-6 col-form-label">Pembimbing 1 (Update)</label>
                 <div class="col">
-                    <select type="text" class="form-select" name="p2" id="p2">
+                    <select type="text" class="form-select" name="p1" id="p1">
                         <option selected disabled>Pilih...</option>
-                        <option>Wisnu Olga</option>
-                        <option>Tania Farida</option>
+                        @foreach ($list_p1 as $p1)
+                        <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
+                        @endforeach
                     </select>
                 </div>
+                @endif
+                @if ($pendaftaran->mahasiswa->p2_id == null)
+                <label for="p2" class="col-sm-6 col-form-label mt-2">Pembimbing 2</label>
+                <div class="col">
+                    <select type="text" class="form-select mt-2" name="p2" id="p2">
+                        <option selected disabled>Pilih...</option>
+                        @foreach ($list_p2 as $p2)
+                        <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfun->name }})</option>
+                        @endforeach
+                    </select>
+                </div>
+                @else
+                <label for="p2" class="col-sm-6 col-form-label mt-2">Pembimbing 2 (Update)</label>
+                <div class="col">
+                    <select type="text" class="form-select mt-2" name="p2" id="p2">
+                        <option selected disabled>Pilih...</option>
+                        @foreach ($list_p2 as $p2)
+                        <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfun->name }})</option>
+                        @endforeach
+                    </select>
+                </div>
+                @endif
             </div>
         </form>
         @endif
@@ -172,9 +179,7 @@
     <a class="btn" href="/koordinator/plotting-dosen-penguji" role="button"
         style="width: 5rem;background-color:#ff8c1a;">Back</a>
     @endif
-    <input form="plotting" type="submit" value="Submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">
+    <button form="plotting" type="submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">Sumbit</button>
+</div>
 
-</div>
-<div style=" height: 100px;">
-</div>
 @endsection

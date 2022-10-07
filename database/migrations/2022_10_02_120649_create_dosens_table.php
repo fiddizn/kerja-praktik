@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('dosens', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->bigInteger('nip')->unique();
             $table->string('jabfun_id');
+            $table->bigInteger('nid')->unique();
             $table->string('name');
+            $table->string('kode');
             $table->timestamps();
         });
     }

@@ -30,8 +30,7 @@ class DatabaseSeeder extends Seeder
         Mahasiswa::factory(5)->create();
         Koordinator::factory(1)->create();
         Pendaftaran::factory(5)->create();
-        User::factory(10)->create();
-        Dosen::factory(4)->create();
+        User::factory(50)->create();
 
         Role::create([
             'name' => 'Mahasiswa',

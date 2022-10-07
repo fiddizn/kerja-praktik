@@ -5,7 +5,7 @@
 
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
-        <form action="/koordinator/list-pendaftaran-ta-1">
+        <form action="/koordinator/plotting-dosen-pembimbing">
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
                     value="{{ request('search') }}">
@@ -52,15 +52,19 @@
                 <tbody>
                     <tr>
                         <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
-                        <td>{{ $mahasiswa->nim }}</td>
-                        <td>{{ $mahasiswa->name }}</td>
+                        <td>{{ $mahasiswa->mahasiswa->nim }}</td>
+                        <td>{{ $mahasiswa->mahasiswa->name }}</td>
                         <td>{{ $mahasiswa->peminatan }}</td>
-                        <td>
-
-                        </td>
-                        <td>
-
-                        </td>
+                        @if ($mahasiswa->mahasiswa->p1 != null)
+                        <td>{{ $mahasiswa->mahasiswa->p1->dosen->name }}</td>
+                        @else
+                        <td></td>
+                        @endif
+                        @if ($mahasiswa->mahasiswa->p2 != null)
+                        <td>{{ $mahasiswa->mahasiswa->p2->dosen->name }}</td>
+                        @else
+                        <td></td>
+                        @endif
                         <td>
                             <a class="btn" href="/koordinator/plotting-dosen-pembimbing/{{ $mahasiswa->id }}"
                                 role="button" style="background-color:#ff8c1a;">Detail</a>
