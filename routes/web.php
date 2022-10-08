@@ -61,6 +61,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'store']);
 
         Route::get('/mahasiswa/pendaftaran-ta-1/status', [PendaftaranController::class, 'status']);
+
+        Route::get('/mahasiswa/pendaftaran-ta-1/status/syarat', [PendaftaranController::class, 'showSyarat']);
+
+        Route::get('/mahasiswa/pendaftaran-ta-1/status/alasan-tidak-lolos', [PendaftaranController::class, 'showSyarat']);
     });
 
     // Sesi Koordinator
@@ -84,7 +88,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'role:Dosen'], function () {
         Route::get('/dosen', function () {
-            return 'hay kamu adalah dosen yang jabfungnya adalah ' . auth()->user()->dosen->jabfun->name;
+            return 'hay kamu adalah dosen yang nama dan jabfun adalah ' . auth()->user()->dosen->name . " ( " . auth()->user()->dosen->jabfun->name . " )";
         });
     });
     Route::group(['middleware' => 'role:Admin'], function () {

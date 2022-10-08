@@ -2,7 +2,7 @@
     <div class="container">
         <img src="https://ifwdc2018k4.files.wordpress.com/2018/09/cropped-logo-ifa12.png" alt="informatika.png"
             width="40">
-        <a class="navbar-brand ms-2" href="/">Sistem Informasi TA 1</a>
+        <a class="navbar-brand ms-2" href="/">SITAONE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

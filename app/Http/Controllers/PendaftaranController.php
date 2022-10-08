@@ -99,12 +99,29 @@ class PendaftaranController extends Controller
 
     public function status()
     {
-        // dd(auth()->user()->pendaftaran->status == 'Lolos');
         return view('m-status-pendaftaran-ta-1', [
             'title' => 'Status Pendaftaran TA 1',
             'name' => 'Fahmi Yusron Fiddin',
             'role' => 'Mahasiswa',
             'status' => auth()->user()->pendaftaran->status
+        ]);
+    }
+
+    public function showSyarat()
+    {
+        return view('m-syarat-pendaftaran-ta-1', [
+            'title' => 'Status Pendaftaran TA 1',
+            'role' => 'Mahasiswa',
+            'syarat' => auth()->user()->pendaftaran->keterangan_status
+        ]);
+    }
+
+    public function showAlasan()
+    {
+        return view('m-syarat-pendaftaran-ta-1', [
+            'title' => 'Status Pendaftaran TA 1',
+            'role' => 'Mahasiswa',
+            'alasan' => auth()->user()->pendaftaran->keterangan_status
         ]);
     }
 }
