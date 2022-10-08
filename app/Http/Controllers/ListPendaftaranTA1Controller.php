@@ -20,7 +20,7 @@ class ListPendaftaranTA1Controller extends Controller
         $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))
             ->orderBy(Mahasiswa::select('name')->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'))->paginate(7)->withQueryString();
         return view(
-            'k-list-pendaftaran-ta-1',
+            'koordinator.list-pendaftaran-ta-1',
             [
                 'title' => 'Pendaftaran Administrasi TA 1',
                 'role' => 'Koordinator',
@@ -32,7 +32,7 @@ class ListPendaftaranTA1Controller extends Controller
     public function keterangan($id, $kelolosan)
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
-        return view('k-catatan', [
+        return view('koordinator.catatan', [
             'title' => 'Pendaftaran TA 1',
             'role' => 'Koordinator',
             'status_kelolosan' => $kelolosan,
@@ -76,7 +76,7 @@ class ListPendaftaranTA1Controller extends Controller
     public function show($id)
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
-        return view('k-detail-mahasiswa', [
+        return view('koordinator.detail-mahasiswa', [
             'title' => 'Pendaftaran TA 1',
             'name' => 'Galang Setia Nugroho',
             'role' => 'Koordinator',
@@ -118,7 +118,7 @@ class ListPendaftaranTA1Controller extends Controller
     public function edit($id)
     {
         $pendaftaran = Pendaftaran::find($id);
-        return view('k-edit-detail-mahasiswa', [
+        return view('koordinator.edit-detail-mahasiswa', [
             'pendaftaran' => $pendaftaran,
             'title' => 'Edit Pendaftaran',
             'role' => 'Koordinator'

@@ -19,7 +19,7 @@ class PlottingDosenPembimbingController extends Controller
     {
         $list_mahasiswa = \App\Models\Pendaftaran::with('mahasiswa')->oldest()->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')->filter(request('search'))->paginate(7)->withQueryString();
         return view(
-            'k-plotting-dosen-pembimbing',
+            'koordinator.plotting-dosen-pembimbing',
             [
                 'title' => 'Plotting Dosen Pembimbing',
                 'name' => 'Galang Setia Nugroho',
@@ -61,7 +61,7 @@ class PlottingDosenPembimbingController extends Controller
         $list_dosen = Dosen::with('pembimbing1', 'pembimbing2')->oldest()->paginate(4);
         $mahasiswa = \App\Models\Mahasiswa::all();
         return view(
-            'k-isian-plotting-dosen-pembimbing',
+            'koordinator.isian-plotting-dosen-pembimbing',
             [
                 'title' => 'Pendaftaran TA 1',
                 'name' => 'Galang Setia Nugroho',

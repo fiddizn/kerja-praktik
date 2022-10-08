@@ -8,15 +8,21 @@
             <div class=" card-body my-5">
                 @if ($status == 'Lolos')
                 <h3 class="card-title" style="text-align: center;">Lolos Seleksi Administrasi</h3>
+                @if ($status != 'Lolos' || auth()->user()->mahasiswa->p1 == null ||
+                auth()->user()->mahasiswa->p2 == null)
                 <p style="text-align:center ;">Dosen Pembimbing anda akan segera ditampilkan</p>
+                @endif
                 @elseif ($status == 'Pending')
                 <h3 class="card-title" style="text-align: center;">Pending</h3>
                 <p style="text-align:center ;">Silakan segera hubungi Koordinator TA 1!</p>
                 @elseif ($status == 'Lolos Bersyarat')
                 <h3 class="card-title" style="text-align: center;">Lolos Bersyarat</h3>
+                @if ($status != 'Lolos Bersyarat' || auth()->user()->mahasiswa->p1 == null ||
+                auth()->user()->mahasiswa->p2 == null)
                 <p style="text-align:center ;">Dosen Pembimbing anda akan segera ditampilkan<br><b>Perhatikan
                         syaratnya!</b>
                 </p>
+                @endif
                 @elseif ($status == 'Tidak Lolos')
                 <h3 class="card-title" style="text-align: center;">Tidak Lolos</h3>
                 @else

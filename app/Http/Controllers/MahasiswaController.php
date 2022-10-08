@@ -13,7 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa', [
+        return view('mahasiswa.mahasiswa', [
             'title' => 'Home',
             'role' => 'Mahasiswa'
         ]);

@@ -13,7 +13,7 @@ class KoordinatorController extends Controller
      */
     public function index()
     {
-        return view('koordinator', [
+        return view('koordinator.koordinator', [
             'title' => 'Home',
             'name' => 'Galang Setia Nugroho',
             'role' => 'Koordinator'

@@ -18,7 +18,7 @@ class PlottingDosenReviewerController extends Controller
             $query->where('p1_id', '!=', null)->where('p2_id', '!=', null);
         })->paginate(7);
         return view(
-            'k-plotting-dosen-reviewer',
+            'koordinator.plotting-dosen-reviewer',
             [
                 'title' => 'Plotting Dosen reviewer',
                 'name' => 'Galang Setia Nugroho',
@@ -62,7 +62,7 @@ class PlottingDosenReviewerController extends Controller
         $mahasiswa = \App\Models\Mahasiswa::all();
         $list_reviewer1 = Reviewer1::all();
         return view(
-            'k-isian-plotting-dosen-reviewer',
+            'koordinator.isian-plotting-dosen-reviewer',
             [
                 'title' => 'Pendaftaran TA 1',
                 'name' => 'Galang Setia Nugroho',
