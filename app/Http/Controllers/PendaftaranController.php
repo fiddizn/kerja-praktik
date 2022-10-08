@@ -75,6 +75,7 @@ class PendaftaranController extends Controller
             'po1' => request('po1'),
             'prak_po1' => request('prak_po1'),
             'appl' => request('appl'),
+            'judul_ta1' => request('judul_ta1'),
             'berkas_ta1' => $file['berkas_ta1'],
             'tagihan_uang' => $file['tagihan_uang'],
             'lunas_pembayaran' => $file['lunas_pembayaran'],
