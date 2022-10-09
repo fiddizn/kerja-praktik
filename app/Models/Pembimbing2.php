@@ -20,4 +20,9 @@ class Pembimbing2 extends Model
     {
         return $this->belongsToThrough(User::class, Dosen::class);
     }
+
+    public function pendaftaran()
+    {
+        return $this->hasOne(Pendaftaran::class);
+    }
 }

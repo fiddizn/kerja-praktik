@@ -19,7 +19,6 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        @if ($plotting_dosen == 'Pembimbing')
         <div class="row my-4">
             <div class="col-md-6">
                 <h5>Pembimbing 1</h5>
@@ -57,35 +56,6 @@
                 </div>
             </div>
         </div>
-        @elseif ($plotting_dosen == 'Reviewer')
-        <form action="/koordinator/plotting-dosen-reviewer" method="GET" id="plotting">
-            <div class="row mt-5">
-                <label for=" r1" class="col-sm-3 col-form-label">Reviewer 1</label>
-                <div class="col">
-                    <select type="text" class="form-select" name="r1" id="r1">
-                        <option selected disabled>Pilih...</option>
-                        @foreach ($list_r1 as $r1)
-                        <option>{{ $r1->dosen->name }} ({{ $r1->dosen->jabfun->name }})</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-        </form>
-        @else
-        <form action="/koordinator/plotting-dosen-penguji" method="GET" id="plotting">
-            <div class="row mt-3 pe-3 ps-2">
-                <label for="r1" class="col col-form-label">Penguji 1</label>
-                <input type="text" class="form-control" name="r1" id="r1" readonly value="{{ $pendaftaran->r1 }}">
-                <label for="r2" class="form-label mt-4">Penguji 2</label>
-                <select type="text" class="form-select" name="r2" id="r2">
-                    <option selected disabled>Pilih...</option>
-                    @foreach ($list_p2 as $p2)
-                    <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfun->name }})</option>
-                    @endforeach
-                </select>
-            </div>
-        </form>
-        @endif
     </div>
     <div class="col-md-6">
         <table class="table table-hover mt-3" style="min-height: 210px;">
@@ -103,7 +73,7 @@
                 <tr>
                     <th scope="row">{{$list_dosen->firstItem()+ $key}}</th>
                     <td>{{ $dosen->name }}</td>
-                    <td>{{ $dosen->jabfun->name }}</td>
+                    <td>{{ $dosen->jabfung->name }}</td>
                     @if ($dosen->pembimbing1 != null)
                     <td>{{ $mahasiswa->where('p1_id',$dosen->pembimbing1->id)->count() }}</td>
                     @else
@@ -116,8 +86,7 @@
         </table>
         {{ $list_dosen->links() }}
         @if ($plotting_dosen == 'Pembimbing')
-        <form id="plotting" action="/koordinator/plotting-dosen-pembimbing/{{ $pendaftaran->mahasiswa->id }}"
-            method="post">
+        <form id="plotting" action="/koordinator/plotting-dosen-pembimbing/{{ $pendaftaran->id }}" method="post">
             @method('put')
             @csrf
             <div class="row">
@@ -127,7 +96,7 @@
                     <select type="text" class="form-select" name="p1" id="p1">
                         <option selected disabled>Pilih...</option>
                         @foreach ($list_p1 as $p1)
-                        <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
+                        <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfung->name }})</option>
                         @endforeach
                     </select>
                 </div>
@@ -137,7 +106,7 @@
                     <select type="text" class="form-select" name="p1" id="p1">
                         <option selected disabled>Pilih...</option>
                         @foreach ($list_p1 as $p1)
-                        <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfun->name }})</option>
+                        <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfung->name }})</option>
                         @endforeach
                     </select>
                 </div>
@@ -148,7 +117,7 @@
                     <select type="text" class="form-select mt-2" name="p2" id="p2">
                         <option selected disabled>Pilih...</option>
                         @foreach ($list_p2 as $p2)
-                        <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfun->name }})</option>
+                        <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfung->name }})</option>
                         @endforeach
                     </select>
                 </div>
@@ -158,7 +127,7 @@
                     <select type="text" class="form-select mt-2" name="p2" id="p2">
                         <option selected disabled>Pilih...</option>
                         @foreach ($list_p2 as $p2)
-                        <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfun->name }})</option>
+                        <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfung->name }})</option>
                         @endforeach
                     </select>
                 </div>

@@ -17,14 +17,14 @@ class PlottingDosenPembimbingController extends Controller
      */
     public function index()
     {
-        $list_mahasiswa = \App\Models\Pendaftaran::with('mahasiswa')->oldest()->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')->filter(request('search'))->paginate(7)->withQueryString();
+        $pendaftarans = \App\Models\Pendaftaran::with('mahasiswa')->oldest()->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')->filter(request('search'))->paginate(7)->withQueryString();
         return view(
             'koordinator.plotting-dosen-pembimbing',
             [
                 'title' => 'Plotting Dosen Pembimbing',
                 'name' => 'Galang Setia Nugroho',
                 'role' => 'Koordinator',
-                'list_mahasiswa' => $list_mahasiswa
+                'pendaftarans' => $pendaftarans
             ]
         );
     }
@@ -57,13 +57,13 @@ class PlottingDosenPembimbingController extends Controller
      */
     public function show($id)
     {
-        $pendaftaran = \App\Models\Pendaftaran::with('mahasiswa')->find($id);
+        $pendaftaran = \App\Models\Pendaftaran::with('mahasiswa', 'pembimbing1', 'pembimbing2')->find($id);
         $list_dosen = Dosen::with('pembimbing1', 'pembimbing2')->oldest()->paginate(4);
         $mahasiswa = \App\Models\Mahasiswa::all();
         return view(
             'koordinator.isian-plotting-dosen-pembimbing',
             [
-                'title' => 'Pendaftaran TA 1',
+                'title' => 'Plotting P1',
                 'name' => 'Galang Setia Nugroho',
                 'role' => 'Koordinator',
                 'plotting_dosen' => 'Pembimbing',
@@ -109,9 +109,9 @@ class PlottingDosenPembimbingController extends Controller
 
 
         $p1_id = Pembimbing1::where('dosen_id', $dosen_id)->get()[0]->id;
-        $p2_id = Pembimbing1::where('dosen_id', $dosen2_id)->get()[0]->id;
+        $p2_id = Pembimbing2::where('dosen_id', $dosen2_id)->get()[0]->id;
 
-        \App\Models\Mahasiswa::where('id', $id)->update([
+        \App\Models\Pendaftaran::where('id', $id)->update([
             'p1_id' =>  $p1_id,
             'p2_id' => $p2_id
         ]);

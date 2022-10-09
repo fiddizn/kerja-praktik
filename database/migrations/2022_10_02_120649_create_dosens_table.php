@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('dosens', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('jabfun_id');
+            $table->string('jabfung_id');
             $table->bigInteger('nid')->unique();
             $table->string('name');
             $table->string('kode');

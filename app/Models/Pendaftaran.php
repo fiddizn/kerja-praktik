@@ -33,6 +33,25 @@ class Pendaftaran extends Model
         return $this->belongsTo(Mahasiswa::class);
     }
 
+    public function pembimbing1()
+    {
+        return $this->belongsTo(Pembimbing1::class, 'p1_id', 'id');
+    }
+
+    public function pembimbing2()
+    {
+        return $this->belongsTo(Pembimbing2::class, 'p2_id', 'id');
+    }
+
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class);
+    }
+
+    public function hasilreview()
+    {
+        return $this->hasOne(HasilReview::class);
+    }
 
     public function getRouteKey()
     {

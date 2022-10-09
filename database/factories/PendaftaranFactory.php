@@ -53,14 +53,14 @@ class PendaftaranFactory extends Factory
 
             // Ajuan Dosen
 
-            'alt1_p1' => fake()->name(),
-            'alt1_p2' => fake()->name(),
-            'alt2_p1' => fake()->name(),
-            'alt2_p2' => fake()->name(),
-            'alt3_p1' => fake()->name(),
-            'alt3_p2' => fake()->name(),
-            'alt4_p1' => fake()->name(),
-            'alt4_p2' => fake()->name()
+            // 'alt1_p1' => fake()->name(),
+            // 'alt1_p2' => fake()->name(),
+            // 'alt2_p1' => fake()->name(),
+            // 'alt2_p2' => fake()->name(),
+            // 'alt3_p1' => fake()->name(),
+            // 'alt3_p2' => fake()->name(),
+            // 'alt4_p1' => fake()->name(),
+            // 'alt4_p2' => fake()->name()
 
             // // status
             // 'status' => ''

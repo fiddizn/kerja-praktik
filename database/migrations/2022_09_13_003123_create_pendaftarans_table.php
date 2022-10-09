@@ -19,6 +19,8 @@ return new class extends Migration
 
             $table->id();
             $table->integer('mahasiswa_id');
+            $table->integer('p1_id')->nullable();
+            $table->integer('p2_id')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('gender')->nullable();

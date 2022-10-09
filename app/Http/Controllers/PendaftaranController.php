@@ -15,7 +15,6 @@ class PendaftaranController extends Controller
     {
         $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
         $list_p2 = \App\Models\Dosen::all();
-
         if (!isset(auth()->user()->pendaftaran)) {
             return view('mahasiswa.pendaftaran-ta-1', [
                 'title' => 'Pendaftaran TA 1',
@@ -89,10 +88,6 @@ class PendaftaranController extends Controller
             'alt4_p1' => request('alt4_p1'),
             'alt4_p2' => request('alt4_p2'),
             'status' => '',
-        ]);
-
-        Mahasiswa::where('id', auth()->user()->mahasiswa->id)->update([
-            'pendaftaran_administrasi_id' => auth()->user()->pendaftaran->id
         ]);
 
         return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');

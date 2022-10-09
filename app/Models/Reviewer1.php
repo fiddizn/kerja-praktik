@@ -15,4 +15,9 @@ class Reviewer1 extends Model
     {
         return $this->belongsTo(Dosen::class);
     }
+
+    public function hasilReview()
+    {
+        return $this->hasOne(HasilReview::class);
+    }
 }

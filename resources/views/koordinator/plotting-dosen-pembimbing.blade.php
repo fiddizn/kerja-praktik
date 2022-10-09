@@ -48,25 +48,25 @@
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
-                @foreach ($list_mahasiswa as $key=> $mahasiswa)
+                @foreach ($pendaftarans as $key=> $pendaftaran)
                 <tbody>
                     <tr>
-                        <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
-                        <td>{{ $mahasiswa->mahasiswa->nim }}</td>
-                        <td>{{ $mahasiswa->mahasiswa->name }}</td>
-                        <td>{{ $mahasiswa->peminatan }}</td>
-                        @if ($mahasiswa->mahasiswa->p1 != null)
-                        <td>{{ $mahasiswa->mahasiswa->p1->dosen->name }}</td>
+                        <th scope="row">{{ $pendaftarans->firstItem()+ $key}}</th>
+                        <td>{{ $pendaftaran->mahasiswa->nim }}</td>
+                        <td>{{ $pendaftaran->mahasiswa->name }}</td>
+                        <td>{{ $pendaftaran->peminatan }}</td>
+                        @if ($pendaftaran->pembimbing1 != null)
+                        <td>{{ $pendaftaran->pembimbing1->dosen->name }}</td>
                         @else
                         <td></td>
                         @endif
-                        @if ($mahasiswa->mahasiswa->p2 != null)
-                        <td>{{ $mahasiswa->mahasiswa->p2->dosen->name }}</td>
+                        @if ($pendaftaran->pembimbing2 != null)
+                        <td>{{ $pendaftaran->pembimbing2->dosen->name }}</td>
                         @else
                         <td></td>
                         @endif
                         <td>
-                            <a class="btn" href="/koordinator/plotting-dosen-pembimbing/{{ $mahasiswa->id }}"
+                            <a class="btn" href="/koordinator/plotting-dosen-pembimbing/{{ $pendaftaran->id }}"
                                 role="button" style="background-color:#ff8c1a;">Detail</a>
                         </td>
                     </tr>
@@ -81,15 +81,15 @@
                 </div>
                 <div>
                     Showing
-                    {{ $list_mahasiswa->firstItem() }}
+                    {{ $pendaftarans->firstItem() }}
                     to
-                    {{ $list_mahasiswa->lastItem() }}
+                    {{ $pendaftarans->lastItem() }}
                     of
-                    {{ $list_mahasiswa->total() }}
+                    {{ $pendaftarans->total() }}
                     enteries
                 </div>
                 <div>
-                    {{ $list_mahasiswa->links() }}
+                    {{ $pendaftarans->links() }}
                 </div>
             </div>
             @endsection

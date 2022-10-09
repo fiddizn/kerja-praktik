@@ -16,9 +16,9 @@ class Dosen extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function jabfun()
+    public function jabfung()
     {
-        return $this->belongsTo(Jabfun::class);
+        return $this->belongsTo(Jabfung::class);
     }
 
     public function pembimbing1()
@@ -39,5 +39,10 @@ class Dosen extends Model
     public function reviewer2()
     {
         return $this->hasOne(Reviewer2::class);
+    }
+
+    public function hasilreview()
+    {
+        return $this->hasOneThrough(HasilReview::class, Reviewer1::class);
     }
 }

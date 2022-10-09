@@ -53,9 +53,9 @@
                         <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
                         <td>{{ $mahasiswa->mahasiswa->nim }}</td>
                         <td>{{ $mahasiswa->mahasiswa->name }}</td>
-                        <td>{{ $mahasiswa->peminatan }}</td>
-                        @if ($mahasiswa->mahasiswa->r1 != null)
-                        <td>{{ $mahasiswa->mahasiswa->r1->dosen->name }}</td>
+                        <td>{{ $mahasiswa->peminatan}}</td>
+                        @if ($mahasiswa->p1_id != null || $mahasiswa->p2_id)
+                        <td></td>
                         @else
                         <td></td>
                         @endif
