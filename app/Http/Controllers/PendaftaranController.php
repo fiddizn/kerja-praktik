@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
+use App\Models\Review;
 use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -88,6 +89,10 @@ class PendaftaranController extends Controller
             'alt4_p1' => request('alt4_p1'),
             'alt4_p2' => request('alt4_p2'),
             'status' => '',
+        ]);
+
+        Review::create([
+            'mahasiswa_id' => auth()->user()->mahasiswa->id
         ]);
 
         return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');

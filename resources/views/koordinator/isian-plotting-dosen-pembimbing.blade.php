@@ -75,11 +75,11 @@
                     <td>{{ $dosen->name }}</td>
                     <td>{{ $dosen->jabfung->name }}</td>
                     @if ($dosen->pembimbing1 != null)
-                    <td>{{ $mahasiswa->where('p1_id',$dosen->pembimbing1->id)->count() }}</td>
+                    <td>{{ $pendaftarans->where('p1_id',$dosen->pembimbing1->id)->count() }}</td>
                     @else
                     <td>-</td>
                     @endif
-                    <td>{{ $mahasiswa->where('p2_id',$dosen->pembimbing2->id)->count() }}</td>
+                    <td>{{ $pendaftarans->where('p2_id',$dosen->pembimbing2->id)->count() }}</td>
                 </tr>
             </tbody>
             @endforeach

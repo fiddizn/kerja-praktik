@@ -57,9 +57,9 @@ class PlottingDosenPembimbingController extends Controller
      */
     public function show($id)
     {
+        $pendaftarans = \App\Models\Pendaftaran::with('mahasiswa', 'pembimbing1', 'pembimbing2')->get();
         $pendaftaran = \App\Models\Pendaftaran::with('mahasiswa', 'pembimbing1', 'pembimbing2')->find($id);
         $list_dosen = Dosen::with('pembimbing1', 'pembimbing2')->oldest()->paginate(4);
-        $mahasiswa = \App\Models\Mahasiswa::all();
         return view(
             'koordinator.isian-plotting-dosen-pembimbing',
             [
@@ -71,7 +71,7 @@ class PlottingDosenPembimbingController extends Controller
                 'list_p1' => Pembimbing1::all(),
                 'list_p2' => Pembimbing2::all(),
                 'list_dosen' => $list_dosen,
-                'mahasiswa' => $mahasiswa
+                'pendaftarans' => $pendaftarans
             ]
         );
     }

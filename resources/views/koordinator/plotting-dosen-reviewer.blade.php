@@ -54,8 +54,8 @@
                         <td>{{ $mahasiswa->mahasiswa->nim }}</td>
                         <td>{{ $mahasiswa->mahasiswa->name }}</td>
                         <td>{{ $mahasiswa->peminatan}}</td>
-                        @if ($mahasiswa->p1_id != null || $mahasiswa->p2_id)
-                        <td></td>
+                        @if ( $mahasiswa->r1_id != null )
+                        <td>{{ $mahasiswa->reviewer1->dosen->name }}</td>
                         @else
                         <td></td>
                         @endif

@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hasil_reviews', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->integer('mahasiswa_id');
-            $table->integer('r1_id');
-            $table->integer('reviewedProposal')->nullable();
+            $table->integer('r1_id')->nullable();
+            $table->string('reviewed_proposal')->nullable();
             $table->integer('penilaian1')->nullable();
             $table->integer('penilaian2')->nullable();
             $table->integer('penilaian3')->nullable();
-            $table->boolean('rilis')->nullable();
+            $table->boolean('rilis')->default(0);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hasil_reviews');
+        Schema::dropIfExists('reviews');
     }
 };

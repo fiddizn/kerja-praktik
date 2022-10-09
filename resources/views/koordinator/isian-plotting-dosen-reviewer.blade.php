@@ -7,13 +7,13 @@
     <div class="row g-3">
         <div class="col-md-6">
             <label for="nim" class="form-label">NIM</label>
-            <input type="number" class="form-control" name="nim" id="nim" readonly value="{{ $mahasiswa->nim }}"
-                disabled>
+            <input type="number" class="form-control" name="nim" id="nim" readonly
+                value="{{ $mahasiswa->mahasiswa->nim }}" disabled>
         </div>
         <div class="col-md-6">
             <label for="name" class="form-label">Nama Lengkap</label>
-            <input type="text" class="form-control" name="name" id="name" readonly value="{{ $mahasiswa->name }}"
-                disabled>
+            <input type="text" class="form-control" name="name" id="name" readonly
+                value="{{ $mahasiswa->mahasiswa->name }}" disabled>
         </div>
     </div>
 </div>
@@ -52,7 +52,7 @@
                     <td>{{ $dosen->name }}</td>
                     <td>{{ $dosen->jabfung->name }}</td>
                     @if($dosen->reviewer1 != null)
-                    <td>{{ $mahasiswas->where('r1_id',$dosen->reviewer1->id)->count() }}</td>
+                    <td>{{ $pendaftarans->where('r1_id',$dosen->reviewer1->id)->count() }}</td>
                     @else
                     <td>-</td>
                     @endif

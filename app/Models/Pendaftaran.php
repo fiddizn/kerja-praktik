@@ -43,6 +43,11 @@ class Pendaftaran extends Model
         return $this->belongsTo(Pembimbing2::class, 'p2_id', 'id');
     }
 
+    public function reviewer1()
+    {
+        return $this->belongsTo(Reviewer1::class, 'r1_id', 'id');
+    }
+
     public function dosen()
     {
         return $this->belongsTo(Dosen::class);

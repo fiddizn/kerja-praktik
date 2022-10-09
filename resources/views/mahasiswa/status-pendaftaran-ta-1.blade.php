@@ -8,8 +8,8 @@
             <div class=" card-body my-5">
                 @if ($status == 'Lolos')
                 <h3 class="card-title" style="text-align: center;">Lolos Seleksi Administrasi</h3>
-                @if ($status != 'Lolos' || auth()->user()->mahasiswa->p1 == null ||
-                auth()->user()->mahasiswa->p2 == null)
+                @if ($status != 'Lolos' || auth()->user()->pendaftaran->pembimbing1 == null ||
+                auth()->user()->pendaftaran->pembimbing2 == null)
                 <p style="text-align:center ;">Dosen Pembimbing anda akan segera ditampilkan</p>
                 @endif
                 @elseif ($status == 'Pending')
@@ -17,8 +17,8 @@
                 <p style="text-align:center ;">Silakan segera hubungi Koordinator TA 1!</p>
                 @elseif ($status == 'Lolos Bersyarat')
                 <h3 class="card-title" style="text-align: center;">Lolos Bersyarat</h3>
-                @if ($status != 'Lolos Bersyarat' || auth()->user()->mahasiswa->p1 == null ||
-                auth()->user()->mahasiswa->p2 == null)
+                @if ($status != 'Lolos Bersyarat' || auth()->user()->pendaftaran->pembimbing1 == null ||
+                auth()->user()->pendaftaran->pembimbing2 == null)
                 <p style="text-align:center ;">Dosen Pembimbing anda akan segera ditampilkan<br><b>Perhatikan
                         syaratnya!</b>
                 </p>
@@ -31,8 +31,9 @@
             </div>
         </div>
     </div>
-    @if ($status == 'Lolos' && auth()->user()->mahasiswa->p1 != null &&
-    auth()->user()->mahasiswa->p2 != null)
+    @if ($status == 'Lolos' &&
+    auth()->user()->pendaftaran->p1 == null &&
+    auth()->user()->pendaftaran->p2 == null)
     <div class="d-flex justify-content-center mt-5">
         <div class="card w-50 border-0" style="background-color:#f5f5f5;">
             <div class="form-group row">
@@ -41,7 +42,8 @@
                         <label class="col-sm-12 col-form-label ps-3">Pembimbing 1</label>
                     </div>
                     <div class="col-8">
-                        <input class="form-control" value="{{ auth()->user()->mahasiswa->p1->dosen->name }}" disabled>
+                        <input class="form-control" value="{{ auth()->user()->pendaftaran->pembimbing1->dosen->name }}"
+                            disabled>
                     </div>
                 </div>
                 <div class="row mt-2">
@@ -49,7 +51,8 @@
                         <label class="col-sm-12 col-form-label ps-3">Pembimbing 2</label>
                     </div>
                     <div class="col-8">
-                        <input class="form-control" value="{{ auth()->user()->mahasiswa->p2->dosen->name }}" disabled>
+                        <input class="form-control" value="{{ auth()->user()->pendaftaran->pembimbing2->dosen->name }}"
+                            disabled>
                     </div>
                 </div>
             </div>

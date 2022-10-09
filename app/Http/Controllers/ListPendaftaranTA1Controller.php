@@ -84,30 +84,6 @@ class ListPendaftaranTA1Controller extends Controller
             'status' => $pendaftaran->status
         ]);
     }
-    public function downloadTagihanUang($id)
-    {
-        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->tagihan_uang}");
-        return response()->download($filepath);
-    }
-    public function downloadLunasPembayaran($id)
-    {
-        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->lunas_pembayaran}");
-        return response()->download($filepath);
-    }
-    public function downloadBerkasTa1($id)
-    {
-        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->berkas_ta1}");
-        return response()->download($filepath);
-    }
-    public function downloadKhs($id)
-    {
-        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->khs}");
-        return response()->download($filepath);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -202,5 +178,30 @@ class ListPendaftaranTA1Controller extends Controller
         ]);
 
         return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Pendaftaran telah dihapus!');
+    }
+
+    public function downloadTagihanUang($id)
+    {
+        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
+        $filepath = public_path("storage/{$data->tagihan_uang}");
+        return response()->download($filepath);
+    }
+    public function downloadLunasPembayaran($id)
+    {
+        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
+        $filepath = public_path("storage/{$data->lunas_pembayaran}");
+        return response()->download($filepath);
+    }
+    public function downloadBerkasTa1($id)
+    {
+        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
+        $filepath = public_path("storage/{$data->berkas_ta1}");
+        return response()->download($filepath);
+    }
+    public function downloadKhs($id)
+    {
+        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
+        $filepath = public_path("storage/{$data->khs}");
+        return response()->download($filepath);
     }
 }

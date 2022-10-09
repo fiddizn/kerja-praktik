@@ -21,8 +21,8 @@ class Mahasiswa extends Model
         return $this->hasOne(Pendaftaran::class, 'mahasiswa_id', 'id');
     }
 
-    public function hasilReview()
+    public function review()
     {
-        return $this->hasOne(HasilReview::class);
+        return $this->hasOne(Review::class);
     }
 }

@@ -58,10 +58,10 @@ class PlottingDosenReviewerController extends Controller
      */
     public function show($id)
     {
-        $mahasiswa = \App\Models\Mahasiswa::find($id);
+        $pendaftarans = \App\Models\Pendaftaran::get();
+        $mahasiswa = \App\Models\Pendaftaran::with('mahasiswa')->find($id);
         $list_dosen = \App\Models\Dosen::with('reviewer1')->paginate(4);
-        $mahasiswas = \App\Models\Mahasiswa::all();
-        $list_reviewer1 = Reviewer1::all();
+        $list_reviewer1 = Reviewer1::get();
         return view(
             'koordinator.isian-plotting-dosen-reviewer',
             [
@@ -72,7 +72,7 @@ class PlottingDosenReviewerController extends Controller
                 'mahasiswa' => $mahasiswa,
                 'list_r1' => $list_reviewer1,
                 'list_dosen' => $list_dosen,
-                'mahasiswas' => $mahasiswas
+                'pendaftarans' => $pendaftarans
             ]
         );
     }
@@ -95,7 +95,7 @@ class PlottingDosenReviewerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($mahasiswa_id)
+    public function update($id)
     {
         $r1Value = request('r1');
 
@@ -107,8 +107,10 @@ class PlottingDosenReviewerController extends Controller
 
         $r1_id = Reviewer1::where('dosen_id', $dosen_id)->get()[0]->id;
 
-        \App\Models\HasilReview::create([
-            'mahasiswa_id' => $mahasiswa_id,
+        \App\Models\Pendaftaran::where('id', $id)->update([
+            'r1_id' =>  $r1_id
+        ]);
+        \App\Models\Review::where('id', $id)->update([
             'r1_id' =>  $r1_id
         ]);
         return redirect('/koordinator/plotting-dosen-reviewer')->with('success', 'Pendaftaran telah diperbarui!');

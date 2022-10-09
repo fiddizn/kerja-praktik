@@ -16,8 +16,13 @@ class Reviewer1 extends Model
         return $this->belongsTo(Dosen::class);
     }
 
-    public function hasilReview()
+    public function review()
     {
-        return $this->hasOne(HasilReview::class);
+        return $this->hasOne(Review::class);
+    }
+
+    public function pendaftaran()
+    {
+        return $this->hasOne(Pendaftaran::class);
     }
 }
