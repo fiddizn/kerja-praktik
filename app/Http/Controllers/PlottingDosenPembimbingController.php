@@ -115,7 +115,7 @@ class PlottingDosenPembimbingController extends Controller
             'p1_id' =>  $p1_id,
             'p2_id' => $p2_id
         ]);
-        return redirect('/koordinator/plotting-dosen-pembimbing')->with('success', 'Pendaftaran telah diperbarui!');
+        return redirect('/koordinator/plotting-dosen-pembimbing')->with('success', 'Plotting telah diperbarui!');
     }
 
     /**

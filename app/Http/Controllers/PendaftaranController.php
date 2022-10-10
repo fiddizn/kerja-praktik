@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mahasiswa;
+use Illuminate\Http\Request;
 use App\Models\Pendaftaran;
 use App\Models\Review;
-use App\Models\Dosen;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PendaftaranController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
@@ -29,7 +30,24 @@ class PendaftaranController extends Controller
             return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
         }
     }
-    public function store()
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
         $file = request()->validate([
             'berkas_ta1' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
@@ -124,5 +142,50 @@ class PendaftaranController extends Controller
             'role' => 'Mahasiswa',
             'alasan' => auth()->user()->pendaftaran->keterangan_status
         ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

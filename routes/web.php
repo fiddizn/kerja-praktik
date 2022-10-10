@@ -55,11 +55,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'role:Mahasiswa'], function () {
         Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
-        Route::get('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'index']);
-        Route::post('/mahasiswa/pendaftaran-ta-1', [PendaftaranController::class, 'store']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status', [PendaftaranController::class, 'status']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status/syarat', [PendaftaranController::class, 'showSyarat']);
-        Route::get('/mahasiswa/pendaftaran-ta-1/status/alasan-tidak-lolos', [PendaftaranController::class, 'showSyarat']);
+        Route::get('/mahasiswa/pendaftaran-ta-1/status/alasan-tidak-lolos', [PendaftaranController::class, 'showAlasan']);
+        Route::resource('/mahasiswa/pendaftaran-ta-1', PendaftaranController::class);
     });
 
     // Sesi Koordinator

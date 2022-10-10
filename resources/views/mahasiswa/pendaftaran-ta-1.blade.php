@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-6">
                 <label for="gender" class="form-label">Jenis Kelamin</label>
-                <select type="text" class="form-select" name="gender" id="gender" required>
+                <select type="text" class="form-select" name="gender" id="gender">
                     <option disabled selected>Pilih...</option>
                     <option>Laki-laki</option>
                     <option>Perempuan</option>
@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-6">
                 <label for="peminatan" class="form-label">Peminatan</label>
-                <select type="text" class="form-select" name="peminatan" id="peminatan" required>
+                <select type="text" class="form-select" name="peminatan" id="peminatan">
                     <option disabled selected>Pilih...</option>
                     <option>AIG</option>
                     <option>DSE</option>
@@ -44,28 +44,28 @@
             </div>
             <div class="col-md-6">
                 <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir"
-                    required>
+                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"
+                    placeholder="Tempat Lahir">
             </div>
             <div class="col-md-6">
                 <label for="angkatan" class="form-label">Angkatan</label>
-                <input type="number" class="form-control" name="angkatan" id="angkatan" placeholder="Angkatan" required>
+                <input type="number" class="form-control" name="angkatan" id="angkatan" placeholder="Angkatan">
             </div>
             <div class="col-md-6">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
+                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir">
             </div>
             <div class="col-md-6 ">
                 <div class="input-group">
                     <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
                     <div class="input-group-text">+62</div>
                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890" required>
+                        placeholder="81234567890">
                 </div>
             </div>
             <div class="col-md-12">
                 <label for="address" class="form-label">Alamat</label>
-                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat" required>
+                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat">
             </div>
 
 
@@ -204,25 +204,23 @@
 
             <div class="col-md-3">
                 <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
-                <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0"
-                    required>
+                <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0">
             </div>
             <div class="col-md-3">
                 <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
-                <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" placeholder="0"
-                    required>
+                <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" placeholder="0">
             </div>
             <div class="col-md-3">
                 <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
-                <input type="number" class="form-control" name="jumlah_e" id="jumlah_e" placeholder="0" required>
+                <input type="number" class="form-control" name="jumlah_e" id="jumlah_e" placeholder="0">
             </div>
             <div class="col-md-3">
                 <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
-                <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks" placeholder="138" required>
+                <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks" placeholder="138">
             </div>
             <div class="col-md-3">
                 <label for="ipk" class="form-label">IPK</label>
-                <input type="number" step="0.01" class="form-control" name="ipk" id="ipk" placeholder="3.10" required>
+                <input type="number" step="0.01" class="form-control" name="ipk" id="ipk" placeholder="3.10">
             </div>
 
             <div class="my-4">
@@ -243,19 +241,19 @@
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="tagihan_uang" class="form-label">Tagihan Uang Kuliah</label>
-                    <input class="form-control" type="file" id="tagihan_uang" name="tagihan_uang" required>
+                    <input class="form-control" type="file" id="tagihan_uang" name="tagihan_uang">
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="lunas_pembayaran" class="form-label">Bukti Lunas Pembayaran</label>
-                    <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran" required>
+                    <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran">
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="khs" class="form-label">Kartu Hasil Studi</label>
-                    <input class="form-control" type="file" id="khs" name="khs" required>
+                    <input class="form-control" type="file" id="khs" name="khs">
                 </div>
             </div>
 

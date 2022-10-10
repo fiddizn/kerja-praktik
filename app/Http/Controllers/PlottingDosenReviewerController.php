@@ -110,10 +110,13 @@ class PlottingDosenReviewerController extends Controller
         \App\Models\Pendaftaran::where('id', $id)->update([
             'r1_id' =>  $r1_id
         ]);
-        \App\Models\Review::where('id', $id)->update([
+
+        $mahasiswa_id = \App\Models\Pendaftaran::where('id', '=', $id)->get()[0]->mahasiswa_id;
+
+        \App\Models\Review::where('mahasiswa_id', $mahasiswa_id)->update([
             'r1_id' =>  $r1_id
         ]);
-        return redirect('/koordinator/plotting-dosen-reviewer')->with('success', 'Pendaftaran telah diperbarui!');
+        return redirect('/koordinator/plotting-dosen-reviewer')->with('success', 'Plotting telah diperbarui!');
     }
 
     /**
