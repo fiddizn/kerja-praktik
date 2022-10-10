@@ -69,7 +69,7 @@ class PendaftaranController extends Controller
             $file['khs'] = request()->file('khs')->store('khs');
         } else $file['khs'] = null;
 
-        Pendaftaran::create([
+        $pendaftaran = Pendaftaran::create([
             'mahasiswa_id' => auth()->user()->mahasiswa->id,
             'tempat_lahir' => request('tempat_lahir'),
             'tanggal_lahir' => request('tanggal_lahir'),
@@ -110,7 +110,8 @@ class PendaftaranController extends Controller
         ]);
 
         Review::create([
-            'mahasiswa_id' => auth()->user()->mahasiswa->id
+            'mahasiswa_id' => auth()->user()->mahasiswa->id,
+            'pendaftaran_id' => $pendaftaran->id
         ]);
 
         return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');

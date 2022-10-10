@@ -53,9 +53,9 @@ class Pendaftaran extends Model
         return $this->belongsTo(Dosen::class);
     }
 
-    public function hasilreview()
+    public function review()
     {
-        return $this->hasOne(HasilReview::class);
+        return $this->hasOne(Review::class);
     }
 
     public function getRouteKey()

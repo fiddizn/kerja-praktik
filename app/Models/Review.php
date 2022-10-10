@@ -16,6 +16,11 @@ class Review extends Model
         return $this->belongsTo(Mahasiswa::class);
     }
 
+    public function pendaftaran()
+    {
+        return $this->belongsTo(Pendaftaran::class);
+    }
+
     public function reviewer1()
     {
         return $this->belongsTo(Reviewer1::class);

@@ -16,12 +16,14 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->integer('mahasiswa_id');
+            $table->integer('pendaftaran_id');
             $table->integer('r1_id')->nullable();
             $table->string('reviewed_proposal')->nullable();
             $table->integer('penilaian1')->nullable();
             $table->integer('penilaian2')->nullable();
             $table->integer('penilaian3')->nullable();
             $table->boolean('rilis')->default(0);
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

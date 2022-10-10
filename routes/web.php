@@ -4,6 +4,7 @@ use App\Models\Pembimbing1;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\HasilReviewController;
 use App\Http\Controllers\KoordinatorController;
@@ -82,9 +83,18 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'role:Dosen'], function () {
         Route::get('/dosen', function () {
-            return 'hay kamu adalah dosen yang nama dan jabfun adalah ' . auth()->user()->dosen->name . " ( " . auth()->user()->dosen->jabfun->name . " )";
+            return view('dosen.index', [
+                'title' => 'Home',
+                'role' => 'Dosen'
+            ]);
         });
+        Route::get('/dosen/reviewer-1', [ReviewerController::class, 'index']);
+        Route::get('/dosen/reviewer-1/review-proposal', [ReviewerController::class, 'showReviewProposal']);
+        Route::get('/dosen/reviewer-1/review-proposal/downloadBerkasTa1-{id}', [ListPendaftaranTA1Controller::class, 'downloadBerkasTa1']);
+        Route::get('/dosen/reviewer-1/review-proposal/formReview-{id}', [ReviewerController::class, 'showFormReview']);
+        Route::post('/dosen/reviewer-1/review-proposal/formReview-{id}', [ReviewerController::class, 'showFormReview']);
     });
+
     Route::group(['middleware' => 'role:Admin'], function () {
         Route::get('/admin', function () {
             return 'Hallo Admin emailmu adalah ' . auth()->user()->email;
