@@ -162,11 +162,14 @@
         </div>
         <div class="my-4">
         </div>
+        @if ($pendaftaran->judul_ta1 != null)
         <div class="col-md-12">
             <label for="judul_ta1" class="form-label">Judul Proposal</label>
             <input type="text" class="form-control" name="judul_ta1" id="judul_ta1" readonly
                 value="{{ $pendaftaran->judul_ta1 }}">
         </div>
+        @endif
+        @if ($pendaftaran->berkas_ta1 != null)
         <div class="row mt-4">
             <div class="col-md-5">
                 <label for="berkas_ta1" class="form-label col-sm-5">Berkas Proposal</label>
@@ -182,6 +185,7 @@
                 </a>
             </div>
         </div>
+        @endif
         <div class="row mt-4">
             <div class="col-md-5">
                 <label for="tagihan_uang" class="form-label col-sm-5">Tagihan Uang Kuliah</label>
@@ -321,7 +325,4 @@
     <div style=" height: 100px;">
     </div>
 </div>
-
-</div>
-
 @endsection

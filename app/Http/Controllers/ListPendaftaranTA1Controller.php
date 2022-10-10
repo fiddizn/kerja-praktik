@@ -196,7 +196,11 @@ class ListPendaftaranTA1Controller extends Controller
     {
         $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
         $filepath = public_path("storage/{$data->berkas_ta1}");
-        return response()->download($filepath);
+        if ($data->berkas_ta1 == null) {
+            return back()->with('null', 'File tidak ada!');
+        } else {
+            return response()->download($filepath);
+        }
     }
     public function downloadKhs($id)
     {
