@@ -21,6 +21,7 @@ class ReviewerController extends Controller
 
     public function showReviewProposal()
     {
+
         $list_review = \App\Models\Review::with('pendaftaran')->oldest()->paginate(7);
         return view('dosen.reviewer.review-proposal', [
             'title' => 'Review Proposal',
@@ -42,11 +43,69 @@ class ReviewerController extends Controller
 
     public function createFormReview($id)
     {
-        \App\Models\Review::where('id', $id)->update([
-            // 'p1_id' =>  $p1_id,
-            // 'p2_id' => $p2_id
+        $file = request()->validate([
+            'proposal' => 'file|max:50000|mimes:doc,docx,pdf,ppt,pptx'
         ]);
-        return redirect('/koordinator/plotting-dosen-pembimbing')->with('success', 'Plotting telah diperbarui!');
+
+        $file['proposal'] = request()->file('proposal')->store('proposal_reviewed');
+
+        if (request('penilaian6') != null) {
+
+            // kondisi merubah penilaian jadi 1,2,3
+            $penilaian1 = Self::convertPenilaianToInt(request('penilaian1'));
+            $penilaian2 = Self::convertPenilaianToInt(request('penilaian2'));
+            $penilaian3 = Self::convertPenilaianToInt(request('penilaian3'));
+            $penilaian4 = Self::convertPenilaianToInt(request('penilaian4'));
+            $penilaian5 = Self::convertPenilaianToInt(request('penilaian5'));
+            $penilaian6 = Self::convertPenilaianToInt(request('penilaian6'));
+
+            \App\Models\Review::where('id', $id)->update([
+                'penilaian1' => $penilaian1,
+                'penilaian2' => $penilaian2,
+                'penilaian3' => $penilaian3,
+                'penilaian4' => $penilaian4,
+                'penilaian5' => $penilaian5,
+                'penilaian6' => $penilaian6,
+
+                'hasil_review' => request('hasil_review'),
+                'komentar' => request('komentar'),
+                'proposal' => $file['proposal'],
+                'status' => 1
+            ]);
+            return redirect('/dosen/reviewer-1/review-proposal/')->with('success', 'Review telah ditambahkan!');
+        } else {
+
+            $penilaian1 = Self::convertPenilaianToInt(request('penilaian1'));
+            $penilaian2 = Self::convertPenilaianToInt(request('penilaian2'));
+            $penilaian3 = Self::convertPenilaianToInt(request('penilaian3'));
+            $penilaian4 = Self::convertPenilaianToInt(request('penilaian4'));
+            $penilaian5 = Self::convertPenilaianToInt(request('penilaian5'));
+
+            \App\Models\Review::where('id', $id)->update([
+                'penilaian1' => $penilaian1,
+                'penilaian2' => $penilaian2,
+                'penilaian3' => $penilaian3,
+                'penilaian4' => $penilaian4,
+                'penilaian5' => $penilaian5,
+
+                'hasil_review' => request('hasil_review'),
+                'komentar' => request('komentar'),
+                'proposal' => request('proposal'),
+                'status' => 1
+            ]);
+            return redirect('/dosen/reviewer-1/review-proposal/')->with('success', 'Review telah ditambahkan!');
+        }
+    }
+
+    public function convertPenilaianToInt($penilaian)
+    {
+        if ($penilaian == 'Baik') {
+            return 3;
+        } elseif ($penilaian == 'Cukup') {
+            return 2;
+        } else {
+            return 1;
+        }
     }
 
     /**

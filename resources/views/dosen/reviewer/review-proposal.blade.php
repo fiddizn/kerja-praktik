@@ -2,6 +2,13 @@
 @section('container')
 <h2 class="text-center">Review Proposal</h2>
 
+@if (session()->has('success'))
+<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <div class="me-auto p-2">
     <form action="/koordinator/list-pendaftaran-ta-1">
         <div class="input-group" style=" width: 30%;">
@@ -66,10 +73,17 @@
                                     href="/dosen/reviewer-1/review-proposal/downloadBerkasTa1-{{ $review->pendaftaran->id }}"
                                     style="background-color:#ff8c1a;"><i class="fa-solid fa-download"></i>
                                     Berkas</a>
+                                @if ($review->status == 1)
+                                <a class="btn btn-warning disabled"
+                                    href="/dosen/reviewer-1/review-proposal/formReview-{{ $review->id }}"><i
+                                        class="fa-solid fa-align-left"></i>
+                                    Review</a>
+                                @else
                                 <a class="btn btn-warning"
                                     href="/dosen/reviewer-1/review-proposal/formReview-{{ $review->id }}"><i
                                         class="fa-solid fa-align-left"></i>
                                     Review</a>
+                                @endif
                             </td>
                         </tr>
                     </tbody>
