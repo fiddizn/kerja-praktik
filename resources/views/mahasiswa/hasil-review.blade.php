@@ -3,21 +3,25 @@
 
 <h2 class="text-center">{{ $title }}</h2>
 
-
-<div class="d-flex justify-content-around mt">
+<div class="row mt-5">
+    <div class="d-flex justify-content-center">
+        <label>Saran Perbaikan / Usulan Judul / DLL</label>
+        <div class="card w-100">
+            <div class="card-body">
+                {!! $review->komentar !!}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-around">
     <div class="input-group my-5" style="width: 30%;">
         <div class="input-group-prepend">
-            <button class="btn" style="width: 4rem; height:3rem; background-color:#ff8c1a;" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                    class="bi bi-download" viewBox="0 0 16 16">
-                    <path
-                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                    <path
-                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                </svg>
-            </button>
+            <a href="/mahasiswa/hasil-review/download-proposal-{{$review_id}}" class="btn"
+                style="height: 58px; background-color:#ff8c1a;">
+                <i class="fa-solid fa-download fa-xl"></i>
+                <p><b>DOWNLOAD PROPOSAL (REVIEWED)</b></p>
+            </a>
         </div>
-        <input type="text" class="form-control" placeholder="proposal-reviewed.pdf">
     </div>
 </div>
 <div>

@@ -54,7 +54,7 @@ class HasilReviewController extends Controller
      */
     public function show($id)
     {
-        $mahasiswa = \App\Models\Review::with('pendaftaran', 'mahasiswa', 'reviewer1')->where('id', $id)->get()[0];
+        $mahasiswa = \App\Models\Review::with('pendaftaran', 'mahasiswa', 'reviewer1')->where('id', $id)->first();
         return view('koordinator.detail-hasil-review', [
             'title' => 'Detail Hasil Review',
             'role' => 'Koordinator',

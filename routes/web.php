@@ -1,5 +1,6 @@
 <?php
 
+use LDAP\Result;
 use App\Models\Pembimbing1;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Jadwal_seminarController;
 use App\Http\Controllers\Plotting_dosen_pembimbing;
 use App\Http\Controllers\RegisterSeminarController;
 use App\Http\Controllers\Detail_MahasiswaController;
+use App\Http\Controllers\ProposalReviewedController;
 use App\Http\Controllers\Penilaian_seminarController;
 use App\Http\Controllers\ListPendaftaranTA1Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
@@ -60,6 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/mahasiswa/pendaftaran-ta-1/status/syarat', [PendaftaranController::class, 'showSyarat']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status/alasan-tidak-lolos', [PendaftaranController::class, 'showAlasan']);
         Route::resource('/mahasiswa/pendaftaran-ta-1', PendaftaranController::class);
+
+        Route::get('/mahasiswa/hasil-review', [ProposalReviewedController::class, 'index']);
+        Route::get('/mahasiswa/hasil-review/download-proposal-{id}', [HasilReviewController::class, 'downloadProposalReviewed']);
     });
 
     // Sesi Koordinator
