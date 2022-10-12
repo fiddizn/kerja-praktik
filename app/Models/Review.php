@@ -23,6 +23,6 @@ class Review extends Model
 
     public function reviewer1()
     {
-        return $this->belongsTo(Reviewer1::class);
+        return $this->belongsTo(Reviewer1::class, 'r1_id', 'id');
     }
 }

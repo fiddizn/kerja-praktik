@@ -1,7 +1,6 @@
 @extends('layouts/main')
 @section('container')
 <h2 class="text-center">Review Proposal</h2>
-
 @if (session()->has('success'))
 <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
     {{ session('success') }}

@@ -79,6 +79,10 @@ Route::group(['middleware' => 'auth'], function () {
         // Plotting Dosen Pembimbing, Reviewer, Penguji
         Route::resource('/koordinator/plotting-dosen-pembimbing', PlottingDosenPembimbingController::class);
         Route::resource('/koordinator/plotting-dosen-reviewer', PlottingDosenReviewerController::class);
+
+        // Review Proposal
+        Route::resource('/koordinator/hasil-review-proposal', HasilReviewController::class);
+        Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewed', [HasilReviewController::class, 'downloadProposalReviewed']);
     });
 
     Route::group(['middleware' => 'role:Dosen'], function () {
