@@ -25,4 +25,9 @@ class Pembimbing1 extends Model
     {
         return $this->hasOne(Pendaftaran::class);
     }
+
+    public function bimbingan()
+    {
+        return $this->hasOne(Bimbingan::class);
+    }
 }

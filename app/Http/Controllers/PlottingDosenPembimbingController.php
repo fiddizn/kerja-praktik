@@ -111,10 +111,37 @@ class PlottingDosenPembimbingController extends Controller
         $p1_id = Pembimbing1::where('dosen_id', $dosen_id)->get()[0]->id;
         $p2_id = Pembimbing2::where('dosen_id', $dosen2_id)->get()[0]->id;
 
-        \App\Models\Pendaftaran::where('id', $id)->update([
-            'p1_id' =>  $p1_id,
-            'p2_id' => $p2_id
-        ]);
+        if (
+            \App\Models\Pendaftaran::where('id', $id)->first()->p1_id == null &&
+            \App\Models\Pendaftaran::where('id', $id)->first()->p2_id == null
+        ) {
+            $pendaftaran = \App\Models\Pendaftaran::where('id', $id)->first();
+            \App\Models\Pendaftaran::where('id', $id)->update([
+                'p1_id' =>  $p1_id,
+                'p2_id' => $p2_id
+            ]);
+
+            $id_mahasiswa = $pendaftaran->mahasiswa_id;
+
+            \App\Models\Bimbingan::create([
+                'mahasiswa_id' => $id_mahasiswa,
+                'pembimbing1_id' => $p1_id,
+                'pembimbing2_id' => $p2_id
+            ]);
+        } else {
+            $pendaftaran = \App\Models\Pendaftaran::where('id', $id)->first();
+            \App\Models\Pendaftaran::where('id', $id)->update([
+                'p1_id' =>  $p1_id,
+                'p2_id' => $p2_id
+            ]);
+
+            $id_mahasiswa = $pendaftaran->mahasiswa_id;
+
+            \App\Models\Bimbingan::where('mahasiswa_id', $id_mahasiswa)->update([
+                'pembimbing1_id' => $p1_id,
+                'pembimbing2_id' => $p2_id
+            ]);
+        }
         return redirect('/koordinator/plotting-dosen-pembimbing')->with('success', 'Plotting telah diperbarui!');
     }
 

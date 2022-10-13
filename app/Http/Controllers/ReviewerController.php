@@ -76,6 +76,12 @@ class ReviewerController extends Controller
             return redirect('/dosen/reviewer-1/review-proposal/')->with('success', 'Review telah ditambahkan!');
         } else {
 
+            $file = request()->validate([
+                'proposal' => 'file|max:50000|mimes:doc,docx,pdf,ppt,pptx'
+            ]);
+
+            $file['proposal'] = request()->file('proposal')->store('proposal_reviewed');
+
             $penilaian1 = Self::convertPenilaianToInt(request('penilaian1'));
             $penilaian2 = Self::convertPenilaianToInt(request('penilaian2'));
             $penilaian3 = Self::convertPenilaianToInt(request('penilaian3'));
@@ -91,7 +97,7 @@ class ReviewerController extends Controller
 
                 'hasil_review' => request('hasil_review'),
                 'komentar' => request('komentar'),
-                'proposal' => request('proposal'),
+                'proposal' => $file['proposal'],
                 'status' => 1
             ]);
             return redirect('/dosen/reviewer-1/review-proposal/')->with('success', 'Review telah ditambahkan!');

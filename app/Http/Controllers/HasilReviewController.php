@@ -14,7 +14,7 @@ class HasilReviewController extends Controller
      */
     public function index()
     {
-        $list_mahasiswa = \App\Models\Review::with('pendaftaran', 'mahasiswa', 'reviewer1')->oldest()->where('status', '!=', null)->paginate(7);
+        $list_mahasiswa = \App\Models\Review::with('pendaftaran', 'mahasiswa', 'reviewer1')->oldest()->where('status', '!=', null)->where('hasil_review', '!=', null)->paginate(7);
         return view(
             'koordinator.hasil-review-proposal',
             [

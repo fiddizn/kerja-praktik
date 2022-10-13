@@ -21,6 +21,11 @@ class Mahasiswa extends Model
         return $this->hasOne(Pendaftaran::class, 'mahasiswa_id', 'id');
     }
 
+    public function bimbingan()
+    {
+        return $this->hasOne(Bimbingan::class);
+    }
+
     public function review()
     {
         return $this->hasOne(Review::class);
