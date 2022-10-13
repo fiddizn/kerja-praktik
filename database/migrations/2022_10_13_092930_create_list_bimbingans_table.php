@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('list_bimbingans', function (Blueprint $table) {
             $table->id();
             $table->integer('bimbingan_id');
-            $table->dateTime('waktu');
+            $table->string('waktu');
             $table->string('pokok_materi');
             $table->string('pembahasan');
-            $table->boolean('is_p1');
-            $table->boolean('setuju');
+            $table->boolean('is_p1')->nullable();
+            $table->boolean('setuju')->nullable();
             $table->timestamps();
         });
     }

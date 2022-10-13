@@ -13,6 +13,6 @@ class ListBimbingan extends Model
 
     public function bimbingan()
     {
-        return $this->belongsToMany(Bimbingan::class);
+        return $this->belongsTo(Bimbingan::class);
     }
 }

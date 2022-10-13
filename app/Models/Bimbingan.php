@@ -13,7 +13,7 @@ class Bimbingan extends Model
 
     public function listbimbingan()
     {
-        return $this->hasOne(ListBimbingan::class);
+        return $this->hasMany(ListBimbingan::class);
     }
 
     public function mahasiswa()

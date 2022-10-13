@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bimbingan;
+use App\Models\ListBimbingan;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class FormBimbinganController extends Controller
@@ -13,12 +16,16 @@ class FormBimbinganController extends Controller
      */
     public function index()
     {
+        $bimbingans = \App\Models\ListBimbingan::with('bimbingan')->oldest()->whereHas('bimbingan', function ($query) {
+            $query->where('id', auth()->user()->bimbingan->id);
+        })->get();
         return view(
-            'm-form-bimbingan',
+            'mahasiswa.form-bimbingan',
             [
                 'title' => 'Form Bimbingan',
                 'name' => 'Fahmi Yusron Fiddin',
-                'role' => 'Mahasiswa'
+                'role' => 'Mahasiswa',
+                'bimbingans' => $bimbingans
             ]
         );
     }
@@ -30,7 +37,15 @@ class FormBimbinganController extends Controller
      */
     public function create()
     {
-        //
+        return view(
+            'mahasiswa.isian-form-bimbingan',
+            [
+                'title' => 'Form Bimbingan',
+                'name' => 'Fahmi Yusron Fiddin',
+                'role' => 'Mahasiswa',
+                'bimbingan_ke' => null
+            ]
+        );
     }
 
     /**
@@ -41,7 +56,20 @@ class FormBimbinganController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $is_p1 = self::isP1($request->is_p1);
+        ListBimbingan::with('bimbingan')->create([
+            'bimbingan_id' => auth()->user()->bimbingan->id,
+            'waktu' => $request->tanggal_waktu,
+            'pokok_materi' => $request->pokok_materi,
+            'pembahasan' => $request->pembahasan_bimbingan,
+            'is_p1' => $is_p1
+        ]);
+        return redirect(route('form-bimbingan.store'))->with('success', 'Form bimbimgan telah dibuat!');
+    }
+
+    public function isP1($name)
+    {
+        return ($name == auth()->user()->bimbingan->pembimbing1->dosen->name);
     }
 
     /**
@@ -52,16 +80,26 @@ class FormBimbinganController extends Controller
      */
     public function show($x)
     {
-        return
-            view(
-                'm-isian-form-bimbingan',
-                [
-                    'title' => 'Form Bimbingan',
-                    'name' => 'Fahmi Yusron Fiddin',
-                    'role' => 'Mahasiswa',
-                    'bimbingan_ke' => $x
-                ]
-            );
+        $bimbingan = \App\Models\ListBimbingan::with('bimbingan')->oldest()->where('id', $x)->whereHas('bimbingan', function ($query) {
+            $query->where('id', auth()->user()->bimbingan->id);
+        })->first();
+
+        if ($bimbingan->is_p1) {
+            $nama_pembimbing = auth()->user()->bimbingan->pembimbing1->dosen->name;
+        } else {
+            $nama_pembimbing = auth()->user()->bimbingan->pembimbing2->dosen->name;
+        }
+        return view(
+            'mahasiswa.detail-isian-form-bimbingan',
+            [
+                'title' => 'Form Bimbingan',
+                'name' => 'Fahmi Yusron Fiddin',
+                'role' => 'Mahasiswa',
+                'bimbingan_ke' => $x,
+                'bimbingan' => $bimbingan,
+                'nama_pembimbing' => $nama_pembimbing
+            ]
+        );
     }
 
     /**

@@ -65,6 +65,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/mahasiswa/hasil-review', [ProposalReviewedController::class, 'index']);
         Route::get('/mahasiswa/hasil-review/download-proposal-{id}', [HasilReviewController::class, 'downloadProposalReviewed']);
+
+        // Formulir Bimbingan
+        Route::resource('/mahasiswa/form-bimbingan', FormBimbinganController::class);
     });
 
     // Sesi Koordinator
