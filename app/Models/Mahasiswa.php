@@ -26,6 +26,11 @@ class Mahasiswa extends Model
         return $this->hasOne(Bimbingan::class);
     }
 
+    public function list_bimbingan()
+    {
+        return $this->hasOneThrough(ListBimbingan::class, Bimbingan::class);
+    }
+
     public function review()
     {
         return $this->hasOne(Review::class);

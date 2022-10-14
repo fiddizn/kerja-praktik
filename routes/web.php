@@ -17,6 +17,7 @@ use App\Http\Controllers\RegisterSeminarController;
 use App\Http\Controllers\Detail_MahasiswaController;
 use App\Http\Controllers\ProposalReviewedController;
 use App\Http\Controllers\Penilaian_seminarController;
+use App\Http\Controllers\BimbinganMahasiswaController;
 use App\Http\Controllers\ListPendaftaranTA1Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
@@ -93,6 +94,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewed', [HasilReviewController::class, 'downloadProposalReviewed']);
     });
 
+    // Sesi Dosen
+
     Route::group(['middleware' => 'role:Dosen'], function () {
         Route::get('/dosen', function () {
             return view('dosen.index', [
@@ -100,11 +103,18 @@ Route::group(['middleware' => 'auth'], function () {
                 'role' => 'Dosen'
             ]);
         });
+
+        // Reviewer 1
+
         Route::get('/dosen/reviewer-1', [ReviewerController::class, 'index']);
         Route::get('/dosen/reviewer-1/review-proposal', [ReviewerController::class, 'showReviewProposal']);
         Route::get('/dosen/reviewer-1/review-proposal/downloadBerkasTa1-{id}', [ListPendaftaranTA1Controller::class, 'downloadBerkasTa1']);
         Route::get('/dosen/reviewer-1/review-proposal/formReview-{id}', [ReviewerController::class, 'showFormReview']);
         Route::post('/dosen/reviewer-1/review-proposal/formReview-{id}', [ReviewerController::class, 'createFormReview']);
+
+        // Pembimbing 1
+        Route::get('/dosen/pembimbing-1/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'showDetailBimbingan']);
+        Route::resource('/dosen/pembimbing-1', BimbinganMahasiswaController::class);
     });
 
     Route::group(['middleware' => 'role:Admin'], function () {

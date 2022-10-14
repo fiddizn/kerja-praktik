@@ -80,10 +80,9 @@ class FormBimbinganController extends Controller
      */
     public function show($x)
     {
-        $bimbingan = \App\Models\ListBimbingan::with('bimbingan')->oldest()->where('id', $x)->whereHas('bimbingan', function ($query) {
+        $bimbingan = \App\Models\ListBimbingan::with('bimbingan')->oldest()->whereHas('bimbingan', function ($query) {
             $query->where('id', auth()->user()->bimbingan->id);
-        })->first();
-
+        })->get()[$x - 1];
         if ($bimbingan->is_p1) {
             $nama_pembimbing = auth()->user()->bimbingan->pembimbing1->dosen->name;
         } else {

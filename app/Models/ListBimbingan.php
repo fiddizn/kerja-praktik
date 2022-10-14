@@ -15,4 +15,9 @@ class ListBimbingan extends Model
     {
         return $this->belongsTo(Bimbingan::class);
     }
+
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class);
+    }
 }
