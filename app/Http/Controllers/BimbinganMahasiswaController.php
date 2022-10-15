@@ -116,4 +116,14 @@ class BimbinganMahasiswaController extends Controller
     {
         //
     }
+
+    public function setPersetujuanBimbingan($mahasiswa_id, $bimbingan_ke)
+    {
+        $bimbingan = \App\Models\ListBimbingan::where('is_p1', 1)->whereHas('bimbingan', function ($query) use ($mahasiswa_id) {
+            $query->where('pembimbing1_id', auth()->user()->pembimbing1->id)->where('mahasiswa_id', $mahasiswa_id);
+        })->get()[$bimbingan_ke - 1]->update([
+            'setuju' => request('setuju')
+        ]);
+        return redirect('/dosen/pembimbing-1/form-bimbingan/' . $mahasiswa_id)->with('success', 'Pendaftaran telah diperbarui!');
+    }
 }

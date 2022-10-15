@@ -41,7 +41,10 @@
         <div class="col-12 mt-5">
             <a class="btn " href="/mahasiswa/form-bimbingan" role="button"
                 style="width: 5rem;background-color:#ff8c1a;">Back</a>
-            <button type=" submit" class="btn" style="width: 5rem ; background-color:#ff8c1a;">Update</button>
+            @if ($bimbingan->setuju == 0)
+            <a class="btn disabled" href="/mahasiswa/form-bimbingan" style="width: 5rem ; background-color:#ff8c1a;"
+                role="button">Update</a>
+            @endif
         </div>
     </form>
     @endsection

@@ -55,12 +55,6 @@
                                 <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
                             </span>
                         </th>
-                        <th scope="col">Status
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
-                        </th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -71,13 +65,9 @@
                         <td>{{ $mahasiswa->mahasiswa->nim }}</td>
                         <td>{{ $mahasiswa->mahasiswa->name }}</td>
                         <td>{{ $mahasiswa->peminatan }}</td>
-                        <td><button type="submit" class="btn" style="width: 9rem; ">{{ $mahasiswa->status }}</button>
-                        </td>
                         <td>
-                            <a class="btn" href="/koordinator/list-pendaftaran-ta-1/{{ $mahasiswa->id }}"
-                                style="background-color:#ff8c1a;"><i class="fa-solid fa-download"></i> Proposal</a>
                             <a class="btn btn-warning"
-                                href="{{ route('pembimbing-1.show', $mahasiswa->mahasiswa->id) }}"><i
+                                href="{{ route('form-bimbingan.show', $mahasiswa->mahasiswa->id) }}"><i
                                     class="fa-solid fa-align-left"></i> Bimbingan</a>
                         </td>
                     </tr>
@@ -87,7 +77,8 @@
 
             <div class="d-flex justify-content-between">
                 <div>
-                    <a class="btn" href="/dosen" role="button" style="background-color:#ff8c1a; width: 6rem;">Back</a>
+                    <a class="btn" href="/dosen/pembimbing-1" role="button"
+                        style="background-color:#ff8c1a; width: 6rem;">Back</a>
                 </div>
                 <div>
                     Showing

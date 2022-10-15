@@ -69,6 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Formulir Bimbingan
         Route::resource('/mahasiswa/form-bimbingan', FormBimbinganController::class);
+        Route::post('/mahasiswa/form-bimbingan/create', [FormBimbinganController::class, 'store']);
     });
 
     // Sesi Koordinator
@@ -113,8 +114,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/dosen/reviewer-1/review-proposal/formReview-{id}', [ReviewerController::class, 'createFormReview']);
 
         // Pembimbing 1
-        Route::get('/dosen/pembimbing-1/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'showDetailBimbingan']);
-        Route::resource('/dosen/pembimbing-1', BimbinganMahasiswaController::class);
+        Route::get('/dosen/pembimbing-1', function () {
+            return view('dosen.pembimbing.index', [
+                'title' => 'Home',
+                'role' => 'Reviewer 1'
+            ]);
+        });
+        Route::get('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'showDetailBimbingan']);
+        Route::post('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'setPersetujuanBimbingan']);
+        Route::resource('/dosen/pembimbing-1/form-bimbingan', BimbinganMahasiswaController::class);
     });
 
     Route::group(['middleware' => 'role:Admin'], function () {

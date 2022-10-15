@@ -5,8 +5,9 @@
 @else
 <h2 class="text-center mb-5">Form Bimbingan {{$bimbingan_ke}}</h2>
 @endif
+
 @if($bimbingan_ke == null)
-<form class="row my-2" action="{{ route('form-bimbingan.store') }}" method="POST">
+<form class="row my-2" action="/mahasiswa/form-bimbingan/create" method="POST">
     @else
     <form class="row my-2" action="/mahasiswa/form-bimbingan/{{$bimbingan_ke}}" method="POST">
         @method('put')

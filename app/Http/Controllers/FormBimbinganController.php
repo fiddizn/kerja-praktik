@@ -64,7 +64,7 @@ class FormBimbinganController extends Controller
             'pembahasan' => $request->pembahasan_bimbingan,
             'is_p1' => $is_p1
         ]);
-        return redirect(route('form-bimbingan.store'))->with('success', 'Form bimbimgan telah dibuat!');
+        return redirect('/mahasiswa/form-bimbingan')->with('success', 'Form bimbimgan telah dibuat!');
     }
 
     public function isP1($name)
