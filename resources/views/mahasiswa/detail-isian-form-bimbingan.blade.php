@@ -5,6 +5,12 @@
 @else
 <h2 class="text-center mb-5">Form Bimbingan {{$bimbingan_ke}}</h2>
 @endif
+@if (session()->has('success'))
+<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 @if($bimbingan_ke == null)
 <form class="row my-2" action="{{ route('form-bimbingan.store') }}" method="POST">
     @else
@@ -41,9 +47,11 @@
         <div class="col-12 mt-5">
             <a class="btn " href="/mahasiswa/form-bimbingan" role="button"
                 style="width: 5rem;background-color:#ff8c1a;">Back</a>
-            @if ($bimbingan->setuju == 0)
-            <a class="btn disabled" href="/mahasiswa/form-bimbingan" style="width: 5rem ; background-color:#ff8c1a;"
-                role="button">Update</a>
+            @if ($bimbingan->setuju == 1)
+            @elseif (is_null($bimbingan->setuju))
+            @elseif ($bimbingan->setuju == 0)
+            <a class="btn" href="/mahasiswa/form-bimbingan/{{$bimbingan_ke}}/edit"
+                style="width: 5rem ; background-color:#ff8c1a;" role="button">Update</a>
             @endif
         </div>
     </form>

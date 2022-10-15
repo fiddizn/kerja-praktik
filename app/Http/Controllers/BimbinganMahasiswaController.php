@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class BimbinganMahasiswaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $mahasiswas = Pendaftaran::with('mahasiswa')->where('p1_id', auth()->user()->pembimbing1->id)->paginate(5);
@@ -23,33 +18,6 @@ class BimbinganMahasiswaController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $bimbingans = \App\Models\ListBimbingan::with('bimbingan', 'mahasiswa')->oldest()->where('is_p1', 1)->whereHas('bimbingan', function ($query) use ($id) {
@@ -83,47 +51,13 @@ class BimbinganMahasiswaController extends Controller
         );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function setPersetujuanBimbingan($mahasiswa_id, $bimbingan_ke)
     {
-        $bimbingan = \App\Models\ListBimbingan::where('is_p1', 1)->whereHas('bimbingan', function ($query) use ($mahasiswa_id) {
+        \App\Models\ListBimbingan::where('is_p1', 1)->whereHas('bimbingan', function ($query) use ($mahasiswa_id) {
             $query->where('pembimbing1_id', auth()->user()->pembimbing1->id)->where('mahasiswa_id', $mahasiswa_id);
         })->get()[$bimbingan_ke - 1]->update([
             'setuju' => request('setuju')
         ]);
-        return redirect('/dosen/pembimbing-1/form-bimbingan/' . $mahasiswa_id)->with('success', 'Pendaftaran telah diperbarui!');
+        return redirect('/dosen/pembimbing-1/form-bimbingan/' . $mahasiswa_id)->with('success', 'Persetujuan form bimbingan telah diperbarui!');
     }
 }

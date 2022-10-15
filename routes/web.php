@@ -19,6 +19,7 @@ use App\Http\Controllers\ProposalReviewedController;
 use App\Http\Controllers\Penilaian_seminarController;
 use App\Http\Controllers\BimbinganMahasiswaController;
 use App\Http\Controllers\ListPendaftaranTA1Controller;
+use App\Http\Controllers\BimbinganMahasiswa2Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
 use App\Http\Controllers\PlottingDosenReviewerController;
@@ -69,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Formulir Bimbingan
         Route::resource('/mahasiswa/form-bimbingan', FormBimbinganController::class);
+        Route::get('/mahasiswa/form-bimbingan/{x}/edit', [FormBimbinganController::class, 'edit']);
         Route::post('/mahasiswa/form-bimbingan/create', [FormBimbinganController::class, 'store']);
     });
 
@@ -117,12 +119,23 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dosen/pembimbing-1', function () {
             return view('dosen.pembimbing.index', [
                 'title' => 'Home',
-                'role' => 'Reviewer 1'
+                'role' => 'Pembimbing 1'
             ]);
         });
         Route::get('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'showDetailBimbingan']);
         Route::post('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'setPersetujuanBimbingan']);
         Route::resource('/dosen/pembimbing-1/form-bimbingan', BimbinganMahasiswaController::class);
+
+        // Pembimbing 2
+        Route::get('/dosen/pembimbing-2', function () {
+            return view('dosen.pembimbing.index', [
+                'title' => 'Home',
+                'role' => 'Pembimbing 2'
+            ]);
+        });
+        Route::get('/dosen/pembimbing-2/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswa2Controller::class, 'showDetailBimbingan']);
+        Route::post('/dosen/pembimbing-2/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswa2Controller::class, 'setPersetujuanBimbingan']);
+        Route::resource('/dosen/pembimbing-2/form-bimbingan', BimbinganMahasiswa2Controller::class);
     });
 
     Route::group(['middleware' => 'role:Admin'], function () {
