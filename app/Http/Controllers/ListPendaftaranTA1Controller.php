@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ListPendaftaranTA1Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))
@@ -62,30 +57,6 @@ class ListPendaftaranTA1Controller extends Controller
         return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
@@ -98,12 +69,6 @@ class ListPendaftaranTA1Controller extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $pendaftaran = Pendaftaran::find($id);
@@ -114,13 +79,6 @@ class ListPendaftaranTA1Controller extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
     public function update($id)
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->where('id', $id)->get()[0];
@@ -207,12 +165,6 @@ class ListPendaftaranTA1Controller extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pendaftaran  $pendaftaran
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $pendaftaran = Pendaftaran::find($id);

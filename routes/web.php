@@ -19,6 +19,7 @@ use App\Http\Controllers\ProposalReviewedController;
 use App\Http\Controllers\Penilaian_seminarController;
 use App\Http\Controllers\BimbinganMahasiswaController;
 use App\Http\Controllers\ListPendaftaranTA1Controller;
+use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
 use App\Http\Controllers\PendaftaranSeminarController;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
@@ -105,6 +106,15 @@ Route::group(['middleware' => 'auth'], function () {
         // Review Proposal
         Route::resource('/koordinator/hasil-review-proposal', HasilReviewController::class);
         Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewed', [HasilReviewController::class, 'downloadProposalReviewed']);
+
+        // Pendaftaran Seminar TA 1
+        Route::resource('/koordinator/list-pendaftaran-seminar-ta-1', ListPendaftaranSeminarTA1Controller::class);
+        Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/downloadTagihanUang', [ListPendaftaranSeminarTA1Controller::class, 'downloadTagihanUang']);
+        Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/downloadLunasPembayaran', [ListPendaftaranSeminarTA1Controller::class, 'downloadLunasPembayaran']);
+        Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/downloadBerkasTa1', [ListPendaftaranSeminarTA1Controller::class, 'downloadBerkasTa1']);
+        Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/downloadKhs', [ListPendaftaranSeminarTA1Controller::class, 'downloadKhs']);
+        Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/{kelolosan}', [ListPendaftaranSeminarTA1Controller::class, 'keterangan']);
+        Route::post('/koordinator/list-pendaftaran-seminar-ta-1/{id}', [ListPendaftaranSeminarTA1Controller::class, 'edit_keterangan_kelolosan']);
     });
 
     // Sesi Dosen

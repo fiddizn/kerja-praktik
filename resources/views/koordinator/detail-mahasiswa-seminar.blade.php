@@ -1,6 +1,6 @@
 @extends('layouts/main')
 @section('container')
-<h2 style="text-align:center;">Seleksi Adiministrasi</h2>
+<h2 style="text-align:center;">Seleksi Seminar</h2>
 
 <div class="row align-items-start mt-3">
     <div class="row g-3">
@@ -171,64 +171,36 @@
         @endif
         @if ($pendaftaran->berkas_ta1 != null)
         <div class="row mt-4">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <label for="berkas_ta1" class="form-label col-sm-5">Berkas Proposal</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadBerkasTa1">Download <svg
-                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-download" viewBox="0 0 16 16">
-                        <path
-                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                        <path
-                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                    </svg>
-                </a>
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/downloadBerkasTa1">Download
+                    <i class="fa-solid fa-download"></i></a>
             </div>
         </div>
         @endif
         <div class="row mt-4">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <label for="tagihan_uang" class="form-label col-sm-5">Tagihan Uang Kuliah</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadTagihanUang">Download <svg
-                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-download" viewBox="0 0 16 16">
-                        <path
-                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                        <path
-                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                    </svg>
-                </a>
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/downloadTagihanUang">Download
+                    <i class="fa-solid fa-download"></i></a>
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <label for="lunas_pembayaran" class="form-label col-sm-5">Bukti Lunas Pembayaran</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadLunasPembayaran">Download
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-download" viewBox="0 0 16 16">
-                        <path
-                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                        <path
-                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                    </svg>
-                </a>
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/downloadLunasPembayaran">Download
+                    <i class="fa-solid fa-download"></i></a>
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <label for="khs" class="form-label col-sm-5">KHS</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadKhs">Download <svg
-                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-download" viewBox="0 0 16 16">
-                        <path
-                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                        <path
-                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                    </svg>
-                </a>
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/downloadKhs">Download <i
+                        class="fa-solid fa-download"></i></a>
             </div>
         </div>
 
@@ -236,42 +208,6 @@
 
         </div>
 
-        <div class="col-md-6 p-2">
-            <h6 style="text-align:center;">Alternatif 1</h6>
-            <label for="alt1_p1" class="form-label">Pembimbing 1</label>
-            <input type="text" class="form-control" name="alt1_p1" id="alt1_p1" readonly
-                value="{{ $pendaftaran->alt1_p1 }}">
-            <label for="alt1_p2" class="form-label mt-2">Pembimbing 2</label>
-            <input type="text" class="form-control" name="alt1_p2" id="alt1_p2" readonly
-                value="{{ $pendaftaran->alt1_p2 }}">
-        </div>
-        <div class="col-md-6 p-2">
-            <h6 style="text-align:center;">Alternatif 2</h6>
-            <label for="alt2_p1" class="form-label">Pembimbing 1</label>
-            <input type="text" class="form-control" name="alt2_p1" id="alt2_p1" readonly
-                value="{{ $pendaftaran->alt2_p1 }}">
-            <label for="alt2_p2" class="form-label mt-2">Pembimbing 2</label>
-            <input type="text" class="form-control" name="alt2_p2" id="alt2_p2" readonly
-                value="{{ $pendaftaran->alt2_p2 }}">
-        </div>
-        <div class="col-md-6 p-2">
-            <h6 style="text-align:center;">Alternatif 3</h6>
-            <label for="alt3_p1" class="form-label">Pembimbing 1</label>
-            <input type="text" class="form-control" name="alt3_p1" id="alt3_p1" readonly
-                value="{{ $pendaftaran->alt3_p1 }}">
-            <label for="alt3_p2" class="form-label mt-2">Pembimbing 2</label>
-            <input type="text" class="form-control" name="alt3_p2" id="alt3_p2" readonly
-                value="{{ $pendaftaran->alt3_p2 }}">
-        </div>
-        <div class="col-md-6 p-2">
-            <h6 style="text-align:center;">Alternatif 4</h6>
-            <label for="alt4_p1" class="form-label">Pembimbing 1</label>
-            <input type="text" class="form-control" name="alt4_p1" id="alt4_p1" readonly
-                value="{{ $pendaftaran->alt4_p1 }}">
-            <label for="alt4_p2" class="form-label mt-2">Pembimbing 2</label>
-            <input type="text" class="form-control" name="alt4_p2" id="alt4_p2" readonly
-                value="{{ $pendaftaran->alt4_p2 }}">
-        </div>
         <div class="mt-4">
         </div>
 
@@ -280,7 +216,7 @@
             @if ($status == null)
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -289,22 +225,23 @@
                     </form>
                 </div>
                 <a class="btn btn-warning"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat"
+                    role="button" style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
                     <input type="hidden" id="status" name="status" value="Pending">
                     <button type="submit" class="btn btn-danger mx-2"
                         style="width: 10rem; height: 3rem;">Pending</button>
                 </form>
-                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
-                    role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
+                <a class="btn btn-dark"
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"
+                    style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @elseif ($status == "Lolos")
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -313,22 +250,23 @@
                     </form>
                 </div>
                 <a class="btn btn-warning"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat"
+                    role="button" style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
                     <input type="hidden" id="status" name="status" value="Pending">
                     <button type="submit" class="btn btn-danger mx-2"
                         style="width: 10rem; height: 3rem;">Pending</button>
                 </form>
-                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
-                    role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
+                <a class="btn btn-dark"
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"
+                    style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @elseif ($status == "Lolos Bersyarat")
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -337,22 +275,23 @@
                     </form>
                 </div>
                 <a class="btn btn-warning disabled"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat"
+                    role="button" style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
                     <input type="hidden" id="status" name="status" value="Pending">
                     <button type="submit" class="btn btn-danger mx-2"
                         style="width: 10rem; height: 3rem;">Pending</button>
                 </form>
-                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
-                    role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
+                <a class="btn btn-dark"
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"
+                    style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @elseif ($status == "Pending")
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -361,22 +300,23 @@
                     </form>
                 </div>
                 <a class="btn btn-warning"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat"
+                    role="button" style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
                     <input type="hidden" id="status" name="status" value="Pending">
                     <button type="submit" class="btn btn-danger mx-2 disabled"
                         style="width: 10rem; height: 3rem;">Pending</button>
                 </form>
-                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
-                    role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
+                <a class="btn btn-dark"
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"
+                    style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @elseif ($status == "Tidak Lolos")
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -385,9 +325,9 @@
                     </form>
                 </div>
                 <a class="btn btn-warning"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat"
+                    role="button" style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                <form method="post" action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
                     <input type="hidden" id="status" name="status" value="Pending">
@@ -395,14 +335,14 @@
                         style="width: 10rem; height: 3rem;">Pending</button>
                 </form>
                 <a class="btn btn-dark disabled"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"
+                    href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"
                     style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @endif
         </div>
     </div>
     <div class="col-12 mt-5">
-        <a class="btn" href="/koordinator/list-pendaftaran-ta-1" role="button"
+        <a class="btn" href="/koordinator/list-pendaftaran-seminar-ta-1" role="button"
             style="width: 5rem;background-color:#ff8c1a;">Back</a>
     </div>
     <div style=" height: 100px;">

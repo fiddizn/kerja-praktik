@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
-<h2 style="text-align:center;">Seleksi Adiministrasi</h2>
-<form action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}" method="post">
+<h2 style="text-align:center;">Syarat</h2>
+<form action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}" method="post">
     @csrf
     <div class="row align-items-start mt-2">
         <div class="row g-3">
@@ -20,13 +20,13 @@
     <div class="row g-3 my-3">
         <div class="form-group">
             @if ($status_kelolosan == 'tidak-lolos')
-            <label for="keterangan_status">Mahasiswa di atas dinyatakan <b>tidak lolos</b> seleksi administrasi dengan
+            <label for="keterangan_status">Mahasiswa di atas dinyatakan <b>tidak lolos</b> seleksi seminar dengan
                 alasan:</label>
             <input id="keterangan_status" type="hidden" name="keterangan_status">
             <trix-editor input="keterangan_status"></trix-editor>
             <input type="hidden" id="status" name="status" value="Tidak Lolos">
             @else
-            <label for="keterangan_status">Mahasiswa di atas dinyatakan <b>lolos seleksi</b> administrasi dengan
+            <label for="keterangan_status">Mahasiswa di atas dinyatakan <b>lolos seleksi</b> seminar dengan
                 <b>syarat </b>sebagai berikut:</label>
             <input id="keterangan_status" type="hidden" name="keterangan_status">
             <trix-editor input="keterangan_status"></trix-editor>
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="col-12 mt-5">
-        <a class="btn" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}" role="button"
+        <a class="btn" href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}" role="button"
             style="width: 5rem;background-color:#ff8c1a;">Back</a>
         <button type="submit" class="btn" style="width: 5rem;background-color:#ff8c1a;">Submit</button>
     </div>
