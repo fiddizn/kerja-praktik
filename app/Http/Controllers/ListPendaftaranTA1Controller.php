@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
+use App\Models\PendaftaranSeminar;
 // use Clockwork\Storage\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -42,11 +43,23 @@ class ListPendaftaranTA1Controller extends Controller
 
     public function edit_keterangan_kelolosan($id)
     {
+        $pendaftaran = Pendaftaran::with('mahasiswa')->where('id', $id)->get()[0];
+        $mahasiswa_id = $pendaftaran->mahasiswa_id;
         Pendaftaran::where('id', $id)->update([
             'status' => request('status'),
             'keterangan_status' => request('keterangan_status')
         ]);
-        return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Pendaftaran telah diperbarui!');
+
+        if (request('status') == 'Lolos Bersyarat' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
+        } elseif (request('status') == 'Lolos Bersyarat') {
+            PendaftaranSeminar::create([
+                'mahasiswa_id' => $mahasiswa_id
+            ]);
+        } elseif (request('status') == 'Tidak Lolos' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
+            PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->delete();
+        }
+
+        return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
     }
 
     /**
@@ -111,8 +124,40 @@ class ListPendaftaranTA1Controller extends Controller
     public function update($id)
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->where('id', $id)->get()[0];
+        $mahasiswa_id = $pendaftaran->mahasiswa_id;
         if (request('status') != $pendaftaran->status) {
             Pendaftaran::where('id', $id)->update(['status' => request('status')]);
+            if (request('status') == 'Lolos' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
+            } elseif (request('status') == 'Lolos') {
+                PendaftaranSeminar::create([
+                    'mahasiswa_id' => $mahasiswa_id,
+                    'tempat_lahir' => $pendaftaran['tempat_lahir'],
+                    'tanggal_lahir' => $pendaftaran['tanggal_lahir'],
+                    'gender' => $pendaftaran['gender'],
+                    'phone_number' => $pendaftaran['phone_number'],
+                    'address' => $pendaftaran['address'],
+                    'peminatan' => $pendaftaran['peminatan'],
+                    'angkatan' => $pendaftaran['angkatan'],
+                    'ipk' => $pendaftaran['ipk'],
+                    'jumlah_sks' => $pendaftaran['jumlah_sks'],
+                    'jumlah_teori_d' => $pendaftaran['jumlah_teori_d'],
+                    'jumlah_prak_d' => $pendaftaran['jumlah_prak_d'],
+                    'jumlah_e' => $pendaftaran['jumlah_e'],
+                    'algo' => $pendaftaran['algo'],
+                    'strukdat' => $pendaftaran['strukdat'],
+                    'basdat' => $pendaftaran['basdat'],
+                    'rpl' => $pendaftaran['rpl'],
+                    'metpen' => $pendaftaran['metpen'],
+                    'pemweb' => $pendaftaran['pemweb'],
+                    'prak_pemweb' => $pendaftaran['prak_pemweb'],
+                    'po1' => $pendaftaran['po1'],
+                    'prak_po1' => $pendaftaran['prak_po1'],
+                    'appl' => $pendaftaran['appl']
+                ]);
+            } elseif (request('status') == 'Pending' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
+                PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->delete();
+            }
+            return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
         } else {
             Pendaftaran::where('id', $id)->update([
                 'tempat_lahir' => request('tempat_lahir'),
@@ -158,8 +203,8 @@ class ListPendaftaranTA1Controller extends Controller
                 'name' => request('name'),
                 'nim' => request('nim')
             ]);
+            return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Pendaftaran telah diperbarui!');
         }
-        return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Pendaftaran telah diperbarui!');
     }
 
     /**

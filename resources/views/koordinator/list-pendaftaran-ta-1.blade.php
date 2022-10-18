@@ -90,7 +90,7 @@
                             {{($pendaftaran->status == 'Lolos Bersyarat' ) ? 'btn-warning' : '';}}
                             {{($pendaftaran->status == 'Pending' ) ? 'btn-danger' : '';}}
                             {{($pendaftaran->status == 'Tidak Lolos' ) ? 'btn-secondary' : '';}}
-                            " style="width: 9rem; ">{{ $pendaftaran->status }}</button>
+                            " style="width: 9rem; cursor:default; ">{{ $pendaftaran->status }}</button>
             </td>
             <td>
                 <a class="btn" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}"

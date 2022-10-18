@@ -78,6 +78,11 @@ class User extends Authenticatable
         return $this->hasOneThrough(Pendaftaran::class, Mahasiswa::class);
     }
 
+    public function pendaftaranSeminar()
+    {
+        return $this->hasOneThrough(PendaftaranSeminar::class, Mahasiswa::class);
+    }
+
     public function bimbingan()
     {
         return $this->hasOneThrough(Bimbingan::class, Mahasiswa::class);

@@ -19,6 +19,7 @@ use App\Http\Controllers\ProposalReviewedController;
 use App\Http\Controllers\Penilaian_seminarController;
 use App\Http\Controllers\BimbinganMahasiswaController;
 use App\Http\Controllers\ListPendaftaranTA1Controller;
+use App\Http\Controllers\PendaftaranSeminarController;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
@@ -59,12 +60,15 @@ Route::group(['middleware' => 'auth'], function () {
     // Sesi Mahasiswa
 
     Route::group(['middleware' => 'role:Mahasiswa'], function () {
+
+        // Pendaftaran Administrasi TA 1
         Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status', [PendaftaranController::class, 'status']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status/syarat', [PendaftaranController::class, 'showSyarat']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status/alasan-tidak-lolos', [PendaftaranController::class, 'showAlasan']);
         Route::resource('/mahasiswa/pendaftaran-ta-1', PendaftaranController::class);
 
+        // Download Hasil Review
         Route::get('/mahasiswa/hasil-review', [ProposalReviewedController::class, 'index']);
         Route::get('/mahasiswa/hasil-review/download-proposal-{id}', [HasilReviewController::class, 'downloadProposalReviewed']);
 
@@ -72,6 +76,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/mahasiswa/form-bimbingan', FormBimbinganController::class);
         Route::get('/mahasiswa/form-bimbingan/{x}/edit', [FormBimbinganController::class, 'edit']);
         Route::post('/mahasiswa/form-bimbingan/create', [FormBimbinganController::class, 'store']);
+
+        // Pendaftaran Seminar TA 1
+        Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status', [PendaftaranSeminarController::class, 'status']);
+        Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/syarat', [PendaftaranSeminarController::class, 'showSyarat']);
+        Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/alasan-tidak-lolos', [PendaftaranSeminarController::class, 'showAlasan']);
+        Route::resource('/mahasiswa/pendaftaran-seminar-ta-1', PendaftaranSeminarController::class);
     });
 
     // Sesi Koordinator

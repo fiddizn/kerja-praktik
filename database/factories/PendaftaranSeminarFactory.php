@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pendaftaran>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PendaftaranSeminar>
  */
-class PendaftaranFactory extends Factory
+class PendaftaranSeminarFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,6 @@ class PendaftaranFactory extends Factory
     public function definition()
     {
         return [
-
             // Informasi Diri Mahasiswa
             'mahasiswa_id' => fake()->unique()->numberBetween(1, 100),
             'tempat_lahir' => fake()->city(),
@@ -26,7 +25,7 @@ class PendaftaranFactory extends Factory
             'phone_number' => fake()->phoneNumber(),
             'address' => fake()->address(),
             'peminatan' => fake()->jobTitle(),
-            'angkatan' => fake()->numberBetween(2017, 2019),
+            'angkatan' => fake()->numberBetween(2016, 2019),
 
             // Informasi Nilai Mahasiswa
             'ipk' => 2.5,
@@ -49,20 +48,6 @@ class PendaftaranFactory extends Factory
             'khs' => fake()->mimeType(),
             'judul_ta1' => fake()->sentence(10),
             'berkas_ta1' => fake()->mimeType()
-
-            // Ajuan Dosen
-
-            // 'alt1_p1' => fake()->name(),
-            // 'alt1_p2' => fake()->name(),
-            // 'alt2_p1' => fake()->name(),
-            // 'alt2_p2' => fake()->name(),
-            // 'alt3_p1' => fake()->name(),
-            // 'alt3_p2' => fake()->name(),
-            // 'alt4_p1' => fake()->name(),
-            // 'alt4_p2' => fake()->name()
-
-            // // status
-            // 'status' => ''
         ];
     }
 }

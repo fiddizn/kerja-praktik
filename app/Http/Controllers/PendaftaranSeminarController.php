@@ -2,53 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PendaftaranSeminar;
 use Illuminate\Http\Request;
-use App\Models\Pendaftaran;
-use App\Models\Review;
 
-class PendaftaranController extends Controller
+class PendaftaranSeminarController extends Controller
 {
     public function index()
     {
         $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
         $list_p2 = \App\Models\Dosen::all();
-        if (!isset(auth()->user()->pendaftaran)) {
-            return view('mahasiswa.pendaftaran-ta-1', [
-                'title' => 'Pendaftaran TA 1',
-                'name' => 'Fahmi Yusron Fiddin',
+
+        $angka_mutus = ['A', 'AB', 'B', 'BC', 'C', 'D', 'E', 'Belum Diambil'];
+        $status_matkuls = ['Sudah Selesai', 'Sedang Diambil', 'Belum Diambil'];
+
+        if (!isset(auth()->user()->pendaftaranseminar->berkas_ta1)) {
+            return view('mahasiswa.pendaftaran-seminar-ta-1', [
+                'title' => 'Pendaftaran Seminar TA 1',
                 'role' => 'Mahasiswa',
-                'seminar' => '',
+                'seminar' => ' Seminar ',
                 'list_p1' => $list_p1,
-                'list_p2' => $list_p2
+                'list_p2' => $list_p2,
+                'angka_mutus' => $angka_mutus,
+                'status_matkuls' => $status_matkuls
             ]);
         } else {
-            return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
+            return redirect()->intended('/mahasiswa/pendaftaran-seminar-ta-1/status');
         }
     }
 
     public function store(Request $request)
     {
         $file = request()->validate([
-            'berkas_ta1' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
-            'tagihan_uang' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
-            'lunas_pembayaran' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx',
+            'berkas_ta1' => 'file|max:10120|mimes:doc,docx,pdf,ppt,pptx',
+            'tagihan_uang' => 'file|max:10120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx',
+            'lunas_pembayaran' => 'file|max:10120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx',
             'khs' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
         ]);
 
         if (request()->file('berkas_ta1')) {
-            $file['berkas_ta1'] = request()->file('berkas_ta1')->store('berkas_ta1');
+            $file['berkas_ta1'] = request()->file('berkas_ta1')->store('seminar_berkas_ta1');
         } else $file['berkas_ta1'] = null;
         if (request()->file('tagihan_uang')) {
-            $file['tagihan_uang'] = request()->file('tagihan_uang')->store('tagihan_uang');
+            $file['tagihan_uang'] = request()->file('tagihan_uang')->store('seminar_tagihan_uang');
         } else $file['tagihan_uang'] = null;
         if (request()->file('lunas_pembayaran')) {
-            $file['lunas_pembayaran'] = request()->file('lunas_pembayaran')->store('lunas_pembayaran');
+            $file['lunas_pembayaran'] = request()->file('lunas_pembayaran')->store('seminar_lunas_pembayaran');
         } else $file['lunas_pembayaran'] = null;
         if (request()->file('khs')) {
-            $file['khs'] = request()->file('khs')->store('khs');
+            $file['khs'] = request()->file('khs')->store('seminar_khs');
         } else $file['khs'] = null;
 
-        $pendaftaran = Pendaftaran::create([
+        $pendaftaran = PendaftaranSeminar::create([
             'mahasiswa_id' => auth()->user()->mahasiswa->id,
             'tempat_lahir' => request('tempat_lahir'),
             'tanggal_lahir' => request('tanggal_lahir'),
@@ -77,50 +81,36 @@ class PendaftaranController extends Controller
             'tagihan_uang' => $file['tagihan_uang'],
             'lunas_pembayaran' => $file['lunas_pembayaran'],
             'khs' => $file['khs'],
-            'alt1_p1' => request('alt1_p1'),
-            'alt1_p2' => request('alt1_p2'),
-            'alt2_p1' => request('alt2_p1'),
-            'alt2_p2' => request('alt2_p2'),
-            'alt3_p1' => request('alt3_p1'),
-            'alt3_p2' => request('alt3_p2'),
-            'alt4_p1' => request('alt4_p1'),
-            'alt4_p2' => request('alt4_p2'),
-            'status' => '',
+            'status' => ''
         ]);
 
-        Review::create([
-            'mahasiswa_id' => auth()->user()->mahasiswa->id,
-            'pendaftaran_id' => $pendaftaran->id
-        ]);
-
-        return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
+        return redirect()->intended('/mahasiswa/pendaftaran-seminar-ta-1/status');
     }
 
     public function status()
     {
-        return view('mahasiswa.status-pendaftaran-ta-1', [
-            'title' => 'Status Pendaftaran TA 1',
-            'name' => 'Fahmi Yusron Fiddin',
+        return view('mahasiswa.status-pendaftaran-seminar-ta-1', [
+            'title' => 'Status Pendaftaran Seminar TA 1',
             'role' => 'Mahasiswa',
-            'status' => auth()->user()->pendaftaran->status
+            'status' => auth()->user()->pendaftaranseminar->status
         ]);
     }
 
     public function showSyarat()
     {
-        return view('mahasiswa.syarat-pendaftaran-ta-1', [
-            'title' => 'Status Pendaftaran TA 1',
+        return view('mahasiswa.syarat-pendaftaran-seminar-ta-1', [
+            'title' => 'Status Pendaftaran Seminar TA 1',
             'role' => 'Mahasiswa',
-            'syarat' => auth()->user()->pendaftaran->keterangan_status
+            'syarat' => auth()->user()->pendaftaranseminar->keterangan_status
         ]);
     }
 
     public function showAlasan()
     {
-        return view('mahasiswa.syarat-pendaftaran-ta-1', [
-            'title' => 'Status Pendaftaran TA 1',
+        return view('mahasiswa.syarat-pendaftaran-seminar-ta-1', [
+            'title' => 'Status Pendaftaran Seminar TA 1',
             'role' => 'Mahasiswa',
-            'alasan' => auth()->user()->pendaftaran->keterangan_status
+            'syarat' => auth()->user()->pendaftaranseminar->keterangan_status
         ]);
     }
 }

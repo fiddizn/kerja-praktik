@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pendaftarans', function (Blueprint $table) {
+        Schema::create('pendaftaran_seminars', function (Blueprint $table) {
 
             // Informasi Diri Mahasiswa
             $table->id();
             $table->integer('mahasiswa_id');
-            $table->integer('p1_id')->nullable();
-            $table->integer('p2_id')->nullable();
-            $table->integer('r1_id')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('gender')->nullable();
@@ -28,7 +25,6 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('peminatan')->nullable();
             $table->integer('angkatan')->nullable();
-            $table->timestamps();
 
             // Informasi Nilai Mahasiswa
             $table->float('ipk')->nullable();
@@ -52,19 +48,11 @@ return new class extends Migration
             $table->string('berkas_ta1')->nullable();
             $table->string('judul_ta1')->nullable();
 
-            // Ajuan Dosen
-            $table->string('alt1_p1')->nullable();
-            $table->string('alt1_p2')->nullable();
-            $table->string('alt2_p1')->nullable();
-            $table->string('alt2_p2')->nullable();
-            $table->string('alt3_p1')->nullable();
-            $table->string('alt3_p2')->nullable();
-            $table->string('alt4_p1')->nullable();
-            $table->string('alt4_p2')->nullable();
-
             // Status Pendaftaran
             $table->string('status')->nullable();
             $table->string('keterangan_status')->nullable();
+
+            $table->timestamps();
         });
     }
 
@@ -75,6 +63,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pendaftarans');
+        Schema::dropIfExists('pendaftaran_seminars');
     }
 };

@@ -277,45 +277,104 @@
 
         <h5 style="text-align:center;">Siswa di atas dinyatakan:</h5>
         <div class="d-flex justify-content-center mt-3 ">
+            @if ($status == "Lolos")
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
-
-                        @if ($status != "Lolos")
                         <input type="hidden" id="status" name="status" value="Lolos">
-                        <button type="submit" class="btn btn-success mx-2"
+                        <button type="submit" class="btn btn-success mx-2  disabled"
                             style="width: 10rem; height: 3rem;">Lolos</button>
-                        @endif
-
                     </form>
                 </div>
-
-                @if ($status != "Lolos Bersyarat")
                 <a class="btn btn-warning"
                     href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
                     style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                @endif
-
                 <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
-
-                    @if ($status != "Pending")
                     <input type="hidden" id="status" name="status" value="Pending">
                     <button type="submit" class="btn btn-danger mx-2"
                         style="width: 10rem; height: 3rem;">Pending</button>
-                    @endif
-
                 </form>
-
-                @if ($status != "Tidak Lolos")
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
-                @endif
-
             </div>
+            @elseif ($status == "Lolos Bersyarat")
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                        @method('put')
+                        @csrf
+                        <input type="hidden" id="status" name="status" value="Lolos">
+                        <button type="submit" class="btn btn-success mx-2"
+                            style="width: 10rem; height: 3rem;">Lolos</button>
+                    </form>
+                </div>
+                <a class="btn btn-warning disabled"
+                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
+                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    @method('put')
+                    @csrf
+                    <input type="hidden" id="status" name="status" value="Pending">
+                    <button type="submit" class="btn btn-danger mx-2"
+                        style="width: 10rem; height: 3rem;">Pending</button>
+                </form>
+                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
+                    role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
+            </div>
+            @elseif ($status == "Pending")
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                        @method('put')
+                        @csrf
+                        <input type="hidden" id="status" name="status" value="Lolos">
+                        <button type="submit" class="btn btn-success mx-2"
+                            style="width: 10rem; height: 3rem;">Lolos</button>
+                    </form>
+                </div>
+                <a class="btn btn-warning"
+                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
+                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    @method('put')
+                    @csrf
+                    <input type="hidden" id="status" name="status" value="Pending">
+                    <button type="submit" class="btn btn-danger mx-2 disabled"
+                        style="width: 10rem; height: 3rem;">Pending</button>
+                </form>
+                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
+                    role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
+            </div>
+            @elseif ($status == "Tidak Lolos")
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                        @method('put')
+                        @csrf
+                        <input type="hidden" id="status" name="status" value="Lolos">
+                        <button type="submit" class="btn btn-success mx-2"
+                            style="width: 10rem; height: 3rem;">Lolos</button>
+                    </form>
+                </div>
+                <a class="btn btn-warning"
+                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
+                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
+                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    @method('put')
+                    @csrf
+                    <input type="hidden" id="status" name="status" value="Pending">
+                    <button type="submit" class="btn btn-danger mx-2"
+                        style="width: 10rem; height: 3rem;">Pending</button>
+                </form>
+                <a class="btn btn-dark disabled"
+                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"
+                    style="width: 10rem; height: 3rem;">Tidak Lolos</a>
+            </div>
+            @endif
         </div>
     </div>
     <div class="col-12 mt-5">
