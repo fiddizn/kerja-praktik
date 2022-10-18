@@ -31,17 +31,17 @@
                 Seminar TA 1</a>
         </div>
         <div class="d-flex justify-content-center">
-            <a class="btn my-3" href="/koordinator/plotting-dosen-penguji" role="button"
+            <a class="btn my-3 disabled" href="/koordinator/plotting-dosen-penguji" role="button"
                 style="background-color:#ff8c1a; width: 20rem;">Plotting Dosen
                 Penguji</a>
         </div>
         <div class="d-flex justify-content-center">
-            <a class="btn my-3" href="/koordinator/jadwal-seminar" role="button"
+            <a class="btn my-3 disabled" href="/koordinator/jadwal-seminar" role="button"
                 style="background-color:#ff8c1a; width: 20rem;">Jadwal
                 Seminar</a>
         </div>
         <div class="d-flex justify-content-center">
-            <a class="btn my-3" href="/koordinator/penilaian-seminar" role="button"
+            <a class="btn my-3 disabled" href="/koordinator/penilaian-seminar" role="button"
                 style="background-color:#ff8c1a; width: 20rem;">Penilaian
                 Seminar</a>
         </div>

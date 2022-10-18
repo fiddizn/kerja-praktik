@@ -13,9 +13,15 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
+        $hasilReview = auth()->user()->mahasiswa->pendaftaran;
+        $formBimbingan = auth()->user()->mahasiswa->bimbingan;
+        $pendaftaranSeminar = auth()->user()->mahasiswa->pendaftaranseminar;
         return view('mahasiswa.mahasiswa', [
             'title' => 'Home',
-            'role' => 'Mahasiswa'
+            'role' => 'Mahasiswa',
+            'hasilReview' => $hasilReview,
+            'formBimbingan' => $formBimbingan,
+            'pendaftaranSeminar' => $pendaftaranSeminar
         ]);
     }
 
