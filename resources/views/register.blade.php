@@ -44,11 +44,6 @@
                                 id="name" placeholder="Nama Lengkap" required value="{{ old('name') }}">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control item @error('email')is-invalid @enderror"
-                                name="email" id="email" placeholder="Email" required value="{{ old('email') }}">
-                            <div id="email" class="invalid-feedback">Mohon menggunakan email Unjani!</div>
-                        </div>
-                        <div class="form-group">
                             <input type="password" class="form-control item @error('password')is-invalid @enderror"
                                 name="password" id="password" placeholder="Password" required>
                             <div id="email" class="invalid-feedback">Password harus lebih dari 4 karakter!</div>

@@ -67,8 +67,13 @@
             <td>{{ $mahasiswa->mahasiswa->name }}</td>
             <td>{{ $mahasiswa->peminatan }}</td>
             <td>
-                <a class="btn btn-warning" href="{{ route('form-bimbingan.show', $mahasiswa->mahasiswa->id) }}"><i
+                @if($role == 'Pembimbing 1')
+                <a class="btn btn-warning" href="/dosen/pembimbing-1/form-bimbingan/{{ $mahasiswa->mahasiswa->id  }}"><i
                         class="fa-solid fa-align-left"></i> Bimbingan</a>
+                @else
+                <a class="btn btn-warning" href="/dosen/pembimbing-2/form-bimbingan/{{ $mahasiswa->mahasiswa->id  }}"><i
+                        class="fa-solid fa-align-left"></i> Bimbingan</a>
+                @endif
             </td>
         </tr>
     </tbody>

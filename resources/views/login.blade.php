@@ -52,10 +52,9 @@
                             </span>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control item @error('email') is-invalid @enderror"
-                                name="email" id="email" placeholder="Email" required autofocus
-                                value="{{ old('email') }}">
-                            @error('email')
+                            <input type="number" class="form-control item @error('nim') is-invalid @enderror" name="nim"
+                                id="nim" placeholder="NIM/NID" required autofocus value="{{ old('nim') }}">
+                            @error('nim')
                             <div class="invalid-feedback">
                                 {{ message }}
                             </div>

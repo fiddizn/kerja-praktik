@@ -120,7 +120,7 @@ class PendaftaranController extends Controller
         return view('mahasiswa.syarat-pendaftaran-ta-1', [
             'title' => 'Status Pendaftaran TA 1',
             'role' => 'Mahasiswa',
-            'alasan' => auth()->user()->pendaftaran->keterangan_status
+            'syarat' => auth()->user()->pendaftaran->keterangan_status
         ]);
     }
 }

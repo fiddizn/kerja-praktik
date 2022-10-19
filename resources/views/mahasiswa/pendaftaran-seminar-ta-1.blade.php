@@ -62,8 +62,33 @@
             </div>
             <div class="col-md-6">
                 <label for="angkatan" class="form-label">Angkatan</label>
-                <input type="number" class="form-control" name="angkatan" id="angkatan" placeholder="Angkatan"
-                    value="{{ auth()->user()->pendaftaranseminar->angkatan }}">
+                <select type="text" class="form-select" name="angkatan" id="angkatan">
+                    @if (auth()->user()->pendaftaranseminar->angkatan == "2016")
+                    <option disabled>Pilih...</option>
+                    <option selected>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    @elseif (auth()->user()->pendaftaranseminar->angkatan == "2017")
+                    <option disabled>Pilih...</option>
+                    <option>2016</option>
+                    <option selected>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    @elseif (auth()->user()->pendaftaranseminar->angkatan == "2018")
+                    <option disabled>Pilih...</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option selected>2018</option>
+                    <option>2019</option>
+                    @elseif (auth()->user()->pendaftaranseminar->angkatan == "2019")
+                    <option disabled>Pilih...</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option selected>2019</option>
+                    @endif
+                </select>
             </div>
             <div class="col-md-6">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>

@@ -49,7 +49,14 @@
             </div>
             <div class="col-md-6">
                 <label for="angkatan" class="form-label">Angkatan</label>
-                <input type="number" class="form-control" name="angkatan" id="angkatan" placeholder="Angkatan">
+                <select type="text" class="form-select" name="angkatan" id="angkatan">
+                    <option disabled selected>Pilih.. </option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                </select>
             </div>
             <div class="col-md-6">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>

@@ -9,17 +9,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto ">
-                @if (isset(auth()->user()->email))
+                @if (isset(auth()->user()->mahasiswa))
                 <li class="nav-item">
                     <div class="keterangan mt-1 me-4 text-secondary" ">
-                        @if (isset(auth()->user()->mahasiswa->name))
                         <small style=" color:#e6e6e6">{{ auth()->user()->mahasiswa->name }} ({{ $role }})</small>
-                        @elseif (isset(auth()->user()->kooridinator->name))
-                        <small style=" color:#e6e6e6">{{ auth()->user()->koordinator->name }} ({{ $role }})</small>
-                        @else
-                        <small style=" color:#e6e6e6">{{ auth()->user()->email }} ({{ $role }})</small>
-                        @endif
-
+                    </div>
+                </li>
+                <li class=" nav-item">
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-light btn-sm" href="#">Logout</button>
+                    </form>
+                </li>
+                @elseif (isset(auth()->user()->dosen))
+                <li class="nav-item">
+                    <div class="keterangan mt-1 me-4 text-secondary" ">
+                        <small style=" color:#e6e6e6">{{ auth()->user()->dosen->name }} ({{ $role }})</small>
                     </div>
                 </li>
                 <li class=" nav-item">
