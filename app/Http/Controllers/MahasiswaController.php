@@ -13,16 +13,32 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $hasilReview = auth()->user()->mahasiswa->pendaftaran;
-        $formBimbingan = auth()->user()->mahasiswa->bimbingan;
-        $pendaftaranSeminar = auth()->user()->mahasiswa->pendaftaranseminar;
-        return view('mahasiswa.mahasiswa', [
-            'title' => 'Home',
-            'role' => 'Mahasiswa',
-            'hasilReview' => $hasilReview,
-            'formBimbingan' => $formBimbingan,
-            'pendaftaranSeminar' => $pendaftaranSeminar
-        ]);
+        if (isset(auth()->user()->pendaftaran) && auth()->user()->pendaftaran->alt4_p2 == null) {
+            $mahasiswa_id = auth()->user()->mahasiswa->id;
+            $Pendaftaran = \App\Models\Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->first();
+            $Pendaftaran->delete();
+            $hasilReview = auth()->user()->mahasiswa->pendaftaran;
+            $formBimbingan = auth()->user()->mahasiswa->bimbingan;
+            $pendaftaranSeminar = auth()->user()->mahasiswa->pendaftaranseminar;
+            return view('mahasiswa.mahasiswa', [
+                'title' => 'Home',
+                'role' => 'Mahasiswa',
+                'hasilReview' => $hasilReview,
+                'formBimbingan' => $formBimbingan,
+                'pendaftaranSeminar' => $pendaftaranSeminar
+            ]);
+        } else {
+            $hasilReview = auth()->user()->mahasiswa->pendaftaran;
+            $formBimbingan = auth()->user()->mahasiswa->bimbingan;
+            $pendaftaranSeminar = auth()->user()->mahasiswa->pendaftaranseminar;
+            return view('mahasiswa.mahasiswa', [
+                'title' => 'Home',
+                'role' => 'Mahasiswa',
+                'hasilReview' => $hasilReview,
+                'formBimbingan' => $formBimbingan,
+                'pendaftaranSeminar' => $pendaftaranSeminar
+            ]);
+        }
     }
 
     /**

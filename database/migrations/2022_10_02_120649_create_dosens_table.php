@@ -20,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('nid')->unique();
             $table->string('name');
             $table->string('kode');
+            $table->string('kbk');
             $table->timestamps();
         });
     }

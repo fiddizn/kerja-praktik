@@ -67,7 +67,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/mahasiswa/pendaftaran-ta-1/status', [PendaftaranController::class, 'status']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status/syarat', [PendaftaranController::class, 'showSyarat']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status/alasan-tidak-lolos', [PendaftaranController::class, 'showAlasan']);
-        Route::resource('/mahasiswa/pendaftaran-ta-1', PendaftaranController::class);
+        Route::get('/mahasiswa/pendaftaran-ta-1-step1', [PendaftaranController::class, 'step1']);
+        Route::post('/mahasiswa/pendaftaran-ta-1-step1', [PendaftaranController::class, 'storeStep1']);
+        Route::get('/mahasiswa/pendaftaran-ta-1-step2', [PendaftaranController::class, 'step2']);
+        Route::post('/mahasiswa/pendaftaran-ta-1-step2', [PendaftaranController::class, 'storeStep2']);
+        Route::get('/mahasiswa/pendaftaran-ta-1-step3', [PendaftaranController::class, 'step3']);
+        Route::post('/mahasiswa/pendaftaran-ta-1-step3', [PendaftaranController::class, 'storeStep3']);
+        Route::get('/mahasiswa/pendaftaran-ta-1-step4', [PendaftaranController::class, 'step4']);
+        Route::post('/mahasiswa/pendaftaran-ta-1-step4', [PendaftaranController::class, 'storeStep4']);
 
         // Download Hasil Review
         Route::get('/mahasiswa/hasil-review', [ProposalReviewedController::class, 'index']);
