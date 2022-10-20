@@ -16,12 +16,12 @@
         <form class="row g-3" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1-step1" method="POST">
             @endif
             @csrf
+            @if ($pendaftaran != null)
             <div class="col-md-6">
                 <label for="nim" class="form-label">NIM</label>
                 <input type="number" class="form-control" name="nim" id="nim"
                     value="{{ auth()->user()->mahasiswa->nim }}" disabled>
             </div>
-            @if ($pendaftaran != null)
             <div class="col-md-6">
                 <label for="gender" class="form-label">Jenis Kelamin</label>
                 <select type="text" class="form-select" name="gender" id="gender">
@@ -58,7 +58,7 @@
             <div class="col-md-6">
                 <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
                 <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir"
-                    value="{{ $pendaftaran->tempat_lahir}}">
+                    min="1996-01-01" max="2002-12-31" value="{{ $pendaftaran->tempat_lahir}}">
             </div>
             <div class="col-md-6">
                 <label for="angkatan" class="form-label">Angkatan</label>
@@ -83,15 +83,16 @@
             </div>
             <div class="col-md-6">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir"
-                    value="{{ $pendaftaran->tanggal_lahir}}">
+                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" min="1996-01-01"
+                    max="2002-12-31" value="{{ $pendaftaran->tanggal_lahir}}">
             </div>
             <div class=" col-md-6 ">
                 <div class=" input-group">
                     <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
                     <div class="input-group-text">+62</div>
-                    <input type="text" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890" value="{{ $pendaftaran->phone_number}}">
+                    <input type="number" class="form-control" id="phone_number" name="phone_number"
+                        placeholder="81234567890" min="800000000000" max="899999999990"
+                        value="{{ $pendaftaran->phone_number}}">
                 </div>
             </div>
             <div class=" col-md-12">
@@ -101,7 +102,19 @@
             </div>
 
             @else
-
+            <div class="col-md-6">
+                <label for="nim" class="form-label">NIM</label>
+                <input type="number" class="form-control" name="nim" id="nim"
+                    value="{{ auth()->user()->mahasiswa->nim }}" disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="gender" class="form-label">Jenis Kelamin</label>
+                <select type="text" class="form-select" name="gender" id="gender">
+                    <option selected disabled>Pilih...</option>
+                    <option>Laki-laki</option>
+                    <option>Perempuan</option>
+                </select>
+            </div>
             <div class="col-md-6">
                 <label for="name" class="form-label">Nama Lengkap</label>
                 <input type="text" class="form-control" name="name" id="name"
@@ -131,14 +144,15 @@
             </div>
             <div class="col-md-6">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir">
+                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" min="1996-01-01"
+                    max="2002-12-31">
             </div>
             <div class="col-md-6 ">
                 <div class="input-group">
                     <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
                     <div class="input-group-text">+62</div>
                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890">
+                        placeholder="81234567890" minlength="10" maxlength="13">
                 </div>
             </div>
             <div class="col-md-12">
