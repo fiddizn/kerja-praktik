@@ -19,15 +19,16 @@ use App\Http\Controllers\ProposalReviewedController;
 use App\Http\Controllers\Penilaian_seminarController;
 use App\Http\Controllers\BimbinganMahasiswaController;
 use App\Http\Controllers\ListPendaftaranTA1Controller;
-use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
 use App\Http\Controllers\PendaftaranSeminarController;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
 use App\Http\Controllers\PlottingDosenReviewerController;
 use App\Http\Controllers\Plotting_dosen_pengujiController;
+use App\Http\Controllers\PlottingDosenReviewer2Controller;
 use App\Http\Controllers\Plotting_dosen_reviewerController;
 use App\Http\Controllers\PlottingDosenPembimbingController;
+use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
 use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
 
 /*
@@ -109,6 +110,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Plotting Dosen Pembimbing, Reviewer, Penguji
         Route::resource('/koordinator/plotting-dosen-pembimbing', PlottingDosenPembimbingController::class);
         Route::resource('/koordinator/plotting-dosen-reviewer', PlottingDosenReviewerController::class);
+        Route::resource('/koordinator/plotting-dosen-reviewer2', PlottingDosenReviewer2Controller::class);
 
         // Review Proposal
         Route::resource('/koordinator/hasil-review-proposal', HasilReviewController::class);

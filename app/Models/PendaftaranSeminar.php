@@ -32,4 +32,12 @@ class PendaftaranSeminar extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function reviewer1()
+    {
+        return $this->belongsTo(Reviewer1::class, 'r1_id', 'id');
+    }
+    public function reviewer2()
+    {
+        return $this->belongsTo(Reviewer2::class, 'r2_id', 'id');
+    }
 }

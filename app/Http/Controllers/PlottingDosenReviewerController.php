@@ -21,8 +21,7 @@ class PlottingDosenReviewerController extends Controller
         return view(
             'koordinator.plotting-dosen-reviewer',
             [
-                'title' => 'Plotting Dosen reviewer',
-                'name' => 'Galang Setia Nugroho',
+                'title' => 'Plotting Dosen Reviewer',
                 'role' => 'Koordinator',
                 'list_mahasiswa' => $list_mahasiswa
             ]
@@ -66,7 +65,6 @@ class PlottingDosenReviewerController extends Controller
             'koordinator.isian-plotting-dosen-reviewer',
             [
                 'title' => 'Pendaftaran TA 1',
-                'name' => 'Galang Setia Nugroho',
                 'role' => 'Koordinator',
                 'plotting_dosen' => 'Reviewer',
                 'mahasiswa' => $mahasiswa,

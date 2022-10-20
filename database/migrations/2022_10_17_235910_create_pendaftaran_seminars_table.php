@@ -18,6 +18,8 @@ return new class extends Migration
             // Informasi Diri Mahasiswa
             $table->id();
             $table->integer('mahasiswa_id');
+            $table->integer('r1_id');
+            $table->integer('r2_id')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('gender')->nullable();

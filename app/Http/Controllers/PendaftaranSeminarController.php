@@ -54,6 +54,7 @@ class PendaftaranSeminarController extends Controller
 
         $pendaftaran = PendaftaranSeminar::create([
             'mahasiswa_id' => auth()->user()->mahasiswa->id,
+            'r1_id' => auth()->user()->pendaftaran->r1_id,
             'tempat_lahir' => request('tempat_lahir'),
             'tanggal_lahir' => request('tanggal_lahir'),
             'gender' => request('gender'),

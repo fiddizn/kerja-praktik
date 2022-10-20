@@ -25,11 +25,11 @@
             <div class="col-md-6">
                 <label for="gender" class="form-label">Jenis Kelamin</label>
                 <select type="text" class="form-select" name="gender" id="gender">
-                    @if (auth()->user()->pendaftaranseminar->gender == "Laki-laki")
+                    @if (auth()->user()->pendaftaran->gender == "Laki-laki")
                     <option disabled>Pilih...</option>
                     <option selected>Laki-laki</option>
                     <option>Perempuan</option>
-                    @elseif (auth()->user()->pendaftaranseminar->gender == "Perempuan")
+                    @elseif (auth()->user()->pendaftaran->gender == "Perempuan")
                     <option disabled>Pilih...</option>
                     <option>Laki-laki</option>
                     <option selected>Perempuan</option>
@@ -44,11 +44,11 @@
             <div class="col-md-6">
                 <label for="peminatan" class="form-label">Peminatan</label>
                 <select type="text" class="form-select" name="peminatan" id="peminatan">
-                    @if (auth()->user()->pendaftaranseminar->peminatan == "AIG")
+                    @if (auth()->user()->pendaftaran->peminatan == "AIG")
                     <option disabled>Pilih...</option>
                     <option selected>AIG</option>
                     <option>DSE</option>
-                    @elseif (auth()->user()->pendaftaranseminar->peminatan == "DSE")
+                    @elseif (auth()->user()->pendaftaran->peminatan == "DSE")
                     <option disabled>Pilih...</option>
                     <option>AIG</option>
                     <option selected>DSE</option>
@@ -58,30 +58,30 @@
             <div class="col-md-6">
                 <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
                 <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir"
-                    value="{{ auth()->user()->pendaftaranseminar->tempat_lahir }}">
+                    value="{{ auth()->user()->pendaftaran->tempat_lahir }}">
             </div>
             <div class="col-md-6">
                 <label for="angkatan" class="form-label">Angkatan</label>
                 <select type="text" class="form-select" name="angkatan" id="angkatan">
-                    @if (auth()->user()->pendaftaranseminar->angkatan == "2016")
+                    @if (auth()->user()->pendaftaran->angkatan == "2016")
                     <option disabled>Pilih...</option>
                     <option selected>2016</option>
                     <option>2017</option>
                     <option>2018</option>
                     <option>2019</option>
-                    @elseif (auth()->user()->pendaftaranseminar->angkatan == "2017")
+                    @elseif (auth()->user()->pendaftaran->angkatan == "2017")
                     <option disabled>Pilih...</option>
                     <option>2016</option>
                     <option selected>2017</option>
                     <option>2018</option>
                     <option>2019</option>
-                    @elseif (auth()->user()->pendaftaranseminar->angkatan == "2018")
+                    @elseif (auth()->user()->pendaftaran->angkatan == "2018")
                     <option disabled>Pilih...</option>
                     <option>2016</option>
                     <option>2017</option>
                     <option selected>2018</option>
                     <option>2019</option>
-                    @elseif (auth()->user()->pendaftaranseminar->angkatan == "2019")
+                    @elseif (auth()->user()->pendaftaran->angkatan == "2019")
                     <option disabled>Pilih...</option>
                     <option>2016</option>
                     <option>2017</option>
@@ -93,20 +93,20 @@
             <div class="col-md-6">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                 <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir"
-                    value="{{ auth()->user()->pendaftaranseminar->tanggal_lahir }}">
+                    value="{{ auth()->user()->pendaftaran->tanggal_lahir }}">
             </div>
             <div class="col-md-6 ">
                 <div class="input-group">
                     <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
                     <div class="input-group-text">+62</div>
                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890" value="{{ auth()->user()->pendaftaranseminar->phone_number }}">
+                        placeholder="81234567890" value="{{ auth()->user()->pendaftaran->phone_number }}">
                 </div>
             </div>
             <div class="col-md-12">
                 <label for="address" class="form-label">Alamat</label>
                 <input type="text" class="form-control" name="address" id="address" placeholder="Alamat"
-                    value="{{ auth()->user()->pendaftaranseminar->address }}">
+                    value="{{ auth()->user()->pendaftaran->address }}">
             </div>
 
 
@@ -122,7 +122,7 @@
                 <select type="text" class="form-select" name="algo" id="algo">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaranseminar->algo == $angka_mutu)
+                    @if(auth()->user()->pendaftaran->algo == $angka_mutu)
                     <option selected>{{$angka_mutu}}</option>
                     @endif
                     <option>{{$angka_mutu}}</option>
@@ -134,7 +134,7 @@
                 <select type="text" class="form-select" name="strukdat" id="strukdat">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaranseminar->strukdat == $angka_mutu)
+                    @if(auth()->user()->pendaftaran->strukdat == $angka_mutu)
                     <option selected>{{$angka_mutu}}</option>
                     @endif
                     <option>{{$angka_mutu}}</option>
@@ -146,7 +146,7 @@
                 <select type="text" class="form-select" name="basdat" id="basdat">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaranseminar->basdat == $angka_mutu)
+                    @if(auth()->user()->pendaftaran->basdat == $angka_mutu)
                     <option selected>{{$angka_mutu}}</option>
                     @endif
                     <option>{{$angka_mutu}}</option>
@@ -158,7 +158,7 @@
                 <select type="text" class="form-select" name="rpl" id="rpl">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaranseminar->rpl == $angka_mutu)
+                    @if(auth()->user()->pendaftaran->rpl == $angka_mutu)
                     <option selected>{{$angka_mutu}}</option>
                     @endif
                     <option>{{$angka_mutu}}</option>
@@ -170,7 +170,7 @@
                 <select type="text" class="form-select" name="metpen" id="metpen">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaranseminar->metpen == $angka_mutu)
+                    @if(auth()->user()->pendaftaran->metpen == $angka_mutu)
                     <option selected>{{$angka_mutu}}</option>
                     @endif
                     <option>{{$angka_mutu}}</option>
@@ -185,7 +185,7 @@
                 <select type="text" class="form-select" name="pemweb" id="pemweb">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaranseminar->pemweb == $status_matkul)
+                    @if(auth()->user()->pendaftaran->pemweb == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
                     @endif
                     <option>{{$status_matkul}}</option>
@@ -197,7 +197,7 @@
                 <select type="text" class="form-select" name="prak_pemweb" id="prak_pemweb">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaranseminar->prak_pemweb == $status_matkul)
+                    @if(auth()->user()->pendaftaran->prak_pemweb == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
                     @endif
                     <option>{{$status_matkul}}</option>
@@ -209,7 +209,7 @@
                 <select type="text" class="form-select" name="po1" id="po1">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaranseminar->po1 == $status_matkul)
+                    @if(auth()->user()->pendaftaran->po1 == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
                     @endif
                     <option>{{$status_matkul}}</option>
@@ -221,7 +221,7 @@
                 <select type="text" class="form-select" name="prak_po1" id="prak_po1">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaranseminar->prak_po1 == $status_matkul)
+                    @if(auth()->user()->pendaftaran->prak_po1 == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
                     @endif
                     <option>{{$status_matkul}}</option>
@@ -233,7 +233,7 @@
                 <select type="text" class="form-select" name="appl" id="appl">
                     <option disabled selected>Pilih.. </option>
                     @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaranseminar->appl == $status_matkul)
+                    @if(auth()->user()->pendaftaran->appl == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
                     @endif
                     <option>{{$status_matkul}}</option>
@@ -251,27 +251,27 @@
             <div class="col-md-3">
                 <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
                 <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0"
-                    value="{{ auth()->user()->pendaftaranseminar->jumlah_teori_d }}">
+                    value="{{ auth()->user()->pendaftaran->jumlah_teori_d }}">
             </div>
             <div class="col-md-3">
                 <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
                 <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" placeholder="0"
-                    value="{{ auth()->user()->pendaftaranseminar->jumlah_prak_d }}">
+                    value="{{ auth()->user()->pendaftaran->jumlah_prak_d }}">
             </div>
             <div class="col-md-3">
                 <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
                 <input type="number" class="form-control" name="jumlah_e" id="jumlah_e" placeholder="0"
-                    value="{{ auth()->user()->pendaftaranseminar->jumlah_e }}">
+                    value="{{ auth()->user()->pendaftaran->jumlah_e }}">
             </div>
             <div class="col-md-3">
                 <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
                 <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks" placeholder="138"
-                    value="{{ auth()->user()->pendaftaranseminar->jumlah_sks }}">
+                    value="{{ auth()->user()->pendaftaran->jumlah_sks }}">
             </div>
             <div class="col-md-3">
                 <label for="ipk" class="form-label">IPK</label>
                 <input type="number" step="0.01" class="form-control" name="ipk" id="ipk" placeholder="3.10"
-                    value="{{ auth()->user()->pendaftaranseminar->ipk }}">
+                    value="{{ auth()->user()->pendaftaran->ipk }}">
             </div>
 
             <div class="my-4">
