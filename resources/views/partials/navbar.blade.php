@@ -9,6 +9,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto ">
+                @if (auth()->user())
                 @if (isset(auth()->user()->mahasiswa))
                 <li class="nav-item">
                     <div class="keterangan mt-1 me-4 text-secondary" ">
@@ -33,6 +34,19 @@
                         <button type="submit" class="btn btn-outline-light btn-sm" href="#">Logout</button>
                     </form>
                 </li>
+                @else
+                <li class="nav-item">
+                    <div class="keterangan mt-1 me-4 text-secondary" ">
+                        <small style=" color:#e6e6e6">({{ $role }})</small>
+                    </div>
+                </li>
+                <li class=" nav-item">
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-light btn-sm" href="#">Logout</button>
+                    </form>
+                </li>
+                @endif
                 @endif
             </ul>
         </div>

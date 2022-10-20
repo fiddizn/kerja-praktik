@@ -52,7 +52,7 @@
                             </span>
                         </div>
                         <div class="form-group">
-                            <input type="number" min="3411160000" max="3411199999"
+                            <input type="number" max="3411199999"
                                 class="form-control item @error('nim') is-invalid @enderror" name="nim" id="nim"
                                 placeholder="NIM/NID" required autofocus value="{{ old('nim') }}">
                             @error('nim')

@@ -113,8 +113,8 @@
 <div class="d-flex justify-content-around mt">
     <div class="input-group my-5" style="width: 30%;">
         <div class="input-group-prepend">
-            <a href="/koordinator/hasil-review-proposal/{{ $mahasiswa->pendaftaran->id }}/downloadProposalReviewed"
-                class="btn" style="height: 58px; background-color:#ff8c1a;">
+            <a href="/koordinator/hasil-review-proposal/{{ $mahasiswa->id }}/downloadProposalReviewed" class="btn"
+                style="height: 58px; background-color:#ff8c1a;">
                 <i class="fa-solid fa-download fa-xl"></i>
                 <p><b>DOWNLOAD PROPOSAL (REVIEWED)</b></p>
             </a>

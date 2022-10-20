@@ -197,6 +197,13 @@ class PendaftaranController extends Controller
             'alt4_p2' => request('alt4_p2'),
         ]);
 
+        $pendaftaran_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->first()->id;
+
+        Review::create([
+            'mahasiswa_id' => auth()->user()->mahasiswa->id,
+            'pendaftaran_id' => $pendaftaran_id
+        ]);
+
         return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
     }
 

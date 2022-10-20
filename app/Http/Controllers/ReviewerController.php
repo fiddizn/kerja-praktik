@@ -23,7 +23,6 @@ class ReviewerController extends Controller
     {
 
         $list_review = \App\Models\Review::with('pendaftaran')->where('r1_id', auth()->user()->reviewer1->id)->oldest()->paginate(7);
-        // dd(auth()->user()->reviewer1->id);
         return view('dosen.reviewer.review-proposal', [
             'title' => 'Review Proposal',
             'role' => 'Reviewer 1',
