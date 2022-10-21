@@ -36,7 +36,7 @@
                 Penguji</a>
         </div>
         <div class="d-flex justify-content-center">
-            <a class="btn my-3 disabled" href="/koordinator/jadwal-seminar" role="button"
+            <a class="btn my-3" href="/koordinator/jadwal-seminar" role="button"
                 style="background-color:#ff8c1a; width: 20rem;">Jadwal
                 Seminar</a>
         </div>

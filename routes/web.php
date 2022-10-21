@@ -22,6 +22,7 @@ use App\Http\Controllers\ListPendaftaranTA1Controller;
 use App\Http\Controllers\PendaftaranSeminarController;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
+use App\Http\Controllers\JadwalSeminarController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
 use App\Http\Controllers\PlottingDosenReviewerController;
 use App\Http\Controllers\Plotting_dosen_pengujiController;
@@ -30,6 +31,7 @@ use App\Http\Controllers\Plotting_dosen_reviewerController;
 use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
 use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
+use App\Models\JadwalSeminar;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,6 +126,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/downloadKhs', [ListPendaftaranSeminarTA1Controller::class, 'downloadKhs']);
         Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/{kelolosan}', [ListPendaftaranSeminarTA1Controller::class, 'keterangan']);
         Route::post('/koordinator/list-pendaftaran-seminar-ta-1/{id}', [ListPendaftaranSeminarTA1Controller::class, 'edit_keterangan_kelolosan']);
+
+        // Unggah Jadwal Seminar
+        Route::get('/koordinator/jadwal-seminar', [JadwalSeminarController::class, 'index']);
+        Route::post('/koordinator/jadwal-seminar', [JadwalSeminarController::class, 'store']);
+        Route::post('/koordinator/jadwal-seminar/update', [JadwalSeminarController::class, 'update']);
+        Route::get('/koordinator/jadwal-seminar/mahasiswa', [JadwalSeminarController::class, 'downloadJadwalMahasiswa']);
+        Route::get('/koordinator/jadwal-seminar/dosen', [JadwalSeminarController::class, 'downloadJadwalDosen']);
     });
 
     // Sesi Dosen
