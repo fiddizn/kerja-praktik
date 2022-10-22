@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 
-<h2 style="text-align:center;">Status Pendaftaran TA 1</h2>
+<h2 style="text-align:center;">Status Pendaftaran Seminar TA 1</h2>
 <div class="row">
     <div class="d-flex justify-content-center mt-5">
         <div class="card w-50 mt-5 " style="background-color:#D9D9D9;">
@@ -22,6 +22,14 @@
             </div>
         </div>
     </div>
+    @if ($status == 'Lolos Bersyarat' || $status == 'Lolos')
+    <div class="d-flex justify-content-center mt-5">
+        <a class="btn" style="width: auto; background-color:#ff8c1a;"
+            href="/mahasiswa/pendaftaran-seminar-ta-1/status/download">Jadwal Seminar <i
+                class="fa-solid fa-download"></i>
+        </a>
+    </div>
+    @endif
 </div>
 
 </div>

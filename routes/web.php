@@ -90,6 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Pendaftaran Seminar TA 1
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status', [PendaftaranSeminarController::class, 'status']);
+        Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/download', [JadwalSeminarController::class, 'downloadJadwalMahasiswa']);
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/syarat', [PendaftaranSeminarController::class, 'showSyarat']);
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/alasan-tidak-lolos', [PendaftaranSeminarController::class, 'showAlasan']);
         Route::resource('/mahasiswa/pendaftaran-seminar-ta-1', PendaftaranSeminarController::class);
@@ -144,6 +145,7 @@ Route::group(['middleware' => 'auth'], function () {
                 'role' => 'Dosen'
             ]);
         });
+        Route::get('/dosen/downloadJadwalSeminar', [JadwalSeminarController::class, 'downloadJadwalDosen']);
 
         // Reviewer 1
 
