@@ -40,4 +40,9 @@ class Mahasiswa extends Model
     {
         return $this->hasOne(Review::class);
     }
+
+    public function penilaianSeminar()
+    {
+        return $this->hasOne(PenilaianSeminar::class);
+    }
 }

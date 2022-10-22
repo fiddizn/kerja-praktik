@@ -30,4 +30,9 @@ class Reviewer1 extends Model
     {
         return $this->hasOne(PendaftaranSeminar::class);
     }
+
+    public function penilaianSeminar()
+    {
+        return $this->hasOne(PenilaianSeminar::class);
+    }
 }

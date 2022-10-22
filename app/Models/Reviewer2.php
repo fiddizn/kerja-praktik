@@ -15,8 +15,14 @@ class Reviewer2 extends Model
     {
         return $this->belongsTo(Dosen::class);
     }
+
     public function pendaftaranSeminar()
     {
         return $this->hasOne(PendaftaranSeminar::class);
+    }
+
+    public function penilaianSeminar()
+    {
+        return $this->hasOne(PenilaianSeminar::class);
     }
 }
