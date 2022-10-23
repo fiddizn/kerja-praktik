@@ -40,6 +40,8 @@ return new class extends Migration
             $table->integer('r2_metodeDanPustaka')->nullable();
             $table->string('r2_catatan')->nullable();
             $table->string('r2_file')->nullable();
+            $table->string('status')->default(0);
+            $table->string('rilis')->default(0);
             $table->timestamps();
         });
     }
