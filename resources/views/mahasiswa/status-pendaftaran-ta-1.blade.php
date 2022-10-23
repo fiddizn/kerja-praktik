@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    @if ($status == 'Lolos' &&
+    @if ($status == 'Lolos' || $status == 'Lolos Bersyarat' &&
     auth()->user()->pendaftaran->p1 == null &&
     auth()->user()->pendaftaran->p2 == null)
     <div class="d-flex justify-content-center mt-5">

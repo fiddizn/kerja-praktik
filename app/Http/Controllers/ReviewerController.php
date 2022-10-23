@@ -22,7 +22,9 @@ class ReviewerController extends Controller
     public function showReviewProposal()
     {
 
-        $list_review = \App\Models\Review::with('pendaftaran')->where('r1_id', auth()->user()->reviewer1->id)->oldest()->paginate(7);
+        $list_review = \App\Models\Review::with('pendaftaran')->where('r1_id', auth()->user()->reviewer1->id)->whereHas('pendaftaran', function ($query) {
+            return $query->where('berkas_ta1', '!=', null);
+        })->oldest()->paginate(7);
         return view('dosen.reviewer.review-proposal', [
             'title' => 'Review Proposal',
             'role' => 'Reviewer 1',

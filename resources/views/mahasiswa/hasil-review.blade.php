@@ -1,6 +1,11 @@
 @extends('layouts/main')
 @section('container')
-
+@if (session()->has('null'))
+<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    {{ session('null') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <h2 class="text-center">{{ $title }}</h2>
 
 <div class="row mt-5">
@@ -8,7 +13,9 @@
         <label>Saran Perbaikan / Usulan Judul / DLL</label>
         <div class="card w-100">
             <div class="card-body">
+                @if ($review->rilis != 0)
                 {!! $review->komentar !!}
+                @endif
             </div>
         </div>
     </div>

@@ -172,7 +172,7 @@
         @if ($pendaftaran->berkas_ta1 != null)
         <div class="row mt-4">
             <div class="col-md-5">
-                <label for="berkas_ta1" class="form-label col-sm-5">Berkas Proposal</label>
+                <label for="berkas_ta1" class="form-label col-sm-6">Berkas Proposal</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
                     href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadBerkasTa1">Download <svg
                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -188,7 +188,7 @@
         @endif
         <div class="row mt-4">
             <div class="col-md-5">
-                <label for="tagihan_uang" class="form-label col-sm-5">Tagihan Uang Kuliah</label>
+                <label for="tagihan_uang" class="form-label col-sm-6">Tagihan Uang Kuliah</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
                     href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadTagihanUang">Download <svg
                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -203,7 +203,7 @@
         </div>
         <div class="row mt-4">
             <div class="col-md-5">
-                <label for="lunas_pembayaran" class="form-label col-sm-5">Bukti Lunas Pembayaran</label>
+                <label for="lunas_pembayaran" class="form-label col-sm-6">Bukti Lunas Pembayaran</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
                     href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadLunasPembayaran">Download
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -218,7 +218,7 @@
         </div>
         <div class="row mt-4">
             <div class="col-md-5">
-                <label for="khs" class="form-label col-sm-5">KHS</label>
+                <label for="khs" class="form-label col-sm-6">KHS</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
                     href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadKhs">Download <svg
                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"

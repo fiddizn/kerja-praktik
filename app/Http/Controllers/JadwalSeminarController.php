@@ -46,9 +46,13 @@ class JadwalSeminarController extends Controller
 
     public function downloadJadwalDosen()
     {
-        $data = JadwalSeminar::first();
-        $filepath = public_path("storage/{$data->dosen}");
-        return response()->download($filepath);
+        if (JadwalSeminar::first() != null) {
+            $data = JadwalSeminar::first();
+            $filepath = public_path("storage/{$data->dosen}");
+            return response()->download($filepath);
+        } else {
+            return redirect()->back()->with('gagal', 'Maaf, Jadwal Seminar TA 1 belum tersedia!');
+        }
     }
 
     public function update()

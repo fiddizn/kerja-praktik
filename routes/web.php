@@ -31,6 +31,7 @@ use App\Http\Controllers\Plotting_dosen_reviewerController;
 use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
 use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
+use App\Http\Controllers\Reviewer2Controller;
 use App\Models\JadwalSeminar;
 
 /*
@@ -148,12 +149,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dosen/downloadJadwalSeminar', [JadwalSeminarController::class, 'downloadJadwalDosen']);
 
         // Reviewer 1
-
         Route::get('/dosen/reviewer-1', [ReviewerController::class, 'index']);
         Route::get('/dosen/reviewer-1/review-proposal', [ReviewerController::class, 'showReviewProposal']);
         Route::get('/dosen/reviewer-1/review-proposal/downloadBerkasTa1-{id}', [ListPendaftaranTA1Controller::class, 'downloadBerkasTa1']);
         Route::get('/dosen/reviewer-1/review-proposal/formReview-{id}', [ReviewerController::class, 'showFormReview']);
         Route::post('/dosen/reviewer-1/review-proposal/formReview-{id}', [ReviewerController::class, 'createFormReview']);
+
+        // Reviewer 2
+        Route::get('/dosen/reviewer-2', [Reviewer2Controller::class, 'index']);
 
         // Pembimbing 1
         Route::get('/dosen/pembimbing-1', function () {

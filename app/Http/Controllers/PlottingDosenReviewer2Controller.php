@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
 use App\Models\PendaftaranSeminar;
+use App\Models\PenilaianSeminar;
 use App\Models\Review;
 use App\Models\Reviewer1;
 use App\Models\Reviewer2;
@@ -13,7 +14,7 @@ class PlottingDosenReviewer2Controller extends Controller
 {
     public function index()
     {
-        $list_mahasiswa = \App\Models\PendaftaranSeminar::with('mahasiswa')->oldest()->paginate(7);
+        $list_mahasiswa = \App\Models\PendaftaranSeminar::with('mahasiswa')->where('r1_id', '!=', null)->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')->oldest()->paginate(7);
         return view(
             'koordinator.plotting-dosen-reviewer2',
             [
@@ -56,11 +57,23 @@ class PlottingDosenReviewer2Controller extends Controller
 
         $r2_id = Reviewer2::where('dosen_id', $dosen_id)->get()[0]->id;
 
-        \App\Models\PendaftaranSeminar::where('id', $id)->update([
+        PendaftaranSeminar::where('id', $id)->update([
             'r2_id' =>  $r2_id
         ]);
 
         $mahasiswa_id = PendaftaranSeminar::where('id', '=', $id)->get()[0]->mahasiswa_id;
+        $r1_id = PendaftaranSeminar::where('id', '=', $id)->get()[0]->r1_id;
+        $p1_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p1_id;
+        $p2_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p2_id;
+
+        PenilaianSeminar::create([
+            'mahasiswa_id' => $mahasiswa_id,
+            'pembimbing1_id' => $p1_id,
+            'pembimbing2_id' => $p2_id,
+            'reviewer1_id' => $r1_id,
+            'reviewer2_id' => $r2_id
+        ]);
+
         return redirect('/koordinator/plotting-dosen-reviewer2')->with('success', 'Plotting telah diperbarui!');
     }
 }

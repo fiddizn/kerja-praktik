@@ -52,8 +52,7 @@ class PendaftaranSeminarController extends Controller
             $file['khs'] = request()->file('khs')->store('seminar_khs');
         } else $file['khs'] = null;
 
-        $pendaftaran = PendaftaranSeminar::create([
-            'mahasiswa_id' => auth()->user()->mahasiswa->id,
+        $pendaftaran = PendaftaranSeminar::where('mahasiswa_id', auth()->user()->mahasiswa->id)->update([
             'r1_id' => auth()->user()->pendaftaran->r1_id,
             'tempat_lahir' => request('tempat_lahir'),
             'tanggal_lahir' => request('tanggal_lahir'),

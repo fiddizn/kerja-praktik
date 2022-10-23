@@ -101,12 +101,21 @@ class HasilReviewController extends Controller
 
     public function downloadProposalReviewed($id)
     {
-        $data = Review::with('pendaftaran', 'mahasiswa', 'reviewer1')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->proposal}");
-        if ($data->proposal == null) {
-            return back()->with('null', 'File tidak ada!');
-        } else {
-            return response()->download($filepath);
-        }
+        $data = Review::where('id', $id)->first();
+        if (auth()->user()->role->name == 'Mahasiswa' && $data->rilis != 0) {
+            $filepath = public_path("storage/{$data->proposal}");
+            if ($data->proposal == null) {
+                return back()->with('null', 'File tidak ada!');
+            } else {
+                return response()->download($filepath);
+            }
+        } elseif (auth()->user()->role->name == 'Koordinator') {
+            $filepath = public_path("storage/{$data->proposal}");
+            if ($data->proposal == null) {
+                return back()->with('null', 'File tidak ada!');
+            } else {
+                return response()->download($filepath);
+            }
+        } else return back()->with('null', 'Proposal yang telah direview belum dirilis oleh Koordinator TA 1');
     }
 }

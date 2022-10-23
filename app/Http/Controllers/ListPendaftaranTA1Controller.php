@@ -48,7 +48,29 @@ class ListPendaftaranTA1Controller extends Controller
         if (request('status') == 'Lolos Bersyarat' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
         } elseif (request('status') == 'Lolos Bersyarat') {
             PendaftaranSeminar::create([
-                'mahasiswa_id' => $mahasiswa_id
+                'mahasiswa_id' => $mahasiswa_id,
+                'tempat_lahir' => $pendaftaran['tempat_lahir'],
+                'tanggal_lahir' => $pendaftaran['tanggal_lahir'],
+                'gender' => $pendaftaran['gender'],
+                'phone_number' => $pendaftaran['phone_number'],
+                'address' => $pendaftaran['address'],
+                'peminatan' => $pendaftaran['peminatan'],
+                'angkatan' => $pendaftaran['angkatan'],
+                'ipk' => $pendaftaran['ipk'],
+                'jumlah_sks' => $pendaftaran['jumlah_sks'],
+                'jumlah_teori_d' => $pendaftaran['jumlah_teori_d'],
+                'jumlah_prak_d' => $pendaftaran['jumlah_prak_d'],
+                'jumlah_e' => $pendaftaran['jumlah_e'],
+                'algo' => $pendaftaran['algo'],
+                'strukdat' => $pendaftaran['strukdat'],
+                'basdat' => $pendaftaran['basdat'],
+                'rpl' => $pendaftaran['rpl'],
+                'metpen' => $pendaftaran['metpen'],
+                'pemweb' => $pendaftaran['pemweb'],
+                'prak_pemweb' => $pendaftaran['prak_pemweb'],
+                'po1' => $pendaftaran['po1'],
+                'prak_po1' => $pendaftaran['prak_po1'],
+                'appl' => $pendaftaran['appl']
             ]);
         } elseif (request('status') == 'Tidak Lolos' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
             PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->delete();

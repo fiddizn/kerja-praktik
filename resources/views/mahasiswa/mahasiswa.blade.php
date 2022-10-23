@@ -22,7 +22,11 @@
     " href="/mahasiswa/form-bimbingan" role="button" style="background-color:#ff8c1a; width: 20rem;">Form Bimbingan</a>
 </div>
 <div class="d-flex justify-content-center">
-    <a class="btn my-3" href="/mahasiswa/pendaftaran-seminar-ta-1" role="button"
+    <a class="btn my-3
+    @if($formBimbingan == null)
+    disabled
+    @endif
+    " href="/mahasiswa/pendaftaran-seminar-ta-1" role="button"
         style="background-color:#ff8c1a; width: 20rem;">Pendaftaran
         Seminar TA
         1</a>
