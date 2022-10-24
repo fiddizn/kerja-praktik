@@ -34,11 +34,19 @@ class PenilaianSeminarController extends Controller
     public function edit($id)
     {
         $penilaianseminar = PenilaianSeminar::with('mahasiswa')->find($id);
-        return view('dosen.reviewer.isian-penilaian-seminar', [
-            'title' => 'Form Penilaian Seminar',
-            'role' => 'Reviewer 1',
-            'penilaianSeminar' => $penilaianseminar
-        ]);
+        if ($penilaianseminar->r1_presentasi != null) {
+            return view('dosen.reviewer.isian-penilaian-seminar', [
+                'title' => 'Edit Penilaian Seminar',
+                'role' => 'Reviewer 1',
+                'penilaianSeminar' => $penilaianseminar
+            ]);
+        } else {
+            return view('dosen.reviewer.create-penilaian-seminar', [
+                'title' => 'Form Penilaian Seminar',
+                'role' => 'Reviewer 1',
+                'penilaianSeminar' => $penilaianseminar
+            ]);
+        }
     }
 
     public function update(Request $request, $id)
