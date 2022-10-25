@@ -2,27 +2,32 @@
 
 use LDAP\Result;
 use App\Models\Pembimbing1;
+use App\Models\JadwalSeminar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\Reviewer2Controller;
 use App\Http\Controllers\HasilReviewController;
 use App\Http\Controllers\KoordinatorController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\FormBimbinganController;
+use App\Http\Controllers\JadwalSeminarController;
 use App\Http\Controllers\Jadwal_seminarController;
 use App\Http\Controllers\Plotting_dosen_pembimbing;
 use App\Http\Controllers\RegisterSeminarController;
 use App\Http\Controllers\Detail_MahasiswaController;
+use App\Http\Controllers\PenilaianSeminarController;
 use App\Http\Controllers\ProposalReviewedController;
 use App\Http\Controllers\Penilaian_seminarController;
 use App\Http\Controllers\BimbinganMahasiswaController;
 use App\Http\Controllers\ListPendaftaranTA1Controller;
 use App\Http\Controllers\PendaftaranSeminarController;
+use App\Http\Controllers\PenilaianSeminarP1Controller;
+use App\Http\Controllers\PenilaianSeminarR2Controller;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
 use App\Http\Controllers\Hasil_review_proposalController;
-use App\Http\Controllers\JadwalSeminarController;
 use App\Http\Controllers\List_pendaftaran_ta_1Controller;
 use App\Http\Controllers\PlottingDosenReviewerController;
 use App\Http\Controllers\Plotting_dosen_pengujiController;
@@ -31,9 +36,7 @@ use App\Http\Controllers\Plotting_dosen_reviewerController;
 use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
 use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
-use App\Http\Controllers\PenilaianSeminarController;
-use App\Http\Controllers\Reviewer2Controller;
-use App\Models\JadwalSeminar;
+use App\Http\Controllers\PenilaianSeminarP2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -161,28 +164,32 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Reviewer 2
         Route::get('/dosen/reviewer-2', [Reviewer2Controller::class, 'index']);
+        Route::resource('/dosen/reviewer-2/penilaian-seminar', PenilaianSeminarR2Controller::class);
+        Route::post('/dosen/reviewer-2/penilaian-seminar/{id}/edit', [PenilaianSeminarR2Controller::class, 'update']);
+        Route::get('/dosen/reviewer-2/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarR2Controller::class, 'downloadFile']);
 
         // Pembimbing 1
         Route::get('/dosen/pembimbing-1', function () {
-            return view('dosen.pembimbing.index', [
-                'title' => 'Home',
-                'role' => 'Pembimbing 1'
-            ]);
+            return view('dosen.pembimbing.index', ['title' => 'Home', 'role' => 'Pembimbing 1']);
         });
         Route::get('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'showDetailBimbingan']);
         Route::post('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'setPersetujuanBimbingan']);
         Route::resource('/dosen/pembimbing-1/form-bimbingan', BimbinganMahasiswaController::class);
+        Route::resource('dosen/pembimbing-1/penilaian-seminar', PenilaianSeminarP1Controller::class);
+        Route::post('/dosen/pembimbing-1/penilaian-seminar/{id}/edit', [PenilaianSeminarP1Controller::class, 'update']);
+        Route::get('/dosen/pembimbing-1/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarP1Controller::class, 'downloadFile']);
+
 
         // Pembimbing 2
         Route::get('/dosen/pembimbing-2', function () {
-            return view('dosen.pembimbing.index', [
-                'title' => 'Home',
-                'role' => 'Pembimbing 2'
-            ]);
+            return view('dosen.pembimbing.index', ['title' => 'Home', 'role' => 'Pembimbing 2']);
         });
         Route::get('/dosen/pembimbing-2/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswa2Controller::class, 'showDetailBimbingan']);
         Route::post('/dosen/pembimbing-2/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswa2Controller::class, 'setPersetujuanBimbingan']);
         Route::resource('/dosen/pembimbing-2/form-bimbingan', BimbinganMahasiswa2Controller::class);
+        Route::resource('dosen/pembimbing-2/penilaian-seminar', PenilaianSeminarP2Controller::class);
+        Route::post('/dosen/pembimbing-2/penilaian-seminar/{id}/edit', [PenilaianSeminarP2Controller::class, 'update']);
+        Route::get('/dosen/pembimbing-2/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarP2Controller::class, 'downloadFile']);
     });
 
     Route::group(['middleware' => 'role:Admin'], function () {

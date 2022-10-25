@@ -50,26 +50,26 @@
             <td>{{ $mahasiswa->mahasiswa->nim }}</td>
             <td>{{ $mahasiswa->mahasiswa->name }}</td>
             <td>{{ $mahasiswa->mahasiswa->pendaftaranseminar->peminatan }}</td>
-            @if ($role == 'Reviewer 1')
-            @if ($mahasiswa->r1_presentasi != null)
+            @if ($role == 'Pembimbing 1')
+            @if ($mahasiswa->p1_materi != null)
             <td><i class="fa-solid fa-check"></i></td>
             @else
             <td></td>
             @endif
             @else
-            @if ($mahasiswa->r2_presentasi != null)
+            @if ($mahasiswa->p2_materi != null)
             <td><i class="fa-solid fa-check"></i></td>
             @else
             <td></td>
             @endif
             @endif
             <td>
-                @if ($role == 'Reviewer 1')
-                <a class="btn" href="/dosen/reviewer-1/penilaian-seminar/{{ $mahasiswa->id }}"
+                @if ($role == 'Pembimbing 1')
+                <a class="btn" href="/dosen/pembimbing-1/penilaian-seminar/{{ $mahasiswa->id }}"
                     style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i>
                     Detail</a>
                 @else
-                <a class="btn" href="/dosen/reviewer-2/penilaian-seminar/{{ $mahasiswa->id }}"
+                <a class="btn" href="/dosen/pembimbing-2/penilaian-seminar/{{ $mahasiswa->id }}"
                     style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i>
                     Detail</a>
                 @endif
@@ -79,12 +79,12 @@
     @endforeach
 </table>
 <div class="position-relative">
-    @if ($role == 'Reviewer 1')
+    @if ($role == 'Pembimbing 1')
     <a class="btn my-3
-    " href="/dosen/reviewer-1" role="button" style="background-color:#ff8c1a; width: 5rem;">Kembali</a>
+    " href="/dosen/pembimbing-1" role="button" style="background-color:#ff8c1a; width: 5rem;">Kembali</a>
     @else
     <a class="btn my-3
-    " href="/dosen/reviewer-2" role="button" style="background-color:#ff8c1a; width: 5rem;">Kembali</a>
+    " href="/dosen/pembimbing-2" role="button" style="background-color:#ff8c1a; width: 5rem;">Kembali</a>
     @endif
 </div>
 @endsection

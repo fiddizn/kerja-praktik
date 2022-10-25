@@ -24,10 +24,14 @@ return new class extends Migration
             $table->integer('p1_pemahaman')->nullable();
             $table->integer('p1_pencapaian')->nullable();
             $table->integer('p1_kedisiplinan')->nullable();
+            $table->string('p1_catatan')->nullable();
+            $table->string('p1_file')->nullable();
             $table->integer('p2_materi')->nullable();
             $table->integer('p2_pemahaman')->nullable();
             $table->integer('p2_pencapaian')->nullable();
             $table->integer('p2_kedisiplinan')->nullable();
+            $table->string('p2_catatan')->nullable();
+            $table->string('p2_file')->nullable();
             $table->integer('r1_presentasi')->nullable();
             $table->integer('r1_dokumentasi')->nullable();
             $table->integer('r1_rumusanMasalah')->nullable();
