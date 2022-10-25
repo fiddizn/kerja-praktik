@@ -48,29 +48,39 @@ use App\Http\Controllers\PenilaianSeminarP2Controller;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Register
+
+// TEST ==================================================================================
+
+Route::get('/test', function () {
+    return view('test');
+});
+// Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+
+
+// REGISTER ==============================================================================
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-// Login
+// LOGIN ==================================================================================
 
 Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/', [LoginController::class, 'store']);
 
-// Logout
+// LOGOUT ==================================================================================
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
-// Sesi Login
+// SESI LOGIN ==================================================================================
 
 Route::group(['middleware' => 'auth'], function () {
 
-    // Sesi Mahasiswa
+    // SESI MAHASISWA ======================================================================================================
 
     Route::group(['middleware' => 'role:Mahasiswa'], function () {
 
         // Pendaftaran Administrasi TA 1
+
         Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status', [PendaftaranController::class, 'status']);
         Route::get('/mahasiswa/pendaftaran-ta-1/status/syarat', [PendaftaranController::class, 'showSyarat']);
@@ -84,16 +94,22 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/mahasiswa/pendaftaran-ta-1-step4', [PendaftaranController::class, 'step4']);
         Route::post('/mahasiswa/pendaftaran-ta-1-step4', [PendaftaranController::class, 'storeStep4']);
 
+
         // Download Hasil Review
+
         Route::get('/mahasiswa/hasil-review', [ProposalReviewedController::class, 'index']);
         Route::get('/mahasiswa/hasil-review/download-proposal-{id}', [HasilReviewController::class, 'downloadProposalReviewed']);
 
+
         // Formulir Bimbingan
+
         Route::resource('/mahasiswa/form-bimbingan', FormBimbinganController::class);
         Route::get('/mahasiswa/form-bimbingan/{x}/edit', [FormBimbinganController::class, 'edit']);
         Route::post('/mahasiswa/form-bimbingan/create', [FormBimbinganController::class, 'store']);
 
+
         // Pendaftaran Seminar TA 1
+
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status', [PendaftaranSeminarController::class, 'status']);
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/download', [JadwalSeminarController::class, 'downloadJadwalMahasiswa']);
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/syarat', [PendaftaranSeminarController::class, 'showSyarat']);
@@ -101,12 +117,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/mahasiswa/pendaftaran-seminar-ta-1', PendaftaranSeminarController::class);
     });
 
-    // Sesi Koordinator
+    // SESI KOORDINATOR =================================================================================================================================
 
     Route::group(['middleware' => 'role:Koordinator'], function () {
         Route::get('/koordinator', [KoordinatorController::class, 'index']);
 
+
         // Pendaftaran Administrasi TA 1
+
         Route::resource('/koordinator/list-pendaftaran-ta-1', ListPendaftaranTA1Controller::class);
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadTagihanUang', [ListPendaftaranTA1Controller::class, 'downloadTagihanUang']);
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadLunasPembayaran', [ListPendaftaranTA1Controller::class, 'downloadLunasPembayaran']);
@@ -115,16 +133,22 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/{kelolosan}', [ListPendaftaranTA1Controller::class, 'keterangan']);
         Route::post('/koordinator/list-pendaftaran-ta-1/{id}', [ListPendaftaranTA1Controller::class, 'edit_keterangan_kelolosan']);
 
+
         // Plotting Dosen Pembimbing, Reviewer, Penguji
+
         Route::resource('/koordinator/plotting-dosen-pembimbing', PlottingDosenPembimbingController::class);
         Route::resource('/koordinator/plotting-dosen-reviewer', PlottingDosenReviewerController::class);
         Route::resource('/koordinator/plotting-dosen-reviewer2', PlottingDosenReviewer2Controller::class);
 
+
         // Review Proposal
+
         Route::resource('/koordinator/hasil-review-proposal', HasilReviewController::class);
         Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewed', [HasilReviewController::class, 'downloadProposalReviewed']);
 
+
         // Pendaftaran Seminar TA 1
+
         Route::resource('/koordinator/list-pendaftaran-seminar-ta-1', ListPendaftaranSeminarTA1Controller::class);
         Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/downloadTagihanUang', [ListPendaftaranSeminarTA1Controller::class, 'downloadTagihanUang']);
         Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/downloadLunasPembayaran', [ListPendaftaranSeminarTA1Controller::class, 'downloadLunasPembayaran']);
@@ -133,7 +157,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/{kelolosan}', [ListPendaftaranSeminarTA1Controller::class, 'keterangan']);
         Route::post('/koordinator/list-pendaftaran-seminar-ta-1/{id}', [ListPendaftaranSeminarTA1Controller::class, 'edit_keterangan_kelolosan']);
 
+
         // Unggah Jadwal Seminar
+
         Route::get('/koordinator/jadwal-seminar', [JadwalSeminarController::class, 'index']);
         Route::post('/koordinator/jadwal-seminar', [JadwalSeminarController::class, 'store']);
         Route::post('/koordinator/jadwal-seminar/update', [JadwalSeminarController::class, 'update']);
@@ -141,7 +167,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/jadwal-seminar/dosen', [JadwalSeminarController::class, 'downloadJadwalDosen']);
     });
 
-    // Sesi Dosen
+    // SESI DOSEN =====================================================================================================================================================
 
     Route::group(['middleware' => 'role:Dosen'], function () {
         Route::get('/dosen', function () {
@@ -152,7 +178,9 @@ Route::group(['middleware' => 'auth'], function () {
         });
         Route::get('/dosen/downloadJadwalSeminar', [JadwalSeminarController::class, 'downloadJadwalDosen']);
 
+
         // Reviewer 1
+
         Route::get('/dosen/reviewer-1', [ReviewerController::class, 'index']);
         Route::get('/dosen/reviewer-1/review-proposal', [ReviewerController::class, 'showReviewProposal']);
         Route::get('/dosen/reviewer-1/review-proposal/downloadBerkasTa1-{id}', [ListPendaftaranTA1Controller::class, 'downloadBerkasTa1']);
@@ -162,13 +190,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/dosen/reviewer-1/penilaian-seminar/{id}/edit', [PenilaianSeminarController::class, 'update']);
         Route::get('/dosen/reviewer-1/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarController::class, 'downloadFile']);
 
+
         // Reviewer 2
+
         Route::get('/dosen/reviewer-2', [Reviewer2Controller::class, 'index']);
         Route::resource('/dosen/reviewer-2/penilaian-seminar', PenilaianSeminarR2Controller::class);
         Route::post('/dosen/reviewer-2/penilaian-seminar/{id}/edit', [PenilaianSeminarR2Controller::class, 'update']);
         Route::get('/dosen/reviewer-2/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarR2Controller::class, 'downloadFile']);
 
+
         // Pembimbing 1
+
         Route::get('/dosen/pembimbing-1', function () {
             return view('dosen.pembimbing.index', ['title' => 'Home', 'role' => 'Pembimbing 1']);
         });
@@ -181,6 +213,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
         // Pembimbing 2
+
         Route::get('/dosen/pembimbing-2', function () {
             return view('dosen.pembimbing.index', ['title' => 'Home', 'role' => 'Pembimbing 2']);
         });
@@ -192,94 +225,19 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dosen/pembimbing-2/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarP2Controller::class, 'downloadFile']);
     });
 
+    // SESI ADMIN =======================================================================================
+
     Route::group(['middleware' => 'role:Admin'], function () {
         Route::get('/admin', function () {
             return 'Hallo Admin emailmu adalah ' . auth()->user()->email;
         });
     });
+
+    // SESI TU ==========================================================================================
+
     Route::group(['middleware' => 'role:TU'], function () {
         Route::get('/tu', function () {
             return 'Hallo TU emailmu adalah ' . auth()->user()->email;
         });
     });
 });
-
-
-// Test
-Route::get('/test', function () {
-    return view('test');
-});
-// Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Mahasiswa
-
-// Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->middleware('auth');
-
-
-
-// Route::get('/mahasiswa/hasil-review', [HasilReviewController::class, 'index']);
-
-// Route::get('/mahasiswa/form-bimbingan', [FormBimbinganController::class, 'index']);
-
-// Route::get('/mahasiswa/form-bimbingan/bimbingan-{x}', [FormBimbinganController::class, 'show']);
-
-// Route::post('/mahasiswa/form-bimbingan/bimbingan-{x}', [FormBimbinganController::class, 'store']);
-
-// Route::get('/mahasiswa/pendaftaran-seminar-ta-1', [RegisterSeminarController::class, 'index']);
-
-// Route::post('/mahasiswa/pendaftaran-seminar-ta-1', [RegisterSeminarController::class, 'store']);
-
-// //Koordinator
-
-
-// Route::resource('/koordinator/list-pendaftaran-ta-1', ListPendaftaranTA1Controller::class);
-
-// Route::get('/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{pendaftaran_id}/{status}', [Detail_MahasiswaController::class, 'show']);
-
-// Route::get('/koordinator/list-pendaftaran-seminar-ta-1', [List_pendaftaran_seminar_ta_1Controller::class, 'index']);
-
-// Route::get('/koordinator/plotting-dosen-pembimbing', [Plotting_dosen_pembimbing::class, 'index']);
-
-// Route::get('/koordinator/plotting-dosen-pembimbing/{id}', [Plotting_dosen_pembimbing::class, 'show']);
-
-// Route::get('/koordinator/plotting-dosen-reviewer', [Plotting_dosen_reviewerController::class, 'index']);
-
-// Route::get('/koordinator/plotting-dosen-reviewer/{id}', [Plotting_dosen_reviewerController::class, 'show']);
-
-// Route::get('/koordinator/plotting-dosen-penguji', [Plotting_dosen_pengujiController::class, 'index']);
-
-// Route::get('/koordinator/plotting-dosen-penguji/{id}', [Plotting_dosen_pengujiController::class, 'show']);
-
-// Route::get('/koordinator/jadwal-seminar', [Jadwal_seminarController::class, 'index']);
-
-// Route::post('/koordinator/jadwal-seminar', [Jadwal_seminarController::class, 'store']);
-// //
-// Route::get('/koordinator/hasil-review-proposal', [Hasil_review_proposalController::class, 'index']);
-
-// Route::get('/koordinator/hasil-review-proposal/{id}', [Hasil_review_proposalController::class, 'show']);
-
-// Route::get('/koordinator/penilaian-seminar', [Penilaian_seminarController::class, 'index']);
-
-// Route::get('/koordinator/penilaian-seminar/{id}', [Penilaian_seminarController::class, 'show']);
