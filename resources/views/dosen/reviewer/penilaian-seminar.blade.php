@@ -65,10 +65,26 @@
             @endif
             <td>
                 @if ($role == 'Reviewer 1')
+                <?php
+                $mahasiswa_id = $mahasiswa->mahasiswa->id;
+                $pendaftaran_id = App\Models\PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->id;
+                ?>
+                <a class="btn btn-warning"
+                    href="/dosen/reviewer-1/penilaian-seminar/{{ $pendaftaran_id }}/downloadFinalProposal"><i
+                        class="fa-solid fa-file-arrow-down"></i>
+                    Proposal</a>
                 <a class="btn" href="/dosen/reviewer-1/penilaian-seminar/{{ $mahasiswa->id }}"
                     style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i>
                     Detail</a>
                 @else
+                <?php
+                $mahasiswa_id = $mahasiswa->mahasiswa->id;
+                $pendaftaran_id = App\Models\PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->id;
+                ?>
+                <a class="btn btn-warning"
+                    href="/dosen/reviewer-2/penilaian-seminar/{{ $pendaftaran_id }}/downloadFinalProposal"><i
+                        class="fa-solid fa-file-arrow-down"></i>
+                    Proposal</a>
                 <a class="btn" href="/dosen/reviewer-2/penilaian-seminar/{{ $mahasiswa->id }}"
                     style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i>
                     Detail</a>

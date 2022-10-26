@@ -14,29 +14,19 @@ use App\Http\Controllers\KoordinatorController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\FormBimbinganController;
 use App\Http\Controllers\JadwalSeminarController;
-use App\Http\Controllers\Jadwal_seminarController;
-use App\Http\Controllers\Plotting_dosen_pembimbing;
-use App\Http\Controllers\RegisterSeminarController;
-use App\Http\Controllers\Detail_MahasiswaController;
 use App\Http\Controllers\PenilaianSeminarController;
 use App\Http\Controllers\ProposalReviewedController;
-use App\Http\Controllers\Penilaian_seminarController;
 use App\Http\Controllers\BimbinganMahasiswaController;
 use App\Http\Controllers\ListPendaftaranTA1Controller;
 use App\Http\Controllers\PendaftaranSeminarController;
 use App\Http\Controllers\PenilaianSeminarP1Controller;
+use App\Http\Controllers\PenilaianSeminarP2Controller;
 use App\Http\Controllers\PenilaianSeminarR2Controller;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
-use App\Http\Controllers\Hasil_review_proposalController;
-use App\Http\Controllers\List_pendaftaran_ta_1Controller;
 use App\Http\Controllers\PlottingDosenReviewerController;
-use App\Http\Controllers\Plotting_dosen_pengujiController;
 use App\Http\Controllers\PlottingDosenReviewer2Controller;
-use App\Http\Controllers\Plotting_dosen_reviewerController;
 use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
-use App\Http\Controllers\List_pendaftaran_seminar_ta_1Controller;
-use App\Http\Controllers\PenilaianSeminarP2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -189,6 +179,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('dosen/reviewer-1/penilaian-seminar', PenilaianSeminarController::class);
         Route::post('/dosen/reviewer-1/penilaian-seminar/{id}/edit', [PenilaianSeminarController::class, 'update']);
         Route::get('/dosen/reviewer-1/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarController::class, 'downloadFile']);
+        Route::get('/dosen/reviewer-1/penilaian-seminar/{id}/downloadFinalProposal', [ListPendaftaranSeminarTA1Controller::class, 'downloadBerkasTa1']);
 
 
         // Reviewer 2
@@ -197,6 +188,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/dosen/reviewer-2/penilaian-seminar', PenilaianSeminarR2Controller::class);
         Route::post('/dosen/reviewer-2/penilaian-seminar/{id}/edit', [PenilaianSeminarR2Controller::class, 'update']);
         Route::get('/dosen/reviewer-2/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarR2Controller::class, 'downloadFile']);
+        Route::get('/dosen/reviewer-2/penilaian-seminar/{id}/downloadFinalProposal', [ListPendaftaranSeminarTA1Controller::class, 'downloadBerkasTa1']);
 
 
         // Pembimbing 1

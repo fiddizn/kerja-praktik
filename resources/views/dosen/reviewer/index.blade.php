@@ -13,10 +13,6 @@
         style="background-color:#ff8c1a; width: 20rem;">Review Proposal</a>
 </div>
 <div class="d-flex justify-content-center">
-    <a class="btn my-3 disabled
-    " href="#" role="button" style="background-color:#ff8c1a; width: 20rem;">Berkas Proposal Final</a>
-</div>
-<div class="d-flex justify-content-center">
     <a class="btn my-3 
     " href="/dosen/downloadJadwalSeminar" role="button" style="background-color:#ff8c1a; width: 20rem;">Jadwal Seminar
         TA 1</a>
@@ -36,10 +32,6 @@
 <h1 style="text-align:center;">Dashboard Dosen Reviewer 2</h1>
 
 <div class="d-flex justify-content-center mt-5">
-    <a class="btn my-3 disabled
-    " href="#" role="button" style="background-color:#ff8c1a; width: 20rem;">Berkas Proposal Final</a>
-</div>
-<div class="d-flex justify-content-center">
     <a class="btn my-3 
     " href="/dosen/downloadJadwalSeminar" role="button" style="background-color:#ff8c1a; width: 20rem;">Jadwal Seminar
         TA 1</a>

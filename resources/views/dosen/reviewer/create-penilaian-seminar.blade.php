@@ -52,8 +52,13 @@
     </div>
 
     <div class="position-relative">
-        <a class="btn my-3" href="/dosen/reviewer-1/penilaian-seminar/{{ $penilaianSeminar->id }}" role="button"
+        @if ($penilaianSeminar->r1_presentasi != null)
+        <a class="btn my-3" href="/dosen//reviewer-1/penilaian-seminar/{{ $penilaianSeminar->id }}" role="button"
             style="background-color:#ff8c1a; width: 5rem;">Kembali</a>
+        @else
+        <a class="btn my-3" href="/dosen/reviewer-1/penilaian-seminar" role="button"
+            style="background-color:#ff8c1a; width: 5rem;">Kembali</a>
+        @endif
         <button type="submit" id="form" class="btn" style="width: 5rem ; background-color:#ff8c1a;">Submit</button>
     </div>
 </form>
