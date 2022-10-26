@@ -1,13 +1,13 @@
 @extends('layouts/main')
 @section('container')
 
-<h2 class="text-center mb-5">{{ $title }}</h2>
 @if (session()->has('success'))
 <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
     {{ session('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
+<h2 class="text-center mb-5">{{ $title }}</h2>
 @if ($penilaianseminar->r1_catatan == null && $penilaianseminar->r2_catatan == null && $penilaianseminar->p1_catatan ==
 null && $penilaianseminar->p2_catatan == null)
 <div class="container">
@@ -69,7 +69,14 @@ null && $penilaianseminar->p2_catatan == null)
     </div>
 </div>
 @endif
-<div class="col-12">
-    <a class="btn mb-4" href="/mahasiswa" role="button" style="width: 5rem;background-color:#ff8c1a;">Back</a>
+<div>
+    <a class="btn my-3" href="/mahasiswa" role="button" style="background-color:#ff8c1a; width: 6rem;">Back</a>
+    @if (auth()->user()->proposalhasilrevisi == null)
+    <a class="btn my-3" href="/mahasiswa/revisi-seminar/create" role="button" style="background-color:#ff8c1a;">Upload
+        Revisi</a>
+    @else
+    <a class="btn my-3" href="/mahasiswa/revisi-seminar/create" role="button" style="background-color:#ff8c1a;">Update
+        Revisi</a>
+    @endif
 </div>
 @endsection

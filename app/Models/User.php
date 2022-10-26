@@ -93,6 +93,11 @@ class User extends Authenticatable
         return $this->hasOneThrough(Bimbingan::class, Mahasiswa::class);
     }
 
+    public function proposalhasilrevisi()
+    {
+        return $this->hasOneThrough(ProposalHasilRevisi::class, Mahasiswa::class);
+    }
+
     // class Country
     // {
     //     public function employees()

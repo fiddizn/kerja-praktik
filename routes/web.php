@@ -109,6 +109,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Revisi Seminar
         Route::get('/mahasiswa/revisi-seminar', [RevisiSeminarController::class, 'index']);
+        Route::get('/mahasiswa/revisi-seminar/create', [RevisiSeminarController::class, 'create']);
+        Route::post('/mahasiswa/revisi-seminar/create', [RevisiSeminarController::class, 'store']);
+        Route::post('/mahasiswa/revisi-seminar/update', [RevisiSeminarController::class, 'update']);
         Route::get('/mahasiswa/revisi-seminar/downloadFileR1', [RevisiSeminarController::class, 'downloadFileR1']);
         Route::get('/mahasiswa/revisi-seminar/downloadFileR2', [RevisiSeminarController::class, 'downloadFileR2']);
     });
