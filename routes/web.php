@@ -27,6 +27,7 @@ use App\Http\Controllers\PlottingDosenReviewerController;
 use App\Http\Controllers\PlottingDosenReviewer2Controller;
 use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
+use App\Http\Controllers\PenilaianSeminarKoorController;
 use App\Http\Controllers\RevisiSeminarController;
 
 /*
@@ -166,6 +167,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/jadwal-seminar/dosen', [JadwalSeminarController::class, 'downloadJadwalDosen']);
 
         // Rilis Penilaian Seminar
+        Route::resource('/koordinator/penilaian-seminar', PenilaianSeminarKoorController::class);
+        Route::post('/koordinator/penilaian-seminar/{id}/rilis', [PenilaianSeminarKoorController::class, 'setRilis']);
     });
 
     // SESI DOSEN =====================================================================================================================================================
