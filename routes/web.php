@@ -27,6 +27,7 @@ use App\Http\Controllers\PlottingDosenReviewerController;
 use App\Http\Controllers\PlottingDosenReviewer2Controller;
 use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
+use App\Http\Controllers\RevisiSeminarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +106,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/syarat', [PendaftaranSeminarController::class, 'showSyarat']);
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/alasan-tidak-lolos', [PendaftaranSeminarController::class, 'showAlasan']);
         Route::resource('/mahasiswa/pendaftaran-seminar-ta-1', PendaftaranSeminarController::class);
+
+        // Revisi Seminar
+        Route::get('/mahasiswa/revisi-seminar', [RevisiSeminarController::class, 'index']);
+        Route::get('/mahasiswa/revisi-seminar/downloadFileR1', [RevisiSeminarController::class, 'downloadFileR1']);
+        Route::get('/mahasiswa/revisi-seminar/downloadFileR2', [RevisiSeminarController::class, 'downloadFileR2']);
     });
 
     // SESI KOORDINATOR =================================================================================================================================
@@ -155,6 +161,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/koordinator/jadwal-seminar/update', [JadwalSeminarController::class, 'update']);
         Route::get('/koordinator/jadwal-seminar/mahasiswa', [JadwalSeminarController::class, 'downloadJadwalMahasiswa']);
         Route::get('/koordinator/jadwal-seminar/dosen', [JadwalSeminarController::class, 'downloadJadwalDosen']);
+
+        // Rilis Penilaian Seminar
     });
 
     // SESI DOSEN =====================================================================================================================================================
