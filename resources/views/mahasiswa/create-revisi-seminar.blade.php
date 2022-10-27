@@ -1,6 +1,7 @@
 @extends('layouts/main')
 @section('container')
 
+
 <h2 class="text-center mb-5">{{ $title }}</h2>
 <form action="/mahasiswa/revisi-seminar/create" method="post" enctype="multipart/form-data">
     @csrf
