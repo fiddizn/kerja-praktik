@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KunciPendaftaran;
 use Illuminate\Http\Request;
 use App\Models\Pendaftaran;
 use App\Models\Review;
@@ -10,6 +11,9 @@ class PendaftaranController extends Controller
 {
     public function step1()
     {
+        if (KunciPendaftaran::first()->administrasi == 1) {
+            return redirect()->intended('/mahasiswa');
+        }
         if (isset(auth()->user()->pendaftaran->alt4_p2)) {
             return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
         } else {

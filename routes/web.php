@@ -23,6 +23,7 @@ use App\Http\Controllers\PenilaianSeminarP1Controller;
 use App\Http\Controllers\PenilaianSeminarP2Controller;
 use App\Http\Controllers\PenilaianSeminarR2Controller;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
+use App\Http\Controllers\KunciPendaftaranController;
 use App\Http\Controllers\PlottingDosenReviewerController;
 use App\Http\Controllers\PlottingDosenReviewer2Controller;
 use App\Http\Controllers\PlottingDosenPembimbingController;
@@ -121,6 +122,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'role:Koordinator'], function () {
         Route::get('/koordinator', [KoordinatorController::class, 'index']);
+
+        // Kunci Pendaftaran Administrasi dan Seminar
+        Route::post('/koordinator/list-pendaftaran-ta-1/lock', [KunciPendaftaranController::class, 'lockAdministrasi'])->name('lockAdministrasi');
+        Route::post('/koordinator/list-pendaftaran-ta-1/unlock', [KunciPendaftaranController::class, 'unlockAdministrasi'])->name('unlockAdministrasi');;
+        Route::post('/koordinator/list-pendaftaran-seminar-ta-1/lock', [KunciPendaftaranController::class, 'lockSeminar'])->name('lockSeminar');
+        Route::post('/koordinator/list-pendaftaran-seminar-ta-1/unlock', [KunciPendaftaranController::class, 'unlockSeminar'])->name('unlockSeminar');;
 
 
         // Pendaftaran Administrasi TA 1

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KunciPendaftaran;
 use App\Models\PendaftaranSeminar;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,9 @@ class PendaftaranSeminarController extends Controller
 {
     public function index()
     {
+        if (KunciPendaftaran::first()->seminar == 1) {
+            return redirect()->intended('/mahasiswa');
+        }
         $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
         $list_p2 = \App\Models\Dosen::all();
 

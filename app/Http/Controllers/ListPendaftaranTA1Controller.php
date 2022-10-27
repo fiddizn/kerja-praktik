@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KunciPendaftaran;
 use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
 use App\Models\PendaftaranSeminar;
@@ -13,6 +14,7 @@ class ListPendaftaranTA1Controller extends Controller
 {
     public function index()
     {
+        $kuncipendaftaran = KunciPendaftaran::first();
         $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))
             ->orderBy(Mahasiswa::select('name')->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'))->paginate(7)->withQueryString();
         return view(
@@ -20,7 +22,8 @@ class ListPendaftaranTA1Controller extends Controller
             [
                 'title' => 'Pendaftaran Administrasi TA 1',
                 'role' => 'Koordinator',
-                'list_pendaftaran' => $list_pendaftaran
+                'list_pendaftaran' => $list_pendaftaran,
+                'kuncipendaftaran' => $kuncipendaftaran
             ]
         );
     }

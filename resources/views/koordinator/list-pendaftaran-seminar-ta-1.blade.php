@@ -22,13 +22,23 @@
         </form>
     </div>
     <div class=" p-2">
-        <a class="btn" href="#" role="button" style="background-color:#ff8c1a;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="22" fill="currentColor" class="bi bi-lock-fill"
-                viewBox="0 0 16 16">
-                <path
-                    d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
-            </svg>
-        </a>
+        @if ($kuncipendaftaran->seminar == 0)
+        <form action="{{ route('lockSeminar')}}" method="post"> <button class="btn" type="submit"
+                style="background-color:#ff8c1a;">
+                @csrf
+                <input type="hidden" name="seminar" value=1>
+                <i class="fa-solid fa-unlock fa-lg"></i>
+            </button>
+        </form>
+        @else
+        <form action="{{ route('unlockSeminar')}}" method="post"> <button class="btn" type="submit"
+                style="background-color:#ff8c1a;">
+                @csrf
+                <input type="hidden" name="seminar" value=0>
+                <i class="fa-solid fa-lock fa-lg"></i>
+            </button>
+        </form>
+        @endif
     </div>
     <div class="p-2">
         <a class="btn" href="#" role="button" style="background-color:#ff8c1a;">
