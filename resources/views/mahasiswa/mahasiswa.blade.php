@@ -32,7 +32,10 @@
         1</a>
 </div>
 <div class="d-flex justify-content-center">
-    <a class="btn my-3" href="/mahasiswa/revisi-seminar" role="button"
-        style="background-color:#ff8c1a; width: 20rem;">Revisi Seminar</a>
+    <a class="btn my-3
+    @if(auth()->user()->formbimbingan == null)
+    disabled
+    @endif
+    " href="/mahasiswa/revisi-seminar" role="button" style="background-color:#ff8c1a; width: 20rem;">Revisi Seminar</a>
 </div>
 @endsection

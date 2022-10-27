@@ -25,78 +25,24 @@ class HasilReviewController extends Controller
         );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
+        $nilai = [1 => 'Kurang', 2 => 'Cukup', 3 => 'Baik'];
         $mahasiswa = \App\Models\Review::with('pendaftaran', 'mahasiswa', 'reviewer1')->where('id', $id)->first();
         return view('koordinator.detail-hasil-review', [
             'title' => 'Detail Hasil Review',
             'role' => 'Koordinator',
-            'mahasiswa' => $mahasiswa
+            'mahasiswa' => $mahasiswa,
+            'nilai' => $nilai
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update($id)
     {
         \App\Models\Review::where('id', $id)->get()->first()->update([
             'rilis' => 1
         ]);
         return redirect()->intended('/koordinator/hasil-review-proposal')->with('success', 'Proposal telah dikirim');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function downloadProposalReviewed($id)

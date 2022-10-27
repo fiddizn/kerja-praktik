@@ -114,19 +114,19 @@
 
             </div>
             <div class="col-md-3">
-                <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
+                <label for="jumlah_teori_d" class="form-label">Jumlah SKS yang bernilai D (Teori)</label>
                 <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0">
             </div>
             <div class="col-md-3">
-                <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
+                <label for="jumlah_prak_d" class="form-label">Jumlah SKS yang bernilai D (Prak)</label>
                 <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" placeholder="0">
             </div>
             <div class="col-md-3">
-                <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
+                <label for="jumlah_e" class="form-label">Jumlah SKS yang bernilai E</label>
                 <input type="number" class="form-control" name="jumlah_e" id="jumlah_e" placeholder="0">
             </div>
             <div class="col-md-3">
-                <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
+                <label for="jumlah_sks" class="form-label">Jumlah SKS (sudah & sedang diambil)</label>
                 <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks" placeholder="138">
             </div>
             <div class="col-md-3">

@@ -108,50 +108,50 @@
         </div>
         <div class="col-md-3">
             <label for="pemweb" class="form-label">Pemrograman Web</label>
-            <input type="text" class="form-control {{($pendaftaran->pemweb == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+            <input type="text" class="form-control {{($pendaftaran->pemweb == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
                 name="pemweb" id="pemweb" readonly value="{{ $pendaftaran->pemweb }}">
         </div>
         <div class="col-md-3">
             <label for="prak_pemweb" class="form-label">Prak. Pemrograman Web</label>
             <input type="text"
-                class="form-control {{($pendaftaran->prak_pemweb == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+                class="form-control {{($pendaftaran->prak_pemweb == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
                 name="prak_pemweb" id="prak_pemweb" readonly value="{{ $pendaftaran->prak_pemweb }}">
         </div>
         <div class="col-md-3">
             <label for="po1" class="form-label">Pemrograman Objek 1</label>
-            <input type="text" class="form-control {{($pendaftaran->po1 == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+            <input type="text" class="form-control {{($pendaftaran->po1 == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
                 name="po1" id="po1" readonly value="{{ $pendaftaran->po1 }}">
         </div>
         <div class="col-md-3">
             <label for="prak_po1" class="form-label">Prak. Pemrograman Objek 1</label>
             <input type="text"
-                class="form-control {{($pendaftaran->prak_po1 == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+                class="form-control {{($pendaftaran->prak_po1 == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
                 name="prak_po1" id="prak_po1" readonly value="{{ $pendaftaran->prak_po1 }}">
         </div>
         <div class="col-md-3">
             <label for="appl" class="form-label">Analisis & Perancangan PL</label>
-            <input type="text" class="form-control {{($pendaftaran->appl == 'Belum diambil' ) ? 'is-invalid' : ''; }}"
+            <input type="text" class="form-control {{($pendaftaran->appl == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
                 name="appl" id="appl" readonly value="{{ $pendaftaran->appl }}">
         </div>
         <div class="my-4">
         </div>
         <div class="col-md-3">
-            <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
+            <label for="jumlah_teori_d" class="form-label">Jumlah SKS yang bernilai D (Teori)</label>
             <input type="text" class="form-control {{($pendaftaran->jumlah_teori_d > 6 ) ? 'is-invalid' : ''; }}"
                 name="jumlah_teori_d" id="jumlah_teori_d" readonly value="{{ $pendaftaran->jumlah_teori_d }}">
         </div>
         <div class="col-md-3">
-            <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
+            <label for="jumlah_prak_d" class="form-label">Jumlah SKS yang bernilai D (Prak)</label>
             <input type="text" class="form-control {{($pendaftaran->jumlah_prak_d != 0 ) ? 'is-invalid' : ''; }}"
                 name="jumlah_prak_d" id="jumlah_prak_d" readonly value="{{ $pendaftaran->jumlah_prak_d }}">
         </div>
         <div class="col-md-3">
-            <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
+            <label for="jumlah_e" class="form-label">Jumlah SKS yang bernilai E</label>
             <input type="text" class="form-control {{($pendaftaran->jumlah_e != 0 ) ? 'is-invalid' : ''; }}"
                 name="jumlah_e" id="jumlah_e" readonly value="{{ $pendaftaran->jumlah_e }}">
         </div>
         <div class="col-md-3">
-            <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
+            <label for="jumlah_sks" class="form-label">Jumlah SKS (sudah & sedang diambil)</label>
             <input type="text" class="form-control {{($pendaftaran->jumlah_sks < 130 ) ? 'is-invalid' : ''; }}"
                 name="jumlah_sks" id="jumlah_sks" readonly value="{{ $pendaftaran->jumlah_sks }}">
         </div>
