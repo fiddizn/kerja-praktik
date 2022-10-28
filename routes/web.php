@@ -1,8 +1,7 @@
 <?php
 
-use LDAP\Result;
-use App\Models\Pembimbing1;
-use App\Models\JadwalSeminar;
+use App\Http\Controllers\AjuanPembimbing1Controller;
+use App\Http\Controllers\AjuanPembimbing2Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -223,6 +222,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('dosen/pembimbing-1/penilaian-seminar', PenilaianSeminarP1Controller::class);
         Route::post('/dosen/pembimbing-1/penilaian-seminar/{id}/edit', [PenilaianSeminarP1Controller::class, 'update']);
         Route::get('/dosen/pembimbing-1/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarP1Controller::class, 'downloadFile']);
+        Route::resource('/dosen/pembimbing-1/ajuan-pembimbing-1', AjuanPembimbing1Controller::class);
 
 
         // Pembimbing 2
@@ -236,6 +236,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('dosen/pembimbing-2/penilaian-seminar', PenilaianSeminarP2Controller::class);
         Route::post('/dosen/pembimbing-2/penilaian-seminar/{id}/edit', [PenilaianSeminarP2Controller::class, 'update']);
         Route::get('/dosen/pembimbing-2/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarP2Controller::class, 'downloadFile']);
+        Route::resource('/dosen/pembimbing-2/ajuan-pembimbing-2', AjuanPembimbing2Controller::class);
     });
 
     // SESI ADMIN =======================================================================================

@@ -9,7 +9,8 @@
 @endif
 <h1 style="text-align:center;">Dashboard Dosen Pembimbing</h1>
 <div class="d-flex justify-content-center mt-5">
-    <a class="btn my-3 disabled" href="#" role="button" style="background-color:#ff8c1a; width: 20rem;">Ajuan
+    <a class="btn my-3" href="{{route('ajuan-pembimbing-1.index')}}" role="button"
+        style="background-color:#ff8c1a; width: 20rem;">Ajuan
         Pembimbing</a>
 </div>
 <div class="d-flex justify-content-center">
@@ -43,7 +44,8 @@
 <h1 style="text-align:center;">Dashboard Dosen Pembimbing</h1>
 
 <div class="d-flex justify-content-center mt-5">
-    <a class="btn my-3 disabled" href="#" role="button" style="background-color:#ff8c1a; width: 20rem;">Ajuan
+    <a class="btn my-3" href="{{route('ajuan-pembimbing-2.index')}}" role="button"
+        style="background-color:#ff8c1a; width: 20rem;">Ajuan
         Pembimbing</a>
 </div>
 <div class="d-flex justify-content-center">
