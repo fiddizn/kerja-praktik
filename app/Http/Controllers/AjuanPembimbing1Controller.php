@@ -2,50 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
 class AjuanPembimbing1Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return 'index pembimbing 1';
+        $namaDosenDanJabfung = auth()->user()->pembimbing1->dosen->name . ' (' .  auth()->user()->dosen->jabfung->name . ')';
+        $pendaftarans = Pendaftaran::where('alt1_p1', $namaDosenDanJabfung)
+            ->orWhere('alt2_p1', $namaDosenDanJabfung)
+            ->orWhere('alt3_p1', $namaDosenDanJabfung)
+            ->orWhere('alt4_p1', $namaDosenDanJabfung)
+            ->paginate(7);
+        return view('dosen.pembimbing.ajuan-pembimbing-1-index', [
+            'title' => 'Ajuan Pembimbing',
+            'role' => 'Pembimbing 1',
+            'pendaftarans' => $pendaftarans
+
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $pendaftaran = Pendaftaran::find($id);
+        return view('dosen.pembimbing.ajuan-pembimbing-1-show', [
+            'title' => 'Detail Mahasiswa',
+            'role' => 'Pembimbing 1',
+            'pendaftaran' => $pendaftaran
+        ]);
     }
 
     /**
@@ -80,5 +65,19 @@ class AjuanPembimbing1Controller extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function downloadBerkasTA1($id)
+    {
+        $data = Pendaftaran::where('id', $id)->first();
+        $filepath = public_path("storage/{$data->berkas_ta1}");
+        return response()->download($filepath);
+    }
+
+    public function downloadKHS($id)
+    {
+        $data = Pendaftaran::where('id', $id)->first();
+        $filepath = public_path("storage/{$data->khs}");
+        return response()->download($filepath);
     }
 }
