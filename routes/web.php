@@ -223,6 +223,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/dosen/pembimbing-1/penilaian-seminar/{id}/edit', [PenilaianSeminarP1Controller::class, 'update']);
         Route::get('/dosen/pembimbing-1/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarP1Controller::class, 'downloadFile']);
         Route::resource('/dosen/pembimbing-1/ajuan-pembimbing-1', AjuanPembimbing1Controller::class);
+        Route::post('/dosen/pembimbing-1/ajuan-pembimbing-1/{id}-{ajuanBimbingan}', [AjuanPembimbing1Controller::class, 'update']);
         Route::get('dosen/pembimbing-1/ajuan-pembimbing/{ajuan_pembimbing_1}/downloadBerkasTA1', [AjuanPembimbing1Controller::class, 'downloadBerkasTA1'])->name('ajuan-pembimbing.downloadBerkasTA1');
         Route::get('dosen/pembimbing-1/ajuan-pembimbing/{ajuan_pembimbing_1}/downloadKHS', [AjuanPembimbing1Controller::class, 'downloadKHS'])->name('ajuan-pembimbing.downloadKHS');
 
@@ -239,6 +240,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/dosen/pembimbing-2/penilaian-seminar/{id}/edit', [PenilaianSeminarP2Controller::class, 'update']);
         Route::get('/dosen/pembimbing-2/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarP2Controller::class, 'downloadFile']);
         Route::resource('/dosen/pembimbing-2/ajuan-pembimbing-2', AjuanPembimbing2Controller::class);
+        Route::post('/dosen/pembimbing-2/ajuan-pembimbing-2/{id}-{ajuanBimbingan}', [AjuanPembimbing2Controller::class, 'update']);
         Route::get('dosen/pembimbing-2/ajuan-pembimbing/{ajuan_pembimbing_2}/downloadBerkasTA1', [AjuanPembimbing2Controller::class, 'downloadBerkasTA1'])->name('ajuan-pembimbing.downloadBerkasTA1');
         Route::get('dosen/pembimbing-2/ajuan-pembimbing/{ajuan_pembimbing_2}/downloadKHS', [AjuanPembimbing2Controller::class, 'downloadKHS'])->name('ajuan-pembimbing.downloadKHS');
     });

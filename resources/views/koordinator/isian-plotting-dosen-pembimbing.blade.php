@@ -24,35 +24,115 @@
                 <h5>Pembimbing 1</h5>
                 <label for="p1_alt1" class="col-sm-6 col-form-label">Alternatif 1</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt1_p1 }}" disabled>
+                    <input type="text" readonly class="form-control
+                    <<?php
+                        if (!isset($pendaftaran->persetujuan_alt1_p1)) {
+                            echo "";
+                        } elseif ($pendaftaran->persetujuan_alt1_p1 == true) {
+                            echo " is-valid";
+                        } else {
+                            echo " is-invalid";
+                        }
+                        ?>
+                    " value="{{ $pendaftaran->alt1_p1 }}" disabled>
                 </div>
                 <label class="col-sm-6 col-form-label">Alternatif 2</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt2_p1 }}" disabled>
+                    <input type="text" readonly class="form-control
+                    <<?php
+                        if (!isset($pendaftaran->persetujuan_alt2_p1)) {
+                            echo "";
+                        } elseif ($pendaftaran->persetujuan_alt2_p1 == true) {
+                            echo " is-valid";
+                        } else {
+                            echo " is-invalid";
+                        }
+                        ?>
+                    " value="{{ $pendaftaran->alt2_p1 }}" disabled>
                 </div><label class="col-sm-6 col-form-label">Alternatif 3</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt3_p1 }}" disabled>
+                    <input type="text" readonly class="form-control
+                    <<?php
+                        if (!isset($pendaftaran->persetujuan_alt3_p1)) {
+                            echo "";
+                        } elseif ($pendaftaran->persetujuan_alt3_p1 == true) {
+                            echo " is-valid";
+                        } else {
+                            echo " is-invalid";
+                        }
+                        ?>
+                    " value="{{ $pendaftaran->alt3_p1 }}" disabled>
                 </div><label class="col-sm-6 col-form-label">Alternatif 4</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt4_p1 }}" disabled>
+                    <input type="text" readonly class="form-control
+                    <<?php
+                        if (!isset($pendaftaran->persetujuan_alt4_p1)) {
+                            echo "";
+                        } elseif ($pendaftaran->persetujuan_alt4_p1 == true) {
+                            echo " is-valid";
+                        } else {
+                            echo " is-invalid";
+                        }
+                        ?>
+                    " value="{{ $pendaftaran->alt4_p1 }}" disabled>
                 </div>
             </div>
             <div class="col-md-6">
                 <h5>Pembimbing 2</h5>
                 <label class="col-sm-6 col-form-label">Alternatif 1</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt1_p2 }}" disabled>
+                    <input type="text" readonly class="form-control
+                    <<?php
+                        if (!isset($pendaftaran->persetujuan_alt1_p2)) {
+                            echo "";
+                        } elseif ($pendaftaran->persetujuan_alt1_p2 == true) {
+                            echo " is-valid";
+                        } else {
+                            echo " is-invalid";
+                        }
+                        ?>
+                    " value="{{ $pendaftaran->alt1_p2 }}" disabled>
                 </div>
                 <label class="col-sm-6 col-form-label">Alternatif 2</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt2_p2 }}" disabled>
+                    <input type="text" readonly class="form-control
+                    <<?php
+                        if (!isset($pendaftaran->persetujuan_alt2_p2)) {
+                            echo "";
+                        } elseif ($pendaftaran->persetujuan_alt2_p2 == true) {
+                            echo " is-valid";
+                        } else {
+                            echo " is-invalid";
+                        }
+                        ?>
+                    " value="{{ $pendaftaran->alt2_p2 }}" disabled>
                 </div>
                 <label class="col-sm-6 col-form-label">Alternatif 3</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt3_p2 }}" disabled>
+                    <input type="text" readonly class="form-control
+                    <<?php
+                        if (!isset($pendaftaran->persetujuan_alt3_p2)) {
+                            echo "";
+                        } elseif ($pendaftaran->persetujuan_alt3_p2 == true) {
+                            echo " is-valid";
+                        } else {
+                            echo " is-invalid";
+                        }
+                        ?>
+                    " value="{{ $pendaftaran->alt3_p2 }}" disabled>
                 </div><label class="col-sm-6 col-form-label">Alternatif 4</label>
                 <div class="col">
-                    <input type="text" readonly class="form-control" value="{{ $pendaftaran->alt4_p2 }}" disabled>
+                    <input type="text" readonly class="form-control
+                    <<?php
+                        if (!isset($pendaftaran->persetujuan_alt4_p2)) {
+                            echo "";
+                        } elseif ($pendaftaran->persetujuan_alt4_p2 == true) {
+                            echo " is-valid";
+                        } else {
+                            echo " is-invalid";
+                        }
+                        ?>
+                    " value="{{ $pendaftaran->alt4_p2 }}" disabled>
                 </div>
             </div>
         </div>

@@ -54,13 +54,21 @@ return new class extends Migration
 
             // Ajuan Dosen
             $table->string('alt1_p1')->nullable();
+            $table->boolean('persetujuan_alt1_p1')->nullable();
             $table->string('alt1_p2')->nullable();
+            $table->boolean('persetujuan_alt1_p2')->nullable();
             $table->string('alt2_p1')->nullable();
+            $table->boolean('persetujuan_alt2_p1')->nullable();
             $table->string('alt2_p2')->nullable();
+            $table->boolean('persetujuan_alt2_p2')->nullable();
             $table->string('alt3_p1')->nullable();
+            $table->boolean('persetujuan_alt3_p1')->nullable();
             $table->string('alt3_p2')->nullable();
+            $table->boolean('persetujuan_alt3_p2')->nullable();
             $table->string('alt4_p1')->nullable();
+            $table->boolean('persetujuan_alt4_p1')->nullable();
             $table->string('alt4_p2')->nullable();
+            $table->boolean('persetujuan_alt4_p2')->nullable();
 
             // Status Pendaftaran
             $table->string('status')->nullable();

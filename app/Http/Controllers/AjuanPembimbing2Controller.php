@@ -18,8 +18,8 @@ class AjuanPembimbing2Controller extends Controller
         return view('dosen.pembimbing.ajuan-pembimbing-2-index', [
             'title' => 'Ajuan Pembimbing',
             'role' => 'Pembimbing 2',
-            'pendaftarans' => $pendaftarans
-
+            'pendaftarans' => $pendaftarans,
+            'namaDosenDanJabfung' => $namaDosenDanJabfung
         ]);
     }
 
@@ -51,9 +51,16 @@ class AjuanPembimbing2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $ajuanAlternatif)
     {
-        //
+        Pendaftaran::find($id)->update([
+            $ajuanAlternatif => $request[$ajuanAlternatif]
+        ]);
+        if ($request[$ajuanAlternatif] == 1) {
+            return redirect()->back()->with('success', 'Ajuan mahasiswa telah disetujui!');
+        } else {
+            return redirect()->back()->with('success', 'Ajuan mahasiswa telah ditolak!');
+        }
     }
 
     /**
