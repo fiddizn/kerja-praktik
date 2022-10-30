@@ -10,9 +10,6 @@ class PendaftaranSeminarController extends Controller
 {
     public function index()
     {
-        if (KunciPendaftaran::first()->seminar == 1) {
-            return redirect()->intended('/mahasiswa');
-        }
         $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
         $list_p2 = \App\Models\Dosen::all();
 
@@ -20,6 +17,9 @@ class PendaftaranSeminarController extends Controller
         $status_matkuls = ['Sudah Selesai', 'Sedang Diambil', 'Belum Diambil'];
 
         if (!isset(auth()->user()->pendaftaranseminar->berkas_ta1)) {
+            if (KunciPendaftaran::first()->seminar == 1) {
+                return redirect()->intended('/mahasiswa')->with('gagal', 'Maaf, pendaftaran seminar sudah ditutup!');
+            }
             return view('mahasiswa.pendaftaran-seminar-ta-1', [
                 'title' => 'Pendaftaran Seminar TA 1',
                 'role' => 'Mahasiswa',

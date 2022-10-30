@@ -1,8 +1,13 @@
 @extends('layouts/main')
 @section('container')
 
+@if(session()->has('gagal'))
+<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('gagal') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <h1 style="text-align:center;">Sistem Informasi Tugas Akhir 1</h1>
-
 <div class="d-flex justify-content-center mt-5">
     <a class="btn my-3" href="/mahasiswa/pendaftaran-ta-1-step1" role="button"
         style="background-color:#ff8c1a; width: 20rem;">Pendaftaran Administrasi TA 1</a>
