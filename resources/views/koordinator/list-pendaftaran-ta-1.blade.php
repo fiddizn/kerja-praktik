@@ -40,8 +40,9 @@
                         </form>
                         @endif
                 </div>
+                <!-- ini print pdf -->
                 <div class="p-2">
-                    <a class="btn" href="#" role="button" style="background-color:#ff8c1a;">
+                    <a class="btn" href="{{ route('exportPdf') }}" role="button" style="background-color:#ff8c1a;">
                         <i class="fa-solid fa-print fa-lg"></i>
                     </a>
                 </div>

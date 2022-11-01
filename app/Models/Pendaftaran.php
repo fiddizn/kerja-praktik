@@ -16,7 +16,7 @@ class Pendaftaran extends Model
         $query->when($filters ?? false, function ($query, $search) {
             return $query->Where('peminatan', 'like', '%' .  $search . '%')
                 ->orWhere('status', 'like', '%' .  $search . '%')
-                ->orWhereHas('mahasiswa', function ($query) {
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
                     $query->where('nim', 'like', '%' . $search . '%')
                         ->orWhere('name', 'like', '%' . $search . '%');
                 });
@@ -46,11 +46,6 @@ class Pendaftaran extends Model
     public function reviewer1()
     {
         return $this->belongsTo(Reviewer1::class, 'r1_id', 'id');
-    }
-
-    public function dosen()
-    {
-        return $this->belongsTo(Dosen::class);
     }
 
     public function review()

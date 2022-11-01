@@ -230,4 +230,20 @@ class ListPendaftaranTA1Controller extends Controller
         $filepath = public_path("storage/{$data->khs}");
         return response()->download($filepath);
     }
+
+    public function exportPDF()
+    {
+        $kuncipendaftaran = KunciPendaftaran::first();
+        $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))
+            ->orderBy(Mahasiswa::select('name')->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'))->paginate(100)->withQueryString();
+        return view(
+            'koordinator.list-pendaftaran-ta-1-printable',
+            [
+                'title' => 'Pendaftaran Administrasi TA 1',
+                'role' => 'Koordinator',
+                'list_pendaftaran' => $list_pendaftaran,
+                'kuncipendaftaran' => $kuncipendaftaran
+            ]
+        );
+    }
 }
