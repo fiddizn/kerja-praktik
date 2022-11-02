@@ -14,7 +14,13 @@ class PlottingDosenReviewer2Controller extends Controller
 {
     public function index()
     {
-        $list_mahasiswa = \App\Models\PendaftaranSeminar::with('mahasiswa')->where('r1_id', '!=', null)->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')->oldest()->paginate(7);
+        $list_mahasiswa = \App\Models\PendaftaranSeminar::with([
+            "reviewer2" => function ($q) {
+                $q->with("dosen");
+            },
+            "mahasiswa"
+        ])->where('r1_id', '!=', null)->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')
+            ->oldest()->filterR2(request('search'))->paginate(7)->withQueryString();
         return view(
             'koordinator.plotting-dosen-reviewer2',
             [

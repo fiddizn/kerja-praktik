@@ -16,9 +16,30 @@ class PendaftaranSeminar extends Model
         $query->when($filters ?? false, function ($query, $search) {
             return $query->Where('peminatan', 'like', '%' .  $search . '%')
                 ->orWhere('status', 'like', '%' .  $search . '%')
-                ->orWhereHas('mahasiswa', function ($query) {
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
                     $query->where('nim', 'like', '%' . $search . '%')
                         ->orWhere('name', 'like', '%' . $search . '%');
+                });
+        });
+    }
+
+    public function scopeFilterR2($query, $filters)
+    {
+        $query->when($filters ?? false, function ($query, $search) {
+            return $query->where('peminatan', 'like', '%' .  $search . '%')
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
+                    $query->where('nim', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('reviewer1', function ($query) use ($search) {
+                    $query->whereHas('dosen', function ($query) use ($search) {
+                        $query->where('kode', 'like', '%' . $search . '%');
+                    });;
+                })
+                ->orWhereHas('reviewer2', function ($query) use ($search) {
+                    $query->whereHas('dosen', function ($query) use ($search) {
+                        $query->where('kode', 'like', '%' . $search . '%');
+                    });;
                 });
         });
     }

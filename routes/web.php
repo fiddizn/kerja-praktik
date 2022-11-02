@@ -132,6 +132,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Pendaftaran Administrasi TA 1
 
         Route::get('/koordinator/list-pendaftaran-ta-1/exportPdf', [ListPendaftaranTA1Controller::class, 'exportPdf'])->name('exportPdf');
+        Route::get('/koordinator/list-pendaftaran-ta-1/{id}/viewProposal', [ListPendaftaranTA1Controller::class, 'viewProposal'])->name('viewProposal');
         Route::resource('/koordinator/list-pendaftaran-ta-1', ListPendaftaranTA1Controller::class);
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadTagihanUang', [ListPendaftaranTA1Controller::class, 'downloadTagihanUang']);
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/downloadLunasPembayaran', [ListPendaftaranTA1Controller::class, 'downloadLunasPembayaran']);

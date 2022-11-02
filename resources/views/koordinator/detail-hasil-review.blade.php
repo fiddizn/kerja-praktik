@@ -37,7 +37,7 @@
         </div>
     </div>
     @if ($mahasiswa->pendaftaran->peminatan == 'AIG')
-    <table class="table table-sm">
+    <table class="table table-sm mt-3">
         <thead>
             <tr>
                 <th scope="col"></th>
@@ -48,12 +48,12 @@
         <tbody>
             <tr>
                 <td scope="row">1</td>
-                <td>Kreatifitas <br>(originalitas, unik dan bermanfaat)</td>
+                <td>Kreatifitas (originalitas, unik dan bermanfaat)</td>
                 <td>{{ $nilai[$mahasiswa->penilaian1] }}</td>
             </tr>
             <tr>
                 <td scope="row">2</td>
-                <td>Perumusan Masalah <br>(focus, jelas dan terarah)</td>
+                <td>Perumusan Masalah (focus, jelas dan terarah)</td>
                 <td>{{ $nilai[$mahasiswa->penilaian2] }}</td>
             </tr>
             <tr>
@@ -138,7 +138,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <div class="d-flex justify-content-around mt">
     <div class="input-group my-5" style="width: 30%;">
         <div class="input-group-prepend">

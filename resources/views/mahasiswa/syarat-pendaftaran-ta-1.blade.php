@@ -9,6 +9,7 @@
     <div class="d-flex justify-content-center">
         <div class="card w-50">
             <div class="card-body">
+                <h5><b>Saat pendaftaran seminar, anda harus :</b></h5>
                 {!! $syarat !!}
             </div>
         </div>

@@ -166,7 +166,8 @@
         </table>
         {{ $list_dosen->links() }}
         @if ($plotting_dosen == 'Pembimbing')
-        <form id="plotting" action="/koordinator/plotting-dosen-pembimbing/{{ $pendaftaran->id }}" method="post">
+        <form id="formPlottingP1P2" action="/koordinator/plotting-dosen-pembimbing/{{ $pendaftaran->id }}"
+            method="post">
             @method('put')
             @csrf
             <div class="row">
@@ -228,7 +229,9 @@
     <a class="btn" href="/koordinator/plotting-dosen-penguji" role="button"
         style="width: 5rem;background-color:#ff8c1a;">Back</a>
     @endif
-    <button form="plotting" type="submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">Sumbit</button>
+    <button form="formPlottingP1P2" type="submit" class="btn ms-3"
+        style="width: 5rem;background-color:#ff8c1a;">Sumbit</button>
 </div>
-
+<script type="text/javascript" src="/js/validasiJabfunP1P2.js"></script>
+<script type="text/javascript" src="/js/validasiP1P2.js"></script>
 @endsection

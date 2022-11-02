@@ -17,7 +17,13 @@ class PlottingDosenPembimbingController extends Controller
      */
     public function index()
     {
-        $pendaftarans = \App\Models\Pendaftaran::with('mahasiswa')->oldest()->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')->filter(request('search'))->paginate(7)->withQueryString();
+        $pendaftarans = \App\Models\Pendaftaran::with([
+            "pembimbing1" => function ($q) {
+                $q->with("dosen");
+            },
+            "mahasiswa"
+        ])->oldest()->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')->filterP1P2(request('search'))->paginate(7)->withQueryString();
+
         return view(
             'koordinator.plotting-dosen-pembimbing',
             [
@@ -29,32 +35,6 @@ class PlottingDosenPembimbingController extends Controller
         );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store()
-    {
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $pendaftarans = \App\Models\Pendaftaran::with('mahasiswa', 'pembimbing1', 'pembimbing2')->get();
@@ -76,23 +56,6 @@ class PlottingDosenPembimbingController extends Controller
         );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $p1Value = request('p1');
@@ -143,16 +106,5 @@ class PlottingDosenPembimbingController extends Controller
             ]);
         }
         return redirect('/koordinator/plotting-dosen-pembimbing')->with('success', 'Plotting telah diperbarui!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

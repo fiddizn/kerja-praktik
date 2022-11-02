@@ -16,7 +16,7 @@ class PenilaianSeminarKoorController extends Controller
                 ->where('p2_materi', '!=', null)
                 ->where('r1_presentasi', '!=', null)
                 ->where('r2_presentasi', '!=', null)
-                ->oldest()->paginate(7)
+                ->oldest()->filter(request('search'))->paginate(7)->withQueryString()
         ]);
     }
     public function show($id)

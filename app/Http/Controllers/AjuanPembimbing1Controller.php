@@ -10,6 +10,7 @@ class AjuanPembimbing1Controller extends Controller
     public function index()
     {
         $namaDosenDanJabfung = auth()->user()->pembimbing1->dosen->name . ' (' .  auth()->user()->dosen->jabfung->name . ')';
+
         $pendaftarans = Pendaftaran::where('alt1_p1', $namaDosenDanJabfung)
             ->orWhere('alt2_p1', $namaDosenDanJabfung)
             ->orWhere('alt3_p1', $namaDosenDanJabfung)
@@ -53,10 +54,18 @@ class AjuanPembimbing1Controller extends Controller
      */
     public function update(Request $request, $id, $ajuanAlternatif)
     {
-        Pendaftaran::find($id)->update([
-            $ajuanAlternatif => $request[$ajuanAlternatif]
-        ]);
-        if ($request[$ajuanAlternatif] == 1) {
+        if ($request[$ajuanAlternatif] == 'null') {
+            Pendaftaran::find($id)->update([
+                $ajuanAlternatif => null
+            ]);
+        } else {
+            Pendaftaran::find($id)->update([
+                $ajuanAlternatif => $request[$ajuanAlternatif]
+            ]);
+        }
+        if ($request[$ajuanAlternatif] == 'null') {
+            return redirect()->back()->with('success', 'Anda telah mereset ajuan!');
+        } elseif ($request[$ajuanAlternatif] == 1) {
             return redirect()->back()->with('success', 'Ajuan mahasiswa telah disetujui!');
         } else {
             return redirect()->back()->with('success', 'Ajuan mahasiswa telah ditolak!');

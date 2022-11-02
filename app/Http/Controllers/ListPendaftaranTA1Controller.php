@@ -47,6 +47,13 @@ class ListPendaftaranTA1Controller extends Controller
             'status' => request('status'),
             'keterangan_status' => request('keterangan_status')
         ]);
+        for ($i = 1; $i <= 16; $i++) {
+            if (request($i) != NULL) {
+                Pendaftaran::where('id', $id)->update([
+                    'keterangan_status' => $pendaftaran->keterangan_status . "<br> - " . request($i)
+                ]);
+            }
+        }
 
         if (request('status') == 'Lolos Bersyarat' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
         } elseif (request('status') == 'Lolos Bersyarat') {
@@ -245,5 +252,17 @@ class ListPendaftaranTA1Controller extends Controller
                 'kuncipendaftaran' => $kuncipendaftaran
             ]
         );
+    }
+
+    public function viewProposal(Request $request, $id)
+    {
+        $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
+        $filepath = public_path("storage/{$data->khs}");
+        // dd("https://drive.google.com/viewerng/viewer?embedded=true&url=http://$filepath");
+        return view('koordinator.view', [
+            'title' => 'View Berkas Proposal',
+            'role' => 'Koordinator',
+            'filepath' => $filepath
+        ]);
     }
 }

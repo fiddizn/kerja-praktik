@@ -10,14 +10,19 @@ class PlottingDosenReviewerController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     *scopeFilterR1
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $list_mahasiswa = \App\Models\Pendaftaran::with('mahasiswa')->oldest()->whereHas('mahasiswa', function ($query) {
+        $list_mahasiswa = \App\Models\Pendaftaran::with([
+            "reviewer1" => function ($q) {
+                $q->with("dosen");
+            },
+            "mahasiswa"
+        ])->oldest()->whereHas('mahasiswa', function ($query) {
             $query->where('p1_id', '!=', null)->where('p2_id', '!=', null);
-        })->paginate(7);
+        })->filterR1(request('search'))->paginate(7)->withQueryString();
         return view(
             'koordinator.plotting-dosen-reviewer',
             [
