@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PenilaianSeminar;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewerController extends Controller
@@ -13,10 +15,14 @@ class ReviewerController extends Controller
      */
     public function index()
     {
-        return view('dosen.reviewer.index', [
-            'title' => 'Home',
-            'role' => 'Reviewer 1'
-        ]);
+        if (auth()->user()->reviewer1 && Review::where('r1_id', auth()->user()->reviewer1->id)->count() > 0) {
+            return view('dosen.reviewer.index', [
+                'title' => 'Home',
+                'role' => 'Reviewer 1'
+            ]);
+        } else {
+            return redirect()->back()->with('gagal', 'Maaf, anda tidak terdaftar sebagai Reviewer 1');
+        }
     }
 
     public function showReviewProposal()

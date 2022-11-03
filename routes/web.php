@@ -29,6 +29,7 @@ use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
 use App\Http\Controllers\PenilaianSeminarKoorController;
 use App\Http\Controllers\RevisiSeminarController;
+use App\Models\Pendaftaran;
 
 /*
 |--------------------------------------------------------------------------
@@ -216,7 +217,11 @@ Route::group(['middleware' => 'auth'], function () {
         // Pembimbing 1
 
         Route::get('/dosen/pembimbing-1', function () {
-            return view('dosen.pembimbing.index', ['title' => 'Home', 'role' => 'Pembimbing 1']);
+            if (auth()->user()->pembimbing1) {
+                return view('dosen.pembimbing.index', ['title' => 'Home', 'role' => 'Pembimbing 1']);
+            } else {
+                return redirect()->back()->with('gagal', 'Maaf, anda tidak terdaftar sebagai Pembimbing 1');
+            }
         });
         Route::get('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'showDetailBimbingan']);
         Route::post('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'setPersetujuanBimbingan']);
