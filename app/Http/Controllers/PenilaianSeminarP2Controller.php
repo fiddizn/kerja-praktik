@@ -57,17 +57,24 @@ class PenilaianSeminarP2Controller extends Controller
         if (request()->file('p2_file')) {
             $file['p2_file'] = request()->file('p2_file')->store('penilaian_seminar_p2_file');
         } else $file['p2_file'] = null;
-
+        $exist = PenilaianSeminar::find($id)->first()->p2_materi;
         PenilaianSeminar::with('mahasiswa')->find($id)->update([
             'p2_materi' => $request['p2_materi'],
             'p2_pemahaman' => $request['p2_pemahaman'],
             'p2_pencapaian' => $request['p2_pencapaian'],
             'p2_kedisiplinan' => $request['p2_kedisiplinan'],
+            "p2_presentasi" => $request['p2_presentasi'],
+            "p2_dokumentasi" => $request['p2_dokumentasi'],
+            "p2_rumusanMasalah" => $request['p2_rumusanMasalah'],
+            "p2_metodeDanPustaka" => $request['p2_metodeDanPustaka'],
             'p2_catatan' => $request['p2_catatan'],
             'p2_file' => $file['p2_file']
         ]);
-
-        return redirect()->intended('/dosen/pembimbing-2/penilaian-seminar')->with('success', 'Penilaian telah ditambahkan!');
+        if (isset($exist)) {
+            return redirect()->intended('/dosen/pembimbing-2/penilaian-seminar')->with('success', 'Penilaian telah diperbarui!');
+        } else {
+            return redirect()->intended('/dosen/pembimbing-2/penilaian-seminar')->with('success', 'Penilaian telah ditambahkan!');
+        }
     }
 
     public function downloadFile($id)

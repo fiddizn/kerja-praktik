@@ -50,6 +50,30 @@
                         <td>{{ $penilaianseminar->p1_pemahaman }}</td>
                         <td>{{ $penilaianseminar->p2_pemahaman }}</td>
                     </tr>
+                    <tr>
+                        <td scope="row">5</td>
+                        <td>Teknik Presentasi</td>
+                        <td>{{ $penilaianseminar->p1_presentasi }}</td>
+                        <td>{{ $penilaianseminar->p2_presentasi }}</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">6</td>
+                        <td>Dokumentasi</td>
+                        <td>{{ $penilaianseminar->p1_dokumentasi }}</td>
+                        <td>{{ $penilaianseminar->p2_dokumentasi }}</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">7</td>
+                        <td>Rumusan Masalah</td>
+                        <td>{{ $penilaianseminar->p1_rumusanMasalah }}</td>
+                        <td>{{ $penilaianseminar->p2_rumusanMasalah }}</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">8</td>
+                        <td>Metode Penelitian dan Pustaka</td>
+                        <td>{{ $penilaianseminar->p1_metodeDanPustaka }}</td>
+                        <td>{{ $penilaianseminar->p2_metodeDanPustaka }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -93,11 +117,9 @@
             </table>
         </div>
 
-        <div class="col-12 mt-5">
+        <div class="col-12 my-2">
             <a class="btn" href="/koordinator/penilaian-seminar" role="button"
                 style="width: 5rem;background-color:#ff8c1a;">Back</a>
-        </div>
-        <div style=" height: 100px;">
         </div>
     </div>
     @endsection

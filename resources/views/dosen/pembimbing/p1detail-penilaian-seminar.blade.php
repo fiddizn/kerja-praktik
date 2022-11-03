@@ -7,39 +7,77 @@
 </div>
 @endif
 <h2 class="text-center">{{ $title }}</h2>
-<div class="form-group row mt-4">
-    <label for="r1_presentasi" class="col-sm-3 col-form-label">Materi (isi) Penelitian</label>
-    <div class="col-sm-3">
-        <input type="number" class="form-control" id="r1_presentasi" name="r1_presentasi"
-            value="{{ $penilaianSeminar->p1_materi }}" disabled>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group row mt-4">
+            <label for="p1_materi" class="col-sm-9 col-form-label">Materi (isi) Penelitian</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="p1_materi" name="p1_materi" min="0" max="20"
+                    placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_materi }}" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="p1_pemahaman" class="col-sm-9 col-form-label">Pemahaman Teori Penunjang dan
+                Penelitian</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="p1_pemahaman" name="p1_pemahaman" min="0" max="20"
+                    placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_pemahaman }}" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="p1_pencapaian" class="col-sm-9 col-form-label">Pencapaian Target</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="p1_pencapaian" name="p1_pencapaian" min="0" max="30"
+                    placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_pencapaian }}" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="p1_kedisiplinan" class="col-sm-9 col-form-label">Aspek Kedisiplinan</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="p1_kedisiplinan" name="p1_kedisiplinan" min="0" max="30"
+                    placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_kedisiplinan }}" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group row mt-4">
+            <label for="p1_presentasi" class="col-sm-9 col-form-label">Teknik Presentasi</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="p1_presentasi" name="p1_presentasi" min="0" max="20"
+                    placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_presentasi }}" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="p1_dokumentasi" class="col-sm-9 col-form-label">Dokumentasi</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="p1_dokumentasi" name="p1_dokumentasi" min="0" max="20"
+                    placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_dokumentasi }}" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="p1_rumusanMasalah" class="col-sm-9 col-form-label">Rumusan Masalah</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="p1_rumusanMasalah" name="p1_rumusanMasalah" min="0"
+                    max="30" placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_rumusanMasalah }}" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="p1_metodeDanPustaka" class="col-sm-9 col-form-label">Metode Penelitian dan Pustaka</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="p1_metodeDanPustaka" name="p1_metodeDanPustaka" min="0"
+                    max="30" placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_metodeDanPustaka }}" disabled>
+            </div>
+        </div>
     </div>
 </div>
 <div class="form-group row">
-    <label for="r1_dokumentasi" class="col-sm-3 col-form-label">Pemahaman Teori Penunjang dan Penelitian</label>
-    <div class="col-sm-3">
-        <input type="number" class="form-control" id="r1_dokumentasi" name="r1_dokumentasi"
-            value="{{ $penilaianSeminar->p1_pemahaman }}" disabled>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="r1_rumusanMasalah" class="col-sm-3 col-form-label">Pencapaian Target</label>
-    <div class="col-sm-3">
-        <input type="number" class="form-control" id="r1_rumusanMasalah" name="r1_rumusanMasalah"
-            value="{{ $penilaianSeminar->p1_pencapaian }}" disabled>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="r1_metodeDanPustaka" class="col-sm-3 col-form-label">Aspek Kedisiplinan</label>
-    <div class="col-sm-3">
-        <input type="number" class="form-control" id="r1_metodeDanPustaka" name="r1_metodeDanPustaka"
-            value="{{ $penilaianSeminar->p1_kedisiplinan }}" disabled>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="r1_catatan" class="col-sm-3 col-form-label">Catatan Seminar</label>
-    <div class="col-sm-3">
-        <input type="text" class="form-control" id="r1_catatan" name="r1_catatan"
-            value="{{ $penilaianSeminar->p1_catatan }}" disabled>
+    <label for="p1_catatan" class="col-sm-3 col-form-label">Catatan Seminar</label>
+    <div class="">
+        <div class="card mb-3">
+            <div class="card-body">
+                {!! $penilaianSeminar->p1_catatan !!}
+            </div>
+        </div>
     </div>
 </div>
 <div class="form-group row">
