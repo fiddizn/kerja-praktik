@@ -9,8 +9,12 @@
     <div class="d-flex justify-content-center">
         <div class="card w-50">
             <div class="card-body">
-                <h5><b>Saat pendaftaran seminar, anda harus :</b></h5>
+                @if (auth()->user()->pendaftaran->status == 'Lolos Bersyarat')
+                <h5><b>Saat pendaftaran seminar, anda diharuskan untuk :</b></h5>
                 {!! $syarat !!}
+                @elseif (auth()->user()->pendaftaran->status == 'Tidak Lolos')
+                {!! $syarat !!}
+                @endif
             </div>
         </div>
     </div>

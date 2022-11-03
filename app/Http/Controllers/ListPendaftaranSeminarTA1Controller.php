@@ -39,10 +39,24 @@ class ListPendaftaranSeminarTA1Controller extends Controller
     public function edit_keterangan_kelolosan($id)
     {
         $pendaftaran = PendaftaranSeminar::with('mahasiswa')->where('id', $id)->get()[0];
+        $mahasiswa_id = $pendaftaran->mahasiswa_id;
+        $syarat = '';
+        for ($i = 1; $i <= 16; $i++) {
+            if (request($i) != NULL) {
+                $syarat .= '- ' . request($i) . ' <br>';
+            }
+        }
+        $syarat_div = request('keterangan_status');
+        $str_pos = strpos($syarat_div, '>');
+        $syarat_div = substr($syarat_div, 0, $str_pos + 1) . '- ' . substr($syarat_div, 5);
+        if (request('keterangan_status') != null) {
+            $syarat .= $syarat_div;
+        }
         PendaftaranSeminar::where('id', $id)->update([
             'status' => request('status'),
-            'keterangan_status' => request('keterangan_status')
+            'keterangan_status' => $syarat
         ]);
+
         return redirect('/koordinator/list-pendaftaran-seminar-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
     }
 

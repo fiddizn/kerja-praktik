@@ -43,17 +43,22 @@ class ListPendaftaranTA1Controller extends Controller
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->where('id', $id)->get()[0];
         $mahasiswa_id = $pendaftaran->mahasiswa_id;
-        Pendaftaran::where('id', $id)->update([
-            'status' => request('status'),
-            'keterangan_status' => request('keterangan_status')
-        ]);
+        $syarat = '';
         for ($i = 1; $i <= 16; $i++) {
             if (request($i) != NULL) {
-                Pendaftaran::where('id', $id)->update([
-                    'keterangan_status' => $pendaftaran->keterangan_status . "<br> - " . request($i)
-                ]);
+                $syarat .= '- ' . request($i) . ' <br>';
             }
         }
+        $syarat_div = request('keterangan_status');
+        $str_pos = strpos($syarat_div, '>');
+        $syarat_div = substr($syarat_div, 0, $str_pos + 1) . '- ' . substr($syarat_div, 5);
+        if (request('keterangan_status') != null) {
+            $syarat .= $syarat_div;
+        }
+        Pendaftaran::where('id', $id)->update([
+            'status' => request('status'),
+            'keterangan_status' => $syarat
+        ]);
 
         if (request('status') == 'Lolos Bersyarat' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
         } elseif (request('status') == 'Lolos Bersyarat') {

@@ -187,8 +187,9 @@
                     @foreach ($status_matkuls as $status_matkul)
                     @if(auth()->user()->pendaftaran->pemweb == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
-                    @endif
+                    @else
                     <option>{{$status_matkul}}</option>
+                    @endif
                     @endforeach
                 </select>
             </div>
@@ -199,8 +200,9 @@
                     @foreach ($status_matkuls as $status_matkul)
                     @if(auth()->user()->pendaftaran->prak_pemweb == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
-                    @endif
+                    @else
                     <option>{{$status_matkul}}</option>
+                    @endif
                     @endforeach
                 </select>
             </div>
@@ -211,8 +213,9 @@
                     @foreach ($status_matkuls as $status_matkul)
                     @if(auth()->user()->pendaftaran->po1 == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
-                    @endif
+                    @else
                     <option>{{$status_matkul}}</option>
+                    @endif
                     @endforeach
                 </select>
             </div>
@@ -223,8 +226,9 @@
                     @foreach ($status_matkuls as $status_matkul)
                     @if(auth()->user()->pendaftaran->prak_po1 == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
-                    @endif
+                    @else
                     <option>{{$status_matkul}}</option>
+                    @endif
                     @endforeach
                 </select>
             </div>
@@ -235,8 +239,9 @@
                     @foreach ($status_matkuls as $status_matkul)
                     @if(auth()->user()->pendaftaran->appl == $status_matkul)
                     <option selected>{{$status_matkul}}</option>
-                    @endif
+                    @else
                     <option>{{$status_matkul}}</option>
+                    @endif
                     @endforeach
                 </select>
             </div>
