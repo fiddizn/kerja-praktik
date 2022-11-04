@@ -14,7 +14,7 @@ class HasilReviewController extends Controller
      */
     public function index()
     {
-        $list_mahasiswa = \App\Models\Review::with('pendaftaran', 'mahasiswa', 'reviewer1')->oldest()->where('status', '!=', null)->where('hasil_review', '!=', null)
+        $list_mahasiswa = \App\Models\Review::with('pendaftaran', 'mahasiswa', 'reviewer1', 'pembimbing1')->oldest()->where('p1_status', '=', 1)->where('r1_status', '=', 1)
             ->filter(request('search'))->paginate(7)->withQueryString();
         return view(
             'koordinator.hasil-review-proposal',
@@ -46,19 +46,39 @@ class HasilReviewController extends Controller
         return redirect()->intended('/koordinator/hasil-review-proposal')->with('success', 'Proposal telah dikirim');
     }
 
-    public function downloadProposalReviewed($id)
+    public function downloadProposalReviewedP1($id)
     {
         $data = Review::where('id', $id)->first();
         if (auth()->user()->role->name == 'Mahasiswa' && $data->rilis != 0) {
-            $filepath = public_path("storage/{$data->proposal}");
-            if ($data->proposal == null) {
+            $filepath = public_path("storage/{$data->p1_proposal}");
+            if ($data->p1_proposal == null) {
                 return back()->with('null', 'File tidak ada!');
             } else {
                 return response()->download($filepath);
             }
         } elseif (auth()->user()->role->name == 'Koordinator') {
-            $filepath = public_path("storage/{$data->proposal}");
-            if ($data->proposal == null) {
+            $filepath = public_path("storage/{$data->p1_proposal}");
+            if ($data->p1_proposal == null) {
+                return back()->with('null', 'File tidak ada!');
+            } else {
+                return response()->download($filepath);
+            }
+        } else return back()->with('null', 'Proposal yang telah direview belum dirilis oleh Koordinator TA 1');
+    }
+
+    public function downloadProposalReviewedR1($id)
+    {
+        $data = Review::where('id', $id)->first();
+        if (auth()->user()->role->name == 'Mahasiswa' && $data->rilis != 0) {
+            $filepath = public_path("storage/{$data->r1_proposal}");
+            if ($data->r1_proposal == null) {
+                return back()->with('null', 'File tidak ada!');
+            } else {
+                return response()->download($filepath);
+            }
+        } elseif (auth()->user()->role->name == 'Koordinator') {
+            $filepath = public_path("storage/{$data->r1_proposal}");
+            if ($data->r1_proposal == null) {
                 return back()->with('null', 'File tidak ada!');
             } else {
                 return response()->download($filepath);

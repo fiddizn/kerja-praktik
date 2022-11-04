@@ -44,7 +44,7 @@
                                 <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                                     <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                                </span>
+                                </span>r
                             </th>
                             <th scope="col">Status
                                 <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
@@ -62,24 +62,22 @@
                             <td>{{ $review->pendaftaran->mahasiswa->nim }}</td>
                             <td>{{ $review->pendaftaran->mahasiswa->name }}</td>
                             <td>{{ $review->pendaftaran->peminatan }}</td>
-                            @if ($review->r1_penilaian1)
+                            @if ($review->p1_penilaian1)
                             <td><i class="fa-solid fa-check"></i></td>
                             @else
                             <td><i class="fa-solid fa-minus"></i></td>
                             @endif
                             <td>
-                                <a class="btn"
-                                    href="/dosen/reviewer-1/review-proposal/downloadBerkasTa1-{{ $review->pendaftaran->id }}"
+                                <a class="btn" href="{{ route('download-berkas-p1', $review->pendaftaran->id)}}"
                                     style="background-color:#ff8c1a;"><i class="fa-solid fa-download"></i>
                                     Berkas</a>
-                                @if ($review->r1_penilaian1)
-                                <a class="btn btn-warning disabled"
-                                    href="/dosen/reviewer-1/review-proposal/formReview-{{ $review->id }}"><i
+                                @if ($review->p1_penilaian1)
+                                <a class="btn btn-warning disabled" href="{{ route('form-review-p1', $review->id)}}"><i
                                         class="fa-solid fa-align-left"></i>
                                     Review</a>
                                 @else
                                 <a class="btn btn-warning"
-                                    href="/dosen/reviewer-1/review-proposal/formReview-{{ $review->id }}"><i
+                                    href="/dosen/pembimbing-1/review-proposal/formReview-{{ $review->id }}"><i
                                         class="fa-solid fa-align-left"></i>
                                     Review</a>
                                 @endif
@@ -91,7 +89,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <a class="btn" href="/dosen/reviewer-1" role="button"
+                            <a class="btn" href="/dosen/pembimbing-1" role="button"
                                 style="background-color:#ff8c1a; width: 6rem;">Back</a>
                         </div>
                         <div class="col">

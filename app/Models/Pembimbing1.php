@@ -35,4 +35,9 @@ class Pembimbing1 extends Model
     {
         return $this->hasOne(PenilaianSeminar::class);
     }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class);
+    }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PenilaianSeminar;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -55,7 +54,7 @@ class ReviewerController extends Controller
             'proposal' => 'file|max:50000|mimes:doc,docx,pdf,ppt,pptx'
         ]);
 
-        $file['proposal'] = request()->file('proposal')->store('proposal_reviewed');
+        $file['proposal'] = request()->file('proposal')->store('proposal_reviewed_r1');
 
         if (request('penilaian6') != null) {
 
@@ -68,17 +67,17 @@ class ReviewerController extends Controller
             $penilaian6 = Self::convertPenilaianToInt(request('penilaian6'));
 
             \App\Models\Review::where('id', $id)->update([
-                'penilaian1' => $penilaian1,
-                'penilaian2' => $penilaian2,
-                'penilaian3' => $penilaian3,
-                'penilaian4' => $penilaian4,
-                'penilaian5' => $penilaian5,
-                'penilaian6' => $penilaian6,
+                'r1_penilaian1' => $penilaian1,
+                'r1_penilaian2' => $penilaian2,
+                'r1_penilaian3' => $penilaian3,
+                'r1_penilaian4' => $penilaian4,
+                'r1_penilaian5' => $penilaian5,
+                'r1_penilaian6' => $penilaian6,
 
-                'hasil_review' => request('hasil_review'),
-                'komentar' => request('komentar'),
-                'proposal' => $file['proposal'],
-                'status' => 1
+                'r1_hasil_review' => request('hasil_review'),
+                'r1_komentar' => request('komentar'),
+                'r1_proposal' => $file['proposal'],
+                'r1_status' => 1
             ]);
             return redirect('/dosen/reviewer-1/review-proposal/')->with('success', 'Review telah ditambahkan!');
         } else {
@@ -87,7 +86,7 @@ class ReviewerController extends Controller
                 'proposal' => 'file|max:50000|mimes:doc,docx,pdf,ppt,pptx'
             ]);
 
-            $file['proposal'] = request()->file('proposal')->store('proposal_reviewed');
+            $file['proposal'] = request()->file('proposal')->store('proposal_reviewed_r1');
 
             $penilaian1 = Self::convertPenilaianToInt(request('penilaian1'));
             $penilaian2 = Self::convertPenilaianToInt(request('penilaian2'));
@@ -96,16 +95,16 @@ class ReviewerController extends Controller
             $penilaian5 = Self::convertPenilaianToInt(request('penilaian5'));
 
             \App\Models\Review::where('id', $id)->update([
-                'penilaian1' => $penilaian1,
-                'penilaian2' => $penilaian2,
-                'penilaian3' => $penilaian3,
-                'penilaian4' => $penilaian4,
-                'penilaian5' => $penilaian5,
+                'r1_penilaian1' => $penilaian1,
+                'r1_penilaian2' => $penilaian2,
+                'r1_penilaian3' => $penilaian3,
+                'r1_penilaian4' => $penilaian4,
+                'r1_penilaian5' => $penilaian5,
 
-                'hasil_review' => request('hasil_review'),
-                'komentar' => request('komentar'),
-                'proposal' => $file['proposal'],
-                'status' => 1
+                'r1_hasil_review' => request('hasil_review'),
+                'r1_komentar' => request('komentar'),
+                'r1_proposal' => $file['proposal'],
+                'r1_status' => 1
             ]);
             return redirect('/dosen/reviewer-1/review-proposal/')->with('success', 'Review telah ditambahkan!');
         }
@@ -120,71 +119,5 @@ class ReviewerController extends Controller
         } else {
             return 1;
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

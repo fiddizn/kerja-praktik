@@ -21,9 +21,14 @@ class Review extends Model
                     $query->where('nim', 'like', '%' . $search . '%')
                         ->orWhere('name', 'like', '%' . $search . '%');
                 })
+                ->orWhereHas('pembimbing1', function ($query) use ($search) {
+                    $query->whereHas('dosen', function ($query) use ($search) {
+                        $query->where('kode', 'like', '%' . $search . '%');
+                    });;
+                })
                 ->orWhereHas('reviewer1', function ($query) use ($search) {
                     $query->whereHas('dosen', function ($query) use ($search) {
-                        $query->where('name', 'like', '%' . $search . '%');
+                        $query->where('kode', 'like', '%' . $search . '%');
                     });;
                 });
         });
@@ -42,5 +47,10 @@ class Review extends Model
     public function reviewer1()
     {
         return $this->belongsTo(Reviewer1::class, 'r1_id', 'id');
+    }
+
+    public function pembimbing1()
+    {
+        return $this->belongsTo(Pembimbing1::class, 'p1_id', 'id');
     }
 }

@@ -17,21 +17,32 @@ return new class extends Migration
             $table->id();
             $table->integer('mahasiswa_id');
             $table->integer('pendaftaran_id');
+            $table->integer('p1_id')->nullable();
             $table->integer('r1_id')->nullable();
 
-            $table->integer('penilaian1')->nullable();
-            $table->integer('penilaian2')->nullable();
-            $table->integer('penilaian3')->nullable();
-            $table->integer('penilaian4')->nullable();
-            $table->integer('penilaian5')->nullable();
-            $table->integer('penilaian6')->nullable();
+            $table->integer('p1_penilaian1')->nullable();
+            $table->integer('p1_penilaian2')->nullable();
+            $table->integer('p1_penilaian3')->nullable();
+            $table->integer('p1_penilaian4')->nullable();
+            $table->integer('p1_penilaian5')->nullable();
+            $table->integer('p1_penilaian6')->nullable();
+            $table->String('p1_hasil_review')->nullable();
+            $table->String('p1_komentar')->nullable();
+            $table->String('p1_proposal')->nullable();
+            $table->boolean('p1_status')->default(0);
 
-            $table->String('hasil_review')->nullable();
-            $table->String('komentar')->nullable();
-            $table->String('proposal')->nullable();
+            $table->integer('r1_penilaian1')->nullable();
+            $table->integer('r1_penilaian2')->nullable();
+            $table->integer('r1_penilaian3')->nullable();
+            $table->integer('r1_penilaian4')->nullable();
+            $table->integer('r1_penilaian5')->nullable();
+            $table->integer('r1_penilaian6')->nullable();
+            $table->String('r1_hasil_review')->nullable();
+            $table->String('r1_komentar')->nullable();
+            $table->String('r1_proposal')->nullable();
+            $table->boolean('r1_status')->default(0);
 
             $table->boolean('rilis')->default(0);
-            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

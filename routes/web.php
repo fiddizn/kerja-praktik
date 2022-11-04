@@ -1,18 +1,23 @@
 <?php
 
-use App\Http\Controllers\AjuanPembimbing1Controller;
-use App\Http\Controllers\AjuanPembimbing2Controller;
+use App\Models\Pendaftaran;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\Reviewer2Controller;
+use App\Http\Controllers\ReviewerP1Controller;
 use App\Http\Controllers\HasilReviewController;
 use App\Http\Controllers\KoordinatorController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\FormBimbinganController;
 use App\Http\Controllers\JadwalSeminarController;
+use App\Http\Controllers\RevisiSeminarController;
+use App\Http\Controllers\AjuanPembimbing1Controller;
+use App\Http\Controllers\AjuanPembimbing2Controller;
+use App\Http\Controllers\KunciPendaftaranController;
 use App\Http\Controllers\PenilaianSeminarController;
 use App\Http\Controllers\ProposalReviewedController;
 use App\Http\Controllers\BimbinganMahasiswaController;
@@ -22,14 +27,11 @@ use App\Http\Controllers\PenilaianSeminarP1Controller;
 use App\Http\Controllers\PenilaianSeminarP2Controller;
 use App\Http\Controllers\PenilaianSeminarR2Controller;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
-use App\Http\Controllers\KunciPendaftaranController;
+use App\Http\Controllers\PenilaianSeminarKoorController;
 use App\Http\Controllers\PlottingDosenReviewerController;
 use App\Http\Controllers\PlottingDosenReviewer2Controller;
 use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
-use App\Http\Controllers\PenilaianSeminarKoorController;
-use App\Http\Controllers\RevisiSeminarController;
-use App\Models\Pendaftaran;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +93,8 @@ Route::group(['middleware' => 'auth'], function () {
         // Download Hasil Review
 
         Route::get('/mahasiswa/hasil-review', [ProposalReviewedController::class, 'index']);
-        Route::get('/mahasiswa/hasil-review/download-proposal-{id}', [HasilReviewController::class, 'downloadProposalReviewed']);
+        Route::get('/mahasiswa/hasil-review/download-proposal-p1-{id}', [HasilReviewController::class, 'downloadProposalReviewedP1']);
+        Route::get('/mahasiswa/hasil-review/download-proposal-r1-{id}', [HasilReviewController::class, 'downloadProposalReviewedR1']);
 
 
         // Formulir Bimbingan
@@ -153,7 +156,8 @@ Route::group(['middleware' => 'auth'], function () {
         // Review Proposal
 
         Route::resource('/koordinator/hasil-review-proposal', HasilReviewController::class);
-        Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewed', [HasilReviewController::class, 'downloadProposalReviewed']);
+        Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewedP1', [HasilReviewController::class, 'downloadProposalReviewedP1']);
+        Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewedR1', [HasilReviewController::class, 'downloadProposalReviewedR1']);
 
 
         // Pendaftaran Seminar TA 1
@@ -223,6 +227,12 @@ Route::group(['middleware' => 'auth'], function () {
                 return redirect()->back()->with('gagal', 'Maaf, anda tidak terdaftar sebagai Pembimbing 1');
             }
         });
+
+        Route::get('/dosen/pembimbing-1/review-proposal', [ReviewerP1Controller::class, 'index'])->name('review-p1-index');
+        Route::get('/dosen/pembimbing-1/review-proposal/downloadBerkasTa1-{id}', [ListPendaftaranTA1Controller::class, 'downloadBerkasTa1'])->name('download-berkas-p1');
+        Route::get('/dosen/pembimbing-1/review-proposal/formReview-{id}', [ReviewerP1Controller::class, 'showFormReview'])->name('form-review-p1');
+        Route::post('/dosen/pembimbing-1/review-proposal/formReview-{id}', [ReviewerP1Controller::class, 'createFormReview'])->name('create-form-review-p1');
+
         Route::get('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'showDetailBimbingan']);
         Route::post('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'setPersetujuanBimbingan']);
         Route::resource('/dosen/pembimbing-1/form-bimbingan', BimbinganMahasiswaController::class);

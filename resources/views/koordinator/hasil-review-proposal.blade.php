@@ -43,6 +43,7 @@
             <th scope="col">NIM</th>
             <th scope="col">Nama</th>
             <th scope="col">Peminatan</th>
+            <th scope="col">P1</th>
             <th scope="col">R1</th>
             <th scope="col">Aksi</th>
         </tr>
@@ -54,7 +55,8 @@
             <td>{{ $review->mahasiswa->nim }}</td>
             <td>{{ $review->mahasiswa->name }}</td>
             <td>{{ $review->pendaftaran->peminatan }}</td>
-            <td>{{ $review->reviewer1->dosen->name }}</td>
+            <td>{{ $review->pembimbing1->dosen->kode }}</td>
+            <td>{{ $review->reviewer1->dosen->kode }}</td>
             <td>
                 <form action="/koordinator/hasil-review-proposal/{{ $review->id }}" method="post" class="d-inline">
                     @csrf

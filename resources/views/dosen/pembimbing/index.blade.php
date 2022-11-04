@@ -14,6 +14,10 @@
         Pembimbing</a>
 </div>
 <div class="d-flex justify-content-center">
+    <a class="btn my-3" href="{{route('review-p1-index')}}" role="button"
+        style="background-color:#ff8c1a; width: 20rem;">Review Proposal</a>
+</div>
+<div class="d-flex justify-content-center">
     <a class="btn my-3
     " href="/dosen/pembimbing-1/form-bimbingan" role="button" style="background-color:#ff8c1a; width: 20rem;">Bimbingan
         Mahasiswa</a>
