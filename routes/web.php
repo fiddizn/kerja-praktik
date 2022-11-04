@@ -54,8 +54,8 @@ Route::get('/test', function () {
 
 // REGISTER ==============================================================================
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+// Route::post('/register', [RegisterController::class, 'store']);
 
 // LOGIN ==================================================================================
 
