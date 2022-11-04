@@ -53,32 +53,41 @@ class PlottingDosenReviewer2Controller extends Controller
 
     public function update(Request $request, $id)
     {
+        $mahasiswa_id = PendaftaranSeminar::where('id', '=', $id)->get()[0]->mahasiswa_id;
+
         $r2Value = request('r2');
-
         $pos_r2 = strpos($r2Value, "(");
-
         $r2Value = substr($r2Value, 0, $pos_r2 - 1);
+
 
         $dosen_id = \App\Models\Dosen::where('name', '=', $r2Value)->get()[0]->id;
 
         $r2_id = Reviewer2::where('dosen_id', $dosen_id)->get()[0]->id;
 
+        if (Reviewer2::where('id', $r2_id)->first()->dosen->name == PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->reviewer1->dosen->name) {
+            return redirect()->back()->with('gagal', 'Reviwer 2 tidak boleh sama dengan Reviewer 1!');
+        }
         PendaftaranSeminar::where('id', $id)->update([
             'r2_id' =>  $r2_id
         ]);
 
-        $mahasiswa_id = PendaftaranSeminar::where('id', '=', $id)->get()[0]->mahasiswa_id;
         $r1_id = PendaftaranSeminar::where('id', '=', $id)->get()[0]->r1_id;
         $p1_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p1_id;
         $p2_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p2_id;
 
-        PenilaianSeminar::create([
-            'mahasiswa_id' => $mahasiswa_id,
-            'pembimbing1_id' => $p1_id,
-            'pembimbing2_id' => $p2_id,
-            'reviewer1_id' => $r1_id,
-            'reviewer2_id' => $r2_id
-        ]);
+        if (PenilaianSeminar::where('mahasiswa_id', $mahasiswa_id)->first() == null) {
+            PenilaianSeminar::create([
+                'mahasiswa_id' => $mahasiswa_id,
+                'pembimbing1_id' => $p1_id,
+                'pembimbing2_id' => $p2_id,
+                'reviewer1_id' => $r1_id,
+                'reviewer2_id' => $r2_id
+            ]);
+        } else {
+            PenilaianSeminar::where('mahasiswa_id', $mahasiswa_id)->update([
+                'reviewer2_id' => $r2_id
+            ]);
+        }
 
         return redirect('/koordinator/plotting-dosen-reviewer2')->with('success', 'Plotting telah diperbarui!');
     }
