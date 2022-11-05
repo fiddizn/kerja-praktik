@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -26,12 +27,15 @@ use App\Http\Controllers\PendaftaranSeminarController;
 use App\Http\Controllers\PenilaianSeminarP1Controller;
 use App\Http\Controllers\PenilaianSeminarP2Controller;
 use App\Http\Controllers\PenilaianSeminarR2Controller;
+use App\Http\Controllers\TUPenilaianSeminarController;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
 use App\Http\Controllers\PenilaianSeminarKoorController;
+use App\Http\Controllers\TUPendaftaranSeminarController;
 use App\Http\Controllers\PlottingDosenReviewerController;
 use App\Http\Controllers\PlottingDosenReviewer2Controller;
 use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarTA1Controller;
+use App\Http\Controllers\TUPendaftaranAdministrasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -195,7 +199,6 @@ Route::group(['middleware' => 'auth'], function () {
         });
         Route::get('/dosen/downloadJadwalSeminar', [JadwalSeminarController::class, 'downloadJadwalDosen']);
 
-
         // Reviewer 1
 
         Route::get('/dosen/reviewer-1', [ReviewerController::class, 'index']);
@@ -274,7 +277,28 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'role:TU'], function () {
         Route::get('/tu', function () {
-            return 'Hallo TU emailmu adalah ' . auth()->user()->email;
+            return view('tu.index', [
+                'title' => 'Dashboard',
+                'role' => 'Tata Usaha'
+            ]);
         });
+        Route::get('/tu/pendaftaran-administrasi/{id}/downloadTagihanUang', [TUPendaftaranAdministrasiController::class, 'downloadTagihanUang']);
+        Route::get('/tu/pendaftaran-administrasi/{id}/downloadLunasPembayaran', [TUPendaftaranAdministrasiController::class, 'downloadLunasPembayaran']);
+        Route::get('/tu/pendaftaran-administrasi/{id}/downloadBerkasTa1', [TUPendaftaranAdministrasiController::class, 'downloadBerkasTa1']);
+        Route::get('/tu/pendaftaran-administrasi/{id}/downloadKhs', [TUPendaftaranAdministrasiController::class, 'downloadKhs']);
+        Route::resource('/tu/pendaftaran-administrasi', TUPendaftaranAdministrasiController::class);
+        Route::get('/tu/pendaftaran-administrasi/{id}/{kelolosan}', [TUPendaftaranAdministrasiController::class, 'keterangan']);
+        Route::post('/tu/pendaftaran-administrasi/{id}', [TUPendaftaranAdministrasiController::class, 'edit_keterangan_kelolosan']);
+
+        Route::resource('/tu/pendaftaran-seminar', TUPendaftaranSeminarController::class);
+        Route::get('/tu/pendaftaran-seminar/{id}/downloadTagihanUang', [TUPendaftaranSeminarController::class, 'downloadTagihanUang']);
+        Route::get('/tu/pendaftaran-seminar/{id}/downloadLunasPembayaran', [TUPendaftaranSeminarController::class, 'downloadLunasPembayaran']);
+        Route::get('/tu/pendaftaran-seminar/{id}/downloadBerkasTa1', [TUPendaftaranSeminarController::class, 'downloadBerkasTa1']);
+        Route::get('/tu/pendaftaran-seminar/{id}/downloadKhs', [TUPendaftaranSeminarController::class, 'downloadKhs']);
+        Route::get('/tu/pendaftaran-seminar/{id}/{kelolosan}', [TUPendaftaranSeminarController::class, 'keterangan']);
+        Route::post('/tu/pendaftaran-seminar/{id}', [TUPendaftaranSeminarController::class, 'edit_keterangan_kelolosan']);
+
+        Route::resource('/tu/penilaian-seminar', TUPenilaianSeminarController::class);
+        Route::post('/tu/penilaian-seminar/{id}/rilis', [TUPenilaianSeminarController::class, 'setRilis']);
     });
 });
