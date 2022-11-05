@@ -7,6 +7,30 @@
 </div>
 @endif
 <h2 class="text-center">{{ $title }}</h2>
+<div class="d-flex mt-4">
+    <div class="me-auto p-2">
+        @if ($role == 'Reviewer 1')
+        <form action="/dosen/reviewer-1/penilaian-seminar">
+            @elseif ($role == 'Reviewer 2')
+            <form action="/dosen/reviewer-2/penilaian-seminar">
+                @endif
+                <div class="input-group" style=" width: 100%;">
+                    <input type=" text" class="form-control" placeholder="Search.." name="search"
+                        value="{{ request('search') }}">
+                    <div class=" input-group-append">
+                        <button class="btn ms-3" type="submit" style="background-color:#ff8c1a;" "><i class=" fa-solid
+                            fa-magnifying-glass"></i> Search</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+    <div class=" p-2">
+
+    </div>
+    <div class="p-2">
+
+    </div>
+</div>
 <table class="table table-hover table-sm mt-3">
     <thead>
         <tr>

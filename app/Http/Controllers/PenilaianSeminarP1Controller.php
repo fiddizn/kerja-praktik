@@ -9,7 +9,7 @@ class PenilaianSeminarP1Controller extends Controller
 {
     public function index()
     {
-        $listPenilaianSeminar = PenilaianSeminar::with('mahasiswa')->where('pembimbing1_id', auth()->user()->pembimbing1->id)->paginate(7);
+        $listPenilaianSeminar = PenilaianSeminar::with('mahasiswa')->where('pembimbing1_id', auth()->user()->pembimbing1->id)->filter(request('search'))->paginate(7)->withQueryString();
         return view('dosen.pembimbing.penilaian-seminar', [
             'title' => 'Penilaian Seminar',
             'role' => 'Pembimbing 1',

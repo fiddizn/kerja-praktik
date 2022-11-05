@@ -6,6 +6,30 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
+<div class="d-flex mt-4">
+    <div class="me-auto p-2">
+        @if ($role == 'Pembimbing 1')
+        <form action="/dosen/pembimbing-1/penilaian-seminar">
+            @elseif ($role == 'Pembimbing 2')
+            <form action="/dosen/pembimbing-2/penilaian-seminar">
+                @endif
+                <div class="input-group" style=" width: 100%;">
+                    <input type=" text" class="form-control" placeholder="Search.." name="search"
+                        value="{{ request('search') }}">
+                    <div class=" input-group-append">
+                        <button class="btn ms-3" type="submit" style="background-color:#ff8c1a;" "><i class=" fa-solid
+                            fa-magnifying-glass"></i> Search</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+    <div class=" p-2">
+
+    </div>
+    <div class="p-2">
+
+    </div>
+</div>
 <h2 class="text-center">{{ $title }}</h2>
 <table class="table table-hover table-sm mt-3">
     <thead>

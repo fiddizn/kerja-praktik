@@ -9,7 +9,7 @@
 @endif
 
 <div class="me-auto p-2">
-    <form action="/koordinator/list-pendaftaran-ta-1">
+    <form action="/dosen/reviewer-1/review-proposal">
         <div class="input-group" style=" width: 30%;">
             <input type=" text" class="form-control" placeholder="Search.." name="search"
                 value="{{ request('search') }}">

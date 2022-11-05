@@ -34,6 +34,18 @@ class Review extends Model
         });
     }
 
+    public function scopeFilterReviewProposal($query, $filters)
+    {
+        $query->when($filters ?? false, function ($query, $search) {
+            return $query->whereHas('pendaftaran', function ($query) use ($search) {
+                $query->where('peminatan', 'like', '%' . $search . '%');
+            })->orWhereHas('mahasiswa', function ($query) use ($search) {
+                $query->where('nim', 'like', '%' . $search . '%')
+                    ->orWhere('name', 'like', '%' . $search . '%');
+            });
+        });
+    }
+
     public function mahasiswa()
     {
         return $this->belongsTo(Mahasiswa::class);

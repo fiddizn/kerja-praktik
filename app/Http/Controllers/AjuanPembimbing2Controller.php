@@ -14,7 +14,7 @@ class AjuanPembimbing2Controller extends Controller
             ->orWhere('alt2_p2', $namaDosenDanJabfung)
             ->orWhere('alt3_p2', $namaDosenDanJabfung)
             ->orWhere('alt4_p2', $namaDosenDanJabfung)
-            ->paginate(7);
+            ->filterAjuanPembimbing(request('search'))->paginate(7)->withQueryString();
         return view('dosen.pembimbing.ajuan-pembimbing-2-index', [
             'title' => 'Ajuan Pembimbing',
             'role' => 'Pembimbing 2',

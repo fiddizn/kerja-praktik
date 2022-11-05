@@ -9,7 +9,7 @@
 @endif
 
 <div class="me-auto p-2">
-    <form action="/koordinator/list-pendaftaran-ta-1">
+    <form action="/dosen/pembimbing-1/review-proposal">
         <div class="input-group" style=" width: 30%;">
             <input type=" text" class="form-control" placeholder="Search.." name="search"
                 value="{{ request('search') }}">
@@ -44,7 +44,7 @@
                                 <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                                     <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                                </span>r
+                                </span>
                             </th>
                             <th scope="col">Status
                                 <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">

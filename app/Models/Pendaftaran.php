@@ -60,6 +60,17 @@ class Pendaftaran extends Model
         });
     }
 
+    public function scopeFilterAjuanPembimbing($query, $filters)
+    {
+        $query->when($filters ?? false, function ($query, $search) {
+            return $query->where('peminatan', 'like', '%' .  $search . '%')
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
+                    $query->where('nim', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%');
+                });
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

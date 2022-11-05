@@ -10,7 +10,7 @@
 
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
-        <form action="/koordinator/list-pendaftaran-ta-1">
+        <form action="/dosen/pembimbing-1/ajuan-pembimbing-1">
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
                     value="{{ request('search') }}">
