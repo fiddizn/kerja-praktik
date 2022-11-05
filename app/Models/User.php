@@ -14,6 +14,31 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function scopeFilter($query, $filters)
+    {
+        $query->when($filters ?? false, function ($query, $search) {
+            return $query->where('nim', 'like', '%' .  $search . '%')
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('dosen', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('admin', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('koordinator', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('tatausaha', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('role', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                });
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -120,17 +145,20 @@ class User extends Authenticatable
         return $this->hasOneThrough(Review::class, mahasiswa::class);
     }
 
-    public function scopeFilter($query, $filters)
-    {
-        $query->when($filters ?? false, function ($query, $search) {
-            return $query->Where('peminatan', 'like', '%' .  $search . '%')
-                ->orWhere('status', 'like', '%' .  $search . '%')
-                ->orWhereHas('mahasiswa', function ($query) use ($search) {
-                    $query->where('nim', 'like', '%' . $search . '%')
-                        ->orWhere('name', 'like', '%' . $search . '%');
-                });
-        });
-    }
+
+
+    // public function scopeFilter($query, $filters)
+    // {
+    //     $query->when($filters ?? false, function ($query, $search) {
+    //         return $query->Where('nim', 'like', '%' .  $search . '%')
+    //         ->orWhere('status', 'like', '%' .  $search . '%')
+    //         ->orWhereHas('mahasiswa', function ($query) use ($search) {
+    //             $query->where('nim', 'like', '%' . $search . '%')
+    //             ->orWhere('name', 'like', '%' . $search . '%');
+    //         });
+    //     });
+    // }
+
 
     // class Country
     // {

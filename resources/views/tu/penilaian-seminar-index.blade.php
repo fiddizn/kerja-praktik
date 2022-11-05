@@ -41,7 +41,6 @@
             <th scope="col">NIM</th>
             <th scope="col">Nama</th>
             <th scope="col">Peminatan</th>
-            <th scope="col">Rilis</th>
             <th scope="col">Aksi</th>
         </tr>
     </thead>
@@ -54,25 +53,7 @@
                 <td>{{ $penilaianseminar->mahasiswa->nim }}</td>
                 <td>{{ $penilaianseminar->mahasiswa->name }}</td>
                 <td>{{ $penilaianseminar->mahasiswa->pendaftaran->peminatan }}</td>
-                @if ($penilaianseminar->rilis)
-                <td><i class="fa-solid fa-check"></i></td>
-                @else
-                <td></td>
-                @endif
-                <td>
-                    @if (!$penilaianseminar->rilis)
-                    <input type="hidden" id="rilis" name="rilis" value=1>
-                    <button class="btn" type="submit" style="background-color:#ff8c1a;"><i
-                            class="fa-solid fa-file-export"></i>
-                        Rilis</button>
-                    @else
-                    <input type="hidden" id="rilis" name="rilis" value=0>
-                    <button class="btn" type="submit" style="background-color:#ff8c1a;"><i
-                            class="fa-solid fa-rotate-left"></i>
-                        Tarik</button>
-                    @endif
-
-                    <a class="btn" href="/tu/penilaian-seminar/{{ $penilaianseminar->id }}" role="button"
+                <td> <a class="btn" href="/tu/penilaian-seminar/{{ $penilaianseminar->id }}" role="button"
                         style="background-color:#ff8c1a;"><i class="fa-solid fa-circle-info"></i>
                         Detail</a>
                 </td>

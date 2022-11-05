@@ -7,10 +7,21 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
+@if(session()->has('gagal'))
+<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    {{ session('gagal') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
-        <form action="/admin/kelola-users">
+        <a class="btn" href="{{ route('kelola-user.create')}}" style="background-color:#ff8c1a;"><i
+                class="fa-solid fa-user-plus"></i>
+            Tambah User</a>
+    </div>
+    <div class="p-2">
+        <form action="/admin/kelola-user">
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
                     value="{{ request('search') }}">
@@ -32,7 +43,7 @@
                 </div>
             </div>
 
-            <table class="table table-hover table-sm mt-3">
+            <table class=" table table-hover table-sm mt-3">
                 <thead>
                     <tr>
                         <th scope="col">NO
@@ -65,7 +76,12 @@
                 @foreach ($users as $key=> $user)
                 <tbody>
                     <tr>
-                        <th scope="row">{{ $users->firstItem()+ $key}}</th>
+                        <th scope="row">
+                            <div class="form-check d-inline">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            </div>
+                            {{ $users->firstItem()+ $key}}
+                        </th>
                         <td>{{ $user->nim }}</td>
                         @if ($user->role->name == 'Dosen')
                         <td>{{ $user->dosen->name }}</td>
@@ -80,10 +96,12 @@
                         @endif
                         <td>{{ $user->role->name }}</td>
                         <td>
-                            <a class="btn" href="#" style="background-color:#ff8c1a;"><i
-                                    class="fa-solid fa-align-left"></i> Detail</a>
-                            <a class="btn btn-warning" href="#"><i class="fa-regular fa-pen-to-square"></i> Edit</a>
-                            <form action="#" method="post" class="d-inline">
+                            <a class="btn" href="{{ route('kelola-user.show', $user->id) }}"
+                                style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i>
+                                Detail</a>
+                            <a class="btn btn-warning" href="{{ route('kelola-user.edit', $user->id) }}"><i
+                                    class="fa-regular fa-pen-to-square"></i> Edit</a>
+                            <form action="{{ route('kelola-user.destroy', $user->id)}}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="btn btn-danger" role="button"
