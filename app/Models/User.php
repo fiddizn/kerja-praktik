@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Database\Factories\TataUsahaFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -46,6 +48,21 @@ class User extends Authenticatable
     public function dosen()
     {
         return $this->hasOne(Dosen::class);
+    }
+
+    public function koordinator()
+    {
+        return $this->hasOne(Koordinator::class);
+    }
+
+    public function tatausaha()
+    {
+        return $this->hasOne(TataUsaha::class);
+    }
+
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
     }
 
     public function pembimbing1()
@@ -103,6 +120,18 @@ class User extends Authenticatable
         return $this->hasOneThrough(Review::class, mahasiswa::class);
     }
 
+    public function scopeFilter($query, $filters)
+    {
+        $query->when($filters ?? false, function ($query, $search) {
+            return $query->Where('peminatan', 'like', '%' .  $search . '%')
+                ->orWhere('status', 'like', '%' .  $search . '%')
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
+                    $query->where('nim', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%');
+                });
+        });
+    }
+
     // class Country
     // {
     //     public function employees()
@@ -110,5 +139,7 @@ class User extends Authenticatable
     //         return $this->hasManyDeep(Employees::class, [City::class, Shop::class]);
     //     }
     // }
+
+
 
 }

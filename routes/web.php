@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\Reviewer2Controller;
+use App\Http\Controllers\KelolaUserController;
 use App\Http\Controllers\ReviewerP1Controller;
 use App\Http\Controllers\HasilReviewController;
 use App\Http\Controllers\KoordinatorController;
@@ -265,14 +266,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('dosen/pembimbing-2/ajuan-pembimbing/{ajuan_pembimbing_2}/downloadKHS', [AjuanPembimbing2Controller::class, 'downloadKHS'])->name('ajuan-pembimbing.downloadKHS');
     });
 
-    // SESI ADMIN =======================================================================================
-
-    Route::group(['middleware' => 'role:Admin'], function () {
-        Route::get('/admin', function () {
-            return 'Hallo Admin emailmu adalah ' . auth()->user()->email;
-        });
-    });
-
     // SESI TU ==========================================================================================
 
     Route::group(['middleware' => 'role:TU'], function () {
@@ -300,5 +293,17 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('/tu/penilaian-seminar', TUPenilaianSeminarController::class);
         Route::post('/tu/penilaian-seminar/{id}/rilis', [TUPenilaianSeminarController::class, 'setRilis']);
+    });
+
+    // SESI ADMIN =======================================================================================
+
+    Route::group(['middleware' => 'role:Admin'], function () {
+        Route::get('/admin', function () {
+            return view('admin.index', [
+                'title' => 'Dashboard Admin',
+                'role' => 'Admin'
+            ]);
+        });
+        Route::resource('admin/kelola-user', KelolaUserController::class);
     });
 });
