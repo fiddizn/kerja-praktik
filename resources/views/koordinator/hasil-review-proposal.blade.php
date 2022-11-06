@@ -10,20 +10,32 @@
 </div>
 @endif
 
+@if (session()->has('gagal'))
+<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    {{ session('gagal') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <div class="d-flex mt-4">
-    <div class="me-auto p-2">
+    <div class="me-auto py-2">
+        <button class="btn" type="submit" style="background-color:#ff8c1a; width:9rem;" form="formRilis"
+            onclick="return confirm('Apakah anda yakin ingin merilis hasil review?')"><i
+                class="fa-solid fa-share-from-square"></i>
+            Rilis</button>
+    </div>
+    <div class="p-2">
         <form action="/koordinator/hasil-review-proposal">
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
                     value="{{ request('search') }}">
                 <div class=" input-group-append">
-                    <button class="btn ms-3" type="submit" style="background-color:#ff8c1a;" "><i class=" fa-solid
+                    <button class="btn ms-3" type="submit" style="background-color:#ff8c1a;"><i class=" fa-solid
                         fa-magnifying-glass"></i> Search</button>
                 </div>
             </div>
         </form>
     </div>
-    <div class=" p-2"></div>
     <div class="p-2">
         <a class="btn" href="#" role="button" style="background-color:#ff8c1a;">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-printer"
@@ -48,34 +60,40 @@
             <th scope="col">Aksi</th>
         </tr>
     </thead>
-    @foreach ($list_mahasiswa as $key=> $review)
-    <tbody>
-        <tr>
-            <th scope="row">{{ $list_mahasiswa->firstItem()+ $key}}</th>
-            <td>{{ $review->mahasiswa->nim }}</td>
-            <td>{{ $review->mahasiswa->name }}</td>
-            <td>{{ $review->pendaftaran->peminatan }}</td>
-            <td>{{ $review->pembimbing1->dosen->kode }}</td>
-            <td>{{ $review->reviewer1->dosen->kode }}</td>
-            <td>
-                <form action="/koordinator/hasil-review-proposal/{{ $review->id }}" method="post" class="d-inline">
-                    @csrf
-                    @method('put')
-                    <input type="hidden" name="rilis" value="1">
-                    @if ($review->rilis != 1)
-                    <button class="btn" role="button" style="background-color:#ff8c1a;"><i
-                            class="fa-solid fa-share-from-square"></i> Kirim</button>
+    <form class="d-inline" id="formRilis" action="/koordinator/hasil-review-proposal/rilis" method="post">
+        @csrf
+        @foreach ($list_mahasiswa as $key=> $review)
+        <tbody>
+            <tr>
+                <th scope="row">
+                    <div class="form-check d-inline">
+                        <input class="form-check-input" type="checkbox" name="checked[]" value="{{$review->id}}"
+                            id="flexCheckDefault">
+                    </div>
+                    {{ $list_mahasiswa->firstItem()+ $key}}
+                </th>
+                <td>{{ $review->mahasiswa->nim }}</td>
+                <td>{{ $review->mahasiswa->name }}</td>
+                <td>{{ $review->pendaftaran->peminatan }}</td>
+                <td>{{ $review->pembimbing1->dosen->kode }}</td>
+                <td>{{ $review->reviewer1->dosen->kode }}</td>
+                <td>
+                    @if ($review->rilis == 0)
+                    <a class="btn" href="/koordinator/hasil-review-proposal/rilis-{{$review->id}}"
+                        style="background-color:#ff8c1a;"
+                        onclick="return confirm('Apakah anda yakin ingin merilis hasil review?')"><i
+                            class="fa-solid fa-share-from-square"></i> Rilis</a>
                     @else
                     <button class="btn" role="button" style="background-color:#ff8c1a;" disabled><i
                             class="fa-solid fa-share-from-square"></i> Kirim</button>
                     @endif
-                </form>
-                <a class="btn" href="/koordinator/hasil-review-proposal/{{ $review->id }}" role="button"
-                    style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i> Detail</a>
-            </td>
-        </tr>
-    </tbody>
-    @endforeach
+                    <a class="btn" href="/koordinator/hasil-review-proposal/{{ $review->id }}" role="button"
+                        style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i> Detail</a>
+                </td>
+            </tr>
+        </tbody>
+        @endforeach
+    </form>
 </table>
 
 <div class="d-flex justify-content-between">

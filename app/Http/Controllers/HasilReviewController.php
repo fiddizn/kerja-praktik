@@ -46,6 +46,29 @@ class HasilReviewController extends Controller
         return redirect()->intended('/koordinator/hasil-review-proposal')->with('success', 'Proposal telah dikirim');
     }
 
+    public function rilis($id)
+    {
+        \App\Models\Review::where('id', $id)->get()->first()->update([
+            'rilis' => 1
+        ]);
+        return redirect()->intended('/koordinator/hasil-review-proposal')->with('success', 'Proposal telah dikirim');
+    }
+
+    public function rilisBeberapa(Request $request)
+    {
+        if (!isset($request['checked'])) {
+            return redirect()->back()->with('gagal', 'Anda belum memilih hasil review yang akan dirilis!');
+        } else {
+            foreach ($request['checked'] as $item) {
+                $review = Review::find($item);
+                $review->update([
+                    'rilis' => 1
+                ]);
+            }
+            return redirect()->intended('/koordinator/hasil-review-proposal')->with('success', 'Hasil review telah dirilis!');
+        }
+    }
+
     public function downloadProposalReviewedP1($id)
     {
         $data = Review::where('id', $id)->first();

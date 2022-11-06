@@ -6,10 +6,23 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
+@if (session()->has('gagal'))
+<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    {{ session('gagal') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <h2 class="text-center">{{ $title }}</h2>
 
 <div class="d-flex mt-4">
-    <div class="me-auto p-2">
+    <div class="me-auto py-2">
+        <button class="btn" type="submit" style="background-color:#ff8c1a; width:9rem;" form="formRilis"
+            onclick="return confirm('Apakah anda yakin ingin merilis hasil review?')"><i
+                class="fa-solid fa-file-export"></i>
+            Rilis</button>
+    </div>
+    <div class="auto p-2">
         <form action="/koordinator/penilaian-seminar">
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
@@ -45,12 +58,18 @@
             <th scope="col">Aksi</th>
         </tr>
     </thead>
-    @foreach ($penilaianseminars as $key=> $penilaianseminar)
-    <form method="post" action="/koordinator/penilaian-seminar/{{ $penilaianseminar->id }}/rilis">
+    <form class="d-inline" id="formRilis" action="/koordinator/penilaian-seminar/rilis" method="post">
         @csrf
+        @foreach ($penilaianseminars as $key=> $penilaianseminar)
         <tbody>
             <tr>
-                <th scope="row">{{ $penilaianseminars->firstItem()+ $key}}</th>
+                <th scope="row">
+                    <div class="form-check d-inline">
+                        <input class="form-check-input" type="checkbox" name="checked[]"
+                            value="{{$penilaianseminar->id}}" id="flexCheckDefault">
+                    </div>
+                    {{ $penilaianseminars->firstItem()+ $key}}
+                </th>
                 <td>{{ $penilaianseminar->mahasiswa->nim }}</td>
                 <td>{{ $penilaianseminar->mahasiswa->name }}</td>
                 <td>{{ $penilaianseminar->mahasiswa->pendaftaran->peminatan }}</td>
@@ -62,14 +81,14 @@
                 <td>
                     @if (!$penilaianseminar->rilis)
                     <input type="hidden" id="rilis" name="rilis" value=1>
-                    <button class="btn" type="submit" style="background-color:#ff8c1a;"><i
-                            class="fa-solid fa-file-export"></i>
-                        Rilis</button>
+                    <a class="btn" href="/koordinator/penilaian-seminar/rilis-{{$penilaianseminar->id}}"
+                        style="background-color:#ff8c1a;"><i class="fa-solid fa-file-export"></i>
+                        Rilis</a>
                     @else
                     <input type="hidden" id="rilis" name="rilis" value=0>
-                    <button class="btn" type="submit" style="background-color:#ff8c1a;"><i
-                            class="fa-solid fa-rotate-left"></i>
-                        Tarik</button>
+                    <a class="btn" href="/koordinator/penilaian-seminar/reset-{{$penilaianseminar->id}}"
+                        style="background-color:#ff8c1a;"><i class="fa-solid fa-rotate-left"></i>
+                        Tarik</a>
                     @endif
 
                     <a class="btn" href="/koordinator/penilaian-seminar/{{ $penilaianseminar->id }}" role="button"
@@ -78,8 +97,8 @@
                 </td>
             </tr>
         </tbody>
+        @endforeach
     </form>
-    @endforeach
 </table>
 
 <div class="d-flex justify-content-between">

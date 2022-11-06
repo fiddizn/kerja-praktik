@@ -31,12 +31,32 @@ class PenilaianSeminarKoorController extends Controller
     public function setRilis($id)
     {
         PenilaianSeminar::where('id', $id)->first()->update([
-            'rilis' => request('rilis')
+            'rilis' => 1
         ]);
-        if (request('rilis') != 0) {
-            return redirect()->back()->with('success', 'Penilaian sukses dirilis!');
+        return redirect()->back()->with('success', 'Penilaian seminar sukses dirilis!');
+    }
+
+    public function resetRilis($id)
+    {
+        PenilaianSeminar::where('id', $id)->first()->update([
+            'rilis' => 0
+        ]);
+        return redirect()->back()->with('success', 'Penilaian seminar telah ditarik!');
+    }
+
+    public function setRilisBeberapa(Request $request)
+    {
+        if (!isset($request['checked'])) {
+            return redirect()->back()->with('gagal', 'Anda belum memilih penilaian seminar yang akan dirilis!');
         } else {
-            return redirect()->back()->with('success', 'Penilaian ditarik!');
+            foreach ($request['checked'] as $item) {
+                $review = PenilaianSeminar::find($item);
+                $review->update([
+                    'rilis' => 1
+                ]);
+            }
+            return redirect()->intended('/koordinator/penilaian-seminar')->with('success', 'Penilaian Seminar telah dirilis!');
         }
+        return redirect()->back()->with('success', 'Penilaian seminar sukses dirilis!');
     }
 }

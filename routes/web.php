@@ -51,9 +51,9 @@ use App\Http\Controllers\TUPendaftaranAdministrasiController;
 
 // TEST ==================================================================================
 
-Route::get('/test', function () {
-    return view('test');
-});
+// Route::get('/test', function () {
+//     return view('test');
+// });
 // Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 
 
@@ -160,6 +160,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Review Proposal
 
+        Route::get('/koordinator/hasil-review-proposal/rilis-{id}', [HasilReviewController::class, 'rilis']);
+        Route::post('/koordinator/hasil-review-proposal/rilis', [HasilReviewController::class, 'rilisBeberapa']);
         Route::resource('/koordinator/hasil-review-proposal', HasilReviewController::class);
         Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewedP1', [HasilReviewController::class, 'downloadProposalReviewedP1']);
         Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewedR1', [HasilReviewController::class, 'downloadProposalReviewedR1']);
@@ -185,8 +187,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/jadwal-seminar/dosen', [JadwalSeminarController::class, 'downloadJadwalDosen']);
 
         // Rilis Penilaian Seminar
+        Route::get('/koordinator/penilaian-seminar/rilis-{id}', [PenilaianSeminarKoorController::class, 'setRilis']);
+        Route::get('/koordinator/penilaian-seminar/reset-{id}', [PenilaianSeminarKoorController::class, 'resetRilis']);
+        Route::post('/koordinator/penilaian-seminar/rilis', [PenilaianSeminarKoorController::class, 'setRilisBeberapa']);
         Route::resource('/koordinator/penilaian-seminar', PenilaianSeminarKoorController::class);
-        Route::post('/koordinator/penilaian-seminar/{id}/rilis', [PenilaianSeminarKoorController::class, 'setRilis']);
     });
 
     // SESI DOSEN =====================================================================================================================================================
