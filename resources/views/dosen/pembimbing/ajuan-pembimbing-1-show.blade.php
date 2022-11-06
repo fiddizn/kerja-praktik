@@ -1,6 +1,6 @@
 @extends('layouts/main')
 @section('container')
-<h2 style="text-align:center;">Seleksi Seminar</h2>
+<h2 style="text-align:center;">{{ $title }}</h2>
 
 <div class="row align-items-start mt-3">
     <div class="row g-3">

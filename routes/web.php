@@ -247,6 +247,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('dosen/pembimbing-1/penilaian-seminar', PenilaianSeminarP1Controller::class);
         Route::post('/dosen/pembimbing-1/penilaian-seminar/{id}/edit', [PenilaianSeminarP1Controller::class, 'update']);
         Route::get('/dosen/pembimbing-1/penilaian-seminar/{id}/downloadFile', [PenilaianSeminarP1Controller::class, 'downloadFile']);
+        Route::get('/dosen/pembimbing-1/ajuan-pembimbing-1/setuju-{id}-{dosen}', [AjuanPembimbing1Controller::class, 'setuju']);
+        Route::get('/dosen/pembimbing-1/ajuan-pembimbing-1/setuju-{id}-{dosen}', [AjuanPembimbing1Controller::class, 'setujuBeberapa']);
+        Route::get('/dosen/pembimbing-1/ajuan-pembimbing-1/tolak-{id}-{dosen}', [AjuanPembimbing1Controller::class, 'tolak']);
+        Route::get('/dosen/pembimbing-1/ajuan-pembimbing-1/reset-{id}-{dosen}', [AjuanPembimbing1Controller::class, 'reset']);
         Route::resource('/dosen/pembimbing-1/ajuan-pembimbing-1', AjuanPembimbing1Controller::class);
         Route::post('/dosen/pembimbing-1/ajuan-pembimbing-1/{id}-{ajuanBimbingan}', [AjuanPembimbing1Controller::class, 'update']);
         Route::get('dosen/pembimbing-1/ajuan-pembimbing/{ajuan_pembimbing_1}/downloadBerkasTA1', [AjuanPembimbing1Controller::class, 'downloadBerkasTA1'])->name('ajuan-pembimbing.downloadBerkasTA1');

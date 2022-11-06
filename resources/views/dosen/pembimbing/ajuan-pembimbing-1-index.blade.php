@@ -6,6 +6,12 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
+@if(session()->has('gagal'))
+<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    {{ session('gagal') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <h2 class="text-center">{{ $title }}</h2>
 
 <div class="d-flex mt-4">
@@ -55,44 +61,38 @@
 
                 <tbody>
                     <tr>
-                        <th scope="row">{{ $pendaftarans->firstItem()+ $key}}</th>
+                        <th scope="row">
+                            <div class="form-check d-inline">
+                                <input class="form-check-input" type="checkbox" name="checked[]" value="{{$item->id}}"
+                                    id="flexCheckDefault">
+                            </div>
+                            {{ $pendaftarans->firstItem()+ $key}}
+                        </th>
                         <td>{{ $item->mahasiswa->nim }}</td>
                         <td>{{ $item->mahasiswa->name }}</td>
                         <td>{{ $item->mahasiswa->pendaftaran->peminatan }}</td>
                         @if (!isset($item[$ajuanAlternatif]))
                         <td></td>
                         @elseif ($item[$ajuanAlternatif] == 1)
-                        <td><i class="fa-solid fa-square-check fa-lg"></i></i></td>
+                        <td><i class="fa-solid fa-square-check fa-lg"></i></td>
                         @elseif ($item[$ajuanAlternatif] == 0)
                         <td><i class="fa-solid fa-square-xmark fa-lg"></i></td>
                         @endif
                         <td>
                             @if ($item[$ajuanAlternatif] != 1)
-                            <form id="form1" method="post" style="display: inline;"
-                                action="/dosen/pembimbing-1/ajuan-pembimbing-1/{{ $item->id }}-{{ $ajuanAlternatif }}">
-                                @csrf
-                                <input type="hidden" id="ajuan" name="{{ $ajuanAlternatif }}" value=1>
-                                <button class="btn btn-success" type="submit"><i class="fa-solid fa-square-check"></i>
-                                    Setuju</button>
-                            </form>
+                            <a class="btn btn-success"
+                                href="/dosen/pembimbing-1/ajuan-pembimbing-1/setuju-{{ $item->id }}-{{ $ajuanAlternatif }}"
+                                type="submit"><i class="fa-solid fa-square-check"></i></a>
                             @endif
                             @if ($item[$ajuanAlternatif] != 0 || !isset($item[$ajuanAlternatif]))
-                            <form id="form2" style="display: inline;" method="post"
-                                action="/dosen/pembimbing-1/ajuan-pembimbing-1/{{ $item->id }}-{{ $ajuanAlternatif }}">
-                                @csrf
-                                <input type="hidden" id="ajuan" name="{{ $ajuanAlternatif }}" value=0>
-                                <button class="btn btn-danger" type="submit"><i class="fa-solid fa-square-xmark"></i>
-                                    Tolak</button>
-                            </form>
+                            <a class="btn btn-danger"
+                                href="/dosen/pembimbing-1/ajuan-pembimbing-1/tolak-{{ $item->id }}-{{ $ajuanAlternatif }}"
+                                type="submit"><i class="fa-solid fa-square-xmark"></i></a>
                             @endif
                             @if (isset($item[$ajuanAlternatif]))
-                            <form id="form3" style="display: inline;" method="post"
-                                action="/dosen/pembimbing-1/ajuan-pembimbing-1/{{ $item->id }}-{{ $ajuanAlternatif }}">
-                                @csrf
-                                <input type="hidden" id="ajuan" name="{{ $ajuanAlternatif }}" value=null>
-                                <button class="btn btn-dark" type="submit">
-                                    Reset</button>
-                            </form>
+                            <a class="btn btn-dark"
+                                href="/dosen/pembimbing-1/ajuan-pembimbing-1/reset-{{ $item->id }}-{{ $ajuanAlternatif }}"
+                                type="submit"><i class="fa-solid fa-arrow-rotate-left"></i></a>
                             @endif
                             <a class="btn" href="{{ route('ajuan-pembimbing-1.show', $item->id) }}" role="button"
                                 style="background-color:#ff8c1a;"><i class="fa-solid fa-circle-info"></i>

@@ -22,7 +22,7 @@ class PenilaianSeminarKoorController extends Controller
     public function show($id)
     {
         return view('koordinator.penilaian-seminar-show', [
-            'title' => 'Penilaian Seminar',
+            'title' => 'Detail Mahasiswa',
             'role' => 'Koordinator',
             'penilaianseminar' => PenilaianSeminar::with('mahasiswa', 'pembimbing1', 'pembimbing2', 'reviewer1', 'reviewer2')->where('id', $id)->first()
         ]);

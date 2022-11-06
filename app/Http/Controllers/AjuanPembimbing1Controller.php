@@ -72,6 +72,30 @@ class AjuanPembimbing1Controller extends Controller
         }
     }
 
+    public function setuju(Request $request, $id, $ajuanAlternatif)
+    {
+        Pendaftaran::find($id)->update([
+            $ajuanAlternatif => 1
+        ]);
+        return redirect()->back()->with('success', 'Ajuan mahasiswa telah disetujui!');
+    }
+
+    public function tolak(Request $request, $id, $ajuanAlternatif)
+    {
+        Pendaftaran::find($id)->update([
+            $ajuanAlternatif => 0
+        ]);
+        return redirect()->back()->with('success', 'Ajuan mahasiswa telah ditolak!');
+    }
+
+    public function reset(Request $request, $id, $ajuanAlternatif)
+    {
+        Pendaftaran::find($id)->update([
+            $ajuanAlternatif => null
+        ]);
+        return redirect()->back()->with('success', 'Ajuan mahasiswa telah diatur ulang!');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
