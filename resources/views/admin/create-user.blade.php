@@ -12,13 +12,13 @@
     <div class="mb-3 row">
         <label class="col-sm-2 col-form-label" for="nim">Username</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="nim" name="nim" required>
+            <input type="number" class="form-control" id="nim" name="nim" placeholder="Enter username.." required>
         </div>
     </div>
     <div class="mb-3 row">
         <label class="col-sm-2 col-form-label" for="name">Nama</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name.." required>
         </div>
     </div>
     <div class="mb-3 row">
@@ -36,13 +36,15 @@
     <div class="mb-3 row">
         <label class="col-sm-2 col-form-label" for="password">Password</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="password" name="password" required>
+            <input type="text" class="form-control" id="password" name="password" placeholder="Enter password.."
+                required>
         </div>
     </div>
     <div class="mb-3 row">
         <label class="col-sm-2 col-form-label" for="confirmpassword">Confirm Password</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="confirmpassword" name="confirmpassword" required>
+            <input type="text" class="form-control" id="confirmpassword" name="confirmpassword"
+                placeholder="Enter password.." required>
         </div>
     </div>
     <div style="height: 150px;"></div>

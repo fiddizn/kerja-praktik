@@ -304,6 +304,8 @@ Route::group(['middleware' => 'auth'], function () {
                 'role' => 'Admin'
             ]);
         });
+        Route::post('admin/kelola-user/delete', [KelolaUserController::class, 'deleteUsers']);
+        Route::get('admin/kelola-user/delete-{id}', [KelolaUserController::class, 'destroy']);
         Route::resource('admin/kelola-user', KelolaUserController::class);
     });
 });

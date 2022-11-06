@@ -151,6 +151,17 @@ class KelolaUserController extends Controller
             }
         }
     }
+    public function deleteUsers(Request $request)
+    {
+        if (!isset($request['checked'])) {
+            return redirect()->back()->with('gagal', 'Anda belum memilih user yang akan dihapus!');
+        }
+        foreach ($request['checked'] as $item) {
+            $user = User::find($item);
+            $user->delete();
+        }
+        return redirect('/admin/kelola-user')->with('success', 'User berhasil dihapus!');
+    }
 
     public function destroy($id)
     {

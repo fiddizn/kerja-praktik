@@ -44,21 +44,22 @@
         <label class="col-sm-2 col-form-label" for="password">New Password</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="password" name="password" autofocus
-                placeholder='Inputkan tanda "-" jika tidak akan merubah password' required>
+                placeholder='Masukkan tanda "-" jika tidak akan merubah password' required>
         </div>
     </div>
     <div class="mb-3 row">
         <label class="col-sm-2 col-form-label" for="confirmpassword">Confirm Password</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="confirmpassword"
-                placeholder='Inputkan tanda "-" jika tidak akan merubah password' name="confirmpassword" required>
+                placeholder='Masukkan tanda "-" jika tidak akan merubah password' name="confirmpassword" required>
         </div>
     </div>
     <div style="height: 150px;"></div>
     <div>
         <a class=" btn" href="{{route('kelola-user.index')}}" role="button"
             style="background-color:#ff8c1a; width: 6rem;">Back</a>
-        <button type="submit" class=" btn" href="{{route('kelola-user.index')}}" role="button"
+        <button onclick="return confirm('Apakah anda yakin ingin mengubah user ini?')" type="submit" class=" btn"
+            href="{{route('kelola-user.index')}}" role="button"
             style="background-color:#ff8c1a; width: 6rem;">Submit</button>
     </div>
 </form>

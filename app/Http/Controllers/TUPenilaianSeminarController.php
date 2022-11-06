@@ -16,6 +16,7 @@ class TUPenilaianSeminarController extends Controller
                 ->where('p2_materi', '!=', null)
                 ->where('r1_presentasi', '!=', null)
                 ->where('r2_presentasi', '!=', null)
+                ->where('rilis', true)
                 ->oldest()->filter(request('search'))->paginate(7)->withQueryString()
         ]);
     }
