@@ -40,6 +40,9 @@ class FormBimbinganController extends Controller
 
     public function store(Request $request)
     {
+        if (isset($request['pokok_materi'])) {
+            return redirect()->back()->with('gagal', 'Mohon isi Pembahasan Tugas!');
+        }
         $is_p1 = self::isP1($request->is_p1);
         ListBimbingan::with('bimbingan')->create([
             'bimbingan_id' => auth()->user()->bimbingan->id,

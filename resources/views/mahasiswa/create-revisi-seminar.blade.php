@@ -7,7 +7,7 @@
     @csrf
     <div class="mb-3">
         <label for="file" class="form-label">Proposal TA 1 yang sudah direvisi</label>
-        <input class="form-control" type="file" id="file" name="file">
+        <input class="form-control" type="file" id="file" name="file" required>
     </div>
     <div>
         <a class="btn my-3" href="/mahasiswa" role="button" style="background-color:#ff8c1a; width: 6rem;">Back</a>

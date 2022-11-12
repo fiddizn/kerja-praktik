@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    @if ($status == 'Lolos' || $status == 'Lolos Bersyarat' &&
+    @if (($status == 'Lolos' || $status == 'Lolos Bersyarat') &&
     auth()->user()->pendaftaran->p1_id != null && auth()->user()->pendaftaran->p2_id != null)
     <div class="d-flex justify-content-center mt-5">
         <div class="card w-50 border-0" style="background-color:#f5f5f5;">

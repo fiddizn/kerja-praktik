@@ -1,5 +1,11 @@
 @extends('layouts/main')
 @section('container')
+@if (session()->has('gagal'))
+<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    {{ session('gagal') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 @if($bimbingan_ke == null)
 <h2 class="text-center mb-5">Form Bimbingan</h2>
 @else
@@ -17,7 +23,8 @@
             <div class="col-4">
                 <label for="tanggal_waktu" class="form-label">Tanggal & Waktu</label>
                 <div class="input-group date" id="datetimepicker">
-                    <input type="text" class="form-control" name="tanggal_waktu" id="tanggal_waktu">
+                    <input type="text" class="form-control" name="tanggal_waktu" id="tanggal_waktu"
+                        value="{{ old('tanggal_waktu') }}" required>
                     <div class="input-group-addon input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-calendar"></i></span>
                     </div>
@@ -25,7 +32,8 @@
             </div>
             <div class="col-8">
                 <label for="pokok_materi" class="form-label">Pokok Materi</label>
-                <input type="text" class="form-control" name="pokok_materi" id="pokok_materi">
+                <input type="text" class="form-control" name="pokok_materi" id="pokok_materi"
+                    value="{{ old('pokok_materi') }}" required>
             </div>
         </div>
         <div class="row my-3">
@@ -41,7 +49,7 @@
         <div class="row my-3">
             <div class="form-group">
                 <label for="pembahasan_bimbingan" class="mb-2">Pembahasan / Hasil / Saran / Tugas</label>
-                <input id="pembahasan_bimbingan" type="hidden" name="pembahasan_bimbingan">
+                <input id="pembahasan_bimbingan" type="hidden" name="pembahasan_bimbingan" required>
                 <trix-editor input="pembahasan_bimbingan"></trix-editor>
             </div>
         </div>

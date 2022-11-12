@@ -17,7 +17,7 @@
                 <label for="tanggal_waktu" class="form-label">Tanggal & Waktu</label>
                 <div class="input-group date" id="datetimepicker">
                     <input type="text" class="form-control" name="tanggal_waktu" id="tanggal_waktu"
-                        value="{{ $bimbingan->waktu }}">
+                        value="{{ $bimbingan->waktu }}" required>
                     <div class=" input-group-addon input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-calendar"></i></span>
                     </div>
@@ -25,7 +25,8 @@
             </div>
             <div class="col-8">
                 <label for="pokok_materi" class="form-label">Pokok Materi</label>
-                <input type="text" class="form-control" name="pokok_materi" value="{{ $bimbingan->pokok_materi }}">
+                <input type="text" class="form-control" name="pokok_materi" value="{{ $bimbingan->pokok_materi }}"
+                    required>
             </div>
         </div>
         <div class="row my-3">
@@ -47,7 +48,7 @@
             <div class="form-group">
                 <label for="pembahasan_bimbingan" class="mb-2">Pembahasan / Hasil / Saran / Tugas</label>
                 <input id="pembahasan_bimbingan" type="hidden" name="pembahasan_bimbingan"
-                    value="{!! $bimbingan->pembahasan !!}">
+                    value="{!! $bimbingan->pembahasan !!}" required>
                 <trix-editor input="pembahasan_bimbingan"></trix-editor>
             </div>
         </div>

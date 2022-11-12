@@ -101,7 +101,7 @@
                         <td>
                             <a class="btn" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}"
                                 style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i> Detail</a>
-                            <a class="btn btn-warning"
+                            <!-- <a class="btn btn-warning"
                                 href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/edit"><i
                                     class="fa-regular fa-pen-to-square"></i> Edit</a>
                             <form action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}" method="post"
@@ -111,7 +111,7 @@
                                 <button class="btn btn-danger" role="button"
                                     onclick="return confirm('Apakah anda yakin?')"><i class="fa-solid fa-trash-can"></i>
                                     Delete</button>
-                            </form>
+                            </form> -->
                         </td>
                     </tr>
                 </tbody>

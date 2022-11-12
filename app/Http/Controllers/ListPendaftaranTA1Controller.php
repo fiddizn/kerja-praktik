@@ -262,8 +262,7 @@ class ListPendaftaranTA1Controller extends Controller
     public function viewProposal(Request $request, $id)
     {
         $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->khs}");
-        // dd("https://drive.google.com/viewerng/viewer?embedded=true&url=http://$filepath");
+        $filepath = "/storage/" . $data->khs;
         return view('koordinator.view', [
             'title' => 'View Berkas Proposal',
             'role' => 'Koordinator',

@@ -59,8 +59,8 @@ use App\Http\Controllers\TUPendaftaranAdministrasiController;
 
 // REGISTER ==============================================================================
 
-// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-// Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
 // LOGIN ==================================================================================
 
