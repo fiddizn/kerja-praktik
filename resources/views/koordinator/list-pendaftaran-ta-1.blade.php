@@ -14,6 +14,8 @@
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
                     value="{{ request('search') }}">
+                <input type="text" name="sortBy" value="{{ $sortBy }}" style="display:none">
+                <input type="text" name="sortAsc" value="{{ $sortAsc }}" style="display:none">
                 <div class=" input-group-append">
                     <button class="btn ms-3" type="submit" style="background-color:#ff8c1a;" "><i class=" fa-solid
                         fa-magnifying-glass "></i> Search</button>
@@ -64,10 +66,13 @@
                             </span>
                         </th>
                         <th scope="col">Nama
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=name&sortAsc={{$sortAsc=='ASC'&&$sortBy=='name'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
                         </th>
                         <th scope="col">Peminatan
                             <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
