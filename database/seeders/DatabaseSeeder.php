@@ -12,6 +12,7 @@ use App\Models\Mahasiswa;
 use App\Models\Reviewer1;
 use App\Models\Reviewer2;
 use App\Models\Koordinator;
+use App\Models\KunciPendaftaran;
 use App\Models\Pembimbing1;
 use App\Models\Pembimbing2;
 use App\Models\Pendaftaran;
@@ -27,9 +28,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Mahasiswa::factory(5)->create();
-        Pendaftaran::factory(5)->create();
-        User::factory(50)->create();
+        // Mahasiswa::factory(5)->create();
+        // Pendaftaran::factory(5)->create();
+        // User::factory(50)->create();
 
         Role::create([
             'name' => 'Mahasiswa',
@@ -70,6 +71,11 @@ class DatabaseSeeder extends Seeder
 
         Jabfung::create([
             'name' => 'Guru Besar'
+        ]);
+
+        KunciPendaftaran::create([
+            'administrasi' => 1,
+            'seminar' => 1
         ]);
     }
 }

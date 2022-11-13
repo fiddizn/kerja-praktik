@@ -52,7 +52,7 @@ return new class extends Migration
 
             // Status Pendaftaran
             $table->string('status')->nullable();
-            $table->string('keterangan_status')->nullable();
+            $table->text('keterangan_status')->nullable();
 
             $table->timestamps();
         });

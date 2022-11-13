@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Dosen;
 use App\Models\Koordinator;
 use App\Models\Mahasiswa;
+use App\Models\Role;
 use App\Models\TataUsaha;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,13 +14,24 @@ use Illuminate\Support\Facades\Hash;
 
 class KelolaUserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::with('mahasiswa', 'dosen', 'tatausaha', 'admin')->filter(request('search'))->paginate(7)->withQueryString();
+        $users = User::with('mahasiswa', 'dosen', 'tatausaha', 'admin')->filter(request('search'));
+        if ($request->sortBy) {
+            if ($request->sortBy == 'nim') {
+                $users = $users->orderBy('nim', $request->sortAsc);
+            } else if ($request->sortBy == 'role') {
+                $users = $users->orderBy(Role::select('name')->whereColumn('roles.id', 'users.role_id'), $request->sortAsc);
+            }
+        }
+        $users = $users->paginate(7)->withQueryString();
         return view('admin.list-user', [
             'title' => 'Kelola Users',
             'role' => 'Admin',
             'users' => $users,
+            'sortBy' => $request->sortBy,
+            'sortAsc' => $request->sortAsc,
+            'search' => $request->search
         ]);
     }
 
@@ -47,12 +59,12 @@ class KelolaUserController extends Controller
                 'nim' => 'required|unique:users',
             ]);
 
-            $user = new User();
-
-            $user->nim = $request['nim'];
-            $user->role_id = $request['role_id'];
-            $user->password = Hash::make($request['password']);
-            $user->save();
+            $user = User::create([
+                'nim' => $request['nim'],
+                'role_id' => $request['role_id'],
+                'password' => Hash::make($request['password'])
+            ]);
+            $user_id = $user->id;
 
             if ($request['role_id'] == 1) {
                 $mahasiswa = new Mahasiswa();

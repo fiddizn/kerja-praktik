@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('role_id');
             $table->bigInteger('nim')->unique()->nullable();
             $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

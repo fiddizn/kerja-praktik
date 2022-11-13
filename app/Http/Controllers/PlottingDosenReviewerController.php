@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\Pendaftaran;
 use App\Models\Reviewer1;
 use Illuminate\Http\Request;
 
@@ -127,10 +128,12 @@ class PlottingDosenReviewerController extends Controller
             'r1_id' =>  $r1_id
         ]);
 
-        $mahasiswa_id = \App\Models\Pendaftaran::where('id', '=', $id)->get()[0]->mahasiswa_id;
+        $mahasiswa_id = Pendaftaran::where('id', '=', $id)->get()[0]->mahasiswa_id;
+        $p1_id = Pendaftaran::where('id', '=', $id)->get()[0]->p1_id;
 
         \App\Models\Review::where('mahasiswa_id', $mahasiswa_id)->update([
-            'r1_id' =>  $r1_id
+            'r1_id' =>  $r1_id,
+            'p1_id' => $p1_id
         ]);
         return redirect('/koordinator/plotting-dosen-reviewer')->with('success', 'Plotting telah diperbarui!');
     }

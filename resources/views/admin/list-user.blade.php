@@ -40,7 +40,7 @@
     <div class=" p-2">
                         <!-- ini print pdf -->
 
-                        <a class=" btn" href="{{ route('exportPdf') }}" role="button" style="background-color:#ff8c1a;">
+                        <a class=" btn" href="#" role="button" style="background-color:#ff8c1a;">
                             <i class="fa-solid fa-print fa-lg"></i>
                         </a>
 
@@ -51,28 +51,61 @@
                 <thead>
                     <tr>
                         <th style="width: 10%" scope="col">NO
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
                         </th>
-                        <th style="width: 15%" scope="col">Username
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                        <th style="width: 20%" scope="col">Username
+                            @if ($sortAsc == 'ASC' && $sortBy == 'nim')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=nim&sortAsc={{$sortAsc=='ASC'&&$sortBy=='nim'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs "></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @elseif ($sortAsc == 'DESC' && $sortBy == 'nim')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=nim&sortAsc={{$sortAsc=='ASC'&&$sortBy=='nim'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs "></i>
+                                </span>
+                            </a>
+                            @else
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=nim&sortAsc={{$sortAsc=='ASC'&&$sortBy=='nim'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @endif
                         </th>
-                        <th style="width: 35%" scope="col">Nama
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
-                        </th>
-                        <th style="width: 12%" scope="col">Role
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                        <th style="width: 30%" scope="col">Nama</th>
+                        <th style="width: 20%" scope="col">Role
+                            @if ($sortAsc == 'ASC' && $sortBy == 'role')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=role&sortAsc={{$sortAsc=='ASC'&&$sortBy=='role'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs "></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @elseif ($sortAsc == 'DESC' && $sortBy == 'role')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=role&sortAsc={{$sortAsc=='ASC'&&$sortBy=='role'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs "></i>
+                                </span>
+                            </a>
+                            @else
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=role&sortAsc={{$sortAsc=='ASC'&&$sortBy=='role'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @endif
                         </th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -103,9 +136,9 @@
                             @endif
                             <td>{{ $user->role->name }}</td>
                             <td>
-                                <a class="btn" href="{{ route('kelola-user.show', $user->id) }}"
+                                <!-- <a class="btn" href="{{ route('kelola-user.show', $user->id) }}"
                                     style="background-color:#ff8c1a; width:90px;"><i class="fa-solid fa-align-left"></i>
-                                    Detail</a>
+                                    Detail</a> -->
                                 <a class="btn btn-warning" style="width:90px;"
                                     href="{{ route('kelola-user.edit', $user->id) }}"><i
                                         class="fa-regular fa-pen-to-square"></i> Edit</a>

@@ -27,7 +27,7 @@ return new class extends Migration
             $table->integer('p1_penilaian5')->nullable();
             $table->integer('p1_penilaian6')->nullable();
             $table->String('p1_hasil_review')->nullable();
-            $table->String('p1_komentar')->nullable();
+            $table->text('p1_komentar')->nullable();
             $table->String('p1_proposal')->nullable();
             $table->boolean('p1_status')->default(0);
 
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->integer('r1_penilaian5')->nullable();
             $table->integer('r1_penilaian6')->nullable();
             $table->String('r1_hasil_review')->nullable();
-            $table->String('r1_komentar')->nullable();
+            $table->text('r1_komentar')->nullable();
             $table->String('r1_proposal')->nullable();
             $table->boolean('r1_status')->default(0);
 

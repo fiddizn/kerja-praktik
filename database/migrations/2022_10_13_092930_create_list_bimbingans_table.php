@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('bimbingan_id');
             $table->string('waktu');
             $table->string('pokok_materi');
-            $table->string('pembahasan');
+            $table->text('pembahasan');
             $table->boolean('is_p1')->nullable();
             $table->boolean('setuju')->nullable();
             $table->timestamps();
