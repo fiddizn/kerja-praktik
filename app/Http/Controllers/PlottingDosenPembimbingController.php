@@ -15,14 +15,26 @@ class PlottingDosenPembimbingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $pendaftarans = \App\Models\Pendaftaran::with([
             "pembimbing1" => function ($q) {
                 $q->with("dosen");
-            },
-            "mahasiswa"
-        ])->oldest()->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')->filterP1P2(request('search'))->paginate(7)->withQueryString();
+            }, "mahasiswa"
+        ])->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')->filterP1P2(request('search'));
+        $sortBy = $request->sortBy;
+        $sortAsc = $request->sortAsc;
+        if ($sortBy) {
+            if ($request->sortBy == 'p1') {
+                $pendaftarans = $pendaftarans->orderBy(Pembimbing1::select('id')->whereColumn('pembimbing1s.id', 'pendaftarans.p1_id'), $sortAsc);
+            } elseif ($sortBy == 'p2') {
+                $pendaftarans = $pendaftarans->orderBy(Pembimbing2::select('id')->whereColumn('pembimbing2s.id', 'pendaftarans.p1_id'), $sortAsc);
+            } else {
+                $pendaftarans = $pendaftarans->orderBy(Mahasiswa::select($request->sortBy)->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'), $request->sortAsc);
+            }
+        }
+
+        $pendaftarans = $pendaftarans->paginate(7)->withQueryString();
 
         return view(
             'koordinator.plotting-dosen-pembimbing',
@@ -30,7 +42,10 @@ class PlottingDosenPembimbingController extends Controller
                 'title' => 'Plotting Dosen Pembimbing',
                 'name' => 'Galang Setia Nugroho',
                 'role' => 'Koordinator',
-                'pendaftarans' => $pendaftarans
+                'pendaftarans' => $pendaftarans,
+                'sortBy' => $request->sortBy,
+                'sortAsc' => $request->sortAsc,
+                'search' => $request->search
             ]
         );
     }

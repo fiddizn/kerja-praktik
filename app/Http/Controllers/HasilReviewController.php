@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
+use App\Models\Pembimbing1;
+use App\Models\Pendaftaran;
 use App\Models\Review;
+use App\Models\Reviewer1;
 use Illuminate\Http\Request;
 
 class HasilReviewController extends Controller
@@ -12,16 +16,35 @@ class HasilReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $list_mahasiswa = \App\Models\Review::with('pendaftaran', 'mahasiswa', 'reviewer1', 'pembimbing1')->oldest()->where('p1_status', '=', 1)->where('r1_status', '=', 1)
-            ->filter(request('search'))->paginate(7)->withQueryString();
+        $list_mahasiswa = \App\Models\Review::with('pendaftaran', 'mahasiswa', 'reviewer1', 'pembimbing1')->where('p1_status', '=', 1)->where('r1_status', '=', 1)
+            ->filter(request('search'));
+
+        $sortBy = $request->sortBy;
+        $sortAsc = $request->sortAsc;
+        if ($sortBy) {
+            if ($request->sortBy == 'r1') {
+                $list_mahasiswa =  $list_mahasiswa->orderBy(Reviewer1::select('id')->whereColumn('reviewer1s.id', 'reviews.r1_id'), $sortAsc);
+            } elseif ($request->sortBy == 'p1') {
+                $list_mahasiswa =  $list_mahasiswa->orderBy(Pembimbing1::select('id')->whereColumn('pembimbing1s.id', 'reviews.p1_id'), $sortAsc);
+            } else if ($request->sortBy == 'peminatan') {
+                $list_mahasiswa =  $list_mahasiswa->orderBy(Pendaftaran::select('id')->whereColumn('pendaftarans.id', 'reviews.pendaftaran_id'), $sortAsc);
+            } else {
+                $list_mahasiswa =  $list_mahasiswa->orderBy(Mahasiswa::select($request->sortBy)->whereColumn('mahasiswas.id', 'reviews.mahasiswa_id'), $request->sortAsc);
+            }
+        }
+
+        $list_mahasiswa = $list_mahasiswa->paginate(7)->withQueryString();
         return view(
             'koordinator.hasil-review-proposal',
             [
                 'title' => 'Hasil Review Proposal',
                 'role' => 'Koordinator',
-                'list_mahasiswa' => $list_mahasiswa
+                'list_mahasiswa' => $list_mahasiswa,
+                'sortBy' => $request->sortBy,
+                'sortAsc' => $request->sortAsc,
+                'search' => $request->search
             ]
         );
     }

@@ -9,18 +9,26 @@ use Illuminate\Http\Request;
 
 class ListPendaftaranSeminarTA1Controller extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $kuncipendaftaran = KunciPendaftaran::first();
-        $list_pendaftaran = PendaftaranSeminar::with('mahasiswa')->where('berkas_ta1', '!=', null)->oldest()->filter(request('search'))
-            ->paginate(7)->withQueryString();
+        $list_pendaftaran = PendaftaranSeminar::with('mahasiswa')->where('berkas_ta1', '!=', null)->filter(request('search'));
+
+        if ($request->sortBy) {
+            $list_pendaftaran = $list_pendaftaran->orderBy(Mahasiswa::select($request->sortBy)->whereColumn('mahasiswas.id', 'pendaftaran_seminars.mahasiswa_id'), $request->sortAsc);
+        }
+
+        $list_pendaftaran = $list_pendaftaran->paginate(7);
         return view(
             'koordinator.list-pendaftaran-seminar-ta-1',
             [
                 'title' => 'Pendaftaran Seminar TA 1',
                 'role' => 'Koordinator',
                 'list_pendaftaran' => $list_pendaftaran,
-                'kuncipendaftaran' => $kuncipendaftaran
+                'kuncipendaftaran' => $kuncipendaftaran,
+                'sortBy' => $request->sortBy,
+                'sortAsc' => $request->sortAsc,
+                'search' => $request->search
             ]
         );
     }

@@ -56,34 +56,114 @@
     <thead>
         <tr>
             <th scope="col">NO
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
             </th>
             <th scope="col">NIM
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
+                @if ($sortAsc == 'ASC' && $sortBy == 'nim')
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=nim&sortAsc={{$sortAsc=='ASC'&&$sortBy=='nim'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs "></i>
+                        <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                    </span>
+                </a>
+                @elseif ($sortAsc == 'DESC' && $sortBy == 'nim')
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=nim&sortAsc={{$sortAsc=='ASC'&&$sortBy=='nim'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                        <i class="fa-solid fa-arrow-down fa-xs "></i>
+                    </span>
+                </a>
+                @else
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=nim&sortAsc={{$sortAsc=='ASC'&&$sortBy=='nim'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                        <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                    </span>
+                </a>
+                @endif
             </th>
             <th scope="col">Nama
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
+                @if ($sortAsc == 'ASC' && $sortBy == 'name')
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=name&sortAsc={{$sortAsc=='ASC'&&$sortBy=='name'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs "></i>
+                        <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                    </span>
+                </a>
+                @elseif ($sortAsc == 'DESC' && $sortBy == 'name')
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=name&sortAsc={{$sortAsc=='ASC'&&$sortBy=='name'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                        <i class="fa-solid fa-arrow-down fa-xs "></i>
+                    </span>
+                </a>
+                @else
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=name&sortAsc={{$sortAsc=='ASC'&&$sortBy=='name'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                        <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                    </span>
+                </a>
+                @endif
             </th>
             <th scope="col">Peminatan
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
+                @if ($sortAsc == 'ASC' && $sortBy == 'peminatan')
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=peminatan&sortAsc={{$sortAsc=='ASC'&&$sortBy=='peminatan'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs "></i>
+                        <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                    </span>
+                </a>
+                @elseif ($sortAsc == 'DESC' && $sortBy == 'peminatan')
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=peminatan&sortAsc={{$sortAsc=='ASC'&&$sortBy=='peminatan'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                        <i class="fa-solid fa-arrow-down fa-xs "></i>
+                    </span>
+                </a>
+                @else
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=peminatan&sortAsc={{$sortAsc=='ASC'&&$sortBy=='peminatan'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                        <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                    </span>
+                </a>
+                @endif
             </th>
             <th scope="col">Status
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
+                @if ($sortAsc == 'ASC' && $sortBy == 'status')
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=status&sortAsc={{$sortAsc=='ASC'&&$sortBy=='status'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs "></i>
+                        <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                    </span>
+                </a>
+                @elseif ($sortAsc == 'DESC' && $sortBy == 'status')
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=status&sortAsc={{$sortAsc=='ASC'&&$sortBy=='status'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                        <i class="fa-solid fa-arrow-down fa-xs "></i>
+                    </span>
+                </a>
+                @else
+                <a
+                    href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=status&sortAsc={{$sortAsc=='ASC'&&$sortBy=='status'?'DESC':'ASC'}}">
+                    <span wire:click="sortBy('name')" style="cursor: pointer;">
+                        <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                        <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                    </span>
+                </a>
+                @endif
             </th>
             <th scope="col">Aksi</th>
         </tr>

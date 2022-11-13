@@ -2,21 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use App\Models\PenilaianSeminar;
 use Illuminate\Http\Request;
 
 class PenilaianSeminarKoorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $list_mahasiswa = PenilaianSeminar::where('p1_materi', '!=', null)
+            ->where('p2_materi', '!=', null)
+            ->where('r1_presentasi', '!=', null)
+            ->where('r2_presentasi', '!=', null)
+            ->filter(request('search'));
+        if ($request->sortBy) {
+            $list_mahasiswa = $list_mahasiswa->orderBy(Mahasiswa::select($request->sortBy)->whereColumn('mahasiswas.id', 'penilaian_seminars.mahasiswa_id'), $request->sortAsc);
+        }
+        $list_mahasiswa = $list_mahasiswa->paginate(7)->withQueryString();
+
         return view('koordinator.penilaian-seminar-index', [
             'title' => 'Penilaian Seminar',
             'role' => 'Koordinator',
-            'penilaianseminars' => PenilaianSeminar::where('p1_materi', '!=', null)
-                ->where('p2_materi', '!=', null)
-                ->where('r1_presentasi', '!=', null)
-                ->where('r2_presentasi', '!=', null)
-                ->oldest()->filter(request('search'))->paginate(7)->withQueryString()
+            'penilaianseminars' => $list_mahasiswa,
+            'sortBy' => $request->sortBy,
+            'sortAsc' => $request->sortAsc,
+            'search' => $request->search
         ]);
     }
     public function show($id)

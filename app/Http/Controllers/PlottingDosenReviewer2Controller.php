@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
 use App\Models\PendaftaranSeminar;
 use App\Models\PenilaianSeminar;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 
 class PlottingDosenReviewer2Controller extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $list_mahasiswa = \App\Models\PendaftaranSeminar::with([
             "reviewer2" => function ($q) {
@@ -20,13 +21,30 @@ class PlottingDosenReviewer2Controller extends Controller
             },
             "mahasiswa"
         ])->where('r1_id', '!=', null)->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')
-            ->oldest()->filterR2(request('search'))->paginate(7)->withQueryString();
+            ->filterR2(request('search'));
+
+        $sortBy = $request->sortBy;
+        $sortAsc = $request->sortAsc;
+        if ($sortBy) {
+            if ($request->sortBy == 'r1') {
+                $list_mahasiswa =  $list_mahasiswa->orderBy(Reviewer1::select('id')->whereColumn('reviewer1s.id', 'pendaftaran_seminars.r1_id'), $sortAsc);
+            } elseif ($request->sortBy == 'r2') {
+                $list_mahasiswa =  $list_mahasiswa->orderBy(Reviewer2::select('id')->whereColumn('reviewer2s.id', 'pendaftaran_seminars.r2_id'), $sortAsc);
+            } else {
+                $list_mahasiswa =  $list_mahasiswa->orderBy(Mahasiswa::select($request->sortBy)->whereColumn('mahasiswas.id', 'pendaftaran_seminars.mahasiswa_id'), $request->sortAsc);
+            }
+        }
+
+        $list_mahasiswa = $list_mahasiswa->paginate(7)->withQueryString();
         return view(
             'koordinator.plotting-dosen-reviewer2',
             [
                 'title' => 'Plotting Dosen Reviewer 2',
                 'role' => 'Koordinator',
-                'list_mahasiswa' => $list_mahasiswa
+                'list_mahasiswa' => $list_mahasiswa,
+                'sortBy' => $request->sortBy,
+                'sortAsc' => $request->sortAsc,
+                'search' => $request->search
             ]
         );
     }
