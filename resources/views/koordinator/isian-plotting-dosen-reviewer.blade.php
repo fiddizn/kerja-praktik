@@ -25,8 +25,8 @@
             <div class="row mt-5">
                 <label for=" r1" class="col-sm-3 col-form-label">Reviewer 1</label>
                 <div class="col">
-                    <select type="text" class="form-select" name="r1" id="r1">
-                        <option selected disabled>Pilih...</option>
+                    <select type="text" class="form-select" name="r1" id="r1" required>
+                        <option value="" selected disabled>Pilih...</option>
                         @foreach ($list_r1 as $r1)
                         <option>{{ $r1->dosen->name }} ({{ $r1->dosen->jabfung->name }})</option>
                         @endforeach

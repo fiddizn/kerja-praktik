@@ -37,8 +37,8 @@
             <div class="row mt-5">
                 <label for=" r2" class="col-sm-3 col-form-label">Reviewer 2</label>
                 <div class="col">
-                    <select type="text" class="form-select" name="r2" id="r2">
-                        <option selected disabled>Pilih...</option>
+                    <select type="text" class="form-select" name="r2" id="r2" required>
+                        <option value="" selected disabled>Pilih...</option>
                         @foreach ($list_r2 as $r2)
                         <option>{{ $r2->dosen->name }} ({{ $r2->dosen->jabfung->name }})</option>
                         @endforeach

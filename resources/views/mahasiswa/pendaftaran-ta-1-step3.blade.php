@@ -35,13 +35,15 @@
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="tagihan_uang" class="form-label">Tagihan Uang Kuliah</label>
-                    <input class="form-control" type="file" id="tagihan_uang" name="tagihan_uang">
+                    <input class="form-control @error('tagihan_uang') is-invalid @enderror" type="file"
+                        id="tagihan_uang" name="tagihan_uang" required>
+                    <div id="tagihan_uang" class="invalid-feedback">File harus berupa PDF!</div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="lunas_pembayaran" class="form-label">Bukti Lunas Pembayaran</label>
-                    <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran">
+                    <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran" required>
                 </div>
             </div>
             <div class="col-12 mt-4">

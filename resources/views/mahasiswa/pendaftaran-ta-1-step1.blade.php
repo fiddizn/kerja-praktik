@@ -105,12 +105,12 @@
             <div class="col-md-6">
                 <label for="nim" class="form-label">NIM</label>
                 <input type="number" class="form-control" name="nim" id="nim"
-                    value="{{ auth()->user()->mahasiswa->nim }}" disabled>
+                    value="{{ auth()->user()->mahasiswa->nim }}" required disabled>
             </div>
             <div class="col-md-6">
                 <label for="gender" class="form-label">Jenis Kelamin</label>
-                <select type="text" class="form-select" name="gender" id="gender">
-                    <option selected disabled>Pilih...</option>
+                <select type="text" class="form-select" name="gender" id="gender" required>
+                    <option value="" selected disabled>Pilih...</option>
                     <option>Laki-laki</option>
                     <option>Perempuan</option>
                 </select>
@@ -118,25 +118,25 @@
             <div class="col-md-6">
                 <label for="name" class="form-label">Nama Lengkap</label>
                 <input type="text" class="form-control" name="name" id="name"
-                    value="{{ auth()->user()->mahasiswa->name }}" disabled>
+                    value="{{ auth()->user()->mahasiswa->name }}" required disabled>
             </div>
             <div class="col-md-6">
                 <label for="peminatan" class="form-label">Peminatan</label>
-                <select type="text" class="form-select" name="peminatan" id="peminatan">
-                    <option disabled selected>Pilih...</option>
+                <select type="text" class="form-select" name="peminatan" id="peminatan" required>
+                    <option value="" disabled selected>Pilih...</option>
                     <option>AIG</option>
                     <option>DSE</option>
                 </select>
             </div>
             <div class="col-md-6">
                 <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"
-                    placeholder="Tempat Lahir">
+                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir"
+                    required>
             </div>
             <div class="col-md-6">
                 <label for="angkatan" class="form-label">Angkatan</label>
-                <select type="text" class="form-select" name="angkatan" id="angkatan">
-                    <option disabled selected>Pilih...</option>
+                <select type="text" class="form-select" name="angkatan" id="angkatan" required>
+                    <option value="" disabled selected>Pilih...</option>
                     <option>2017</option>
                     <option>2018</option>
                     <option>2019</option>
@@ -145,19 +145,19 @@
             <div class="col-md-6">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                 <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" min="1996-01-01"
-                    max="2002-12-31">
+                    max="2002-12-31" required>
             </div>
             <div class="col-md-6 ">
                 <div class="input-group">
                     <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
                     <div class="input-group-text">+62</div>
                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890" minlength="10" maxlength="13">
+                        placeholder="81234567890" minlength="10" maxlength="13" required>
                 </div>
             </div>
             <div class="col-md-12">
                 <label for="address" class="form-label">Alamat</label>
-                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat">
+                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat" required>
             </div>
             @endif
             <div class="col-12 mt-4">

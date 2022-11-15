@@ -39,8 +39,8 @@
         <div class="row my-3">
             <div class="col-4">
                 <label for="is_p1" class="form-label">Pembimbing</label>
-                <select type="text" class="form-select" name="is_p1" id="is_p1">
-                    <option disabled selected>Pilih.. </option>
+                <select type="text" class="form-select" name="is_p1" id="is_p1" required>
+                    <option value="" disabled selected>Pilih.. </option>
                     <option>{{ auth()->user()->bimbingan->pembimbing1->dosen->name}}</option>
                     <option>{{ auth()->user()->bimbingan->pembimbing2->dosen->name }}</option>
                 </select>
@@ -49,7 +49,7 @@
         <div class="row my-3">
             <div class="form-group">
                 <label for="pembahasan_bimbingan" class="mb-2">Pembahasan / Hasil / Saran / Tugas</label>
-                <input id="pembahasan_bimbingan" type="hidden" name="pembahasan_bimbingan" required>
+                <input id="pembahasan_bimbingan" type="hidden" name="pembahasan_bimbingan">
                 <trix-editor input="pembahasan_bimbingan"></trix-editor>
             </div>
         </div>

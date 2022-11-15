@@ -97,6 +97,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Download Hasil Review
 
+        Route::get('/mahasiswa/upload-proposal', [ProposalReviewedController::class, 'uploadProposal']);
+        Route::post('/mahasiswa/upload-proposal', [ProposalReviewedController::class, 'storeUploadProposal']);
         Route::get('/mahasiswa/hasil-review', [ProposalReviewedController::class, 'index']);
         Route::get('/mahasiswa/hasil-review/download-proposal-p1-{id}', [HasilReviewController::class, 'downloadProposalReviewedP1']);
         Route::get('/mahasiswa/hasil-review/download-proposal-r1-{id}', [HasilReviewController::class, 'downloadProposalReviewedR1']);

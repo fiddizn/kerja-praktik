@@ -36,7 +36,10 @@ class ReviewerP1Controller extends Controller
             'proposal' => 'file|max:50000|mimes:doc,docx,pdf,ppt,pptx'
         ]);
 
-        $file['proposal'] = request()->file('proposal')->store('proposal_reviewed_p1');
+        if (request()->file('proposal')) {
+            $file['proposal'] = request()->file('proposal')->store('proposal_reviewed_p1');
+        } else $file['proposal'] = null;
+
 
         if (request('penilaian6') != null) {
 

@@ -52,7 +52,7 @@
         </div>
     </div>
 </div>
-<div>
+<div class="mb-5">
     <a class="btn" href="/mahasiswa" role="button" style="background-color:#ff8c1a; width: 6rem;">Back</a>
 </div>
 

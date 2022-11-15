@@ -174,8 +174,8 @@
                 @if ($pendaftaran->mahasiswa->p1_id == null)
                 <label for="p1" class="col-sm-6 col-form-label">Pembimbing 1</label>
                 <div class="col">
-                    <select type="text" class="form-select" name="p1" id="p1">
-                        <option selected disabled>Pilih...</option>
+                    <select type="text" class="form-select" name="p1" id="p1" required>
+                        <option value="" selected disabled>Pilih...</option>
                         @foreach ($list_p1 as $p1)
                         <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfung->name }})</option>
                         @endforeach
@@ -184,8 +184,8 @@
                 @else
                 <label for="p1" class="col-sm-6 col-form-label">Pembimbing 1 (Update)</label>
                 <div class="col">
-                    <select type="text" class="form-select" name="p1" id="p1">
-                        <option selected disabled>Pilih...</option>
+                    <select type="text" class="form-select" name="p1" id="p1" required>
+                        <option value="" selected disabled>Pilih...</option>
                         @foreach ($list_p1 as $p1)
                         <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfung->name }})</option>
                         @endforeach
@@ -195,8 +195,8 @@
                 @if ($pendaftaran->mahasiswa->p2_id == null)
                 <label for="p2" class="col-sm-6 col-form-label mt-2">Pembimbing 2</label>
                 <div class="col">
-                    <select type="text" class="form-select mt-2" name="p2" id="p2">
-                        <option selected disabled>Pilih...</option>
+                    <select type="text" class="form-select mt-2" name="p2" id="p2" required>
+                        <option value="" selected disabled>Pilih...</option>
                         @foreach ($list_p2 as $p2)
                         <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfung->name }})</option>
                         @endforeach
@@ -205,8 +205,8 @@
                 @else
                 <label for="p2" class="col-sm-6 col-form-label mt-2">Pembimbing 2 (Update)</label>
                 <div class="col">
-                    <select type="text" class="form-select mt-2" name="p2" id="p2">
-                        <option selected disabled>Pilih...</option>
+                    <select type="text" class="form-select mt-2" name="p2" id="p2" required>
+                        <option value="" selected disabled>Pilih...</option>
                         @foreach ($list_p2 as $p2)
                         <option>{{ $p2->dosen->name }} ({{ $p2->dosen->jabfung->name }})</option>
                         @endforeach
@@ -218,7 +218,7 @@
         @endif
     </div>
 </div>
-<div class="row mt-2">
+<div class="row mt-2 mb-5">
     @if ($plotting_dosen == 'Pembimbing')
     <a class="btn" href="/koordinator/plotting-dosen-pembimbing" role="button"
         style="width: 5rem;background-color:#ff8c1a;">Back</a>

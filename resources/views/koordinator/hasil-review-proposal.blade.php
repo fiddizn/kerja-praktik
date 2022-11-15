@@ -189,7 +189,7 @@
                             class="fa-solid fa-share-from-square"></i> Rilis</a>
                     @else
                     <button class="btn" role="button" style="background-color:#ff8c1a;" disabled><i
-                            class="fa-solid fa-share-from-square"></i> Kirim</button>
+                            class="fa-solid fa-share-from-square"></i> Rilis</button>
                     @endif
                     <a class="btn" href="/koordinator/hasil-review-proposal/{{ $review->id }}" role="button"
                         style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i> Detail</a>

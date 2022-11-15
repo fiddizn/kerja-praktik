@@ -25,8 +25,8 @@
         <div class="row g-3">
             <div class="col-md-4">
                 <label for="penilaian1" class="form-label">Kreatifitas (originalitas, unik dan bermanfaat)</label>
-                <select type="text" class="form-select" name="penilaian1" id="penilaian1" autofocus>
-                    <option disabled selected>Pilih.. </option>
+                <select required type="text" class="form-select" name="penilaian1" id="penilaian1" autofocus>
+                    <option value="" disabled selected>Pilih.. </option>
                     <option>Baik</option>
                     <option>Cukup</option>
                     <option>Kurang</option>
@@ -34,8 +34,8 @@
             </div>
             <div class="col-md-4">
                 <label for="penilaian2" class="form-label">Perumusan Masalah (focus, jelas dan terarah)</label>
-                <select type="text" class="form-select" name="penilaian2" id="penilaian2">
-                    <option disabled selected>Pilih.. </option>
+                <select required type="text" class="form-select" name="penilaian2" id="penilaian2">
+                    <option value="" disabled selected>Pilih.. </option>
                     <option>Baik</option>
                     <option>Cukup</option>
                     <option>Kurang</option>
@@ -43,8 +43,8 @@
             </div>
             <div class="col-md-4">
                 <label for="penilaian3" class="form-label">Kesesuaian dan kemutakhiran metode penelitian</label>
-                <select type="text" class="form-select" name="penilaian3" id="penilaian3">
-                    <option disabled selected>Pilih.. </option>
+                <select required type="text" class="form-select" name="penilaian3" id="penilaian3">
+                    <option value="" disabled selected>Pilih.. </option>
                     <option>Baik</option>
                     <option>Cukup</option>
                     <option>Kurang</option>
@@ -53,8 +53,8 @@
             <div class="col-md-4">
                 <label for="penilaian4" class="form-label">Tinjauan pustaka (jumlah, kredibilitas, kejelasan,
                     kemutahiran)</label>
-                <select type="text" class="form-select" name="penilaian4" id="penilaian4">
-                    <option disabled selected>Pilih.. </option>
+                <select required type="text" class="form-select" name="penilaian4" id="penilaian4">
+                    <option value="" disabled selected>Pilih.. </option>
                     <option>Baik</option>
                     <option>Cukup</option>
                     <option>Kurang</option>
@@ -63,8 +63,8 @@
             <div class="col-md-4">
                 <label for="penilaian5" class="form-label">Kontribusi perkembangan ilmu pengetahuan dan
                     teknologi</label>
-                <select type="text" class="form-select" name="penilaian5" id="penilaian5">
-                    <option disabled selected>Pilih.. </option>
+                <select required type="text" class="form-select" name="penilaian5" id="penilaian5">
+                    <option value="" disabled selected>Pilih.. </option>
                     <option>Baik</option>
                     <option>Cukup</option>
                     <option>Kurang</option>
@@ -73,8 +73,8 @@
             <div class="col-md-4">
                 <label for="penilaian6" class="form-label">Pemaparan proposal (Bahasa, kesesuaian dengan panduan dan
                     tampilan)</label>
-                <select type="text" class="form-select" name="penilaian6" id="penilaian6">
-                    <option disabled selected>Pilih.. </option>
+                <select required type="text" class="form-select" name="penilaian6" id="penilaian6">
+                    <option value="" disabled selected>Pilih.. </option>
                     <option>Baik</option>
                     <option>Cukup</option>
                     <option>Kurang</option>
@@ -84,8 +84,8 @@
         <div class="row g-3">
             <div class="col-md-3">
                 <label for="hasil_review" class="form-label">Hasil Review</label>
-                <select type="text" class="form-select" name="hasil_review" id="hasil_review">
-                    <option disabled selected>Pilih.. </option>
+                <select required type="text" class="form-select" name="hasil_review" id="hasil_review">
+                    <option value="" disabled selected>Pilih.. </option>
                     <option>Dilanjutkan</option>
                     <option>Dilanjutkan dengan perbaikan</option>
                     <option>Ganti Judul</option>
@@ -109,8 +109,8 @@
             <div class="row g-3">
                 <div class="col-md-8">
                     <label for="penilaian1" class="form-label">Orisinalitas Judul Skripsi<br> </label>
-                    <select type="text" class="form-select" name="penilaian1" id="penilaian1">
-                        <option disabled selected>Pilih.. </option>
+                    <select required type="text" class="form-select" name="penilaian1" id="penilaian1">
+                        <option value="" disabled selected>Pilih.. </option>
                         <option>Baik</option>
                         <option>Cukup</option>
                         <option>Kurang</option>
@@ -121,8 +121,8 @@
                 <div class="col-md-8">
                     <label for="penilaian2" class="form-label">Kemampuan dalam menyampaikan abstraksi dan perumusan
                         masalah secara sistematis</label>
-                    <select type="text" class="form-select" name="penilaian2" id="penilaian2">
-                        <option disabled selected>Pilih.. </option>
+                    <select required type="text" class="form-select" name="penilaian2" id="penilaian2">
+                        <option value="" disabled selected>Pilih.. </option>
                         <option>Baik</option>
                         <option>Cukup</option>
                         <option>Kurang</option>
@@ -134,8 +134,8 @@
                     <label for="penilaian3" class="form-label">Kemampuan dalam menyampaikan abstraksi dan perumusan
                         masalah
                         secara sistematis</label>
-                    <select type="text" class="form-select" name="penilaian3" id="penilaian3">
-                        <option disabled selected>Pilih.. </option>
+                    <select required type="text" class="form-select" name="penilaian3" id="penilaian3">
+                        <option value="" disabled selected>Pilih.. </option>
                         <option>Baik</option>
                         <option>Cukup</option>
                         <option>Kurang</option>
@@ -148,8 +148,8 @@
                         Pemrograman
                         /
                         Dll)</label>
-                    <select type="text" class="form-select" name="penilaian4" id="penilaian4">
-                        <option disabled selected>Pilih.. </option>
+                    <select required type="text" class="form-select" name="penilaian4" id="penilaian4">
+                        <option value="" disabled selected>Pilih.. </option>
                         <option>Baik</option>
                         <option>Cukup</option>
                         <option>Kurang</option>
@@ -159,8 +159,8 @@
             <div class="row my-1">
                 <div class="col-md-8">
                     <label for="penilaian5" class="form-label">Tinjauan Pustaka</label>
-                    <select type="text" class="form-select" name="penilaian5" id="penilaian5">
-                        <option disabled selected>Pilih.. </option>
+                    <select required type="text" class="form-select" name="penilaian5" id="penilaian5">
+                        <option value="" disabled selected>Pilih.. </option>
                         <option>Baik</option>
                         <option>Cukup</option>
                         <option>Kurang</option>
@@ -170,8 +170,8 @@
             <div class="row my-1">
                 <div class="col-md-8">
                     <label for="hasil_review" class="form-label">Hasil Review</label>
-                    <select type="text" class="form-select" name="hasil_review" id="hasil_review">
-                        <option disabled selected>Pilih.. </option>
+                    <select required type="text" class="form-select" name="hasil_review" id="hasil_review">
+                        <option value="" disabled selected>Pilih.. </option>
                         <option>Dilanjutkan</option>
                         <option>Dilanjutkan dengan perbaikan</option>
                         <option>Ganti Judul</option>

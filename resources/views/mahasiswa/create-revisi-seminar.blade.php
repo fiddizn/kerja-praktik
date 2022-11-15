@@ -10,7 +10,8 @@
         <input class="form-control" type="file" id="file" name="file" required>
     </div>
     <div>
-        <a class="btn my-3" href="/mahasiswa" role="button" style="background-color:#ff8c1a; width: 6rem;">Back</a>
+        <a class="btn my-3" href="/mahasiswa/revisi-seminar" role="button"
+            style="background-color:#ff8c1a; width: 6rem;">Back</a>
         <button class="btn my-3" type="submit" style="background-color:#ff8c1a; width: 6rem;">Submit</button>
     </div>
 </form>

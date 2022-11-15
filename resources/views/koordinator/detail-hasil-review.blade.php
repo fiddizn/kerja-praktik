@@ -146,8 +146,11 @@
 <div class="d-flex justify-content-around mt">
     <div class="input-group my-2" style="width: 30%;">
         <div class="input-group-prepend">
-            <a href="/koordinator/hasil-review-proposal/{{ $mahasiswa->id }}/downloadProposalReviewedP1" class="btn"
-                style="height: 58px; background-color:#ff8c1a;">
+            <a href="/koordinator/hasil-review-proposal/{{ $mahasiswa->id }}/downloadProposalReviewedP1" class="btn
+            @if (!isset($mahasiswa->p1_proposal))
+            disabled
+            @endif
+            " style="height: 58px; background-color:#ff8c1a;">
                 <i class="fa-solid fa-download fa-xl"></i>
                 <p><b>Unduh Proposal (Reviewed by P1)</b></p>
             </a>
@@ -155,8 +158,11 @@
     </div>
     <div class="input-group my-2" style="width: 30%;">
         <div class="input-group-prepend">
-            <a href="/koordinator/hasil-review-proposal/{{ $mahasiswa->id }}/downloadProposalReviewedR1" class="btn"
-                style="height: 58px; background-color:#ff8c1a;">
+            <a href="/koordinator/hasil-review-proposal/{{ $mahasiswa->id }}/downloadProposalReviewedR1" class="btn
+            @if (!isset($mahasiswa->r1_proposal))
+            disabled
+            @endif
+            " style="height: 58px; background-color:#ff8c1a;">
                 <i class="fa-solid fa-download fa-xl"></i>
                 <p><b>Unduh Proposal (Reviewed by R1)</b></p>
             </a>

@@ -2,8 +2,14 @@
 @section('container')
 
 @if(session()->has('gagal'))
-<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
     {{ session('gagal') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+@if(session()->has('success'))
+<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
@@ -17,7 +23,8 @@
     @if($hasilReview == null)
     disabled
     @endif
-    " href="/mahasiswa/hasil-review" role="button" style="background-color:#ff8c1a; width: 20rem;">Hasil Review</a>
+    " href="/mahasiswa/hasil-review" role="button" style="background-color:#ff8c1a; width: 20rem;">Hasil Review
+        Proposal</a>
 </div>
 <div class="d-flex justify-content-center">
     <a class="btn my-3

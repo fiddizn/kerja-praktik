@@ -13,35 +13,35 @@
     <div class="form-group row mt-4">
         <label for="r2_presentasi" class="col-sm-3 col-form-label">Teknik Presentasi</label>
         <div class="col-sm-3">
-            <input type="number" class="form-control" id="r2_presentasi" name="r2_presentasi"
+            <input required type="number" class="form-control" id="r2_presentasi" name="r2_presentasi"
                 placeholder="Skor maksimal 20" min="0" max="20" value="{{ $penilaianSeminar->r2_presentasi }}">
         </div>
     </div>
     <div class="form-group row">
         <label for="r2_dokumentasi" class="col-sm-3 col-form-label">Dokumentasi</label>
         <div class="col-sm-3">
-            <input type="number" class="form-control" id="r2_dokumentasi" name="r2_dokumentasi"
+            <input required type="number" class="form-control" id="r2_dokumentasi" name="r2_dokumentasi"
                 placeholder="Skor maksimal 20" min="0" max="20" value="{{ $penilaianSeminar->r2_dokumentasi }}">
         </div>
     </div>
     <div class="form-group row">
         <label for="r2_rumusanMasalah" class="col-sm-3 col-form-label">Rumusan Masalah</label>
         <div class="col-sm-3">
-            <input type="number" class="form-control" id="r2_rumusanMasalah" name="r2_rumusanMasalah"
+            <input required type="number" class="form-control" id="r2_rumusanMasalah" name="r2_rumusanMasalah"
                 placeholder="Skor maksimal 30" min="0" max="30" value="{{ $penilaianSeminar->r2_rumusanMasalah }}">
         </div>
     </div>
     <div class="form-group row">
         <label for="r2_metodeDanPustaka" class="col-sm-3 col-form-label">Metode Penelitian dan Pustaka</label>
         <div class="col-sm-3">
-            <input type="number" class="form-control" id="r2_metodeDanPustaka" name="r2_metodeDanPustaka"
+            <input required type="number" class="form-control" id="r2_metodeDanPustaka" name="r2_metodeDanPustaka"
                 placeholder="Skor maksimal 30" min="0" max="30" value="{{ $penilaianSeminar->r2_metodeDanPustaka}}">
         </div>
     </div>
     <div class="form-group row">
         <label for="r2_catatan" class="col-sm-3 col-form-label">Catatan Seminar</label>
         <div class="col-sm-3">
-            <input type="text" class="form-control" id="r2_catatan" name="r2_catatan"
+            <input required type="text" class="form-control" id="r2_catatan" name="r2_catatan"
                 value="{{ $penilaianSeminar->r2_catatan }}">
         </div>
     </div>

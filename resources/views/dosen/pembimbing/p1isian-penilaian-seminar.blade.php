@@ -15,7 +15,7 @@
             <div class="form-group row mt-4">
                 <label for="p1_materi" class="col-sm-9 col-form-label">Materi (isi) Penelitian</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p1_materi" name="p1_materi" min="0" max="20"
+                    <input required type="number" class="form-control" id="p1_materi" name="p1_materi" min="0" max="20"
                         placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_materi }}">
                 </div>
             </div>
@@ -23,22 +23,22 @@
                 <label for="p1_pemahaman" class="col-sm-9 col-form-label">Pemahaman Teori Penunjang dan
                     Penelitian</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p1_pemahaman" name="p1_pemahaman" min="0" max="20"
-                        placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_pemahaman }}">
+                    <input required type="number" class="form-control" id="p1_pemahaman" name="p1_pemahaman" min="0"
+                        max="20" placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_pemahaman }}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p1_pencapaian" class="col-sm-9 col-form-label">Pencapaian Target</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p1_pencapaian" name="p1_pencapaian" min="0" max="30"
-                        placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_pencapaian }}">
+                    <input required type="number" class="form-control" id="p1_pencapaian" name="p1_pencapaian" min="0"
+                        max="30" placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_pencapaian }}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p1_kedisiplinan" class="col-sm-9 col-form-label">Aspek Kedisiplinan</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p1_kedisiplinan" name="p1_kedisiplinan" min="0"
-                        max="30" placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_kedisiplinan }}">
+                    <input required type="number" class="form-control" id="p1_kedisiplinan" name="p1_kedisiplinan"
+                        min="0" max="30" placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_kedisiplinan }}">
                 </div>
             </div>
         </div>
@@ -46,29 +46,30 @@
             <div class="form-group row mt-4">
                 <label for="p1_presentasi" class="col-sm-9 col-form-label">Teknik Presentasi</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p1_presentasi" name="p1_presentasi" min="0" max="20"
-                        placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_presentasi }}">
+                    <input required type="number" class="form-control" id="p1_presentasi" name="p1_presentasi" min="0"
+                        max="20" placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_presentasi }}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p1_dokumentasi" class="col-sm-9 col-form-label">Dokumentasi</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p1_dokumentasi" name="p1_dokumentasi" min="0" max="20"
-                        placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_dokumentasi }}">
+                    <input required type="number" class="form-control" id="p1_dokumentasi" name="p1_dokumentasi" min="0"
+                        max="20" placeholder="Maks. 20" value="{{ $penilaianSeminar->p1_dokumentasi }}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p1_rumusanMasalah" class="col-sm-9 col-form-label">Rumusan Masalah</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p1_rumusanMasalah" name="p1_rumusanMasalah" min="0"
-                        max="30" placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_rumusanMasalah }}">
+                    <input required type="number" class="form-control" id="p1_rumusanMasalah" name="p1_rumusanMasalah"
+                        min="0" max="30" placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_rumusanMasalah }}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p1_metodeDanPustaka" class="col-sm-9 col-form-label">Metode Penelitian dan Pustaka</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p1_metodeDanPustaka" name="p1_metodeDanPustaka"
-                        min="0" max="30" placeholder="Maks. 30" value="{{ $penilaianSeminar->p1_metodeDanPustaka }}">
+                    <input required type="number" class="form-control" id="p1_metodeDanPustaka"
+                        name="p1_metodeDanPustaka" min="0" max="30" placeholder="Maks. 30"
+                        value="{{ $penilaianSeminar->p1_metodeDanPustaka }}">
                 </div>
             </div>
         </div>

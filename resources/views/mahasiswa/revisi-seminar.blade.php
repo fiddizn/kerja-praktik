@@ -47,8 +47,12 @@ null && $penilaianseminar->p2_catatan == null)
                 <div class="card-body">
                     {!! $penilaianseminar->r1_catatan !!}
                 </div>
-                <a class="btn rounded-0 rounded-bottom" style="background-color:#ff8c1a;"
-                    href="/mahasiswa/revisi-seminar/downloadFileR1" role="button"><i class="fa-solid fa-download"></i>
+                <a class="btn rounded-0 rounded-bottom
+                @if (!isset($penilaianseminar->r1_file))
+                disabled
+                @endif
+                " style="background-color:#ff8c1a;" href="/mahasiswa/revisi-seminar/downloadFileR1" role="button"><i
+                        class="fa-solid fa-download"></i>
                     Download File
                     Proposal</a>
             </div>
@@ -60,8 +64,12 @@ null && $penilaianseminar->p2_catatan == null)
                 <div class="card-body">
                     {!! $penilaianseminar->r2_catatan !!}
                 </div>
-                <a class="btn rounded-0 rounded-bottom" style="background-color:#ff8c1a;"
-                    href="/mahasiswa/revisi-seminar/downloadFileR2" role="button"><i class="fa-solid fa-download"></i>
+                <a class="btn rounded-0 rounded-bottom 
+                @if (!isset($penilaianseminar->r2_file))
+                disabled
+                @endif
+                " style="background-color:#ff8c1a;" href="/mahasiswa/revisi-seminar/downloadFileR2" role="button"><i
+                        class="fa-solid fa-download"></i>
                     Download File
                     Proposal</a>
             </div>

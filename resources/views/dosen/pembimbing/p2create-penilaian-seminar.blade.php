@@ -15,7 +15,7 @@
             <div class="form-group row mt-4">
                 <label for="p2_materi" class="col-sm-9 col-form-label">Materi (isi) Penelitian</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p2_materi" name="p2_materi" min="0" max="20"
+                    <input required type="number" class="form-control" id="p2_materi" name="p2_materi" min="0" max="20"
                         placeholder="Maks. 20">
                 </div>
             </div>
@@ -23,22 +23,22 @@
                 <label for="p2_pemahaman" class="col-sm-9 col-form-label">Pemahaman Teori Penunjang dan
                     Penelitian</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p2_pemahaman" name="p2_pemahaman" min="0" max="20"
-                        placeholder="Maks. 20">
+                    <input required type="number" class="form-control" id="p2_pemahaman" name="p2_pemahaman" min="0"
+                        max="20" placeholder="Maks. 20">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p2_pencapaian" class="col-sm-9 col-form-label">Pencapaian Target</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p2_pencapaian" name="p2_pencapaian" min="0" max="30"
-                        placeholder="Maks. 30">
+                    <input required type="number" class="form-control" id="p2_pencapaian" name="p2_pencapaian" min="0"
+                        max="30" placeholder="Maks. 30">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p2_kedisiplinan" class="col-sm-9 col-form-label">Aspek Kedisiplinan</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p2_kedisiplinan" name="p2_kedisiplinan" min="0"
-                        max="30" placeholder="Maks. 30">
+                    <input required type="number" class="form-control" id="p2_kedisiplinan" name="p2_kedisiplinan"
+                        min="0" max="30" placeholder="Maks. 30">
                 </div>
             </div>
         </div>
@@ -46,29 +46,29 @@
             <div class="form-group row mt-4">
                 <label for="p2_presentasi" class="col-sm-9 col-form-label">Teknik Presentasi</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p2_presentasi" name="p2_presentasi" min="0" max="20"
-                        placeholder="Maks. 20">
+                    <input required type="number" class="form-control" id="p2_presentasi" name="p2_presentasi" min="0"
+                        max="20" placeholder="Maks. 20">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p2_dokumentasi" class="col-sm-9 col-form-label">Dokumentasi</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p2_dokumentasi" name="p2_dokumentasi" min="0" max="20"
-                        placeholder="Maks. 20">
+                    <input required type="number" class="form-control" id="p2_dokumentasi" name="p2_dokumentasi" min="0"
+                        max="20" placeholder="Maks. 20">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p2_rumusanMasalah" class="col-sm-9 col-form-label">Rumusan Masalah</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p2_rumusanMasalah" name="p2_rumusanMasalah" min="0"
-                        max="30" placeholder="Maks. 30">
+                    <input required type="number" class="form-control" id="p2_rumusanMasalah" name="p2_rumusanMasalah"
+                        min="0" max="30" placeholder="Maks. 30">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p2_metodeDanPustaka" class="col-sm-9 col-form-label">Metode Penelitian dan Pustaka</label>
                 <div class="col-sm-3">
-                    <input type="number" class="form-control" id="p2_metodeDanPustaka" name="p2_metodeDanPustaka"
-                        min="0" max="30" placeholder="Maks. 30">
+                    <input required type="number" class="form-control" id="p2_metodeDanPustaka"
+                        name="p2_metodeDanPustaka" min="0" max="30" placeholder="Maks. 30">
                 </div>
             </div>
         </div>
