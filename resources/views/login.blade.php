@@ -67,9 +67,9 @@
                         </div>
                         <div class=" form-group">
                             <button type="submit" class="btn btn-block create-account">Login</button>
-                            <div class="span">
+                            <!-- <div class="span">
                                 <span>Tidak punya akun? Daftar <a href="/register">di sini</a></span>
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>

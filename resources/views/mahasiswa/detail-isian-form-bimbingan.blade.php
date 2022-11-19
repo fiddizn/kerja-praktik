@@ -29,12 +29,6 @@
             </div>
         </div>
         <div class="row my-3">
-            <div class="col-4">
-                <label for="is_p1" class="form-label">Pembimbing</label>
-                <input type="text" class="form-control" value="{{ $nama_pembimbing }}">
-            </div>
-        </div>
-        <div class="row my-3">
             <div class="form-group">
                 <label for="pembahasan_bimbingan" class="mb-2">Pembahasan / Hasil / Saran / Tugas</label>
                 <div class="card w-100">
@@ -45,8 +39,13 @@
             </div>
         </div>
         <div class="col-12 mt-5">
-            <a class="btn " href="/mahasiswa/form-bimbingan" role="button"
+            @if ($is_p1)
+            <a class="btn " href="/mahasiswa/form-bimbingan/pembimbing-1" role="button"
                 style="width: 5rem;background-color:#ff8c1a;">Back</a>
+            @else
+            <a class="btn " href="/mahasiswa/form-bimbingan/pembimbing-2" role="button"
+                style="width: 5rem;background-color:#ff8c1a;">Back</a>
+            @endif
             @if ($bimbingan->setuju == 1)
             @elseif (is_null($bimbingan->setuju))
             @elseif ($bimbingan->setuju == 0)

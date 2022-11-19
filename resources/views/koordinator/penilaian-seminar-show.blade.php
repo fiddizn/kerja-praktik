@@ -21,8 +21,8 @@
                     <tr>
                         <th scope="col"></th>
                         <th scope="col">Aspek Penilaian</th>
-                        <th scope="col">P1 ({{ $penilaianseminar->pembimbing1->dosen->kode }})</th>
-                        <th scope="col">P2 ({{ $penilaianseminar->pembimbing2->dosen->kode }})</th>
+                        <th scope="col">U1 ({{ $penilaianseminar->pembimbing1->dosen->kode }})</th>
+                        <th scope="col">U2 ({{ $penilaianseminar->pembimbing2->dosen->kode }})</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,8 +84,8 @@
                     <tr>
                         <th scope="col"></th>
                         <th scope="col">Aspek Penilaian</th>
-                        <th scope="col">R1 ({{ $penilaianseminar->reviewer1->dosen->kode }})</th>
-                        <th scope="col">R2 ({{ $penilaianseminar->reviewer2->dosen->kode }})</th>
+                        <th scope="col">U3 ({{ $penilaianseminar->reviewer1->dosen->kode }})</th>
+                        <th scope="col">U4 ({{ $penilaianseminar->reviewer2->dosen->kode }})</th>
                     </tr>
                 </thead>
                 <tbody>

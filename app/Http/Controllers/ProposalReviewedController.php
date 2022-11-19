@@ -11,6 +11,7 @@ class ProposalReviewedController extends Controller
 {
     public function index()
     {
+        $nilai = [1 => 'Kurang', 2 => 'Cukup', 3 => 'Baik'];
         $review = Review::with('mahasiswa')->where('mahasiswa_id', auth()->user()->mahasiswa->id)->first();
         $review_id = Review::with('mahasiswa')->where('mahasiswa_id', auth()->user()->mahasiswa->id)->first()->id;
         if (!isset(Pendaftaran::where('mahasiswa_id', auth()->user()->mahasiswa->id)->first()->berkas_ta1)) {
@@ -23,7 +24,32 @@ class ProposalReviewedController extends Controller
             'title' => 'Hasil Review',
             'role' => 'Mahasiswa',
             'review' => $review,
-            'review_id' => $review_id
+            'review_id' => $review_id,
+            'nilai' => $nilai
+        ]);
+    }
+
+    public function revisi_p1()
+    {
+        $review = Review::with('mahasiswa')->where('mahasiswa_id', auth()->user()->mahasiswa->id)->first();
+        $review_id = Review::with('mahasiswa')->where('mahasiswa_id', auth()->user()->mahasiswa->id)->first()->id;
+        return view('mahasiswa.catatan-hasil-review-p1', [
+            'title' => 'Hasil Review',
+            'role' => 'Mahasiswa',
+            'review' => $review,
+            'review_id' => $review_id,
+        ]);
+    }
+
+    public function revisi_r1()
+    {
+        $review = Review::with('mahasiswa')->where('mahasiswa_id', auth()->user()->mahasiswa->id)->first();
+        $review_id = Review::with('mahasiswa')->where('mahasiswa_id', auth()->user()->mahasiswa->id)->first()->id;
+        return view('mahasiswa.catatan-hasil-review-r1', [
+            'title' => 'Hasil Review',
+            'role' => 'Mahasiswa',
+            'review' => $review,
+            'review_id' => $review_id,
         ]);
     }
 

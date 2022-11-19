@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 
-<h2 class="text-center">Plotting Dosen Reviewer 2</h2>
+<h2 class="text-center">Plotting Dosen Penguji</h2>
 
 @if (session()->has('success'))
 <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
@@ -121,7 +121,7 @@
                 </a>
                 @endif
             </th>
-            <th scope="col">R1
+            <th scope="col">U3
                 @if ($sortAsc == 'ASC' && $sortBy == 'r1')
                 <a
                     href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=r1&sortAsc={{$sortAsc=='ASC'&&$sortBy=='r1'?'DESC':'ASC'}}">
@@ -148,7 +148,7 @@
                 </a>
                 @endif
             </th>
-            <th scope="col">R2
+            <th scope="col">U4
                 @if ($sortAsc == 'ASC' && $sortBy == 'r2')
                 <a
                     href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=r2&sortAsc={{$sortAsc=='ASC'&&$sortBy=='r2'?'DESC':'ASC'}}">

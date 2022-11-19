@@ -59,8 +59,8 @@ use App\Http\Controllers\TUPendaftaranAdministrasiController;
 
 // REGISTER ==============================================================================
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+// Route::post('/register', [RegisterController::class, 'store']);
 
 // LOGIN ==================================================================================
 
@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // SESI MAHASISWA ======================================================================================================
 
-    Route::group(['middleware' => 'role:Mahasiswa'], function () {
+    Route::group(['middle ware' => 'role:Mahasiswa'], function () {
 
         // Pendaftaran Administrasi TA 1
 
@@ -95,20 +95,32 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/mahasiswa/pendaftaran-ta-1-step4', [PendaftaranController::class, 'storeStep4']);
 
 
-        // Download Hasil Review
+        // Hasil Review
 
         Route::get('/mahasiswa/upload-proposal', [ProposalReviewedController::class, 'uploadProposal']);
         Route::post('/mahasiswa/upload-proposal', [ProposalReviewedController::class, 'storeUploadProposal']);
         Route::get('/mahasiswa/hasil-review', [ProposalReviewedController::class, 'index']);
         Route::get('/mahasiswa/hasil-review/download-proposal-p1-{id}', [HasilReviewController::class, 'downloadProposalReviewedP1']);
         Route::get('/mahasiswa/hasil-review/download-proposal-r1-{id}', [HasilReviewController::class, 'downloadProposalReviewedR1']);
+        Route::get('/mahasiswa/hasil-review/revisi-p1', [ProposalReviewedController::class, 'revisi_p1']);
+        Route::get('/mahasiswa/hasil-review/revisi-r1', [ProposalReviewedController::class, 'revisi_r1']);
 
 
         // Formulir Bimbingan
 
-        Route::resource('/mahasiswa/form-bimbingan', FormBimbinganController::class);
-        Route::get('/mahasiswa/form-bimbingan/{x}/edit', [FormBimbinganController::class, 'edit']);
-        Route::post('/mahasiswa/form-bimbingan/create', [FormBimbinganController::class, 'store']);
+        Route::get('/mahasiswa/form-bimbingan', [FormBimbinganController::class, 'index']);
+        Route::get('/mahasiswa/form-bimbingan/pembimbing-1', [FormBimbinganController::class, 'index_p1']);
+        Route::get('/mahasiswa/form-bimbingan/pembimbing-2', [FormBimbinganController::class, 'index_p2']);
+        Route::get('/mahasiswa/form-bimbingan/pembimbing-1/create', [FormBimbinganController::class, 'create_p1']);
+        Route::get('/mahasiswa/form-bimbingan/pembimbing-2/create', [FormBimbinganController::class, 'create_p2']);
+        Route::post('/mahasiswa/form-bimbingan/pembimbing-1/create', [FormBimbinganController::class, 'store_p1']);
+        Route::post('/mahasiswa/form-bimbingan/pembimbing-2/create', [FormBimbinganController::class, 'store_p2']);
+        Route::get('/mahasiswa/form-bimbingan/pembimbing-1/{id}', [FormBimbinganController::class, 'show_p1']);
+        Route::get('/mahasiswa/form-bimbingan/pembimbing-2/{id}', [FormBimbinganController::class, 'show_p2']);
+        Route::get('/mahasiswa/form-bimbingan/pembimbing-1/{id}/edit', [FormBimbinganController::class, 'edit_p1']);
+        Route::get('/mahasiswa/form-bimbingan/pembimbing-2/{id}/edit', [FormBimbinganController::class, 'edit_p2']);
+        Route::post('/mahasiswa/form-bimbingan/pembimbing-1/{id}/edit', [FormBimbinganController::class, 'update_p1']);
+        Route::post('/mahasiswa/form-bimbingan/pembimbing-2/{id}/edit', [FormBimbinganController::class, 'update_p2']);
 
 
         // Pendaftaran Seminar TA 1
