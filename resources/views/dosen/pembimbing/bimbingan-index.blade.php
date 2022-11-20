@@ -60,16 +60,42 @@
                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
                 </span>
             </th>
+            <th>Disetujui</th>
+            <th>Total Bimbingan</th>
             <th scope="col">Aksi</th>
         </tr>
     </thead>
     @foreach ($mahasiswas as $key=> $mahasiswa)
+    <?php
+    $totalBimbinganP1 = App\Models\ListBimbingan::with('bimbingan', 'mahasiswa')->oldest()->where('is_p1', 1)->whereHas('bimbingan', function ($query) use ($mahasiswa) {
+        $query->where('pembimbing1_id', auth()->user()->pembimbing1->id)->where('mahasiswa_id', $mahasiswa->mahasiswa->id);
+    })->count();
+
+    $totalBimbinganDisetujuiP1 = App\Models\ListBimbingan::with('bimbingan', 'mahasiswa')->oldest()->where('is_p1', 1)->where('setuju', 1)->whereHas('bimbingan', function ($query) use ($mahasiswa) {
+        $query->where('pembimbing1_id', auth()->user()->pembimbing1->id)->where('mahasiswa_id', $mahasiswa->mahasiswa->id);
+    })->count();
+
+    $totalBimbinganP2 = App\Models\ListBimbingan::with('bimbingan', 'mahasiswa')->oldest()->where('is_p1', 0)->whereHas('bimbingan', function ($query) use ($mahasiswa) {
+        $query->where('pembimbing2_id', auth()->user()->pembimbing2->id)->where('mahasiswa_id', $mahasiswa->mahasiswa->id);
+    })->count();
+
+    $totalBimbinganDisetujuiP2 = App\Models\ListBimbingan::with('bimbingan', 'mahasiswa')->oldest()->where('is_p1', 0)->where('setuju', 1)->whereHas('bimbingan', function ($query) use ($mahasiswa) {
+        $query->where('pembimbing2_id', auth()->user()->pembimbing2->id)->where('mahasiswa_id', $mahasiswa->mahasiswa->id);
+    })->count();
+    ?>
     <tbody>
         <tr>
             <th scope="row">{{ $mahasiswas->firstItem()+ $key}}</th>
             <td>{{ $mahasiswa->mahasiswa->nim }}</td>
             <td>{{ $mahasiswa->mahasiswa->name }}</td>
             <td>{{ $mahasiswa->peminatan }}</td>
+            @if ($role == 'Pembimbing 1')
+            <td>{{ $totalBimbinganDisetujuiP1 }}</td>
+            <td>{{ $totalBimbinganP1 }}</td>
+            @else
+            <td>{{ $totalBimbinganDisetujuiP2 }}</td>
+            <td>{{ $totalBimbinganP2 }}</td>
+            @endif
             <td>
                 @if($role == 'Pembimbing 1')
                 <a class="btn btn-warning" href="/dosen/pembimbing-1/form-bimbingan/{{ $mahasiswa->mahasiswa->id  }}"><i
