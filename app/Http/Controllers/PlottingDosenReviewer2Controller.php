@@ -53,6 +53,8 @@ class PlottingDosenReviewer2Controller extends Controller
     {
         $pendaftarans = \App\Models\PendaftaranSeminar::get();
         $mahasiswa = \App\Models\PendaftaranSeminar::with('mahasiswa')->find($id);
+        $mahasiswa_id = $mahasiswa->mahasiswa_id;
+        $pembimbing = \App\Models\Bimbingan::where('mahasiswa_id', $mahasiswa_id)->first();
         $list_dosen = \App\Models\Dosen::with('reviewer2')->paginate(4);
         $list_reviewer2 = Reviewer2::get();
         return view(
@@ -64,7 +66,8 @@ class PlottingDosenReviewer2Controller extends Controller
                 'mahasiswa' => $mahasiswa,
                 'list_r2' => $list_reviewer2,
                 'list_dosen' => $list_dosen,
-                'pendaftarans' => $pendaftarans
+                'pendaftarans' => $pendaftarans,
+                'pembimbing' => $pembimbing,
             ]
         );
     }
@@ -83,7 +86,7 @@ class PlottingDosenReviewer2Controller extends Controller
         $r2_id = Reviewer2::where('dosen_id', $dosen_id)->get()[0]->id;
 
         if (Reviewer2::where('id', $r2_id)->first()->dosen->name == PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->reviewer1->dosen->name) {
-            return redirect()->back()->with('gagal', 'Reviwer 2 tidak boleh sama dengan Reviewer 1!');
+            return redirect()->back()->with('gagal', 'Calon Penguji 4 tidak boleh sama dengan Penguji 3!');
         }
         PendaftaranSeminar::where('id', $id)->update([
             'r2_id' =>  $r2_id
@@ -92,6 +95,12 @@ class PlottingDosenReviewer2Controller extends Controller
         $r1_id = PendaftaranSeminar::where('id', '=', $id)->get()[0]->r1_id;
         $p1_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p1_id;
         $p2_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p2_id;
+
+        if ($r2_id == $p1_id) {
+            return redirect()->back()->with('gagal', 'Calon Penguji 4 tidak boleh sama dengan Penguji 1');
+        } elseif ($r2_id == $p2_id) {
+            return redirect()->back()->with('gagal', 'Calon Penguji 4 tidak boleh sama dengan Penguji 2');
+        }
 
         if (PenilaianSeminar::where('mahasiswa_id', $mahasiswa_id)->first() == null) {
             PenilaianSeminar::create([

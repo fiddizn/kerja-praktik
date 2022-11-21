@@ -1,5 +1,11 @@
 @extends('layouts/main')
 @section('container')
+@if (session()->has('gagal'))
+<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    {{ session('gagal') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 <h2 class="text-center">Plotting Dosen Reviewer</h2>
 

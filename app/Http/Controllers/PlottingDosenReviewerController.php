@@ -89,7 +89,7 @@ class PlottingDosenReviewerController extends Controller
                 'mahasiswa' => $mahasiswa,
                 'list_r1' => $list_reviewer1,
                 'list_dosen' => $list_dosen,
-                'pendaftarans' => $pendaftarans
+                'pendaftarans' => $pendaftarans,
             ]
         );
     }
@@ -114,11 +114,21 @@ class PlottingDosenReviewerController extends Controller
      */
     public function update($id)
     {
+
+        $nameP1 = \App\Models\Pendaftaran::find($id)->pembimbing1->dosen->name;
+        $nameP2 = \App\Models\Pendaftaran::find($id)->pembimbing2->dosen->name;
+
         $r1Value = request('r1');
 
         $pos_r1 = strpos($r1Value, "(");
 
         $r1Value = substr($r1Value, 0, $pos_r1 - 1);
+
+        if ($nameP1 == $r1Value) {
+            return redirect()->back()->with('gagal', 'Calon Reviewer tidak boleh sama dengan Pembimbing 1');
+        } elseif ($nameP2 == $r1Value) {
+            return redirect()->back()->with('gagal', 'Calon Reviewer tidak boleh sama dengan Pembimbing 2');
+        }
 
         $dosen_id = \App\Models\Dosen::where('name', '=', $r1Value)->get()[0]->id;
 

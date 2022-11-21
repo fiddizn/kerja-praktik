@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 @if(session()->has('gagal'))
-<div class="alert alert-warning  alert-dismissible fade show mt-3" role="alert">
+<div class="alert alert-danger  alert-dismissible fade show mt-3" role="alert">
     {{ session('gagal') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -28,14 +28,28 @@
             @method('put')
             @csrf
             <div class="row mt-5">
-                <label for=" r1" class="col-sm-3 col-form-label">Penguji 3</label>
+                <label for="p1" class="col-sm-3 col-form-label">Penguji 1</label>
+                <div class="col">
+                    <input type="text" class="form-control" name="p1" id="p1" readonly
+                        value="{{ $pembimbing->pembimbing1->dosen->name }}" disabled>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <label for="p2" class="col-sm-3 col-form-label">Penguji 2</label>
+                <div class="col">
+                    <input type="text" class="form-control" name="p2" id="p2" readonly
+                        value="{{ $pembimbing->pembimbing2->dosen->name }}" disabled>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <label for="r1" class="col-sm-3 col-form-label">Penguji 3</label>
                 <div class="col">
                     <input type="text" class="form-control" name="r1" id="r1" readonly
                         value="{{ $mahasiswa->reviewer1->dosen->name }}" disabled>
                 </div>
             </div>
-            <div class="row mt-5">
-                <label for=" r2" class="col-sm-3 col-form-label">Penguji 4</label>
+            <div class="row mt-3">
+                <label for="r2" class="col-sm-3 col-form-label">Penguji 4</label>
                 <div class="col">
                     <select type="text" class="form-select" name="r2" id="r2" required>
                         <option value="" selected disabled>Pilih...</option>
