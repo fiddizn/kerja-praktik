@@ -6,7 +6,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-<h2 style="text-align:center;">Pendaftaran{{$seminar}}Tugas Akhir 1</h2>
+<h2 style="text-align:center;">Pendaftaran{{$seminar}} Tugas Akhir 1</h2>
 
 <div class="row align-items-start mt-3">
     <form class="row g-3" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-1-step4" method="POST"

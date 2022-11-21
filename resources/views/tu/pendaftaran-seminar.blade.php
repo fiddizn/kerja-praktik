@@ -22,7 +22,7 @@
         </form>
     </div>
 
-    <div class="p-2">
+    <!-- <div class="p-2">
         <a class="btn" href="#" role="button" style="background-color:#ff8c1a;">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-printer"
                 viewBox="0 0 16 16">
@@ -31,41 +31,41 @@
                     d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z" />
             </svg>
         </a>
-    </div>
+    </div> -->
 </div>
 
 <table class="table table-hover table-sm mt-3">
     <thead>
         <tr>
             <th scope="col">NO
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                     <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
+                </span> -->
             </th>
             <th scope="col">NIM
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                     <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
+                </span> -->
             </th>
             <th scope="col">Nama
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                     <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
+                </span> -->
             </th>
             <th scope="col">Peminatan
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                     <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
+                </span> -->
             </th>
             <th scope="col">Status
-                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                     <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                </span>
+                </span> -->
             </th>
             <th scope="col">Aksi</th>
         </tr>

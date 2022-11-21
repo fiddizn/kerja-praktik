@@ -10,6 +10,15 @@ class PendaftaranSeminarController extends Controller
 {
     public function index()
     {
+        $jumlahBimbinganP1 = auth()->user()->bimbingan->listbimbingan->where('is_p1', 1)->where('setuju', true)->count();
+        $jumlahBimbinganP2 = auth()->user()->bimbingan->listbimbingan->where('is_p1', 0)->where('setuju', true)->count();
+
+        if ($jumlahBimbinganP1 < 6) {
+            return redirect()->back()->with('gagal', 'Jumlah bimbingan masih kurang!');
+        } else if ($jumlahBimbinganP2 < 6) {
+            return redirect()->back()->with('gagal', 'Jumlah bimbingan masih kurang!');
+        }
+
         $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
         $list_p2 = \App\Models\Dosen::all();
 

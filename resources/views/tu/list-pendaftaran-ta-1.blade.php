@@ -26,9 +26,9 @@
                 </div>
                 <!-- ini print pdf -->
                 <div class="p-2">
-                    <a class="btn" href="{{ route('exportPdf') }}" role="button" style="background-color:#ff8c1a;">
+                    <!-- <a class="btn" href="{{ route('exportPdf') }}" role="button" style="background-color:#ff8c1a;">
                         <i class="fa-solid fa-print fa-lg"></i>
-                    </a>
+                    </a> -->
                 </div>
             </div>
 
@@ -36,34 +36,34 @@
                 <thead>
                     <tr>
                         <th scope="col">NO
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                            <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                                 <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                                 <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            </span> -->
                         </th>
                         <th scope="col">NIM
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                            <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                                 <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                                 <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            </span> -->
                         </th>
                         <th scope="col">Nama
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                            <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                                 <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                                 <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            </span> -->
                         </th>
                         <th scope="col">Peminatan
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                            <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                                 <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                                 <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            </span> -->
                         </th>
                         <th scope="col">Status
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                            <!-- <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                                 <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                                 <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            </span> -->
                         </th>
                         <th scope="col">Aksi</th>
                     </tr>
