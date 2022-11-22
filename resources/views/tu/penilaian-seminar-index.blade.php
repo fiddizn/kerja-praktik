@@ -98,7 +98,7 @@
                 <td>{{ $penilaianseminar->mahasiswa->nim }}</td>
                 <td>{{ $penilaianseminar->mahasiswa->name }}</td>
                 <td>{{ $penilaianseminar->mahasiswa->pendaftaran->peminatan }}</td>
-                <td>{{ $nilaiMutu }}</td>
+                <td>{{ $nilaiAkhir }} | {{ $nilaiMutu }}</td>
                 <td> <a class="btn" href="/tu/penilaian-seminar/{{ $penilaianseminar->id }}" role="button"
                         style="background-color:#ff8c1a;"><i class="fa-solid fa-circle-info"></i>
                         Detail</a>

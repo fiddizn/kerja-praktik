@@ -115,7 +115,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="row m-3">
+            <div class="row m-4">
                 <h5 style="text-align:center;">Nilai Akhir</h5>
                 <h5 style="text-align:center;">{{
                     (((
