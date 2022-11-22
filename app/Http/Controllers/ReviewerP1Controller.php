@@ -32,8 +32,9 @@ class ReviewerP1Controller extends Controller
 
     public function createFormReview($id)
     {
+        // dd(request()->all());
         $file = request()->validate([
-            'proposal' => 'file|max:50000|mimes:doc,docx,pdf,ppt,pptx'
+            'proposal' => 'file|max:50000|mimes:doc,docx,pdf'
         ]);
 
         if (request()->file('proposal')) {
@@ -68,10 +69,12 @@ class ReviewerP1Controller extends Controller
         } else {
 
             $file = request()->validate([
-                'proposal' => 'file|max:50000|mimes:doc,docx,pdf,ppt,pptx'
+                'proposal' => 'file|max:50000|mimes:doc,docx,pdf'
             ]);
 
-            $file['proposal'] = request()->file('proposal')->store('proposal_reviewed_p1');
+            if (request()->file('proposal')) {
+                $file['proposal'] = request()->file('proposal')->store('proposal_reviewed_p1');
+            } else $file['proposal'] = null;
 
             $penilaian1 = Self::convertPenilaianToInt(request('penilaian1'));
             $penilaian2 = Self::convertPenilaianToInt(request('penilaian2'));

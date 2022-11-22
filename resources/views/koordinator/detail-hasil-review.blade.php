@@ -86,7 +86,7 @@
             <th scope="col"></th>
             <th scope="col">Aspek Penilaian</th>
             <th scope="col">P1 ({{ $mahasiswa->pembimbing1->dosen->kode }})</th>
-            <th scope="col">R1 ({{ $mahasiswa->reviewer->dosen->kode }})</th>
+            <th scope="col">R1 ({{ $mahasiswa->reviewer1->dosen->kode }})</th>
         </tr>
     </thead>
     <tbody>

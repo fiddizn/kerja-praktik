@@ -81,11 +81,6 @@ form.addEventListener('submit', function(event){
 });
 
 function checkRole (str){
-    console.log(str)
-    console.log(str == 'Lektor Kepala');
-    console.log(str == 'Lektor');
-    console.log(str == 'Asisten Ahli');
-    console.log(str == 'Non Jabfun');
     if(str == 'Lektor Kepala'){
         return 4;
     }else if (str == 'Lektor'){

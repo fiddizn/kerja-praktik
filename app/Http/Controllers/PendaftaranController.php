@@ -89,7 +89,7 @@ class PendaftaranController extends Controller
     public function storeStep2(Request $request)
     {
         $file = request()->validate([
-            'khs' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
+            'khs' => 'file|max:5120|mimes:doc,docx,pdf'
         ]);
         if (request()->file('khs')) {
             $file['khs'] = request()->file('khs')->store('khs');
@@ -140,9 +140,9 @@ class PendaftaranController extends Controller
     public function storeStep3(Request $request)
     {
         $file = request()->validate([
-            'berkas_ta1' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
-            'tagihan_uang' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
-            'lunas_pembayaran' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
+            'berkas_ta1' => 'file|max:5120|mimes:doc,docx,pdf',
+            'tagihan_uang' => 'file|max:5120|mimes:doc,docx,pdf',
+            'lunas_pembayaran' => 'file|max:5120|mimes:jpg,jpeg,png,pdf'
         ]);
 
         if (request()->file('berkas_ta1')) {

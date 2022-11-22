@@ -7,7 +7,7 @@
 </div>
 @endif
 <h2 class="text-center">{{ $title }}</h2>
-<form method="post" action="/dosen/pembimbing-1/penilaian-seminar/{{ $penilaianSeminar->id }}/edit"
+<form id="formSeminar" method="post" action="/dosen/pembimbing-1/penilaian-seminar/{{ $penilaianSeminar->id }}/edit"
     enctype="multipart/form-data">
     @csrf
     <div class="row">
@@ -82,7 +82,9 @@
         <div class="form-group row">
             <label for="p1_file" class="col-sm-4 col-form-label">File Proposal Catatan Revisi</label>
             <div class="">
-                <input class="form-control" type="file" id="p1_file" name="p1_file">
+                <input class="form-control @error('p1_file') is-invalid @enderror" type="file" id="p1_file"
+                    name="p1_file">
+                <div id="p1_file" class="invalid-feedback">File harus berupa WORD/PDF!</div>
             </div>
         </div>
     </div>
@@ -98,4 +100,5 @@
         <button type="submit" id="form" class="btn" style="width: 5rem ; background-color:#ff8c1a;">Submit</button>
     </div>
 </form>
+<script type="text/javascript" src="/js/catatanSeminarP1.js"></script>
 @endsection

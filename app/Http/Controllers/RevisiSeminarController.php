@@ -9,11 +9,15 @@ class RevisiSeminarController extends Controller
 {
     public function index()
     {
-        return view('mahasiswa.revisi-seminar', [
-            'title' => 'Revisi Seminar',
-            'role' => 'Mahasiswa',
-            'penilaianseminar' => auth()->user()->penilaianseminar
-        ]);
+        if (auth()->user()->penilaianseminar->rilis == 1) {
+            return view('mahasiswa.revisi-seminar', [
+                'title' => 'Revisi Seminar',
+                'role' => 'Mahasiswa',
+                'penilaianseminar' => auth()->user()->penilaianseminar
+            ]);
+        } else {
+            return redirect()->back()->with('gagal', 'Revisi belum dirilis!');
+        }
     }
 
     public function create()
@@ -33,10 +37,8 @@ class RevisiSeminarController extends Controller
 
     public function update(Request $request)
     {
-        $file = request()->validate(['file' => 'file|max:5120|mimes:doc,docx,pdf']);
-        if (request()->file('file')) {
-            $file['file'] = request()->file('file')->store('proposalHasilRevisi');
-        } else $file['file'] = null;
+        $file = request()->validate(['file' => 'file|max:5120|mimes:pdf']);
+        $file['file'] = request()->file('file')->store('proposalHasilRevisi');
 
         ProposalHasilRevisi::where('mahasiswa_id', auth()->user()->mahasiswa->id)->update([
             'file' => $file['file']

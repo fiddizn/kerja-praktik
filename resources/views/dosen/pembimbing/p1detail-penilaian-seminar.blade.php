@@ -80,6 +80,7 @@
         </div>
     </div>
 </div>
+@if ( $penilaianSeminar->p1_file)
 <div class="form-group row">
     <label for="p1_file" class="col-sm-3 col-form-label">File Proposal Catatan Revisi</label>
     <div class="col-sm-3">
@@ -87,6 +88,7 @@
             href="/dosen/pembimbing-1/penilaian-seminar/{{ $penilaianSeminar->id }}/downloadFile">Download</a>
     </div>
 </div>
+@endif
 <div class="position-relative">
     <a class="btn my-3
     " href="/dosen/pembimbing-1/penilaian-seminar" role="button"

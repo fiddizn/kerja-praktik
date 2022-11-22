@@ -50,11 +50,6 @@ form.addEventListener('submit', function(event){
 });
 
 function checkRole (str){
-    console.log(str)
-    console.log(str == 'Lektor Kepala');
-    console.log(str == 'Lektor');
-    console.log(str == 'Asisten Ahli');
-    console.log(str == 'Non Jabfun');
     if (str == 'Guru Besar'){
         return 5;
     }else if(str == 'Lektor Kepala'){

@@ -173,10 +173,10 @@
         <div class="row mt-4">
             <div class="col-md-7">
                 <label for="berkas_ta1" class="form-label col-sm-6">Berkas Proposal</label>
-                <a href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/viewProposal" class="btn"
+                <!-- <a href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/viewProposal" class="btn"
                     style="width: 6rem; background-color:#ff8c1a;">View
                     <i class="fa-solid fa-eye"></i>
-                </a>
+                </a> -->
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
                     href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadBerkasTa1">Download <i
                         class="fa-solid fa-download"></i>

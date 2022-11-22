@@ -52,7 +52,7 @@ class PenilaianSeminarController extends Controller
     public function update(Request $request, $id)
     {
         $file = request()->validate([
-            'r1_file' => 'file|max:10120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
+            'r1_file' => 'file|max:10120|mimes:doc,docx,pdf'
         ]);
         if (request()->file('r1_file')) {
             $file['r1_file'] = request()->file('r1_file')->store('penilaian_seminar_r1_file');

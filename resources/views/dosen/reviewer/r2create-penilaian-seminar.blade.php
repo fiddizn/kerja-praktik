@@ -7,7 +7,7 @@
 </div>
 @endif
 <h2 class="text-center">{{ $title }}</h2>
-<form method="post" action="/dosen/reviewer-2/penilaian-seminar/{{ $penilaianSeminar->id }}/edit"
+<form id="formSeminar" method="post" action="/dosen/reviewer-2/penilaian-seminar/{{ $penilaianSeminar->id }}/edit"
     enctype="multipart/form-data">
     @csrf
     <div class="form-group row mt-4">
@@ -40,14 +40,16 @@
     </div>
     <div class="form-group row">
         <label for="r2_catatan" class="col-sm-3 col-form-label">Catatan Seminar</label>
-        <div class="col-sm-3">
-            <input required type="text" class="form-control" id="r2_catatan" name="r2_catatan">
+        <div>
+            <input id="r2_catatan" type="hidden" name="r2_catatan">
+            <trix-editor input="r2_catatan"></trix-editor>
         </div>
     </div>
     <div class="form-group row">
         <label for="r2_file" class="col-sm-3 col-form-label">File Proposal Catatan Revisi</label>
         <div class="col-sm-3">
-            <input class="form-control" type="file" id="r2_file" name="r2_file">
+            <input class="form-control @error('r2_file') is-invalid @enderror" type="file" id="r2_file" name="r2_file">
+            <div id="r2_file" class="invalid-feedback">File harus berupa WORD/PDF!</div>
         </div>
     </div>
 
@@ -62,4 +64,5 @@
         <button type="submit" id="form" class="btn" style="width: 5rem ; background-color:#ff8c1a;">Submit</button>
     </div>
 </form>
+<script type="text/javascript" src="/js/catatanSeminarR2.js"></script>
 @endsection

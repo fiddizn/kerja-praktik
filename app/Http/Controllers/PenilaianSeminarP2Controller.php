@@ -52,11 +52,12 @@ class PenilaianSeminarP2Controller extends Controller
     public function update(Request $request, $id)
     {
         $file = request()->validate([
-            'p2_file' => 'file|max:10120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
+            'p2_file' => 'file|max:10120|mimes:doc,docx,pdf'
         ]);
         if (request()->file('p2_file')) {
             $file['p2_file'] = request()->file('p2_file')->store('penilaian_seminar_p2_file');
         } else $file['p2_file'] = null;
+
         $exist = PenilaianSeminar::find($id)->first()->p2_materi;
         PenilaianSeminar::with('mahasiswa')->find($id)->update([
             'p2_materi' => $request['p2_materi'],

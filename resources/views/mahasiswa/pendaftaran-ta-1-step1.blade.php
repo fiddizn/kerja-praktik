@@ -91,8 +91,7 @@
                     <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
                     <div class="input-group-text">+62</div>
                     <input type="number" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890" min="800000000000" max="899999999990"
-                        value="{{ $pendaftaran->phone_number}}">
+                        placeholder="81234567890" minlength="10" maxlength="13" value="{{ $pendaftaran->phone_number}}">
                 </div>
             </div>
             <div class=" col-md-12">

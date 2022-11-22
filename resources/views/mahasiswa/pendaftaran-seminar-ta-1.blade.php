@@ -291,25 +291,33 @@
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="berkas_ta1" class="form-label">Berkas Proposal</label>
-                    <input required class="form-control" type="file" id="berkas_ta1" name="berkas_ta1">
+                    <input required class="form-control @error('berkas_ta1') is-invalid @enderror" type="file"
+                        id="berkas_ta1" name="berkas_ta1">
+                    <div id="berkas_ta1" class="invalid-feedback">File harus berupa PDF!</div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="tagihan_uang" class="form-label">Tagihan Uang Kuliah</label>
-                    <input required class="form-control" type="file" id="tagihan_uang" name="tagihan_uang">
+                    <input required class="form-control @error('tagihan_uang') is-invalid @enderror" type="file"
+                        id="tagihan_uang" name="tagihan_uang">
+                    <div id="tagihan_uang" class="invalid-feedback">File harus berupa JPG/PDF!</div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="lunas_pembayaran" class="form-label">Bukti Lunas Pembayaran</label>
-                    <input required class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran">
+                    <input required class="form-control @error('lunas_pembayaran') is-invalid @enderror" type="file"
+                        id="lunas_pembayaran" name="lunas_pembayaran">
+                    <div id="lunas_pembayaran" class="invalid-feedback">File harus berupa JPG//PDF!</div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="khs" class="form-label">Kartu Hasil Studi</label>
-                    <input required class="form-control" type="file" id="khs" name="khs">
+                    <input required class="form-control @error('khs') is-invalid @enderror" type="file" id="khs"
+                        name="khs">
+                    <div id="khs" class="invalid-feedback">File harus berupa PDF!</div>
                 </div>
             </div>
 

@@ -46,10 +46,10 @@ class PendaftaranSeminarController extends Controller
     public function store(Request $request)
     {
         $file = request()->validate([
-            'berkas_ta1' => 'file|max:10120|mimes:doc,docx,pdf,ppt,pptx',
-            'tagihan_uang' => 'file|max:10120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx',
-            'lunas_pembayaran' => 'file|max:10120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx',
-            'khs' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
+            'berkas_ta1' => 'file|max:10120|mimes:pdf',
+            'tagihan_uang' => 'file|max:10120|mimes:jpg,jpeg,pdf',
+            'lunas_pembayaran' => 'file|max:10120|mimes:jpg,jpeg,pdf',
+            'khs' => 'file|max:5120|mimes:pdf'
         ]);
 
         if (request()->file('berkas_ta1')) {

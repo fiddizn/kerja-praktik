@@ -29,7 +29,9 @@
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="berkas_ta1" class="form-label">Berkas Proposal</label>
-                    <input class="form-control" type="file" id="berkas_ta1" name="berkas_ta1">
+                    <input class="form-control @error('berkas_ta1') is-invalid @enderror" type="file" id="berkas_ta1"
+                        name="berkas_ta1">
+                    <div id="berkas_ta1" class="invalid-feedback">File harus berupa WORD/PDF!</div>
                 </div>
             </div>
             <div class="row mt-4">
@@ -37,13 +39,15 @@
                     <label for="tagihan_uang" class="form-label">Tagihan Uang Kuliah</label>
                     <input class="form-control @error('tagihan_uang') is-invalid @enderror" type="file"
                         id="tagihan_uang" name="tagihan_uang" required>
-                    <div id="tagihan_uang" class="invalid-feedback">File harus berupa PDF!</div>
+                    <div id="tagihan_uang" class="invalid-feedback">File harus berupa WORD/PDF!</div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="lunas_pembayaran" class="form-label">Bukti Lunas Pembayaran</label>
-                    <input class="form-control" type="file" id="lunas_pembayaran" name="lunas_pembayaran" required>
+                    <input class="form-control @error('lunas_pembayaran') is-invalid @enderror" type="file"
+                        id="lunas_pembayaran" name="lunas_pembayaran" required>
+                    <div id="lunas_pembayaran" class="invalid-feedback">File harus berupa JPG/PNG/PDF!</div>
                 </div>
             </div>
             <div class="col-12 mt-4">

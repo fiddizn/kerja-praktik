@@ -15,29 +15,29 @@
         <div class="col-md-6 p-2">
             <h6 style="text-align:center;">Pembimbing 1</h6>
             <label for="alt1_p1" class="form-label error">Alternatif 1</label>
-            <select type="text" class="form-select" name="alt1_p1" id="alt1_p1">
-                <option disabled selected>Pilih.. </option>
+            <select required type="text" class="form-select" name="alt1_p1" id="alt1_p1">
+                <option disabled selected value="">Pilih.. </option>
                 @foreach ($list_p1 as $p1)
                 <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfung->name }})</option>
                 @endforeach
             </select>
             <label for="alt2_p1" class="form-label mt-2">Alternatif 2</label>
-            <select type="text" class="form-select" name="alt2_p1" id="alt2_p1">
-                <option disabled selected>Pilih.. </option>
+            <select required type="text" class="form-select" name="alt2_p1" id="alt2_p1">
+                <option disabled selected value="">Pilih.. </option>
                 @foreach ($list_p1 as $p1)
                 <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfung->name }})</option>
                 @endforeach
             </select>
             <label for="alt3_p1" class="form-label mt-2 ">Alternatif 3</label>
-            <select type="text" class="form-select" name="alt3_p1" id="alt3_p1">
-                <option disabled selected>Pilih.. </option>
+            <select required type="text" class="form-select" name="alt3_p1" id="alt3_p1">
+                <option disabled selected value="">Pilih.. </option>
                 @foreach ($list_p1 as $p1)
                 <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfung->name }})</option>
                 @endforeach
             </select>
             <label for="alt4_p1" class="form-label mt-2">Alternatif 4</label>
-            <select type="text" class="form-select" name="alt4_p1" id="alt4_p1">
-                <option disabled selected>Pilih.. </option>
+            <select required type="text" class="form-select" name="alt4_p1" id="alt4_p1">
+                <option disabled selected value="">Pilih.. </option>
                 @foreach ($list_p1 as $p1)
                 <option>{{ $p1->dosen->name }} ({{ $p1->dosen->jabfung->name }})</option>
                 @endforeach
@@ -46,29 +46,29 @@
         <div class="col-md-6 p-2">
             <h6 style="text-align:center;">Pembimbing 2</h6>
             <label for="alt1_p2" class="form-label">Alternatif 1</label>
-            <select type="text" class="form-select" name="alt1_p2" id="alt1_p2">
-                <option disabled selected>Pilih.. </option>
+            <select required type="text" class="form-select" name="alt1_p2" id="alt1_p2">
+                <option disabled selected value="">Pilih.. </option>
                 @foreach ($list_p2 as $p2)
                 <option>{{ $p2->name }} ({{ $p2->jabfung->name }})</option>
                 @endforeach
             </select>
             <label for="alt2_p2" class="form-label mt-2">Alternatif 2</label>
-            <select type="text" class="form-select" name="alt2_p2" id="alt2_p2">
-                <option disabled selected>Pilih.. </option>
+            <select required type="text" class="form-select" name="alt2_p2" id="alt2_p2">
+                <option disabled selected value="">Pilih.. </option>
                 @foreach ($list_p2 as $p2)
                 <option>{{ $p2->name }} ({{ $p2->jabfung->name }})</option>
                 @endforeach
             </select>
             <label for="alt3_p2" class="form-label mt-2">Alternatif 3</label>
-            <select type="text" class="form-select" name="alt3_p2" id="alt3_p2">
-                <option disabled selected>Pilih.. </option>
+            <select required type="text" class="form-select" name="alt3_p2" id="alt3_p2">
+                <option disabled selected value="">Pilih.. </option>
                 @foreach ($list_p2 as $p2)
                 <option>{{ $p2->name }} ({{ $p2->jabfung->name }})</option>
                 @endforeach
             </select>
             <label for="alt4_p2" class="form-label mt-2">Alternatif 4</label>
-            <select type="text" class="form-select" name="alt4_p2" id="alt4_p2">
-                <option disabled selected>Pilih.. </option>
+            <select required type="text" class="form-select" name="alt4_p2" id="alt4_p2">
+                <option disabled selected value="">Pilih.. </option>
                 @foreach ($list_p2 as $p2)
                 <option>{{ $p2->name }} ({{ $p2->jabfung->name }})</option>
                 @endforeach

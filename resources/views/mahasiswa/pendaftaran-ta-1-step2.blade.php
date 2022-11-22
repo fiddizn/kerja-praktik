@@ -270,27 +270,27 @@
             </div>
             <div class="col-md-3">
                 <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
-                <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0"
+                <input type="number" min="0" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d"
                     value="{{ $pendaftaran->jumlah_teori_d }}" required>
             </div>
             <div class="col-md-3">
                 <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
-                <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" placeholder="0"
+                <input type="number" min="0" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d"
                     value="{{ $pendaftaran->jumlah_prak_d }}" required>
             </div>
             <div class="col-md-3">
                 <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
-                <input type="number" class="form-control" name="jumlah_e" id="jumlah_e" placeholder="0"
+                <input type="number" min="0" class="form-control" name="jumlah_e" id="jumlah_e"
                     value="{{ $pendaftaran->jumlah_e }}" required>
             </div>
             <div class="col-md-3">
                 <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
-                <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks" placeholder="138"
+                <input type="number" min="0" class="form-control" name="jumlah_sks" id="jumlah_sks"
                     value="{{ $pendaftaran->jumlah_sks }}" required>
             </div>
             <div class="col-md-3">
                 <label for="ipk" class="form-label">IPK</label>
-                <input type="number" step="0.01" class="form-control" name="ipk" id="ipk" placeholder="3.10"
+                <input type="number" min="0" max="4" step="0.01" class="form-control" name="ipk" id="ipk"
                     value="{{ $pendaftaran->ipk }}" required>
             </div>
 
@@ -298,7 +298,9 @@
             <div class="row mt-4">
                 <div class="col-md-5">
                     <label for="khs" class="form-label">Kartu Hasil Studi</label>
-                    <input class="form-control" type="file" id="khs" name="khs" required>
+                    <input class="form-control @error('khs') is-invalid @enderror" type="file" id="khs" name="khs"
+                        required>
+                    <div id="khs" class="invalid-feedback">File harus berupa WORD/PDF!</div>
                 </div>
             </div>
 

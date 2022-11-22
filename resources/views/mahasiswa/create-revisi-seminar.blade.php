@@ -1,13 +1,12 @@
 @extends('layouts/main')
 @section('container')
-
-
 <h2 class="text-center mb-5">{{ $title }}</h2>
 <form action="/mahasiswa/revisi-seminar/create" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label for="file" class="form-label">Proposal TA 1 yang sudah direvisi</label>
-        <input class="form-control" type="file" id="file" name="file" required>
+        <input class="form-control @error('file') is-invalid @enderror" type="file" id="file" name="file" required>
+        <div id="file" class="invalid-feedback">File harus berupa PDF!</div>
     </div>
     <div>
         <a class="btn my-3" href="/mahasiswa/revisi-seminar" role="button"

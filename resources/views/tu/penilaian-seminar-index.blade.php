@@ -41,10 +41,55 @@
             <th scope="col">NIM</th>
             <th scope="col">Nama</th>
             <th scope="col">Peminatan</th>
+            <th scope="col">Nilai Akhir</th>
             <th scope="col">Aksi</th>
         </tr>
     </thead>
     @foreach ($penilaianseminars as $key=> $penilaianseminar)
+    <?php
+    $nilaiAkhir = ((($penilaianseminar->p1_materi
+        + $penilaianseminar->p1_pencapaian
+        + $penilaianseminar->p1_kedisiplinan
+        + $penilaianseminar->p1_pemahaman
+        + $penilaianseminar->p2_materi
+        + $penilaianseminar->p2_pencapaian
+        + $penilaianseminar->p2_kedisiplinan
+        + $penilaianseminar->p2_pemahaman
+    ) / 2) * 40 / 100)
+        + ((($penilaianseminar->p1_presentasi
+            + $penilaianseminar->p1_dokumentasi
+            + $penilaianseminar->p1_rumusanMasalah
+            + $penilaianseminar->p1_metodeDanPustaka
+            + $penilaianseminar->p2_presentasi
+            + $penilaianseminar->p2_dokumentasi
+            + $penilaianseminar->p2_rumusanMasalah
+            + $penilaianseminar->p2_metodeDanPustaka
+        ) / 2) * 30 / 100)
+        + ((($penilaianseminar->r1_presentasi
+            + $penilaianseminar->r1_dokumentasi
+            + $penilaianseminar->r1_rumusanMasalah
+            + $penilaianseminar->r1_metodeDanPustaka
+            + $penilaianseminar->r2_presentasi
+            + $penilaianseminar->r2_dokumentasi
+            + $penilaianseminar->r2_rumusanMasalah
+            + $penilaianseminar->r2_metodeDanPustaka
+        ) / 2) * 30 / 100);
+    if ($nilaiAkhir >= 80) {
+        $nilaiMutu = 'A';
+    } elseif ($nilaiAkhir < 80 && $nilaiAkhir >= 75) {
+        $nilaiMutu = 'AB';
+    } elseif ($nilaiAkhir < 75 && $nilaiAkhir >= 69) {
+        $nilaiMutu = 'B';
+    } elseif ($nilaiAkhir < 69 && $nilaiAkhir >= 60) {
+        $nilaiMutu = 'BC';
+    } elseif ($nilaiAkhir < 60 && $nilaiAkhir >= 55) {
+        $nilaiMutu = 'C';
+    } elseif ($nilaiAkhir < 55 && $nilaiAkhir >= 50) {
+        $nilaiMutu = 'D';
+    } elseif ($nilaiAkhir < 50) {
+        $nilaiMutu = 'E';
+    }
+    ?>
     <form method="post" action="/tu/penilaian-seminar/{{ $penilaianseminar->id }}/rilis">
         @csrf
         <tbody>
@@ -53,6 +98,7 @@
                 <td>{{ $penilaianseminar->mahasiswa->nim }}</td>
                 <td>{{ $penilaianseminar->mahasiswa->name }}</td>
                 <td>{{ $penilaianseminar->mahasiswa->pendaftaran->peminatan }}</td>
+                <td>{{ $nilaiMutu }}</td>
                 <td> <a class="btn" href="/tu/penilaian-seminar/{{ $penilaianseminar->id }}" role="button"
                         style="background-color:#ff8c1a;"><i class="fa-solid fa-circle-info"></i>
                         Detail</a>

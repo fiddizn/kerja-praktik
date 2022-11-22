@@ -37,11 +37,15 @@
 </div>
 <div class="form-group row">
     <label for="r1_catatan" class="col-sm-3 col-form-label">Catatan Seminar</label>
-    <div class="col-sm-3">
-        <input type="text" class="form-control" id="r1_catatan" name="r1_catatan"
-            value="{{ $penilaianSeminar->r1_catatan }}" disabled>
+    <div class="">
+        <div class="card mb-3">
+            <div class="card-body">
+                {!! $penilaianSeminar->r1_catatan !!}
+            </div>
+        </div>
     </div>
 </div>
+@if (isset($penilaianSeminar->r1_file))
 <div class="form-group row">
     <label for="r1_file" class="col-sm-3 col-form-label">File Proposal Catatan Revisi</label>
     <div class="col-sm-3">
@@ -49,6 +53,7 @@
             href="/dosen/reviewer-1/penilaian-seminar/{{ $penilaianSeminar->id }}/downloadFile">Download</a>
     </div>
 </div>
+@endif
 <div class="position-relative">
     <a class="btn my-3
     " href="/dosen/reviewer-1/penilaian-seminar" role="button"

@@ -115,6 +115,43 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="row m-3">
+                <h5 style="text-align:center;">Nilai Akhir</h5>
+                <h5 style="text-align:center;">{{
+                    (((
+                        $penilaianseminar->p1_materi
+                        + $penilaianseminar->p1_pencapaian
+                        + $penilaianseminar->p1_kedisiplinan
+                        + $penilaianseminar->p1_pemahaman
+                        + $penilaianseminar->p2_materi
+                        + $penilaianseminar->p2_pencapaian
+                        + $penilaianseminar->p2_kedisiplinan
+                        + $penilaianseminar->p2_pemahaman
+                    )/2)*40/100)
+
+                    +(((
+                        $penilaianseminar->p1_presentasi
+                        + $penilaianseminar->p1_dokumentasi
+                        + $penilaianseminar->p1_rumusanMasalah
+                        + $penilaianseminar->p1_metodeDanPustaka
+                        + $penilaianseminar->p2_presentasi
+                        + $penilaianseminar->p2_dokumentasi
+                        + $penilaianseminar->p2_rumusanMasalah
+                        + $penilaianseminar->p2_metodeDanPustaka
+                    )/2)*30/100)
+                    
+                    +(((
+                        $penilaianseminar->r1_presentasi
+                        + $penilaianseminar->r1_dokumentasi
+                        + $penilaianseminar->r1_rumusanMasalah
+                        + $penilaianseminar->r1_metodeDanPustaka
+                        + $penilaianseminar->r2_presentasi
+                        + $penilaianseminar->r2_dokumentasi
+                        + $penilaianseminar->r2_rumusanMasalah
+                        + $penilaianseminar->r2_metodeDanPustaka
+                    )/2)*30/100)
+                }}</h5>
+            </div>
         </div>
 
         <div class="col-12 my-2">

@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 <h2 class="text-center">Form Review Proposal</h2>
-<form action="/dosen/reviewer-1/review-proposal/formReview-{{ $review->id }}" method="post"
+<form id="formReview" action="/dosen/reviewer-1/review-proposal/formReview-{{ $review->id }}" method="post"
     enctype="multipart/form-data">
     @csrf
     <div class="row align-items-start mt-2">
@@ -102,7 +102,9 @@
         <div class="row g-3">
             <div class="col-md-5">
                 <label for="proposal" class="form-label">Dokumen Proposal yang sudah diberi komentar/revisi</label>
-                <input class="form-control" type="file" id="proposal" name="proposal">
+                <input class="form-control @error('proposal') is-invalid @enderror" type="file" id="proposal"
+                    name="proposal">
+                <div id="proposal" class="invalid-feedback">File harus berupa WORD/PDF!</div>
             </div>
         </div>
         @else
@@ -189,7 +191,9 @@
                 <div class="col-md-5">
                     <label for="proposal" class="form-label">Dokumen Proposal yang sudah diberi
                         komentar/revisi</label>
-                    <input class="form-control" type="file" id="proposal" name="proposal">
+                    <input class="form-control @error('proposal') is-invalid @enderror" type="file" id="proposal"
+                        name="proposal">
+                    <div id="proposal" class="invalid-feedback">File harus berupa WORD/PDF!</div>
                 </div>
             </div>
             @endif
@@ -202,4 +206,5 @@
             </div>
 </form>
 </div>
+<script type="text/javascript" src="/js/requiredCatatanReviewP1.js"></script>
 @endsection
