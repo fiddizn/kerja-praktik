@@ -36,14 +36,14 @@
     <div class="mb-3 row">
         <label class="col-sm-2 col-form-label" for="password">Password</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="password" name="password" placeholder="Enter password.."
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password.."
                 required>
         </div>
     </div>
     <div class="mb-3 row">
         <label class="col-sm-2 col-form-label" for="confirmpassword">Confirm Password</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="confirmpassword" name="confirmpassword"
+            <input type="password" class="form-control" id="confirmpassword" name="confirmpassword"
                 placeholder="Enter password.." required>
         </div>
     </div>

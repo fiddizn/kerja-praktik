@@ -109,7 +109,7 @@
             $angkatan = '20' . $angkatan;
             ?>
             <div class="col-md-6">
-                <label for="angkatan" class="form-label">Angkatannn</label>
+                <label for="angkatan" class="form-label">Angkatan</label>
                 <input type="text" class="form-control" name="angkatan" id="angkatan" value="{{$angkatan}}" readonly>
             </div>
 

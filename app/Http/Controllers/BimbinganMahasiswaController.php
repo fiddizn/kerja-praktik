@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bimbingan;
 use App\Models\ListBimbingan;
+use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
@@ -20,16 +22,20 @@ class BimbinganMahasiswaController extends Controller
 
     public function show($id)
     {
+        $nama_mhs = Mahasiswa::where('id', $id)->first()->name;
+        $nim_mhs = Mahasiswa::where('id', $id)->first()->nim;
         $bimbingans = \App\Models\ListBimbingan::with('bimbingan', 'mahasiswa')->oldest()->where('is_p1', 1)->whereHas('bimbingan', function ($query) use ($id) {
             $query->where('pembimbing1_id', auth()->user()->pembimbing1->id)->where('mahasiswa_id', $id);
-        })->get();
+        })->paginate(5);
         return view(
             'dosen.pembimbing.form-bimbingan',
             [
                 'title' => 'Form Bimbingan',
                 'role' => 'Pembimbing 1',
                 'bimbingans' => $bimbingans,
-                'mahasiswa_id' => $id
+                'mahasiswa_id' => $id,
+                'nim' => $nim_mhs,
+                'name' => $nama_mhs,
             ]
         );
     }
