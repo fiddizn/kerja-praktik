@@ -65,24 +65,35 @@
                 <select required type="text" class="form-select" name="angkatan" id="angkatan">
                     @if (auth()->user()->pendaftaran->angkatan == "2016")
                     <option value="" disabled>Pilih...</option>
+                    <option>2015</option>
                     <option selected>2016</option>
                     <option>2017</option>
                     <option>2018</option>
                     <option>2019</option>
                     @elseif (auth()->user()->pendaftaran->angkatan == "2017")
                     <option value="" disabled>Pilih...</option>
+                    <option>2015</option>
                     <option>2016</option>
                     <option selected>2017</option>
                     <option>2018</option>
                     <option>2019</option>
+                    @elseif (auth()->user()->pendaftaran->angkatan == "2015")
+                    <option value="" disabled>Pilih...</option>
+                    <option selected>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
                     @elseif (auth()->user()->pendaftaran->angkatan == "2018")
                     <option value="" disabled>Pilih...</option>
+                    <option>2015</option>
                     <option>2016</option>
                     <option>2017</option>
                     <option selected>2018</option>
                     <option>2019</option>
                     @elseif (auth()->user()->pendaftaran->angkatan == "2019")
                     <option value="" disabled>Pilih...</option>
+                    <option>2015</option>
                     <option>2016</option>
                     <option>2017</option>
                     <option>2018</option>
@@ -290,7 +301,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
-                    <label for="berkas_ta1" class="form-label">Berkas Proposal</label>
+                    <label for="berkas_ta1" class="form-label">Draft Proposal</label>
                     <input required class="form-control @error('berkas_ta1') is-invalid @enderror" type="file"
                         id="berkas_ta1" name="berkas_ta1">
                     <div id="berkas_ta1" class="invalid-feedback">File harus berupa PDF!</div>

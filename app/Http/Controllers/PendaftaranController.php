@@ -34,6 +34,9 @@ class PendaftaranController extends Controller
 
     public function storeStep1(Request $request)
     {
+        if (KunciPendaftaran::first()->administrasi == 1) {
+            return redirect()->intended('/mahasiswa')->with('gagal', 'Maaf, pendaftaran sudah ditutup!');
+        }
         if (!isset(auth()->user()->pendaftaran)) {
             $pendaftaran = Pendaftaran::create([
                 'mahasiswa_id' => auth()->user()->mahasiswa->id,
@@ -64,6 +67,9 @@ class PendaftaranController extends Controller
 
     public function step2()
     {
+        if (KunciPendaftaran::first()->administrasi == 1) {
+            return redirect()->intended('/mahasiswa')->with('gagal', 'Maaf, pendaftaran sudah ditutup!');
+        }
         if (isset(auth()->user()->pendaftaran->alt4_p2)) {
             return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
         } else {
@@ -119,6 +125,9 @@ class PendaftaranController extends Controller
 
     public function step3()
     {
+        if (KunciPendaftaran::first()->administrasi == 1) {
+            return redirect()->intended('/mahasiswa')->with('gagal', 'Maaf, pendaftaran sudah ditutup!');
+        }
         if (isset(auth()->user()->pendaftaran->alt4_p2)) {
             return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
         } else {
@@ -168,6 +177,9 @@ class PendaftaranController extends Controller
 
     public function step4()
     {
+        if (KunciPendaftaran::first()->administrasi == 1) {
+            return redirect()->intended('/mahasiswa')->with('gagal', 'Maaf, pendaftaran sudah ditutup!');
+        }
         if (isset(auth()->user()->pendaftaran->alt4_p2)) {
             return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
         } else {

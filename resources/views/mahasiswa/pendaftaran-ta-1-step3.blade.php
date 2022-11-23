@@ -28,7 +28,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
-                    <label for="berkas_ta1" class="form-label">Berkas Proposal</label>
+                    <label for="berkas_ta1" class="form-label">Draft Proposal</label>
                     <input class="form-control @error('berkas_ta1') is-invalid @enderror" type="file" id="berkas_ta1"
                         name="berkas_ta1">
                     <div id="berkas_ta1" class="invalid-feedback">File harus berupa WORD/PDF!</div>

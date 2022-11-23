@@ -269,23 +269,23 @@
 
             </div>
             <div class="col-md-3">
-                <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
-                <input type="number" min="0" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d"
+                <label for="jumlah_teori_d" class="form-label">Jumlah SKS yang bernilai D (Teori)</label>
+                <input type="number" min="0" max="140" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d"
                     value="{{ $pendaftaran->jumlah_teori_d }}" required>
             </div>
             <div class="col-md-3">
-                <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
-                <input type="number" min="0" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d"
+                <label for="jumlah_prak_d" class="form-label">Jumlah SKS yang bernilai D (Prak)</label>
+                <input type="number" min="0" max="140" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d"
                     value="{{ $pendaftaran->jumlah_prak_d }}" required>
             </div>
             <div class="col-md-3">
-                <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
-                <input type="number" min="0" class="form-control" name="jumlah_e" id="jumlah_e"
+                <label for="jumlah_e" class="form-label">Jumlah SKS yang bernilai E</label>
+                <input type="number" min="0" max="140" class="form-control" name="jumlah_e" id="jumlah_e"
                     value="{{ $pendaftaran->jumlah_e }}" required>
             </div>
             <div class="col-md-3">
                 <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
-                <input type="number" min="0" class="form-control" name="jumlah_sks" id="jumlah_sks"
+                <input type="number" min="0" max="160" class="form-control" name="jumlah_sks" id="jumlah_sks"
                     value="{{ $pendaftaran->jumlah_sks }}" required>
             </div>
             <div class="col-md-3">

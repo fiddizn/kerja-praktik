@@ -22,20 +22,20 @@
                 <input type="number" class="form-control" name="nim" id="nim"
                     value="{{ auth()->user()->mahasiswa->nim }}" disabled>
             </div>
+            <?php
+            $nim = auth()->user()->mahasiswa->nim;
+            $angkatan = $nim % 3411000000;
+            $angkatan = $angkatan / 10000;
+            $angkatan = (string) $angkatan;
+
+            $angkatan = substr($angkatan, 0, 2);
+            $angkatan = '20' . $angkatan;
+            ?>
             <div class="col-md-6">
-                <label for="gender" class="form-label">Jenis Kelamin</label>
-                <select type="text" class="form-select" name="gender" id="gender">
-                    @if ($pendaftaran->gender == 'Laki-laki')
-                    <option disabled>Pilih...</option>
-                    <option selected>Laki-laki</option>
-                    <option>Perempuan</option>
-                    @else
-                    <option disabled>Pilih...</option>
-                    <option>Laki-laki</option>
-                    <option selected>Perempuan</option>
-                    @endif
-                </select>
+                <label for="angkatan" class="form-label">Angkatan</label>
+                <input type="text" class="form-control" name="angkatan" id="angkatan" value="{{$angkatan}}" readonly>
             </div>
+
             <div class="col-md-6">
                 <label for="name" class="form-label">Nama Lengkap</label>
                 <input type="text" class="form-control" name="name" id="name"
@@ -61,23 +61,16 @@
                     min="1996-01-01" max="2002-12-31" value="{{ $pendaftaran->tempat_lahir}}">
             </div>
             <div class="col-md-6">
-                <label for="angkatan" class="form-label">Angkatan</label>
-                <select type="text" class="form-select" name="angkatan" id="angkatan">
-                    @if ($pendaftaran->angkatan == '2017')
+                <label for="gender" class="form-label">Jenis Kelamin</label>
+                <select type="text" class="form-select" name="gender" id="gender">
+                    @if ($pendaftaran->gender == 'Laki-laki')
                     <option disabled>Pilih...</option>
-                    <option selected>2017</option>
-                    <option>2018</option>
-                    <option>2019</option>
-                    @elseif ($pendaftaran->angkatan == '2018')
-                    <option disabled>Pilih...</option>
-                    <option>2017</option>
-                    <option selected>2018</option>
-                    <option>2019</option>
+                    <option selected>Laki-laki</option>
+                    <option>Perempuan</option>
                     @else
                     <option disabled>Pilih...</option>
-                    <option>2017</option>
-                    <option>2018</option>
-                    <option selected>2019</option>
+                    <option>Laki-laki</option>
+                    <option selected>Perempuan</option>
                     @endif
                 </select>
             </div>
@@ -106,14 +99,20 @@
                 <input type="number" class="form-control" name="nim" id="nim"
                     value="{{ auth()->user()->mahasiswa->nim }}" required disabled>
             </div>
+            <?php
+            $nim = auth()->user()->mahasiswa->nim;
+            $angkatan = $nim % 3411000000;
+            $angkatan = $angkatan / 10000;
+            $angkatan = (string) $angkatan;
+
+            $angkatan = substr($angkatan, 0, 2);
+            $angkatan = '20' . $angkatan;
+            ?>
             <div class="col-md-6">
-                <label for="gender" class="form-label">Jenis Kelamin</label>
-                <select type="text" class="form-select" name="gender" id="gender" required>
-                    <option value="" selected disabled>Pilih...</option>
-                    <option>Laki-laki</option>
-                    <option>Perempuan</option>
-                </select>
+                <label for="angkatan" class="form-label">Angkatannn</label>
+                <input type="text" class="form-control" name="angkatan" id="angkatan" value="{{$angkatan}}" readonly>
             </div>
+
             <div class="col-md-6">
                 <label for="name" class="form-label">Nama Lengkap</label>
                 <input type="text" class="form-control" name="name" id="name"
@@ -133,12 +132,11 @@
                     required>
             </div>
             <div class="col-md-6">
-                <label for="angkatan" class="form-label">Angkatan</label>
-                <select type="text" class="form-select" name="angkatan" id="angkatan" required>
-                    <option value="" disabled selected>Pilih...</option>
-                    <option>2017</option>
-                    <option>2018</option>
-                    <option>2019</option>
+                <label for="gender" class="form-label">Jenis Kelamin</label>
+                <select type="text" class="form-select" name="gender" id="gender" required>
+                    <option value="" selected disabled>Pilih...</option>
+                    <option>Laki-laki</option>
+                    <option>Perempuan</option>
                 </select>
             </div>
             <div class="col-md-6">
