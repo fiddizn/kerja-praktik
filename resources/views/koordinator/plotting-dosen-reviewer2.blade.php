@@ -121,7 +121,7 @@
                 </a>
                 @endif
             </th>
-            <th scope="col">U3
+            <th scope="col">Penguji 1
                 @if ($sortAsc == 'ASC' && $sortBy == 'r1')
                 <a
                     href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=r1&sortAsc={{$sortAsc=='ASC'&&$sortBy=='r1'?'DESC':'ASC'}}">
@@ -148,7 +148,7 @@
                 </a>
                 @endif
             </th>
-            <th scope="col">U4
+            <th scope="col">Penguji 2
                 @if ($sortAsc == 'ASC' && $sortBy == 'r2')
                 <a
                     href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=r2&sortAsc={{$sortAsc=='ASC'&&$sortBy=='r2'?'DESC':'ASC'}}">

@@ -230,7 +230,7 @@
         style="width: 5rem;background-color:#ff8c1a;">Back</a>
     @endif
     <button form="formPlottingP1P2" type="submit" class="btn ms-3"
-        style="width: 5rem;background-color:#ff8c1a;">Sumbit</button>
+        style="width: 5rem;background-color:#ff8c1a;">Submit</button>
 </div>
 <script type="text/javascript" src="/js/validasiJabfunP1P2.js"></script>
 <script type="text/javascript" src="/js/validasiP1P2.js"></script>

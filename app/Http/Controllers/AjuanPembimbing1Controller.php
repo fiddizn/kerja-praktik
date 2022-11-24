@@ -10,7 +10,6 @@ class AjuanPembimbing1Controller extends Controller
     public function index()
     {
         $namaDosenDanJabfung = auth()->user()->pembimbing1->dosen->name . ' (' .  auth()->user()->dosen->jabfung->name . ')';
-
         $pendaftarans = Pendaftaran::where('alt1_p1', $namaDosenDanJabfung)
             ->orWhere('alt2_p1', $namaDosenDanJabfung)
             ->orWhere('alt3_p1', $namaDosenDanJabfung)

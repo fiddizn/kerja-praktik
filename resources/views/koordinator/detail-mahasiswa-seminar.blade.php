@@ -211,7 +211,7 @@
         <div class="mt-4">
         </div>
 
-        <h5 style="text-align:center;">Siswa di atas dinyatakan:</h5>
+        <h5 style="text-align:center;">Mahasiswa di atas dinyatakan:</h5>
         <div class="d-flex justify-content-center mt-3 ">
             @if ($status == null)
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">

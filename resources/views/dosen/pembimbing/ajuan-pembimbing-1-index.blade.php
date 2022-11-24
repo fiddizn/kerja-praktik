@@ -80,17 +80,17 @@
                         @endif
                         <td>
                             @if ($item[$ajuanAlternatif] != 1)
-                            <a class="btn btn-success"
+                            <a class="btn btn-success" title="Setuju ajuan"
                                 href="/dosen/pembimbing-1/ajuan-pembimbing-1/setuju-{{ $item->id }}-{{ $ajuanAlternatif }}"
                                 type="submit"><i class="fa-solid fa-square-check"></i></a>
                             @endif
                             @if ($item[$ajuanAlternatif] != 0 || !isset($item[$ajuanAlternatif]))
-                            <a class="btn btn-danger"
+                            <a class="btn btn-danger" title="Tolak ajuan"
                                 href="/dosen/pembimbing-1/ajuan-pembimbing-1/tolak-{{ $item->id }}-{{ $ajuanAlternatif }}"
                                 type="submit"><i class="fa-solid fa-square-xmark"></i></a>
                             @endif
                             @if (isset($item[$ajuanAlternatif]))
-                            <a class="btn btn-dark"
+                            <a class="btn btn-dark" title="Atur ulang"
                                 href="/dosen/pembimbing-1/ajuan-pembimbing-1/reset-{{ $item->id }}-{{ $ajuanAlternatif }}"
                                 type="submit"><i class="fa-solid fa-arrow-rotate-left"></i></a>
                             @endif

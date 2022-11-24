@@ -22,7 +22,7 @@ null && $penilaianseminar->p2_catatan == null)
 <div class="container">
     <div class="row align-items-start">
         <div class="col-6">
-            <h3 class="text-center mb-3">Penguji 1</h3>
+            <h3 class="text-center mb-3">Pembimbing 1</h3>
             <label class="form-label">Catatan Seminar</label>
             <div class="card mb-3">
                 <div class="card-body">
@@ -31,7 +31,7 @@ null && $penilaianseminar->p2_catatan == null)
             </div>
         </div>
         <div class="col-6">
-            <h3 class="text-center mb-3">Penguji 2</h3>
+            <h3 class="text-center mb-3">Pembimbing 2</h3>
             <label class="form-label">Catatan Seminar</label>
             <div class="card mb-3">
                 <div class="card-body">
@@ -40,7 +40,7 @@ null && $penilaianseminar->p2_catatan == null)
             </div>
         </div>
         <div class="col-6">
-            <h3 class="text-center mb-3">Penguji 3</h3>
+            <h3 class="text-center mb-3">Penguji 1</h3>
             <label class="form-label">Catatan Seminar</label>
             <div class="card mb-3">
                 <div class="card-body">
@@ -57,7 +57,7 @@ null && $penilaianseminar->p2_catatan == null)
             </div>
         </div>
         <div class="col-6">
-            <h3 class="text-center mb-3">Penguji 4</h3>
+            <h3 class="text-center mb-3">Penguji 2</h3>
             <label class="form-label">Catatan Seminar</label>
             <div class="card mb-3">
                 <div class="card-body">

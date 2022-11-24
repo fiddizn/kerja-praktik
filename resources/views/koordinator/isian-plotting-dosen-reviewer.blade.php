@@ -72,7 +72,7 @@
 <div class="row mt-2">
     <a class="btn" href="/koordinator/plotting-dosen-reviewer" role="button"
         style="width: 5rem;background-color:#ff8c1a;">Back</a>
-    <button form="plotting" type="submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">Sumbit</button>
+    <button form="plotting" type="submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">Submit</button>
 </div>
 
 @endsection

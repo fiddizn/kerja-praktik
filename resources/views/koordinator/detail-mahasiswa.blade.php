@@ -1,6 +1,6 @@
 @extends('layouts/main')
 @section('container')
-<h2 style="text-align:center;">Seleksi Adiministrasi</h2>
+<h2 style="text-align:center;">Seleksi Administrasi</h2>
 
 <div class="row align-items-start mt-3">
     <div class="row g-3">
@@ -255,7 +255,7 @@
         <div class="mt-4">
         </div>
 
-        <h5 style="text-align:center;">Siswa di atas dinyatakan:</h5>
+        <h5 style="text-align:center;">Mahasiswa di atas dinyatakan:</h5>
         <div class="d-flex justify-content-center mt-3 ">
             @if ($status == null)
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">

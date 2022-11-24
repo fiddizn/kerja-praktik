@@ -19,8 +19,8 @@ class JadwalSeminarController extends Controller
     public function store()
     {
         $file = request()->validate([
-            'mahasiswa' => 'file|max:5120|mimes:doc,docx,pdf',
-            'dosen' => 'file|max:5120|mimes:doc,docx,pdf'
+            'mahasiswa' => 'file|max:5120|mimes:pdf',
+            'dosen' => 'file|max:5120|mimes:pdf'
         ]);
 
         if (request()->file('mahasiswa')) {

@@ -28,28 +28,28 @@
             @method('put')
             @csrf
             <div class="row mt-5">
-                <label for="p1" class="col-sm-3 col-form-label">Penguji 1</label>
+                <label for="p1" class="col-sm-3 col-form-label">Pembimbing 1</label>
                 <div class="col">
                     <input type="text" class="form-control" name="p1" id="p1" readonly
                         value="{{ $pembimbing->pembimbing1->dosen->name }}" disabled>
                 </div>
             </div>
             <div class="row mt-3">
-                <label for="p2" class="col-sm-3 col-form-label">Penguji 2</label>
+                <label for="p2" class="col-sm-3 col-form-label">Pembimbing 2</label>
                 <div class="col">
                     <input type="text" class="form-control" name="p2" id="p2" readonly
                         value="{{ $pembimbing->pembimbing2->dosen->name }}" disabled>
                 </div>
             </div>
             <div class="row mt-3">
-                <label for="r1" class="col-sm-3 col-form-label">Penguji 3</label>
+                <label for="r1" class="col-sm-3 col-form-label">Penguji 1</label>
                 <div class="col">
                     <input type="text" class="form-control" name="r1" id="r1" readonly
                         value="{{ $mahasiswa->reviewer1->dosen->name }}" disabled>
                 </div>
             </div>
             <div class="row mt-3">
-                <label for="r2" class="col-sm-3 col-form-label">Penguji 4</label>
+                <label for="r2" class="col-sm-3 col-form-label">Penguji 2</label>
                 <div class="col">
                     <select type="text" class="form-select" name="r2" id="r2" required>
                         <option value="" selected disabled>Pilih...</option>
@@ -92,7 +92,7 @@
 <div class="row mt-2">
     <a class="btn" href="/koordinator/plotting-dosen-reviewer2" role="button"
         style="width: 5rem;background-color:#ff8c1a;">Back</a>
-    <button form="plotting" type="submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">Sumbit</button>
+    <button form="plotting" type="submit" class="btn ms-3" style="width: 5rem;background-color:#ff8c1a;">Submit</button>
 </div>
 
 @endsection

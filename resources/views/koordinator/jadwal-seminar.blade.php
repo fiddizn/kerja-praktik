@@ -14,11 +14,14 @@
     <div class="d-flex justify-content-around mt-5">
         <div>
             <label for="mahasiswa" class="form-label" style="text-align: center;">Jadwal Seminar Mahasiswa</label>
-            <input class="form-control form-control" type="file" id="mahasiswa" name="mahasiswa">
+            <input class="form-control @error('mahasiswa') is-invalid @enderror" type="file" id="mahasiswa"
+                name="mahasiswa">
+            <div id="mahasiswa" class="invalid-feedback">File harus berupa PDF!</div>
         </div>
         <div>
             <label for="dosen" class="form-label">Jadwal Seminar Dosen</label>
-            <input class="form-control form-control" type="file" id="dosen" name="dosen">
+            <input class="form-control @error('dosen') is-invalid @enderror" type="file" id="dosen" name="dosen">
+            <div id="dosen" class="invalid-feedback">File harus berupa PDF!</div>
         </div>
     </div>
     <div style="height:230px;">
