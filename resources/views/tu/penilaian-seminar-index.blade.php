@@ -47,15 +47,18 @@
     </thead>
     @foreach ($penilaianseminars as $key=> $penilaianseminar)
     <?php
-    $nilaiAkhir = ((($penilaianseminar->p1_materi
-        + $penilaianseminar->p1_pencapaian
-        + $penilaianseminar->p1_kedisiplinan
-        + $penilaianseminar->p1_pemahaman
-        + $penilaianseminar->p2_materi
-        + $penilaianseminar->p2_pencapaian
-        + $penilaianseminar->p2_kedisiplinan
-        + $penilaianseminar->p2_pemahaman
-    ) / 2) * 40 / 100)
+    $nilaiAdm = App\Models\Pendaftaran::where('mahasiswa_id', $penilaianseminar->mahasiswa_id)->first()->penilaian;
+
+    $nilaiAkhir = ($nilaiAdm * $administrasi / 100)
+        + ((($penilaianseminar->p1_materi
+            + $penilaianseminar->p1_pencapaian
+            + $penilaianseminar->p1_kedisiplinan
+            + $penilaianseminar->p1_pemahaman
+            + $penilaianseminar->p2_materi
+            + $penilaianseminar->p2_pencapaian
+            + $penilaianseminar->p2_kedisiplinan
+            + $penilaianseminar->p2_pemahaman
+        ) / 2) * $bimbingan / 100)
         + ((($penilaianseminar->p1_presentasi
             + $penilaianseminar->p1_dokumentasi
             + $penilaianseminar->p1_rumusanMasalah
@@ -64,7 +67,7 @@
             + $penilaianseminar->p2_dokumentasi
             + $penilaianseminar->p2_rumusanMasalah
             + $penilaianseminar->p2_metodeDanPustaka
-        ) / 2) * 30 / 100)
+        ) / 2) * $pembimbing / 100)
         + ((($penilaianseminar->r1_presentasi
             + $penilaianseminar->r1_dokumentasi
             + $penilaianseminar->r1_rumusanMasalah
@@ -73,7 +76,7 @@
             + $penilaianseminar->r2_dokumentasi
             + $penilaianseminar->r2_rumusanMasalah
             + $penilaianseminar->r2_metodeDanPustaka
-        ) / 2) * 30 / 100);
+        ) / 2) * $penguji / 100);
     if ($nilaiAkhir >= 80) {
         $nilaiMutu = 'A';
     } elseif ($nilaiAkhir < 80 && $nilaiAkhir >= 75) {

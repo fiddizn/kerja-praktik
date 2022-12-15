@@ -115,10 +115,14 @@
                     </tr>
                 </tbody>
             </table>
+            <?php
+            $nilaiAdm = App\Models\Pendaftaran::where('mahasiswa_id', $penilaianseminar->mahasiswa_id)->first()->penilaian;
+            ?>
             <div class="row m-4">
                 <h5 style="text-align:center;">Nilai Akhir</h5>
                 <h5 style="text-align:center;">{{
-                    (((
+                        ($nilaiAdm*$administrasi/100)
+                    +(((
                         $penilaianseminar->p1_materi
                         + $penilaianseminar->p1_pencapaian
                         + $penilaianseminar->p1_kedisiplinan
@@ -127,8 +131,7 @@
                         + $penilaianseminar->p2_pencapaian
                         + $penilaianseminar->p2_kedisiplinan
                         + $penilaianseminar->p2_pemahaman
-                    )/2)*40/100)
-
+                    )/2)*$bimbingan/100)
                     +(((
                         $penilaianseminar->p1_presentasi
                         + $penilaianseminar->p1_dokumentasi
@@ -138,8 +141,7 @@
                         + $penilaianseminar->p2_dokumentasi
                         + $penilaianseminar->p2_rumusanMasalah
                         + $penilaianseminar->p2_metodeDanPustaka
-                    )/2)*30/100)
-                    
+                    )/2)*$pembimbing/100)
                     +(((
                         $penilaianseminar->r1_presentasi
                         + $penilaianseminar->r1_dokumentasi
@@ -149,7 +151,7 @@
                         + $penilaianseminar->r2_dokumentasi
                         + $penilaianseminar->r2_rumusanMasalah
                         + $penilaianseminar->r2_metodeDanPustaka
-                    )/2)*30/100)
+                    )/2)*$penguji/100)
                 }}</h5>
             </div>
         </div>
