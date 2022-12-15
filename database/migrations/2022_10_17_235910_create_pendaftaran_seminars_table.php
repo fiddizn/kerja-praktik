@@ -54,6 +54,9 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->text('keterangan_status')->nullable();
 
+            // Nilai Pendaftaran Seminar
+            $table->integer('penilaian')->nullable();
+
             $table->timestamps();
         });
     }

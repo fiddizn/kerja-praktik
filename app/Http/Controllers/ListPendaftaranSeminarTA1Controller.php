@@ -44,6 +44,26 @@ class ListPendaftaranSeminarTA1Controller extends Controller
         ]);
     }
 
+    public function showPenilaian($id)
+    {
+        $pendaftaran = PendaftaranSeminar::with('mahasiswa')->find($id);
+        return view('koordinator.penilaian-mahasiswa', [
+            'title' => 'Pendaftaran TA 1',
+            'role' => 'Koordinator',
+            'pendaftaran' => $pendaftaran,
+            'status' => $pendaftaran->status
+        ]);
+    }
+
+    public function storePenilaian($id, Request $request)
+    {
+        PendaftaranSeminar::with('mahasiswa')->find($id)->update([
+            "penilaian" => request('penilaian')
+        ]);
+        PendaftaranSeminar::where('id', $id)->update(['status' => "Lolos"]);
+        return redirect('/koordinator/list-pendaftaran-seminar-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
+    }
+
     public function edit_keterangan_kelolosan($id)
     {
         $pendaftaran = PendaftaranSeminar::with('mahasiswa')->where('id', $id)->get()[0];
@@ -62,7 +82,8 @@ class ListPendaftaranSeminarTA1Controller extends Controller
         }
         PendaftaranSeminar::where('id', $id)->update([
             'status' => request('status'),
-            'keterangan_status' => $syarat
+            'keterangan_status' => $syarat,
+            'penilaian' => request('penilaian')
         ]);
 
         return redirect('/koordinator/list-pendaftaran-seminar-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
@@ -94,8 +115,12 @@ class ListPendaftaranSeminarTA1Controller extends Controller
         $pendaftaran = PendaftaranSeminar::with('mahasiswa')->where('id', $id)->get()[0];
         $mahasiswa_id = $pendaftaran->mahasiswa_id;
         if (request('status') != $pendaftaran->status) {
-            PendaftaranSeminar::where('id', $id)->update(['status' => request('status')]);
-            return redirect('/koordinator/list-pendaftaran-seminar-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
+            if (request('status') == "Lolos") {
+                return redirect('/koordinator/list-pendaftaran-seminar-ta-1/' . $id . '/penilaian')->with('success', 'Status kelolosan telah diperbarui!');
+            } else {
+                PendaftaranSeminar::where('id', $id)->update(['status' => request('status')]);
+                return redirect('/koordinator/list-pendaftaran-seminar-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
+            }
         } else {
             PendaftaranSeminar::where('id', $id)->update([
                 'tempat_lahir' => request('tempat_lahir'),

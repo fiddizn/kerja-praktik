@@ -16,13 +16,18 @@
 <h2 class="text-center">{{ $title }}</h2>
 
 <div class="d-flex mt-4">
-    <div class="me-auto py-2">
+    <div class="py-2">
         <button class="btn" type="submit" style="background-color:#ff8c1a; width:9rem;" form="formRilis"
             onclick="return confirm('Apakah anda yakin ingin merilis hasil review?')"><i
                 class="fa-solid fa-file-export"></i>
             Rilis</button>
     </div>
-    <div class="auto p-2">
+    <div class="me-auto py-2 ms-3">
+        <a class="btn" href="/koordinator/penilaian-seminar/persentase-penilaian" style="background-color:#ff8c1a;"><i
+                class="fa-solid fa-align-left"></i>
+            Persentase Penilaian</a>
+    </div>
+    <div class="p-2">
         <form action="/koordinator/penilaian-seminar">
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"

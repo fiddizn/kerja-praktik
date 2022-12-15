@@ -23,12 +23,14 @@
         </div>
     </div>
     @if ($status == 'Lolos Bersyarat' || $status == 'Lolos')
+    @if (isset(App\Models\JadwalSeminar::where('id',1)->first()->mahasiswa))
     <div class="d-flex justify-content-center mt-5">
         <a class="btn" style="width: auto; background-color:#ff8c1a;"
             href="/mahasiswa/pendaftaran-seminar-ta-1/status/download">Jadwal Seminar <i
                 class="fa-solid fa-download"></i>
         </a>
     </div>
+    @endif
     @endif
 </div>
 

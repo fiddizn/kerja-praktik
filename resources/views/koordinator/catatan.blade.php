@@ -272,6 +272,19 @@
                 <input id="keterangan_status" type="hidden" name="keterangan_status">
                 <trix-editor input="keterangan_status"></trix-editor>
                 <input type="hidden" id="status" name="status" value="Lolos Bersyarat">
+                <div class="row mt-3">
+                    <label for="penilaian">Nilai Pendaftaran Seminar</label>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="number" min="0" max="100" class="form-control" id="penilaian" name="penilaian"
+                            placeholder="Masukkan Nilai" required>
+                    </div>
+                    <!-- <div class="col-md-2">
+                            <button type="submit" class="btn"
+                                style="width: 10rem; background-color:#ff8c1a;">Submit</button>
+                        </div> -->
+                </div>
                 @endif
             </div>
             <div class="col-12 mt-5">

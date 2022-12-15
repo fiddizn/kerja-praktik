@@ -34,6 +34,26 @@ class ListPendaftaranTA1Controller extends Controller
         );
     }
 
+    public function showPenilaian($id)
+    {
+        $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
+        return view('koordinator.penilaian-mahasiswa', [
+            'title' => 'Haha',
+            'role' => 'Koordinator',
+            'pendaftaran' => $pendaftaran,
+            'status' => $pendaftaran->status
+        ]);
+    }
+
+    public function storePenilaian($id, Request $request)
+    {
+        Pendaftaran::with('mahasiswa')->find($id)->update([
+            "penilaian" => request('penilaian')
+        ]);
+        Pendaftaran::where('id', $id)->update(['status' => "Lolos"]);
+        return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
+    }
+
     public function keterangan($id, $kelolosan)
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
@@ -63,7 +83,8 @@ class ListPendaftaranTA1Controller extends Controller
         }
         Pendaftaran::where('id', $id)->update([
             'status' => request('status'),
-            'keterangan_status' => $syarat
+            'keterangan_status' => $syarat,
+            'penilaian' => request('penilaian')
         ]);
 
         if (request('status') == 'Lolos Bersyarat' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
@@ -127,7 +148,11 @@ class ListPendaftaranTA1Controller extends Controller
         $pendaftaran = Pendaftaran::with('mahasiswa')->where('id', $id)->get()[0];
         $mahasiswa_id = $pendaftaran->mahasiswa_id;
         if (request('status') != $pendaftaran->status) {
-            Pendaftaran::where('id', $id)->update(['status' => request('status')]);
+            if (request('status') == "Lolos") {
+                return redirect('/koordinator/list-pendaftaran-ta-1/' . $id . '/penilaian');
+            } else {
+                Pendaftaran::where('id', $id)->update(['status' => request('status')]);
+            }
             if (request('status') == 'Lolos' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
             } elseif (request('status') == 'Lolos') {
                 PendaftaranSeminar::create([

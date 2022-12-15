@@ -73,6 +73,9 @@ return new class extends Migration
             // Status Pendaftaran
             $table->string('status')->nullable();
             $table->text('keterangan_status')->nullable();
+
+            // Penilaian Pendaftaran Adm
+            $table->integer('penilaian')->nullable();
         });
     }
 
