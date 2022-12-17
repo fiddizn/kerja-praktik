@@ -16,42 +16,53 @@
         </div>
     </div>
 </div>
+@if($role == 'Koordinator')
 <form id="formPenilaian" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/penilaian" method="post">
-    @csrf
-    <div class="row g-3 my-3">
-        <div class="form-group">
+    @else
+    <form id="formPenilaian" action="/tu/pendaftaran-administrasi/{{ $pendaftaran->id }}/penilaian" method="post">
+        @endif
+        @csrf
+        <div class="row g-3 my-3">
+            <div class="form-group">
 
-            <div class="row mt-1">
-                <label for="penilaian">Nilai Pendaftaran Seminar</label>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <input type="number" min="0" max="100" class="form-control" id="penilaian" name="penilaian"
-                        placeholder="Masukkan Nilai" required>
+                <div class="row mt-1">
+                    <label for="penilaian">Nilai Pendaftaran Seminar</label>
                 </div>
-                <!-- <div class="col-md-2">
+                <div class="row">
+                    <div class="col">
+                        <input type="number" min="0" max="100" class="form-control" id="penilaian" name="penilaian"
+                            placeholder="Masukkan Nilai" required>
+                    </div>
+                    <!-- <div class="col-md-2">
                         <button type="submit" class="btn"
                             style="width: 10rem; background-color:#ff8c1a;">Submit</button>
                     </div> -->
-            </div>
+                </div>
 
-            <div class="col-12 mt-5">
-                <a class="btn" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}" role="button"
-                    style="width: 5rem;background-color:#ff8c1a;">Back</a>
-                <button type="submit" id="formPenilaian" class="btn"
-                    style="width: 5rem;background-color:#ff8c1a;">Submit</button>
+                <div class="col-12 mt-5">
+                    @if ($role == "Tata Usaha")
+                    <a class="btn" href="/tu/pendaftaran-administrasi/{{ $pendaftaran->id }}" role="button"
+                        style="width: 5rem;background-color:#ff8c1a;">Back</a>
+                    <button type="submit" id="formPenilaian" class="btn"
+                        style="width: 5rem;background-color:#ff8c1a;">Submit</button>
+                    @else
+                    <a class="btn" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}" role="button"
+                        style="width: 5rem;background-color:#ff8c1a;">Back</a>
+                    <button type="submit" id="formPenilaian" class="btn"
+                        style="width: 5rem;background-color:#ff8c1a;">Submit</button>
+                    @endif
+                </div>
             </div>
         </div>
+    </form>
+
+    <div style=" height: 100px;">
     </div>
-</form>
 
-<div style=" height: 100px;">
-</div>
+    <script>
+    document.addEventListener('trix-file-accept', function(e) {
+        e.preventDefault
+    })
+    </script>
 
-<script>
-document.addEventListener('trix-file-accept', function(e) {
-    e.preventDefault
-})
-</script>
-
-@endsection
+    @endsection

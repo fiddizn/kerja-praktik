@@ -273,7 +273,7 @@
                 <trix-editor input="keterangan_status"></trix-editor>
                 <input type="hidden" id="status" name="status" value="Lolos Bersyarat">
                 <div class="row mt-3">
-                    <label for="penilaian">Nilai Pendaftaran Seminar</label>
+                    <label for="penilaian">Nilai Pendaftaran Administrasi</label>
                 </div>
                 <div class="row">
                     <div class="col">

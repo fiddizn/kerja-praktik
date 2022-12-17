@@ -303,6 +303,8 @@ Route::group(['middleware' => 'auth'], function () {
                 'role' => 'Tata Usaha'
             ]);
         });
+        Route::get('/tu/pendaftaran-administrasi/{id}/penilaian', [TUPendaftaranAdministrasiController::class, 'showPenilaian']);
+        Route::post('/tu/pendaftaran-administrasi/{id}/penilaian', [TUPendaftaranAdministrasiController::class, 'storePenilaian']);
         Route::get('/tu/pendaftaran-administrasi/{id}/downloadTagihanUang', [TUPendaftaranAdministrasiController::class, 'downloadTagihanUang']);
         Route::get('/tu/pendaftaran-administrasi/{id}/downloadLunasPembayaran', [TUPendaftaranAdministrasiController::class, 'downloadLunasPembayaran']);
         Route::get('/tu/pendaftaran-administrasi/{id}/downloadBerkasTa1', [TUPendaftaranAdministrasiController::class, 'downloadBerkasTa1']);
