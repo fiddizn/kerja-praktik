@@ -19,6 +19,7 @@ use App\Http\Controllers\JadwalSeminarController;
 use App\Http\Controllers\RevisiSeminarController;
 use App\Http\Controllers\AjuanPembimbing1Controller;
 use App\Http\Controllers\AjuanPembimbing2Controller;
+use App\Http\Controllers\AjuanPembimbingController;
 use App\Http\Controllers\KunciPendaftaranController;
 use App\Http\Controllers\PenilaianSeminarController;
 use App\Http\Controllers\ProposalReviewedController;
@@ -224,6 +225,15 @@ Route::group(['middleware' => 'auth'], function () {
             ]);
         });
         Route::get('/dosen/downloadJadwalSeminar', [JadwalSeminarController::class, 'downloadJadwalDosen']);
+
+        // Ajuam Pembimbing
+        Route::get('dosen/ajuan-pembimbing/{ajuan_pembimbing}/downloadBerkasTA1', [AjuanPembimbingController::class, 'downloadBerkasTA1'])->name('ajuan-pembimbing.downloadBerkasTA1');
+        Route::get('dosen/ajuan-pembimbing/{ajuan_pembimbing}/downloadKHS', [AjuanPembimbingController::class, 'downloadKHS'])->name('ajuan-pembimbing.downloadKHS');
+        Route::get('dosen/ajuan-pembimbing/setuju-{id}-{dosen}', [AjuanPembimbingController::class, 'setuju']);
+        Route::get('dosen/ajuan-pembimbing/tolak-{id}-{dosen}', [AjuanPembimbingController::class, 'tolak']);
+        Route::get('dosen/ajuan-pembimbing/reset-{id}-{dosen}', [AjuanPembimbingController::class, 'reset']);
+        Route::resource('dosen/ajuan-pembimbing', AjuanPembimbingController::class);
+
 
         // Reviewer 1
 

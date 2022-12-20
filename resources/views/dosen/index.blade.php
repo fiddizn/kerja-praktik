@@ -9,6 +9,11 @@
 <h1 style="text-align:center;">Dashboard Dosen</h1>
 
 <div class="d-flex justify-content-center mt-5">
+    <a class="btn my-3" href="/dosen/ajuan-pembimbing" role="button"
+        style="background-color:#ff8c1a; width: 20rem;">Ajuan
+        Pembimbing</a>
+</div>
+<div class="d-flex justify-content-center">
     <a class="btn my-3
     <?php
     if (!auth()->user()->pembimbing1) {
