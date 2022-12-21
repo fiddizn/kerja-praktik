@@ -18,13 +18,24 @@ class AjuanPembimbingController extends Controller
             ->orWhere('alt2_p2', $namaDosenDanJabfung)
             ->orWhere('alt3_p2', $namaDosenDanJabfung)
             ->orWhere('alt4_p2', $namaDosenDanJabfung)
-            ->filterAjuanPembimbing(request('search'))->paginate(7)->withQueryString();
+            ->filterAjuanPembimbing(request('search'))->paginate(2)->withQueryString();
+
+        $jumlah = Pendaftaran::where('alt1_p1', $namaDosenDanJabfung)
+            ->orWhere('alt2_p1', $namaDosenDanJabfung)
+            ->orWhere('alt3_p1', $namaDosenDanJabfung)
+            ->orWhere('alt4_p1', $namaDosenDanJabfung)
+            ->orWhere('alt1_p2', $namaDosenDanJabfung)
+            ->orWhere('alt2_p2', $namaDosenDanJabfung)
+            ->orWhere('alt3_p2', $namaDosenDanJabfung)
+            ->orWhere('alt4_p2', $namaDosenDanJabfung)
+            ->filterAjuanPembimbing(request('search'))->paginate(1000)->withQueryString();
 
         return view('dosen.pembimbing.ajuan-pembimbing-index', [
             'title' => 'Ajuan Pembimbing',
             'role' => 'Pembimbing 1',
             'pendaftarans' => $pendaftarans,
-            'namaDosenDanJabfung' => $namaDosenDanJabfung
+            'namaDosenDanJabfung' => $namaDosenDanJabfung,
+            'pendaftaransemua' => $jumlah
         ]);
     }
 
