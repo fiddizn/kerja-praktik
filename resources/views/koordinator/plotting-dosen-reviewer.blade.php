@@ -122,7 +122,7 @@
                 </a>
                 @endif
             </th>
-            <th scope="col">Reviewer 1
+            <th scope="col">Reviewer 2
                 @if ($sortAsc == 'ASC' && $sortBy == 'r1')
                 <a
                     href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=r1&sortAsc={{$sortAsc=='ASC'&&$sortBy=='r1'?'DESC':'ASC'}}">

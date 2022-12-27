@@ -27,7 +27,8 @@
         <form action="/koordinator/plotting-dosen-reviewer2/{{ $mahasiswa->id }}" method="post" id="plotting">
             @method('put')
             @csrf
-            <div class="row mt-5">
+            <h4 class="text-center my-3">Pilih Penguji 2</h4>
+            <div class="row">
                 <label for="p1" class="col-sm-3 col-form-label">Pembimbing 1</label>
                 <div class="col">
                     <input type="text" class="form-control" name="p1" id="p1" readonly

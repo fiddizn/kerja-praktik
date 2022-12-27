@@ -229,7 +229,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Ajuam Pembimbing
         Route::get('dosen/ajuan-pembimbing/{ajuan_pembimbing}/downloadBerkasTA1', [AjuanPembimbingController::class, 'downloadBerkasTA1'])->name('ajuan-pembimbing.downloadBerkasTA1');
         Route::get('dosen/ajuan-pembimbing/{ajuan_pembimbing}/downloadKHS', [AjuanPembimbingController::class, 'downloadKHS'])->name('ajuan-pembimbing.downloadKHS');
-        Route::get('dosen/ajuan-pembimbing/setuju-{id}-{dosen}', [AjuanPembimbingController::class, 'setuju']);
+        Route::get('dosen/ajuan-pembimbing/setuju-{id}-{dosen}-{jumlah}', [AjuanPembimbingController::class, 'setuju']);
         Route::get('dosen/ajuan-pembimbing/tolak-{id}-{dosen}', [AjuanPembimbingController::class, 'tolak']);
         Route::get('dosen/ajuan-pembimbing/reset-{id}-{dosen}', [AjuanPembimbingController::class, 'reset']);
         Route::resource('dosen/ajuan-pembimbing', AjuanPembimbingController::class);

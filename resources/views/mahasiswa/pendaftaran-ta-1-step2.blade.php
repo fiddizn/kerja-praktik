@@ -16,6 +16,7 @@
         <form class="row g-3" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1-step2" method="POST">
             @endif
             @csrf
+            <h4 class="ms-2">Nilai Mata Kuliah</h4>
             @if($pendaftaran == null)
             <div class="col-md-3">
                 <label for="algo" class="form-label">Algoritma</label>
@@ -65,6 +66,7 @@
             <div class="mt-4">
 
             </div>
+            <h4 class="ms-2">Pengambilan Mata Kuliah</h4>
             <div class="col-md-3">
                 <label for="pemweb" class="form-label">Pemrograman Web</label>
                 <select type="text" class="form-select" name="pemweb" id="pemweb" required>
@@ -113,6 +115,7 @@
             <div class="my-4">
 
             </div>
+            <h4 class="ms-2">Informasi Lainnya</h4>
             <div class="col-md-3">
                 <label for="jumlah_teori_d" class="form-label">Jumlah SKS yang bernilai D (Teori)</label>
                 <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0"
@@ -205,6 +208,7 @@
             <div class="mt-4">
 
             </div>
+            <h4 class="ms-2">Pengambilan Mata Kuliah</h4>
             <div class="col-md-3">
                 <label for="pemweb" class="form-label">Pemrograman Web</label>
                 <select type="text" class="form-select" name="pemweb" id="pemweb" required>
@@ -268,6 +272,9 @@
             <div class="my-4">
 
             </div>
+
+            <h4 class="ms-2">Informasi Lainnya</h4>
+
             <div class="col-md-3">
                 <label for="jumlah_teori_d" class="form-label">Jumlah SKS yang bernilai D (Teori)</label>
                 <input type="number" min="0" max="140" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d"

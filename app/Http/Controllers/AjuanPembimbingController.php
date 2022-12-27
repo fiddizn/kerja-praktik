@@ -18,7 +18,7 @@ class AjuanPembimbingController extends Controller
             ->orWhere('alt2_p2', $namaDosenDanJabfung)
             ->orWhere('alt3_p2', $namaDosenDanJabfung)
             ->orWhere('alt4_p2', $namaDosenDanJabfung)
-            ->filterAjuanPembimbing(request('search'))->paginate(2)->withQueryString();
+            ->filterAjuanPembimbing(request('search'))->paginate(7)->withQueryString();
 
         $jumlah = Pendaftaran::where('alt1_p1', $namaDosenDanJabfung)
             ->orWhere('alt2_p1', $namaDosenDanJabfung)
@@ -32,7 +32,7 @@ class AjuanPembimbingController extends Controller
 
         return view('dosen.pembimbing.ajuan-pembimbing-index', [
             'title' => 'Ajuan Pembimbing',
-            'role' => 'Pembimbing 1',
+            'role' => 'Dosen',
             'pendaftarans' => $pendaftarans,
             'namaDosenDanJabfung' => $namaDosenDanJabfung,
             'pendaftaransemua' => $jumlah
@@ -54,8 +54,15 @@ class AjuanPembimbingController extends Controller
         //
     }
 
-    public function setuju($id, $ajuanAlternatif)
+    public function setuju($id, $ajuanAlternatif, $jumlah)
     {
+        if (auth()->user()->dosen->jabfung->name == "Non Jabfung") {
+            if ($jumlah >= 14) {
+                return redirect('/dosen/ajuan-pembimbing')->with('gagal', 'Maaf, ajuan yang telah anda setujui sudah mencapai batas');
+            }
+        } else if ($jumlah >= 20) {
+            return redirect('/dosen/ajuan-pembimbing')->with('gagal', 'Maaf, ajuan yang telah anda setujui sudah mencapai batas');
+        }
         Pendaftaran::find($id)->update([
             $ajuanAlternatif => 1
         ]);

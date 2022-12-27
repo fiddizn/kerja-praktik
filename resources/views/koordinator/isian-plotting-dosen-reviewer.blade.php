@@ -28,8 +28,9 @@
         <form action="/koordinator/plotting-dosen-reviewer/{{ $mahasiswa->id }}" method="post" id="plotting">
             @method('put')
             @csrf
-            <div class="row mt-5">
-                <label for=" r1" class="col-sm-3 col-form-label">Reviewer 1</label>
+            <h4 class="text-center my-3">Pilih Reviewer</h4>
+            <div class="row">
+                <label for=" r1" class="col-sm-3 col-form-label">Reviewer 2</label>
                 <div class="col">
                     <select type="text" class="form-select" name="r1" id="r1" required>
                         <option value="" selected disabled>Pilih...</option>

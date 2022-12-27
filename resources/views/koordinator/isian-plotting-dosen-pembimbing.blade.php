@@ -170,6 +170,7 @@
             method="post">
             @method('put')
             @csrf
+            <h4 class="text-center my-3">Pilih Pembimbing</h4>
             <div class="row">
                 @if ($pendaftaran->mahasiswa->p1_id == null)
                 <label for="p1" class="col-sm-6 col-form-label">Pembimbing 1</label>
